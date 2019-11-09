@@ -2,6 +2,7 @@
 
 - Ethan Donahue
 - LaMana Donadelle
+- Scott Moore
 
 # App API
 https://42matters.com/app-market-data
