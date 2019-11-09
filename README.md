@@ -1,3 +1,4 @@
 # T-B-C
 
--Ethan Donahue
+- Ethan Donahue
+- LaMana Donadelle
