@@ -1,8 +1,9 @@
-# T-B-C
+# AppBeware
 
 - Ethan Donahue
 - LaMana Donadelle
 - Scott Moore
+- Jessie Sholler
 
 ## Technologies used
 ReactJS
