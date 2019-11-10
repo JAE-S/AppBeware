@@ -4,7 +4,8 @@
   "engines": {
     "node": "10.16.3"
   },
-  "description": "- Ethan Donahue - LaMana Donadelle - Scott Moore - Jessie Sholler",
+  "homepage": "https://github.com/JAE-S/appbeware#readme",
+  "description": "Despicable-Who? Guessing Game application",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -17,17 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JAE-S/AppBeware.git"
+    "url": "git+https://github.com/JAE-S/appbeware.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JAE-S/AppBeware/issues"
+    "url": "https://github.com/JAE-S/appbeware/issues"
   },
-  "homepage": "https://github.com/JAE-S/AppBeware#readme",
   "dependencies": {
-    "axios": "^0.19.0",
     "concurrently": "^5.0.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
