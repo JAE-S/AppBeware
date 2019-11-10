@@ -1,6 +1,10 @@
 {
   "name": "AppBeware",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.16.3"
+  },
+
   "description": "- Ethan Donahue - LaMana Donadelle - Scott Moore - Jessie Sholler",
   "main": "server.js",
   "scripts": {
