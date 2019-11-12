@@ -3,10 +3,10 @@
 # Welcome to AppBeware
 
 #### Collaborators: 
-* Ethan Donahue
-* LaMana Donadelle
-* Scott Moore
-* Jessie Sholler
+* [Ethan Donahue](https://github.com/EthanD0922)
+* [LaMana Donadelle](https://github.com/lamanaml)
+* [Scott Moore](https://github.com/woodwindscott)
+* [Jessie Sholler](https://github.com/JAE-S)
 
 ---
 
@@ -73,6 +73,8 @@ https://42matters.com/app-market-data
 
   * <b>Ratings Guide:</b> https://www.esrb.org/ratings-guide/
   * <b>API access to Mobile Data:</b> https://42matters.com/app-market-data
+  * <b>React Native:</b> https://github.com/facebook/react-native/tree/master/RNTester
+  * <b>Andriod Studio:</b> https://developer.android.com/studio?gclid=CjwKCAiAzanuBRAZEiwA5yf4ug5F1IEFNGP8Jsx7m7pwkpXX_7eCIhQFs3St4PywnibjCqxKMMMHNhoC1kwQAvD_BwE#downloads
 
 ---
 
