@@ -18,7 +18,7 @@
   * [Brainstorming Document](#brainstorming-document)
   * [Resource Links](#resource-links)
   * [File Architecture](#file-architecture)
-  * [Click here to visit the site!](https://despicable-who.herokuapp.com/)
+  * [Click here to visit the site!](https://www.appbeware.com/)
 ---
 
 ## Design Process
