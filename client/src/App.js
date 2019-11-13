@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+ // Import React 
+// =========================================================
+import React from "react";
+// import { BrowserRouter as Route, Switch }
+//  from "react-router-dom"; 
+
+ // Components
+// =========================================================
+import { Modal, Button, Container } from 'react-materialize';
+// import Nav from "./components/Nav";
+
+ // Components
+// =========================================================
+// import About from "./pages/About";
+
 
 function App() {
+  const trigger = <Button style={{ display: "block", margin: "0 auto", backgroundColor: "red"}}>CLICK ME</Button>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Container 
+          className="valign-wrapper" 
+          style={{height: "100vh" }}
+      >
+          <Modal className="center-align" header="AppBeware" trigger={trigger}>
+              <p>...coming soon!</p>
+          </Modal>
+      </Container>
+           
+      {/* <Nav /> */}
+      {/* <Router> */}
+        {/* <Switch>  */}
+          {/* <Route exact path="/" component={About}/> */}
+    
+        {/* </Switch> */}
+      {/* </Router> */}
     </div>
   );
 }
