@@ -66,6 +66,7 @@
 
 ## Brainstorming Document
 * [Google Doc](https://docs.google.com/document/d/1upcb7oJcZ5eXzW1HB9fcMNAPfmZxc_v0ng-4Bvco6Q0/edit?usp=sharing)
+* [ERD](https://www.lucidchart.com/invitations/accept/9112df75-21a5-4836-907d-e3a6be71452f)
 
 ---
 
