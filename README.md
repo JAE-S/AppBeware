@@ -27,12 +27,12 @@
 ```
 
 ```
-
+---
 ## API'S
-```
-https://42matters.com/app-market-data
 
-```
+* <b>App meta data API: </b> https://42matters.com/app-market-data
+* <b>Google sign in: </b> https://developers.google.com/identity/sign-in/web/sign-in
+
 ---
 ## Technologies
 > <b>Design Tools:</b>
