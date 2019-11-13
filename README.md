@@ -71,10 +71,11 @@ https://42matters.com/app-market-data
 
 ## Resource Links
 
+  * <b>ERD:</b> https://www.lucidchart.com/   
   * <b>Ratings Guide:</b> https://www.esrb.org/ratings-guide/
   * <b>API access to Mobile Data:</b> https://42matters.com/app-market-data
   * <b>React Native:</b> https://github.com/facebook/react-native/tree/master/RNTester
-  * <b>Instance App: </b> https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle#check-permissions
+  * <b>Instant App: </b> https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle#check-permissions
   * <b>Andriod Studio:</b> https://developer.android.com/studio?gclid=CjwKCAiAzanuBRAZEiwA5yf4ug5F1IEFNGP8Jsx7m7pwkpXX_7eCIhQFs3St4PywnibjCqxKMMMHNhoC1kwQAvD_BwE#downloads
 
 ---
