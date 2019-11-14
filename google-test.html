@@ -13,11 +13,11 @@
     function onSuccess(googleUser) {
         console.log("Inside Login Function")
         console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-        console.log('ID: ' + BasicProfile.getId());
-        console.log('Given Name: ' + BasicProfile.getGivenName());
-        console.log('Family Name' + BasicProfile.getFamilyName());
-        console.log('Image URL: ' + BasicProfile.getImageUrl());
-        console.log('Email: ' + BasicProfile.getEmail())
+        console.log('ID: ' + googleUser.getBasicProfile().getId());
+        console.log('Given Name: ' + googleUser.getBasicProfile().getGivenName());
+        console.log('Family Name' + googleUser.getBasicProfile().getFamilyName());
+        console.log('Image URL: ' + googleUser.getBasicProfile().getImageUrl());
+        console.log('Email: ' + googleUser.getBasicProfile().getEmail())
     }
     function onFailure(error) {
         console.log(error);
