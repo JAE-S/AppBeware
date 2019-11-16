@@ -3,10 +3,10 @@
 # Welcome to AppBeware
 
 #### Collaborators: 
-* Ethan Donahue
-* LaMana Donadelle
-* Scott Moore
-* Jessie Sholler
+* [Ethan Donahue](https://github.com/EthanD0922)
+* [LaMana Donadelle](https://github.com/lamanaml)
+* [Scott Moore](https://github.com/woodwindscott)
+* [Jessie Sholler](https://github.com/JAE-S)
 
 ---
 
@@ -27,12 +27,12 @@
 ```
 
 ```
-
+---
 ## API'S
-```
-https://42matters.com/app-market-data
 
-```
+* <b>App meta data API: </b> https://42matters.com/app-market-data
+* <b>Google sign in: </b> https://developers.google.com/identity/sign-in/web/sign-in
+
 ---
 ## Technologies
 > <b>Design Tools:</b>
@@ -66,13 +66,18 @@ https://42matters.com/app-market-data
 
 ## Brainstorming Document
 * [Google Doc](https://docs.google.com/document/d/1upcb7oJcZ5eXzW1HB9fcMNAPfmZxc_v0ng-4Bvco6Q0/edit?usp=sharing)
+* [ERD](https://www.lucidchart.com/invitations/accept/9112df75-21a5-4836-907d-e3a6be71452f)
 
 ---
 
 ## Resource Links
 
+  * <b>ERD:</b> https://www.lucidchart.com/   
   * <b>Ratings Guide:</b> https://www.esrb.org/ratings-guide/
   * <b>API access to Mobile Data:</b> https://42matters.com/app-market-data
+  * <b>React Native:</b> https://github.com/facebook/react-native/tree/master/RNTester
+  * <b>Instant App: </b> https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle#check-permissions
+  * <b>Andriod Studio:</b> https://developer.android.com/studio?gclid=CjwKCAiAzanuBRAZEiwA5yf4ug5F1IEFNGP8Jsx7m7pwkpXX_7eCIhQFs3St4PywnibjCqxKMMMHNhoC1kwQAvD_BwE#downloads
 
 ---
 
@@ -82,8 +87,26 @@ https://42matters.com/app-market-data
  
 
          AppBeware
-         ├── 
-         │   
+         ├── App
+         │   ├── Controllers
+         │   ├── db
+         │   ├── modals
+         │   └── routes
+         ├── Client
+         │   ├── Public
+         │   ├── src
+         │   │   ├── components
+         │   │   ├── pages
+         │   │   ├── App.css
+         │   │   ├── App.js
+         │   │   └── index.js
+         │   ├── .gitignore
+         │   ├── package.json
+         │   └── Readme.md
+         ├── .gitignore
+         ├── google-test.html
+         ├── package.json
+         ├── Readme.md 
          └── server.js
 
 
