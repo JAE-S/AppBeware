@@ -1,7 +1,7 @@
 module.exports = {
     development: {
       username: 'root',
-      password: '1234',
+      password: 'Care1self!',
       database: 'appbeware_dev',
       details: {
         host: '127.0.0.1',
