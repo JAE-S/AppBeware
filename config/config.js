@@ -4,7 +4,7 @@ module.exports = {
       password: '1234',
       database: 'appbeware_dev',
       details: {
-        host: process.env.SEQUELIZE_HOST,
+        host: '127.0.0.1',
         port: 3306,
         dialect: 'mysql'
       }
