@@ -3,7 +3,12 @@ import "./style.css";
 
 
 function Wrapper(props) {
-    return <main className="wrapper" {...props} > 
+    
+    const wrapper = {
+        padding: 20
+    }
+
+    return <main style={ wrapper } {...props} > 
     {props.children}
     </main>
 }
