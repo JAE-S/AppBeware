@@ -9,6 +9,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        appStoreId: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: false
