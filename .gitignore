@@ -24,10 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .dropbox
-<<<<<<< HEAD
-
-.env
-=======
 .env
 config/config.js
->>>>>>> f26999e1b2613b2bb9d50614f3692bc7e871b8c6
