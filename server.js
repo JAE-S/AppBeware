@@ -34,24 +34,30 @@ app.use(helmet.hsts({
 }));
 
 
-const syncOptions = {
-  force: process.env.FORCE_SYNC === 'true'
-};
-
-if (app.get('env') === 'test') {
-  syncOptions.force = true;
-}
 
 app.get("/google", function(req, res) {
     res.sendFile(path.join(__dirname, "./google-test.html"));
   })
 
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
+
+const syncOptions = {
+  force: process.env.FORCE_SYNC === 'true'
+};
+
+
+
+if (app.get('env') === 'test') {
+  console.log("is True Should Reset")
+  syncOptions.force = true;
+}
 
 db.sequelize.sync(syncOptions).then(() => {
   if (app.get('env') !== 'test' || syncOptions.force) {
+    console.log("is True Should Reset")
+
     require('./db/seed')(db);
   }
   

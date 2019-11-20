@@ -4,7 +4,8 @@ const badgeData =
     { "name": "Sexual Content"},
     { "name": "Dangerous Behaviors"},
     { "name": "Cyberbullying"},
-    { "name": "Violence"}
+    { "name": "Violence"},
+    { "name": "Test"}
 ]
 
 module.exports = badgeData;
