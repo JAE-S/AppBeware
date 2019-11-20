@@ -8,6 +8,7 @@
 // Import Components
 // =========================================================
   import Form from "./components/Form";
+  import Homepage from "./pages/Homepage"
   import Nav from "./components/Nav"
   import Wrapper from "./components/Wrapper";
 
@@ -23,6 +24,7 @@ function App() {
        <Wrapper>
         <Switch>
             <Route exact path="/" component={Form} />
+            <Route exact path="/homepage" component={Homepage} />
         </Switch>
        </Wrapper>
     </Router>
