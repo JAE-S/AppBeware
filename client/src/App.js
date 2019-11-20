@@ -14,6 +14,7 @@
 
 // Import CSS
 // =========================================================
+import "./App.css"
 
 // App
 // =========================================================
@@ -21,12 +22,10 @@ function App() {
   return (
     <Router>
        <Nav /> 
-       <Wrapper>
-        <Switch>
-            <Route exact path="/" component={Form} />
-            <Route exact path="/homepage" component={Homepage} />
-        </Switch>
-       </Wrapper>
+          <Switch>
+              <Route exact path="/" component={Form} />
+              <Route exact path="/homepage" component={Homepage} />
+          </Switch>
     </Router>
   )
 }

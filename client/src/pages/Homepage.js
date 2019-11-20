@@ -1,13 +1,16 @@
 import React from "react"; 
 
 import SearchAppAnnie from "../components/SearchAppAnnie"
+import Wrapper from "../components/Wrapper"
 
 function Homepage() {
 
     return (
-        <div style={{ marginTop: 200}}> 
-            <SearchAppAnnie/>
-        </div>
+        <Wrapper>
+  
+            <SearchAppAnnie />
+   
+        </Wrapper>
     )
 }
 

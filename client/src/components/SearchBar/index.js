@@ -1,8 +1,10 @@
 import React from "react"; 
 import {Input, Button} from '@material-ui/core';
+import "./style.css"
 
 function SearchBar(props) {
     return (
+        <div className="formStyle">
         <form>
             <label htmlFor="search">Search For an app: </label>
             <Input
@@ -11,12 +13,6 @@ function SearchBar(props) {
                 type="text"
                 placeholder=" Type in a book to begin"
                 id="search"
-                
-                style={{
-                    margin: '0 auto',
-                    maxWidth: 800,  
-                    marginTop: 200  
-                }}
             />
             <Button 
                 type="submit" 
@@ -25,6 +21,7 @@ function SearchBar(props) {
                 Search
             </Button>
         </form>
+        </div>
     )
 } 
 
