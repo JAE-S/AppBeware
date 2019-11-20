@@ -32,14 +32,6 @@ app.use(helmet.hsts({
   maxAge: moment.duration(1, 'years').asMilliseconds()
 }));
 
-// catch 404 and forward to error handler
-if (app.get('env') !== 'development') {
-  app.use((req, res, next) => {
-    const err = new Error('Not Found: ' + req.url);
-    err.status = 404;
-    next(err);
-  });
-}
 
 const syncOptions = {
   force: process.env.FORCE_SYNC === 'true'
@@ -63,6 +55,14 @@ db.sequelize.sync(syncOptions).then(() => {
   }
   
   
+// catch 404 and forward to error handler
+if (app.get('env') !== 'development') {
+  app.use((req, res, next) => {
+    const err = new Error('Not Found: ' + req.url);
+    err.status = 404;
+    next(err);
+  });
+}
 
   app.listen(PORT, () => {
     console.log(`App listening on port: ${PORT}`);
