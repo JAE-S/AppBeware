@@ -4,11 +4,8 @@ import "./style.css";
 
 function Wrapper(props) {
     
-    const wrapper = {
-        padding: 20
-    }
 
-    return <main style={ wrapper } {...props} > 
+    return <main className="wrapper" {...props} > 
     {props.children}
     </main>
 }
