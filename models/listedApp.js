@@ -7,7 +7,10 @@ module.exports = function (sequelize, DataTypes) {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: {
+                args: true,
+      }
         },
         appStoreId: {
             type: DataTypes.INTEGER,
