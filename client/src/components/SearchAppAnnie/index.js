@@ -9,11 +9,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Select from 'react-select';
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import NoSsr from '@material-ui/core/NoSsr';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
+import { Typography, Button, NoSsr, TextField, Paper, Chip } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 
@@ -369,13 +365,13 @@ export default function SearchAppAnnie() {
           styles={selectStyles}
           inputId="react-select-single"
           TextFieldProps={{
-            label: 'Country',
+            label: 'Search for an App',
             InputLabelProps: {
               htmlFor: 'react-select-single',
               shrink: true,
             },
           }}
-          placeholder="Search a country (start with a)"
+          placeholder="Snapchat"
           options={suggestions}
           components={components}
           value={single}
@@ -383,6 +379,8 @@ export default function SearchAppAnnie() {
         />
         <div className={classes.divider} />
       </NoSsr>
+      <Button>View All Apps </Button>
     </div>
+    
   );
 }
