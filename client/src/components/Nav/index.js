@@ -13,23 +13,6 @@
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
-// function Nav() {
-    
-//     const nav = {
-//         padding: 20,
-//         background: "#56585D"
-//     }
-    
-//     return (
-//         <AppBar style={ nav }>
-//            AppBeware
-//         </AppBar>
-//     )
-// } 
-
-// export default Nav;
-
-
 
 
 const useStyles = makeStyles(theme => ({
@@ -194,7 +177,7 @@ export default function Nav() {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
+            <InputBase style={{ paddingLeft: "50px" }}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
