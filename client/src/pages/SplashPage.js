@@ -5,14 +5,15 @@
 // =========================================================
    import Wrapper from "../components/Wrapper"
    import SignIn from "../components/SignIn"
-//    import SignUp from "../components/SignUp"
+   import SignUp from "../components/SignUp"
 // Import Material UI components 
 // =========================================================
    import { makeStyles } from '@material-ui/core/styles';
-   import { Paper, Grid, Button, Popover, Typography } from '@material-ui/core';
+   import { Paper, Grid, Button, Popover } from '@material-ui/core';
 // Assets
 // =========================================================
     import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
+    import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
 
 // Custom Styles 
 // =========================================================
@@ -23,11 +24,16 @@ const useStyles = makeStyles(theme => ({
         color: "white",
         height: "70vh", 
         background: "grey",
-        margin: 8
+        margin: 8,
+        display: "flex", 
+        flexDirection: "column"
       },
       title: {
-          borderBottom: "2px solid white", 
+          // borderBottom: "2px solid white", 
+          fontSize: "38px",
           paddingBottom: 10,
+          justifyContent: "center", 
+          paddingTop: "60px"
       },
     sButtons: {
         width: 250, 
@@ -64,8 +70,17 @@ return (
     <Grid container spacing={8}>
       <Grid item xs={12} sm={6}>
         <Paper className={classes.paper}>
-        <h1 className={classes.title}>AppBeware</h1>
-        <h3 className={classes.about}>Welcome to AppBeware!</h3>
+        <Grid container spacing={8}>
+          <Grid item xs={6} sm={6}>
+          <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
+          </Grid>
+          <Grid item xs={6} sm={6}>
+          <h1 className={classes.title}>AppBeware</h1>
+          </Grid>
+          </Grid>
+        <h3 style={{ padding: 20 }} className={classes.about}>
+          AppBeware is a crowdsourcing platform that empowers the community to raise awareness about the potential dangers of apps.
+        </h3>
         <Grid item md={12}>
             <Button 
             className={classes.sButtons}
@@ -92,7 +107,7 @@ return (
                 <SignIn className={classes.typography}/>
             </Popover>
         </Grid>
-        {/* <Grid item md={12}>
+        <Grid item md={12}>
             <Button 
                 className={classes.sButtons}
                 aria-describedby={id} 
@@ -117,13 +132,13 @@ return (
                 >
                     <SignUp className={classes.typography}/>
                 </Popover>
-            </Grid> */}
+            </Grid>
         <h3 className={classes.or}>OR</h3>
         <a><img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/></a>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Paper className={classes.paper}>Right Side</Paper>
+        <Paper className={classes.paper}>Placeholder for video.</Paper>
       </Grid>
     </Grid>
   </Wrapper>
