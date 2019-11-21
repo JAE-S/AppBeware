@@ -369,13 +369,13 @@ export default function SearchAppAnnie() {
           styles={selectStyles}
           inputId="react-select-single"
           TextFieldProps={{
-            label: 'Country',
+            label: 'Search for an App',
             InputLabelProps: {
               htmlFor: 'react-select-single',
               shrink: true,
             },
           }}
-          placeholder="Search a country (start with a)"
+          placeholder="Snapchat"
           options={suggestions}
           components={components}
           value={single}
