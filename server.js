@@ -34,7 +34,14 @@ app.use(helmet.hsts({
   maxAge: moment.duration(1, 'years').asMilliseconds()
 }));
 
-
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 app.get("/google", function(req, res) {
     res.sendFile(path.join(__dirname, "./google-test.html"));
@@ -47,7 +54,6 @@ app.get("*", function(req, res) {
 const syncOptions = {
   force: process.env.FORCE_SYNC === 'true'
 };
-
 
 
 if (app.get('env') === 'test') {
