@@ -3,7 +3,7 @@
     import React from 'react'; 
 // Import Material UI components
 // =========================================================
-    import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, } from '@material-ui/core';
+    import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     import SearchIcon from '@material-ui/icons/Search';

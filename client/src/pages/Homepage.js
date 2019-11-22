@@ -1,13 +1,22 @@
-import React from "react"; 
+// Import React 
+// =========================================================
+    import React from "react";  
 
-import SearchAppAnnie from "../components/SearchAppAnnie"
-import Wrapper from "../components/Wrapper"
-import Nav from "../components/Nav"
-import HeaderContainer from "../components/HeaderContainer"
-import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+// Import Material Ui Components
+// =========================================================
+    import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+// Import Custom Components
+// =========================================================
+    import SearchAppAnnie from "../components/SearchAppAnnie"
+    import Wrapper from "../components/Wrapper"
+    import Nav from "../components/Nav"
+    import HeaderContainer from "../components/HeaderContainer"
+    import CategoryCards from "../components/CategoryCards"
+    // import Footer from "../components/Footer"
+// Import Assets
+// =========================================================
+    import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
 
-// import Footer from "../components/Footer"
 
 function Homepage() {
 
@@ -84,8 +93,28 @@ function Homepage() {
             </Wrapper>
         </HeaderContainer>
         <Wrapper>
-        
             <SearchAppAnnie />
+
+            <Grid container spacing={2}>
+                <CategoryCards
+                    title="Social Networking"
+                />
+                    <CategoryCards
+                    title="Photos &amp; Videos"
+                />
+                <CategoryCards
+                    title="Kids"
+                />
+                <CategoryCards
+                    title="Entertainment"
+                />
+                <CategoryCards
+                    title="Games"
+                />
+                <CategoryCards
+                    title="View All Apps"
+                />
+            </Grid>
    
         </Wrapper>
         {/* <Footer/> */}
