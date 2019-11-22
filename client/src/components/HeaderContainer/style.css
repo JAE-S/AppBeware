@@ -1,0 +1,6 @@
+.headerContainer {
+    height: 250px; 
+    width: 100%; 
+    background-image: url("../../assets/images/homepage_background.jpg"); 
+    background-size: cover; 
+}

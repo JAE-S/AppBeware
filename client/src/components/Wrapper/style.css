@@ -1,8 +1,9 @@
 .wrapper {
-    max-width: 1200px; 
+    margin: 0 auto;
+    max-width: 1000px; 
     width: 100%; 
+    align-items: center; 
     position: relative; 
     flex-grow: 1;
     z-index: 1;
-    margin: 0 auto;
    }

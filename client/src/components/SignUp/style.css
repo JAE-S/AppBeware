@@ -1,0 +1,19 @@
+.signUpInput{
+    margin: 20px!important;
+    width: 400px!important;
+}
+
+.signInTitle {
+    border-bottom: 2px solid black; 
+    margin-bottom: 20px!important; 
+    padding-bottom: 5px; 
+}
+
+.MuiInputBase-input {
+   padding: 14px 0px!important;
+    width: 400px!important;
+}
+
+h3 {
+    margin: 0!important;
+}
