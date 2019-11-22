@@ -12,6 +12,7 @@ import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 import { Typography, Button, NoSsr, TextField, Paper, Chip } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
+import API from '../../utils/API';
 
 const suggestions = [
   { label: '9GAG'},
@@ -347,6 +348,16 @@ export default function SearchAppAnnie() {
     setMulti(value);
   };
 
+  // TODO:
+  const viewAllApps = () => {
+    console.log("You clicked me!");
+    API.getListedApps()
+    .then(function(response) {
+      console.log("I'm back");
+      console.log(response.data);
+    });
+  }
+
   const selectStyles = {
     input: base => ({
       ...base,
@@ -379,7 +390,7 @@ export default function SearchAppAnnie() {
         />
         <div className={classes.divider} />
       </NoSsr>
-      <Button>View All Apps </Button>
+      <Button onClick={viewAllApps}>View All Apps </Button>
     </div>
     
   );

@@ -4,6 +4,11 @@ const ios42SingleAppQuery = "https://data.42matters.com/api/v2.0/ios/apps/lookup
 export default {
   search42Ios: function(queryId) {
     return axios.get(ios42SingleAppQuery + queryId + "&access_token=" + process.env.APIKEY42);
+  },
+
+  getListedApps: function() {
+    console.log("Inside API.js");
+    return axios.get('/api/listed-app')
   }
 };
 
