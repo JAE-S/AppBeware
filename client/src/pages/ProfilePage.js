@@ -1,19 +1,30 @@
-import React from "react";
-import Wrapper from "../components/Wrapper"
-import Nav from "../components/Nav"
-import HeaderContainer from "../components/HeaderContainer"
-import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+// Import React
+// =========================================================
+import React from "react"; 
+// Import Material Ui Components
+// =========================================================
+    // import { Grid } from '@material-ui/core';
+// Import Components
+// =========================================================
+    import Nav from "../components/Nav"
+    import Wrapper from "../components/Wrapper"
+    import HeaderContainer from "../components/HeaderContainer"
 
-function ProfilePage() {
-    return (
-        <>
-        <Nav/>
-    Profile Page
-           
-        {/* <Footer/> */}
-        </>
-    )
-}
+// Export Default Profile Page Function
+// =========================================================
+    export default function Profile() {
 
-export default ProfilePage; 
+        return (
+            <>
+            <Nav/>
+            <HeaderContainer> 
+                <Wrapper align="center" style={{paddingTop: 80}}> 
+                    
+                <h3>This is the profile page</h3>
+                
+                </Wrapper>
+            </HeaderContainer>
+            {/* <Footer/> */}
+            </>
+        )
+    }

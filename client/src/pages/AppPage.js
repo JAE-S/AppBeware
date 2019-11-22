@@ -1,35 +1,30 @@
+// Import React
+// =========================================================
 import React from "react"; 
-import Wrapper from "../components/Wrapper"
-import Nav from "../components/Nav"
-import HeaderContainer from "../components/HeaderContainer"
-import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+// Import Material Ui Components
+// =========================================================
+    // import { Grid } from '@material-ui/core';
+// Import Components
+// =========================================================
+    import Nav from "../components/Nav"
+    import Wrapper from "../components/Wrapper"
+    import HeaderContainer from "../components/HeaderContainer"
 
-function AppPage() {
+// Export Default App Page Function
+// =========================================================
+    export default function Alert() {
 
-    return (
-        <>
-        <Nav/>
-        <HeaderContainer> 
-            <Wrapper> 
-            <Grid container spacing={8}>
-                 <Grid item xs={12} sm={3}>
-                 <div>
-                    <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
-                </div>
-                </Grid>
+        return (
+            <>
+            <Nav/>
+            <HeaderContainer> 
+                <Wrapper align="center" style={{paddingTop: 80}}> 
+                    
+                <h3>This is an App page</h3>
                 
-                <Grid item xs={12} sm={9}>
-                
-                 </Grid>
-            </Grid>
-            
-            </Wrapper>
-        </HeaderContainer>
-         Application Page
-        {/* <Footer/> */}
-        </>
-    )
-}
-
-export default AppPage; 
+                </Wrapper>
+            </HeaderContainer>
+            {/* <Footer/> */}
+            </>
+        )
+    }
