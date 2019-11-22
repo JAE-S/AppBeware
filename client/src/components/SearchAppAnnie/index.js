@@ -344,9 +344,6 @@ export default function SearchAppAnnie() {
     setSingle(value);
   };
 
-  const handleChangeMulti = value => {
-    setMulti(value);
-  };
 
   // TODO:
   const viewAllApps = () => {

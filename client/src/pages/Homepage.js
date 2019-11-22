@@ -22,12 +22,13 @@ function Homepage() {
                     <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
                 </div>
                 </Grid>
+                
                 <Grid item xs={12} sm={9}>
                    <Table> 
                        <TableBody> 
                            <TableRow> 
-
                                <TableCell style={{width: "100px"}}>  
+                               
                                     <div  style={{ backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
                                     <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >PR</h1>
                                     </div>
