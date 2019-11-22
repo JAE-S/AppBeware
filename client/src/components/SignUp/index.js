@@ -1,6 +1,12 @@
-import React, { Component } from "react";
-import { Input, Button} from '@material-ui/core/';
-import "./style.css"
+// Import React
+// =========================================================
+  import React, { Component } from "react";
+// Import Material UI Components
+// =========================================================
+  import { Input, Button} from '@material-ui/core/';
+// Import Styles
+// =========================================================
+  import "./style.css"
 
 class SignUp extends Component {
   // Setting the initial values of this.state.username and this.state.password
@@ -49,7 +55,6 @@ class SignUp extends Component {
                     />
                 </div>
                 <div>
-                {/* <p>{this.state.username}</p> */}
                     <Input
                         required
                         type="email"
@@ -57,13 +62,11 @@ class SignUp extends Component {
                         name="email"
                         value={this.state.email}
                         onChange={this.handleInputChange}
-                        required
                         id="standard-required"
                         label="Required"
                     />
                 </div>
                 <div>
-                    {/* <p>Password: {this.state.password}</p> */}
                     <Input
                         required
                         type="password"

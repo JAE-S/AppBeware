@@ -1,17 +1,27 @@
-// import API from "../../utils/API"
-import "./style.css"
-
-
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Select from 'react-select';
-import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
-import { Typography, Button, NoSsr, TextField, Paper, Chip } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import CancelIcon from '@material-ui/icons/Cancel';
-import API from '../../utils/API';
+// Import React 
+// =========================================================
+    import React from 'react';
+// Import Node Packages
+// =========================================================
+    import Select from 'react-select';
+    import PropTypes from 'prop-types';
+    import clsx from 'clsx';
+// Import Material UI styles
+// =========================================================
+    import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
+// Import Material UI components
+// =========================================================
+    import { Typography, Button, NoSsr, TextField, Paper, Chip } from '@material-ui/core';
+// Import Material UI Icons
+// =========================================================
+    import MenuItem from '@material-ui/core/MenuItem';
+    import CancelIcon from '@material-ui/icons/Cancel';
+// Import API
+// =========================================================
+    import API from '../../utils/API';
+// Import CSS
+// =========================================================
+    import "./style.css"
 
 const suggestions = [
   { label: '9GAG'},
@@ -337,7 +347,6 @@ export default function SearchAppAnnie() {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);
-  const [multi, setMulti] = React.useState(null);
 
   const handleChangeSingle = value => {
     setSingle(value);
