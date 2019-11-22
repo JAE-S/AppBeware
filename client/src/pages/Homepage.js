@@ -13,9 +13,14 @@
     import HeaderContainer from "../components/HeaderContainer"
     import CategoryCards from "../components/CategoryCards"
     // import Footer from "../components/Footer"
-// Import Assets
+// Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+    import CB_icon from "../assets/images/shields/cyberbullying.png";
+    import DB_icon from "../assets/images/shields/dangerous_behavior.png";
+    import PR_icon from "../assets/images/shields/predator_risk.png";
+    import SC_icon from "../assets/images/shields/sexual_content.png";
+    import VC_icon from "../assets/images/shields/violent_content.png";
 
 
 function Homepage() {
@@ -36,47 +41,36 @@ function Homepage() {
                    <Table> 
                        <TableBody> 
                            <TableRow> 
-                               <TableCell style={{width: "100px"}}>  
-                               
-                                    <div  style={{ backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
-                                    <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >PR</h1>
-                                    </div>
+                               <TableCell style={{maxWidth: "120px"}}>  
+                                    <img style={{maxWidth: "120px"}}alt="Predator Risk Icon" src={CB_icon}/>
                                     <div> 
-                                     <h4>Predator Risk</h4>
+                                        <h4>Predator Risk</h4>
                                     </div> 
                                 </TableCell>
 
                                 <TableCell align="center" style={{width: "100px"}}>  
-                                    <div  style={{  backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
-                                    <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >DB</h1>
-                                    </div>
+                                    <img style={{maxWidth: "120px"}}alt="Dangerous Behavior Icon" src={DB_icon}/>
                                     <div> 
-                                    <h4>Dangerous Behavior</h4>
+                                        <h4>Dangerous Behavior</h4>
                                     </div> 
                                 </TableCell>
 
                                 <TableCell align="center"  style={{width: "100px"}}>  
-                                    <div  style={{  backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
-                                    <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >V</h1>
-                                    </div>
+                                    <img style={{maxWidth: "120px"}}alt="Violent Content Icon" src={VC_icon}/>
                                     <div> 
-                                    <h4>Violence</h4>
+                                        <h4>Violent Content</h4>
                                     </div> 
                                 </TableCell>
 
                                 <TableCell align="center" style={{width: "100px"}}>  
-                                    <div  style={{  backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
-                                    <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >CB</h1>
-                                    </div>
+                                    <img style={{maxWidth: "120px"}}alt="Cyberbullying Icon" src={CB_icon}/>
                                     <div> 
-                                    <h4>Cyberbullying</h4>
+                                        <h4>Cyberbullying</h4>
                                     </div> 
                                 </TableCell>
 
                                 <TableCell align="center" style={{width: "100px"}}>  
-                                    <div  style={{  backgroundColor: "#FC4A1A", height: "100px", width: "100px", borderRadius: "50%", border: "2px solid white"}}> 
-                                    <h1 align="center"  style={{ color: "white", paddingTop: "10px"}} >SC</h1>
-                                    </div>
+                                    <img style={{maxWidth: "120px"}}alt="Sexual ContentIcon" src={SC_icon}/>
                                     <div> 
                                         <h4>Sexual Content</h4>
                                     </div> 
@@ -94,7 +88,6 @@ function Homepage() {
         </HeaderContainer>
         <Wrapper>
             <SearchAppAnnie />
-
             <Grid container spacing={2}>
                 <CategoryCards
                     title="Social Networking"
