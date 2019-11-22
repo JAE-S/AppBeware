@@ -2,7 +2,7 @@
 
 
  <img src="client/src/assets/images/AppBeware_icon_no_shadow.png" align="left"
-     title="AppBeware" width="40%" height="auto">
+     title="AppBeware" width="30%" height="auto">
 # Welcome to AppBeware!
 
 #### AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
