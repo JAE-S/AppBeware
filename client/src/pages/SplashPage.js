@@ -59,7 +59,7 @@ function SplashPage() {
                 </Grid>
               </Grid>
               <h3 style={{ padding: 20 }} className={classes.about}>
-                AppBeware is a crowdsourcing platform that empowers the community to raise awareness about the potential dangers of apps.
+                AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
               </h3>
               <Grid item md={12}>
                 <Modal 
