@@ -21,9 +21,9 @@ const useStyles = makeStyles(theme => ({
       paper: {
         padding: theme.spacing(4),
         textAlign: 'center',
-        color: "white",
+        color: "grey",
         height: "70vh", 
-        background: "grey",
+        // background: "grey",
         margin: 8,
         display: "flex", 
         flexDirection: "column"
@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
     sButtons: {
         width: 250, 
         height: 50, 
-        backgroundColor: "#F7F7F7", 
+        backgroundColor: "grey", 
+        color: "white",
         margin: 10
     },
     typography: {
