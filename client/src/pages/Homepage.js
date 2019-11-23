@@ -12,6 +12,8 @@
     import Nav from "../components/Nav"
     import HeaderContainer from "../components/HeaderContainer"
     import CategoryCards from "../components/CategoryCards"
+    // import HoverBadgeInfo from "../components/HoverBadgeInfo"
+    import ShieldLayout from "../components/HomepageShieldLayout"
     // import Footer from "../components/Footer"
 // Import Media
 // =========================================================
@@ -40,42 +42,38 @@ function Homepage() {
                 <Grid item xs={12} sm={9}>
                    <Table> 
                        <TableBody> 
+                        
                            <TableRow> 
-                               <TableCell style={{maxWidth: "120px"}}>  
-                                    <img style={{maxWidth: "120px"}}alt="Predator Risk Icon" src={CB_icon}/>
-                                    <div> 
-                                        <h4>Predator Risk</h4>
-                                    </div> 
-                                </TableCell>
-
-                                <TableCell align="center" style={{width: "100px"}}>  
-                                    <img style={{maxWidth: "120px"}}alt="Dangerous Behavior Icon" src={DB_icon}/>
-                                    <div> 
-                                        <h4>Dangerous Behavior</h4>
-                                    </div> 
-                                </TableCell>
-
-                                <TableCell align="center"  style={{width: "100px"}}>  
-                                    <img style={{maxWidth: "120px"}}alt="Violent Content Icon" src={VC_icon}/>
-                                    <div> 
-                                        <h4>Violent Content</h4>
-                                    </div> 
-                                </TableCell>
-
-                                <TableCell align="center" style={{width: "100px"}}>  
-                                    <img style={{maxWidth: "120px"}}alt="Cyberbullying Icon" src={CB_icon}/>
-                                    <div> 
-                                        <h4>Cyberbullying</h4>
-                                    </div> 
-                                </TableCell>
-
-                                <TableCell align="center" style={{width: "100px"}}>  
-                                    <img style={{maxWidth: "120px"}}alt="Sexual ContentIcon" src={SC_icon}/>
-                                    <div> 
-                                        <h4>Sexual Content</h4>
-                                    </div> 
-                                </TableCell>
-
+                           <ShieldLayout 
+                                shieldIcon={ CB_icon }
+                                altTxt="Cyberbullying icon"
+                                title="Cyberbulling "
+                                info="Don't cyberbully me!"
+                           />
+                            <ShieldLayout 
+                                shieldIcon={ PR_icon }
+                                altTxt="Predator Risk icon"
+                                title="Predator Risk"
+                                info="Why are you a predator Risk?"
+                           />
+                             <ShieldLayout 
+                                shieldIcon={ DB_icon }
+                                altTxt="Dangerous Behavior icon"
+                                title="Dangerous Behavior"
+                                info="Take the pod challenge, it will turn your mouth blue!"
+                           />
+                              <ShieldLayout 
+                                shieldIcon={ VC_icon }
+                                altTxt="Violent Content icon"
+                                title="Violent Content"
+                                info="This is violent content."
+                           />
+                             <ShieldLayout 
+                                shieldIcon={ SC_icon }
+                                altTxt="Sexual Content icon"
+                                title="Sexual Content"
+                                info="Sexual content?"
+                           />
                                </TableRow>
                               
                         </TableBody> 

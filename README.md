@@ -1,12 +1,19 @@
 
 
-# Welcome to AppBeware
+
+ <img src="client/src/assets/images/AppBeware_icon_no_shadow.png" align="left"
+     title="AppBeware" width="40%" height="auto">
+# Welcome to AppBeware!
+
+#### AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
+---
+
 
 #### Collaborators: 
-* [Ethan Donahue](https://github.com/EthanD0922)
-* [LaMana Donadelle](https://github.com/lamanaml)
-* [Scott Moore](https://github.com/woodwindscott)
-* [Jessie Sholler](https://github.com/JAE-S)
+* [Ethan Donahue](https://github.com/EthanD0922) | Backend Developer  
+* [Scott Moore](https://github.com/woodwindscott) | Backend Developer 
+* [Jessie Sholler](https://github.com/JAE-S) | Visual Designer & Front-End Developer 
+* [LaMana Donadelle](https://github.com/lamanaml) | Front-End Developer  
 
 ---
 
@@ -87,11 +94,6 @@
  
 
          AppBeware
-         ├── App
-         │   ├── Controllers
-         │   ├── db
-         │   ├── modals
-         │   └── routes
          ├── Client
          │   ├── Public
          │   ├── src
