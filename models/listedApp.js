@@ -24,10 +24,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         downloads: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -81,12 +77,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         }
     });
-    // Student.associate = function (models) {
-    //   Student.belongsTo(models.Teacher, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
+    ListedApp.associate = function (models) {
+        ListedApp.belongsTo(models.Category, {
+            foreignKey: {
+            allowNull: true
+            }
+        });
+    };
     //   Student.belongsTo(models.Parent,
     //     { constraints: false }
     //   );

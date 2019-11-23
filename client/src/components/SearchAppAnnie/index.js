@@ -34,13 +34,13 @@
 // listAppNames();
 
 const suggestions = [
-  { label: '9GAG', index: 1},
-  { label: 'ASKfm', index: 2},
-  { label: 'Badoo', index: 3},
-  { label: 'Bigo Live', index: 4},
-  { label: 'Blendr', index: 5},
-  { label: 'Bumble', index: 6},
-  { label: 'Burnbook', index: 7},
+  { label: '9GAG', id: 1},
+  { label: 'ASKfm', id: 2},
+  { label: 'Badoo', id: 3},
+  { label: 'Bigo Live', id: 4},
+  { label: 'Blendr', id: 5},
+  { label: 'Bumble', id: 6},
+  { label: 'Burnbook', id: 7},
   { label: 'BYF'},
   { label: 'Chatous'},
   { label: 'Comvo'},

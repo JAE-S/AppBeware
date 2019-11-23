@@ -1,18 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define('Category', {
-        label: {
-            allowNull: false,
-            type: DataTypes.STRING
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         name: {
             allowNull: false,
             type: DataTypes.STRING
-        },
-        platform: {
-            allowNull: false,
-            type: DataTypes.STRING
         }
     });
+
+    Category.associate = function (models) {
+        Category.hasMany(models.ListedApp);
+      };
 
     return Category;
 };
