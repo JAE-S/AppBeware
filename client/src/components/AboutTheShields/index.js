@@ -30,31 +30,31 @@ export default function AboutTheShields(){
                     shieldIcon={ CB_icon }
                     altTxt="Cyberbullying icon"
                     title="Cyberbulling "
-                    description="This is a placeholder for information about the Cyberbulling shield"
+                    description="Harassment in the comments and parody videos being created to humiliate and tease some users, particularly users with disabilities. Bullying people from different religious or ethnic backgrounds, blackmail, extortion, public humiliation or harassment."
                 /> 
                  <InfoTable
                     shieldIcon={ DB_icon }
                     altTxt="Dangerous Behavior icon"
                     title="Dangerous Behavior"
-                    description="This is a placeholder for information about the Dangerous Behavior shield"
+                    description="Apps that promote self harm, suicide, eating disorders, choking games, dangerous challenges or other acts where serious injury or death may result."
                 /> 
                  <InfoTable
                     shieldIcon={ PR_icon }
                     altTxt="Predator Risk icon"
                     title="Predator Risk"
-                    description="This is a placeholder for information about the Predator Risk shield"
+                    description="Apps that expose children to predators through solicitation, sharing personal information, encouragement to meet in person, intent to engage in sexual activity, stalking or harm. "
                 /> 
                  <InfoTable
                     shieldIcon={ SC_icon }
                     altTxt="Sexual Content icon"
                     title="Sexual Content"
-                    description="This is a placeholder for information about the Sexual Content shield"
+                    description="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
                 /> 
                  <InfoTable
                     shieldIcon={ VC_icon }
                     altTxt="Violent Content icon"
                     title="Violent Content"
-                    description="This is a placeholder for information about the Violent Content shield"
+                    description="Apps that depict or facilitate gratuitous violence or other dangerous activities against people or animals.  These include threats, gun violence, terroism, use, sale or depictions of explosives or firearms."
                 /> 
             </TableBody>
         </Table>
