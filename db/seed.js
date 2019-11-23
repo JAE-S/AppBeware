@@ -1,6 +1,6 @@
-const badgeData = require ('./badgeData');
+const shieldData = require ('./shieldData');
 const listedAppData = require('./listedAppData');
-const categoryData = require('./categoryData');
+const officialCategoryData = require('./officialCategoryData');
 
 // For TESTING ONLY
 const classData = require('./classData');
@@ -20,10 +20,10 @@ module.exports = db => {
     //     return db.ListedApp.bulkCreate(listedAppData);
     // })
 
-    db.Badge.bulkCreate(badgeData).then(function () {
+    db.Shield.bulkCreate(shieldData).then(function () {
         return db.ListedApp.bulkCreate(listedAppData);
     }).then(function() {
-        return db.Category.bulkCreate(categoryData);
+        return db.OfficialCategory.bulkCreate(officialCategoryData);
     }).then(function() {
         return db.Student.bulkCreate(studentData);
     }).then(function() {

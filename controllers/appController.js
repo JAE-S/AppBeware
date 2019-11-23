@@ -11,7 +11,7 @@ module.exports = function (db) {
       // Return only app names and ids from listedApp table, sorted by app name
       getAppNames: function (req, res) {
         db.ListedApp.findAll({ 
-          attributes: ['id', 'name'],
+          attributes: [['name', 'label'], 'id'],
           order: [['name', 'ASC']]
         }).then(function(dbAppNames) {
           res.json(dbAppNames);

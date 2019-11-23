@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Badge = sequelize.define('Badge', {
+    const Shield = sequelize.define('Shield', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -26,5 +26,5 @@ module.exports = function (sequelize, DataTypes) {
     //     { constraints: false }
     //   );
     // };
-    return Badge;
+    return Shield;
   };
