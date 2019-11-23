@@ -353,15 +353,23 @@ export default function SearchAppAnnie() {
   };
 
 
-  // TODO:
   const viewAllApps = () => {
     console.log("You clicked me!");
     API.getListedApps()
-    .then(function(response) {
-      console.log("I'm back");
-      console.log(response.data);
-    });
-  }
+      .then(function(response) {
+        console.log("I'm back");
+        console.log(response.data);
+      });
+  };
+
+  const viewAppNames = () => {
+    console.log("Looking for app names in alphabetical order");
+    API.getAppNames()
+      .then(function(response) {
+        console.log("I'm back");
+        console.log(response.data);
+      })
+  };
 
   const selectStyles = {
     input: base => ({
@@ -396,6 +404,8 @@ export default function SearchAppAnnie() {
         <div className={classes.divider} />
       </NoSsr>
       <Button onClick={viewAllApps}>View All Apps </Button>
+      <Button onClick={viewAppNames}>View App Names Only </Button>
+
     </div>
     
   );

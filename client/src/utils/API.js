@@ -6,9 +6,16 @@ export default {
     return axios.get(ios42SingleAppQuery + queryId + "&access_token=" + process.env.APIKEY42);
   },
 
+  // Return all listed apps
   getListedApps: function() {
     console.log("Inside API.js");
-    return axios.get('/api/listed-app')
+    return axios.get('/api/listed-app');
+  },
+
+  // Return app names and ids only - alphabetical order
+  getAppNames: function() {
+    console.log("Inside getAppNames - API.js");
+    return axios.get('/api/app-names-only');
   }
 };
 
