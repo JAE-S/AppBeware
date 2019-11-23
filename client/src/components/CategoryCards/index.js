@@ -52,7 +52,12 @@ export default function SimpleCard(props) {
                     {props.title}
                 </Typography>
                 <CardActions >
-                <Button className={classes.buttonSpacing}size="small">View Apps </Button>
+                <Button 
+                  className={classes.buttonSpacing}
+                  size="small"
+                  onClick={props.viewCategory}
+                  >View Apps
+                </Button>
             </CardActions>
             </Grid>
  

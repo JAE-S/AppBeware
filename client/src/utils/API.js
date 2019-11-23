@@ -16,7 +16,16 @@ export default {
   getAppNames: function() {
     console.log("Inside getAppNames - API.js");
     return axios.get('/api/app-names-only');
+  },
+
+  getCategories: function() {
+    return axios.get('api/get-categories');
   }
+
+
+
+
+
 };
 
 
