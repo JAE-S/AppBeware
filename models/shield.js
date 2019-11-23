@@ -11,8 +11,21 @@ module.exports = function (sequelize, DataTypes) {
         unique: {
           args: true,
         }
+      },
+      icon: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      altText: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      info: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
     });
+
     // Student.associate = function (models) {
     //   Student.belongsTo(models.Teacher, {
     //     foreignKey: {

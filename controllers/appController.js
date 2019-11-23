@@ -33,6 +33,12 @@ module.exports = function (db) {
         db.Category.findAll({}).then(function (dbCategory) {
           res.json(dbCategory);
         });
+      },
+
+      getShields: function (req, res) {
+        db.Shield.findAll({}).then(function (dbShield) {
+          res.json(dbShield);
+        });
       }
 
 

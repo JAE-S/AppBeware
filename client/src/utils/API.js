@@ -19,7 +19,11 @@ export default {
   },
 
   getCategories: function() {
-    return axios.get('api/get-categories');
+    return axios.get('/api/get-categories');
+  },
+
+  getShields: function() {
+    return axios.get('/api/get-shields');
   }
 
 
