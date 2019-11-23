@@ -1,4 +1,4 @@
-const categoryData =
+const officialCategoryData =
     [
         { 'label': '6000', 'name': 'Business', 'platform': 'ios'},
         { 'label': '6001', 'name': 'Weather', 'platform': 'ios'},
@@ -61,4 +61,4 @@ const categoryData =
         { 'label': 'ANDROID_WEAR', 'name': 'Android Wear', 'platform': 'android'}
     ];
 
-module.exports = categoryData;
+module.exports = officialCategoryData;

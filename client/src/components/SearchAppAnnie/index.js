@@ -23,14 +23,24 @@
 // =========================================================
     import "./style.css"
 
+
+
+// function listAppNames() {
+//   const appNames = API.getAppNames().then(function() {
+//     console.log(appNames);
+//   });
+// };
+
+// listAppNames();
+
 const suggestions = [
-  { label: '9GAG'},
-  { label: 'ASKfm'},
-  { label: 'Badoo'},
-  { label: 'Bigo Live'},
-  { label: 'Blendr'},
-  { label: 'Bumble'},
-  { label: 'Burnbook'},
+  { label: '9GAG', index: 1},
+  { label: 'ASKfm', index: 2},
+  { label: 'Badoo', index: 3},
+  { label: 'Bigo Live', index: 4},
+  { label: 'Blendr', index: 5},
+  { label: 'Bumble', index: 6},
+  { label: 'Burnbook', index: 7},
   { label: 'BYF'},
   { label: 'Chatous'},
   { label: 'Comvo'},
@@ -353,15 +363,23 @@ export default function SearchAppAnnie() {
   };
 
 
-  // TODO:
   const viewAllApps = () => {
     console.log("You clicked me!");
     API.getListedApps()
-    .then(function(response) {
-      console.log("I'm back");
-      console.log(response.data);
-    });
-  }
+      .then(function(response) {
+        console.log("I'm back");
+        console.log(response.data);
+      });
+  };
+
+  const viewAppNames = () => {
+    console.log("Looking for app names in alphabetical order");
+    API.getAppNames()
+      .then(function(response) {
+        console.log("I'm back");
+        console.log(response.data);
+      })
+  };
 
   const selectStyles = {
     input: base => ({
@@ -396,6 +414,8 @@ export default function SearchAppAnnie() {
         <div className={classes.divider} />
       </NoSsr>
       <Button onClick={viewAllApps}>View All Apps </Button>
+      <Button onClick={viewAppNames}>View App Names Only </Button>
+
     </div>
     
   );
