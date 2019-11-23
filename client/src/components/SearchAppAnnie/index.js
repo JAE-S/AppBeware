@@ -23,14 +23,24 @@
 // =========================================================
     import "./style.css"
 
+
+
+// function listAppNames() {
+//   const appNames = API.getAppNames().then(function() {
+//     console.log(appNames);
+//   });
+// };
+
+// listAppNames();
+
 const suggestions = [
-  { label: '9GAG'},
-  { label: 'ASKfm'},
-  { label: 'Badoo'},
-  { label: 'Bigo Live'},
-  { label: 'Blendr'},
-  { label: 'Bumble'},
-  { label: 'Burnbook'},
+  { label: '9GAG', index: 1},
+  { label: 'ASKfm', index: 2},
+  { label: 'Badoo', index: 3},
+  { label: 'Bigo Live', index: 4},
+  { label: 'Blendr', index: 5},
+  { label: 'Bumble', index: 6},
+  { label: 'Burnbook', index: 7},
   { label: 'BYF'},
   { label: 'Chatous'},
   { label: 'Comvo'},
