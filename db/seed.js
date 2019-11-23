@@ -1,5 +1,6 @@
 const shieldData = require ('./shieldData');
 const listedAppData = require('./listedAppData');
+const categoryData = require('./categoryData');
 const officialCategoryData = require('./officialCategoryData');
 
 // For TESTING ONLY
@@ -16,11 +17,9 @@ module.exports = db => {
         isAdmin: true
     })
 
-    // db.Badge.bulkCreate(badgeData).then(function () {
-    //     return db.ListedApp.bulkCreate(listedAppData);
-    // })
-
     db.Shield.bulkCreate(shieldData).then(function () {
+        return db.Category.bulkCreate(categoryData)
+    }).then(function() {
         return db.ListedApp.bulkCreate(listedAppData);
     }).then(function() {
         return db.OfficialCategory.bulkCreate(officialCategoryData);

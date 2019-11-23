@@ -16,7 +16,19 @@ module.exports = function (db) {
         }).then(function(dbAppNames) {
           res.json(dbAppNames);
         });
+      },
+
+      filterCategory: function (req, res) {
+        db.ListedApp.findAll({
+          where: {
+            CategoryId: req.params.id
+          },
+          include: db.Category
+        }).then(function(dbAppCategories) {
+          res.json(dbAppCategories)
+        });
       }
+
 
     //   // Create a new example
     //   createExample: function (req, res) {
