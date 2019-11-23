@@ -89,18 +89,23 @@ function Homepage() {
             <Grid container spacing={2}>
                 <CategoryCards
                     title="Social Networking"
+                    catId={1}
                 />
                     <CategoryCards
                     title="Photos &amp; Videos"
+                    catId={2}
                 />
                 <CategoryCards
-                    title="Kids"
+                    title="Lifestyle"
+                    catId={3}
                 />
                 <CategoryCards
                     title="Entertainment"
+                    catId={4}
                 />
                 <CategoryCards
                     title="Games"
+                    catId={5}
                 />
                 <CategoryCards
                     title="View All Apps"
