@@ -1,12 +1,22 @@
 /* eslint-disable no-var */
 module.exports = function (db) {
     return {
-      // Get all examples
+      // Return all listed apps in our listedApp table
       getListedApp: function (req, res) {
         db.ListedApp.findAll({}).then(function (dbListedApps) {
           res.json(dbListedApps);
         });
       },
+
+      // Return only app names and ids from listedApp table, sorted by app name
+      getAppNames: function (req, res) {
+        db.ListedApp.findAll({ 
+          attributes: ['id', 'name'],
+          order: [['name', 'ASC']]
+        }).then(function(dbAppNames) {
+          res.json(dbAppNames);
+        });
+      }
 
     //   // Create a new example
     //   createExample: function (req, res) {
