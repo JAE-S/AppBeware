@@ -41,13 +41,13 @@ class Categories extends Component {
         return (
             <>
             <Nav/>
-            <HeaderContainer> 
+            {/* <HeaderContainer>  */}
                 <Wrapper align="center" style={{paddingTop: 80}}> 
                     
                 <h3>This is the App Category page</h3>
                 
                 </Wrapper>
-            </HeaderContainer>
+            {/* </HeaderContainer> */}
             <Wrapper> 
                 <SearchAppAnnie />
 
