@@ -5,7 +5,7 @@ import React from 'react';
 // =========================================================
     import { TableCell } from '@material-ui/core/';
 
-    import HoverBadgeInfo from "../HoverBadgeInfo"
+    import HoverShieldInfo from "../HoverShieldInfo"
     
 // Export About the Shields function
 // =========================================================
@@ -18,13 +18,16 @@ export default function HomePageShieldLayout(props) {
     return (
 
             <TableCell style={icon} > 
-              <HoverBadgeInfo 
+              <HoverShieldInfo
                 badgeInfo={props.info}
-                badgeName={<img  
-                style={icon} 
-                alt={props.altTxt} 
-                src={ props.shieldIcon}/>} />
+                badgeName={
+                  <img  
+                    style={icon} 
+                    alt={props.altTxt} 
+                    src={props.shieldIcon}
+                  />} 
+                />
               <h3>{props.title}</h3>
             </TableCell>
     )
-}
+} 

@@ -3,7 +3,7 @@
 import React from "react"; 
 // Import Material Ui Components
 // =========================================================
-    // import { Grid } from '@material-ui/core';
+    import { Grid } from '@material-ui/core';
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -19,7 +19,7 @@ import React from "react";
             <Nav/>
             <HeaderContainer> 
                 <Wrapper align="center" style={{paddingTop: 80}}> 
-                    
+
                 <h3>This is an App page</h3>
                 
                 </Wrapper>

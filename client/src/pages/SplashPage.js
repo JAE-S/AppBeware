@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(4),
         textAlign: 'center',
         color: "grey",
-        height: "70vh", 
+        minHeight: "70vh", 
         // background: "grey",
         margin: 8,
         display: "flex", 
@@ -63,18 +63,24 @@ function SplashPage() {
               </h3>
               <Grid item md={12}>
                 <Modal 
+                  modalTitle="Sign In"
                   openModal="Sign In"
                   modalBody={<SignIn/>}
+                  modalButton1="Submit"
                 />
               </Grid>
               <Grid item md={12}>
                 <Modal 
+                  modalTitle="Create An Account"
                   openModal="Sign Up"
                   modalBody={<SignUp/>}
+                  modalButton1="Submit"
                 />
               </Grid>
-              <h3 className={classes.or}>OR</h3>
-              <button><img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/></button>
+              <Grid item md={12}>
+              <h3 style={{ padding: 20 }} className={classes.or}>OR</h3>
+              <div><img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/></div>
+              </Grid>
             </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>

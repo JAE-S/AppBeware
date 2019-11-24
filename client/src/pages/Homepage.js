@@ -4,14 +4,15 @@
 
 // Import Material Ui Components
 // =========================================================
-    import { Grid, Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+    import { Grid, Table, TableBody, TableRow } from '@material-ui/core';
 // Import Custom Components
 // =========================================================
     import SearchAppAnnie from "../components/SearchAppAnnie"
     import Wrapper from "../components/Wrapper"
     import Nav from "../components/Nav"
     import HeaderContainer from "../components/HeaderContainer"
-    import CategoryCards from "../components/CategoryCards"
+    import HomepageTabNav from "../components/HomepageTabNav"
+    // import CategoryCards from "../components/CategoryCards"
     // import HoverBadgeInfo from "../components/HoverBadgeInfo"
     import ShieldLayout from "../components/HomepageShieldLayout"
     // import Footer from "../components/Footer"
@@ -44,35 +45,36 @@ function Homepage() {
                        <TableBody> 
                         
                            <TableRow> 
-                           <ShieldLayout 
-                                shieldIcon={ CB_icon }
-                                altTxt="Cyberbullying icon"
-                                title="Cyberbulling "
-                                info="Don't cyberbully me!"
-                           />
+        
                             <ShieldLayout 
                                 shieldIcon={ PR_icon }
                                 altTxt="Predator Risk icon"
                                 title="Predator Risk"
-                                info="Why are you a predator Risk?"
+                                info="Apps that expose children to predators through solicitation, sharing personal information, encouragement to meet in person, intent to engage in sexual activity, stalking or harm."
                            />
                              <ShieldLayout 
                                 shieldIcon={ DB_icon }
                                 altTxt="Dangerous Behavior icon"
                                 title="Dangerous Behavior"
-                                info="Take the pod challenge, it will turn your mouth blue!"
+                                info="Apps that promote self harm, suicide, eating disorders, choking games, dangerous challenges or other acts where serious injury or death may result."
                            />
-                              <ShieldLayout 
+                            <ShieldLayout 
+                                shieldIcon={ CB_icon }
+                                altTxt="Cyberbullying icon"
+                                title="Cyberbulling "
+                                info="Harassment in the comments and parody videos being created to humiliate and tease some users, particularly users with disabilities. Bullying people from different religious or ethnic backgrounds, blackmail, extortion, public humiliation or harassment."
+                           />
+                            <ShieldLayout 
                                 shieldIcon={ VC_icon }
                                 altTxt="Violent Content icon"
                                 title="Violent Content"
-                                info="This is violent content."
+                                info="Apps that depict or facilitate gratuitous violence or other dangerous activities against people or animals.  These include threats, gun violence, terroism, use, sale or depictions of explosives or firearms."
                            />
                              <ShieldLayout 
                                 shieldIcon={ SC_icon }
                                 altTxt="Sexual Content icon"
                                 title="Sexual Content"
-                                info="Sexual content?"
+                                info="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
                            />
                                </TableRow>
                               
@@ -84,28 +86,10 @@ function Homepage() {
             
             </Wrapper>
         </HeaderContainer>
-        <Wrapper>
+   
             <SearchAppAnnie />
-            <Grid container spacing={2}>
-                <CategoryCards
-                    title="Social Networking"
-                />
-                    <CategoryCards
-                    title="Photos &amp; Videos"
-                />
-                <CategoryCards
-                    title="Kids"
-                />
-                <CategoryCards
-                    title="Entertainment"
-                />
-                <CategoryCards
-                    title="Games"
-                />
-                <CategoryCards
-                    title="View All Apps"
-                />
-            </Grid>
+        <Wrapper>
+            <HomepageTabNav/>
    
         </Wrapper>
         {/* <Footer/> */}

@@ -8,6 +8,10 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     padding: theme.spacing(1),
+    maxWidth: 200,
+    backrgoundColor: "#F7F7F7", 
+    color: "#FC4A1A", 
+    
   },
 }));
 
@@ -45,16 +49,16 @@ export default function MouseOverPopover(props) {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: "center",
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography>{props.badgeInfo}</Typography>
+        <Typography style={{ fontSize: ".9rem"}}>{props.badgeInfo}</Typography>
       </Popover>
     </div>
   );

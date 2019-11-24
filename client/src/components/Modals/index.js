@@ -1,72 +1,69 @@
 // Import React
 // =========================================================
     import React from 'react';
-// Import Material UI Styles 
-// =========================================================
-    import { makeStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
-    import { Modal, Backdrop, Fade } from '@material-ui/core';
-// Custom styles
+    import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
+// Import Custom Components
 // =========================================================
-    const useStyles = makeStyles(theme => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-    sButtons: {
-        width: 250, 
-        height: 50, 
-        backgroundColor: "grey", 
-        color: "white",
-        margin: 10
-    },
-    }));
 
-export default function TransitionsModal(props) {
-  const classes = useStyles();
+export default function ScrollDialog(props) {
   const [open, setOpen] = React.useState(false);
+  const [scroll, setScroll] = React.useState('paper');
 
-  const handleOpen = () => {
+  const handleClickOpen = scrollType => () => {
     setOpen(true);
+    setScroll(scrollType);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
   return (
     <div>
-      <button 
-        className={classes.sButtons}
-        type="button" 
-        onClick={handleOpen}
-        >
-        {props.openModal}
-      </button>
-      <Modal
-        className={classes.modal}
+      <Button onClick={handleClickOpen('paper')}>{props.openModal}</Button>
+      <Dialog
         open={open}
         onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+        scroll={scroll}
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
       >
-        <Fade in={open}>
-          <div className={classes.paper}>
-          {props.modalBody}
-          </div>
-        </Fade>
-      </Modal>
+        <DialogTitle id="scroll-dialog-title">
+        
+          {props.modalTitle}
+
+        </DialogTitle>
+        <DialogContent dividers={scroll === 'paper'}>
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            tabIndex={-1}
+          >
+             {props.modalBody}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* Button for absout sheilds page -> in Nav component */}
+          <Button onClick={handleClose} color="primary">
+            {props.modalButton1}
+          </Button>
+          {/* <Button onClick={handleClose} color="primary">
+            {props.modalButton2}
+          </Button> */}
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
