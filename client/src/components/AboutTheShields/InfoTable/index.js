@@ -6,8 +6,8 @@
     import { TableRow, TableCell } from '@material-ui/core/';
 // Export About the Shields function
 // =========================================================
-    const icon = {
-        width: 80, 
+    const icon = { 
+        width: "100%",
         height: "auto"
     }
 
@@ -15,12 +15,12 @@ export default function infoTable(props) {
     return (
         <TableRow> 
 
-            <TableCell style={icon} > 
+            <TableCell > 
               <img  style={icon} alt={props.altTxt} src={ props.shieldIcon}/>
             </TableCell>
 
             <TableCell> 
-                <h3>{props.title}</h3>
+               <h3>{props.title}</h3>
                <p>{props.description}</p> 
             </TableCell>
 

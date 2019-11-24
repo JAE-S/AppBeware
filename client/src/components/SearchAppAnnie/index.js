@@ -19,10 +19,10 @@
 // Import API
 // =========================================================
     import API from '../../utils/API';
+    import Wrapper from "../Wrapper"
 // Import CSS
 // =========================================================
     import "./style.css"
-
 
 
 // function listAppNames() {
@@ -89,13 +89,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     paddingTop: 30,
-    height: 250,
-    minWidth: 290,
+    zIndex: 3,
+    backgroundColor: "#F7C533",
+    // height: 250,
+    width: "100%",
   },
   input: {
     display: 'flex',
-    padding: 0,
     height: 'auto',
+    backgroundColor: "#F7f7f7",
+    borderRadius: "14px",
+    padding: "10px 20px!important" 
   },
   valueContainer: {
     display: 'flex',
@@ -124,6 +128,7 @@ const useStyles = makeStyles(theme => ({
     left: 2,
     bottom: 6,
     fontSize: 16,
+    padding: "10px 20px!important" 
   },
   paper: {
     position: 'absolute',
@@ -134,6 +139,8 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     height: theme.spacing(2),
+    padding: "10px 20px!important",
+        height: 50,
   },
 }));
 
@@ -225,6 +232,7 @@ function Option(props) {
     >
       {props.children}
     </MenuItem>
+   
   );
 }
 
@@ -301,53 +309,11 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-function MultiValue(props) {
-  return (
-    <Chip
-      tabIndex={-1}
-      label={props.children}
-      className={clsx(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused,
-      })}
-      onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
-    />
-  );
-}
-
-MultiValue.propTypes = {
-  children: PropTypes.node,
-  isFocused: PropTypes.bool.isRequired,
-  removeProps: PropTypes.shape({
-    onClick: PropTypes.func.isRequired,
-    onMouseDown: PropTypes.func.isRequired,
-    onTouchEnd: PropTypes.func.isRequired,
-  }).isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
-
-function Menu(props) {
-  return (
-    <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
-      {props.children}
-    </Paper>
-  );
-}
-
-Menu.propTypes = {
-  //  The children to be rendered.
-  children: PropTypes.element.isRequired,
-   // Props to be passed to the menu wrapper.
-  innerProps: PropTypes.object.isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
 
 const components = {
   Control,
-  Menu,
-  MultiValue,
   NoOptionsMessage,
-  Option,
+  // Option,
   Placeholder,
   SingleValue,
   ValueContainer,
@@ -393,13 +359,14 @@ export default function SearchAppAnnie() {
 
   return (
     <div className={classes.root}>
+    <Wrapper>
+      <h2 align="center"> Search for an app or see what's tending! </h2>
       <NoSsr className="formStyle">
         <Select
           classes={classes}
           styles={selectStyles}
           inputId="react-select-single"
           TextFieldProps={{
-            label: 'Search for an App',
             InputLabelProps: {
               htmlFor: 'react-select-single',
               shrink: true,
@@ -413,9 +380,9 @@ export default function SearchAppAnnie() {
         />
         <div className={classes.divider} />
       </NoSsr>
-      <Button onClick={viewAllApps}>View All Apps </Button>
-      <Button onClick={viewAppNames}>View App Names Only </Button>
-
+      {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
+      {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
+      </Wrapper>
     </div>
     
   );

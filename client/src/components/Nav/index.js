@@ -9,8 +9,9 @@
     import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
-    import SearchIcon from '@material-ui/icons/Search';
-    import AccountCircle from '@material-ui/icons/AccountCircle';
+    // import SearchIcon from '@material-ui/icons/Search';
+    import Dashboard from '@material-ui/icons/Dashboard';
+    // import AccountCircle from '@material-ui/icons/AccountCircle';
     import NotificationsIcon from '@material-ui/icons/Notifications';
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
@@ -139,8 +140,10 @@ export default function Nav() {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Modal
-          openModal="About The Badges"
-          modalBody={<AboutTheShields/>}
+            modalTitle="What are the Shields?"
+            openModal="About The Shields"
+            modalBody={<AboutTheShields/>}
+            modalButton1="Close"
         />
       </MenuItem>
       <MenuItem onClick={handleMenuClose}> 
@@ -174,8 +177,10 @@ export default function Nav() {
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Modal
-          openModal="About The Badges"
+          modalTitle="What are the Shields?"
+          openModal="About The Shields"
           modalBody={<AboutTheShields/>}
+          modalButton1="Close"
         />
       </MenuItem>
       <MenuItem onClick={handleMenuClose}> 
@@ -193,7 +198,7 @@ export default function Nav() {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -205,7 +210,7 @@ export default function Nav() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
@@ -219,7 +224,7 @@ export default function Nav() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Dashboard  />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

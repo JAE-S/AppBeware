@@ -3,7 +3,7 @@
   import React, { Component } from "react";
 // Import Material UI Components
 // =========================================================
-  import { Input, Button} from '@material-ui/core/';
+  import { Input, Button, DialogActions} from '@material-ui/core/';
 // Import Styles
 // =========================================================
   import "./style.css"
@@ -37,12 +37,9 @@ class SignUp extends Component {
     return (
   
         <div className="signUpInput">
-            <div>
-                <h3 className="signInTitle">Create An Account</h3>
-            </div>
             <form >
                 <div>
-                {/* <p>{this.state.username}</p> */}
+              
                     <Input
                         required
                         type="text"
@@ -50,7 +47,7 @@ class SignUp extends Component {
                         name="username"
                         value={this.state.username}
                         onChange={this.handleInputChange}
-                        id="standard-required"
+                        id="username-sign-up"
                         label="Required"
                     />
                 </div>
@@ -62,7 +59,7 @@ class SignUp extends Component {
                         name="email"
                         value={this.state.email}
                         onChange={this.handleInputChange}
-                        id="standard-required"
+                        id="email-sign-up"
                         label="Required"
                     />
                 </div>
@@ -74,15 +71,16 @@ class SignUp extends Component {
                         name="password"
                         value={this.state.password}
                         onChange={this.handleInputChange}
+                        id="password-sign-up"
+                        label="Required"
                     />
                 </div>
-                <div>
+
                     <Button 
                         onClick={this.handleFormSubmit}
                     >
-                        Submit
+                    Submit
                     </Button>
-                </div>
         </form>
       </div>
  
@@ -91,4 +89,5 @@ class SignUp extends Component {
 }
 
 export default SignUp;
+
 

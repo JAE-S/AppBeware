@@ -28,13 +28,10 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="signUpInput">
-      <div>
-          <h3 className="signInTitle">Create An Account</h3>
-      </div>
+      <div className="signInInput">
+      
       <form >
           <div>
-          {/* <p>{this.state.username}</p> */}
               <Input
                   required
                   type="text"
@@ -42,12 +39,11 @@ class Form extends Component {
                   name="username"
                   value={this.state.username}
                   onChange={this.handleInputChange}
-                  id="standard-required"
+                  id="username-sign-in"
                   label="Required"
               />
           </div>
           <div>
-              {/* <p>Password: {this.state.password}</p> */}
               <Input
                   required
                   type="password"
@@ -55,6 +51,8 @@ class Form extends Component {
                   name="password"
                   value={this.state.password}
                   onChange={this.handleInputChange}
+                  id="password-sign-in"
+                  label="Required"
               />
           </div>
           <div>
