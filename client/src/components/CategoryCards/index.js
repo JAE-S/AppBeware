@@ -63,10 +63,6 @@ export default function SimpleCard(props) {
  
         </Grid>
         </CardContent>
-    
-
-
-    
     </Card>
   );
 }

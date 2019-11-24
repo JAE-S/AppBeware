@@ -1,0 +1,21 @@
+#TabNavs {
+/* background-color: #F7C533; */
+background-color: transparent;
+box-shadow: none; 
+/* color: #f7f7f7; */
+color: black; 
+font-weight: bold; 
+/* border-bottom: 1px solid #f7f7f7; */
+border-bottom: 1px solid black;
+
+}
+.MuiTab-root {
+    font-size: 1.4rem!important; 
+}
+
+.PrivateTabIndicator-colorSecondary-330, .PrivateTabIndicator-root-328 {
+   background-color: #f7f7f7!important;
+   height: 4px!important;
+   margin-top: 8px!important;
+
+}

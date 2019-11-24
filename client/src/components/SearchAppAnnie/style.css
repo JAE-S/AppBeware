@@ -3,4 +3,21 @@
     max-width: 800px;
     margin-top: 200px;  
     text-align: center;
+    background-color: #f7f7f7;
+}
+
+.MuiInputBase-input {
+    width: 100%!important;
+}
+.makeStyles-input-269 {
+    width: 100%!important; 
+    color: #f7f7f7;
+}
+
+label + .MuiInput-formControl {
+    background-color: #f7f7f7;
+}
+
+.MuiInput-underline:before, .MuiInput-underline:after {
+    margin: 6px 20px!important;
 }
