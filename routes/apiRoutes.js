@@ -18,6 +18,8 @@ module.exports = (passport, db) => {
    router.get('/app-names-only', AppController.getAppNames);
    router.get('/filter-category/:id', AppController.filterCategory);
    router.get('/get-categories', AppController.getCategories);
+   router.get('/get-shields', AppController.getShields);
+
   //  router.post('/examples', AppController.createExample);
   //  router.delete('/examples/:id', AppController.deleteExample);
  

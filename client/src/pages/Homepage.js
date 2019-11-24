@@ -29,7 +29,8 @@ class Homepage extends Component {
 
     state = {
         allListedApps: [],
-        allCategories: []        
+        allCategories: [],
+        allShields: []        
     }
 
     getCategories = () => {
@@ -46,15 +47,23 @@ class Homepage extends Component {
             ).catch(err => console.log(err));
     }
 
+    getShields = () => {
+        API.getShields()
+            .then(res =>
+                this.setState({ allShields: res.data })
+            ).catch(err => console.log(err));
+    }
+
     viewCategory = () => {
-        console.log(this.state.allListedApps);
-        console.log(this.state.allCategories);
         console.log("You clicked me");
+        console.log(this.state.allShields);
+        console.log(this);
     }
 
     componentDidMount() {
         this.getListedApps();
         this.getCategories();
+        this.getShields();
     }
 
     render() {
@@ -63,17 +72,28 @@ class Homepage extends Component {
             <Nav/>
             <HeaderContainer> 
                 <Wrapper> 
-                <Grid container spacing={8}>
-                    <Grid item xs={12} sm={3}>
-                    <div>
-                        <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
-                    </div>
-                    </Grid>
-                <Grid item xs={12} sm={9}>
-                   <Table> 
-                       <TableBody> 
+                    <Grid container spacing={8}>
+                        <Grid item xs={12} sm={3}>
+                        <div>
+                            <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
+                        </div>
+                        </Grid>
                         
-                           <TableRow> 
+                        <Grid item xs={12} sm={9}>
+                        <Table> 
+                            <TableBody> 
+                                
+                                <TableRow> 
+
+                                {/* {this.state.allShields.map(shield => (
+                                    <ShieldLayout 
+                                        shieldIcon={shield.icon}
+                                        altTxt={shield.altText}
+                                        title={shield.name}
+                                        info={shield.info}
+                                    />
+                                ))} */}
+
         
                             <ShieldLayout 
                                 shieldIcon={ PR_icon }
@@ -106,48 +126,32 @@ class Homepage extends Component {
                                 info="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
                            />
                                </TableRow>
-                              
-                        </TableBody> 
-                    </Table>
-                 
-                 </Grid>
-            </Grid>
-            
-            </Wrapper>
-        </HeaderContainer>
-   
+                                    
+                                </TableBody> 
+                            </Table>
+                        
+                        </Grid>
+                    </Grid>
+                
+                </Wrapper>
+            </HeaderContainer>
+
             <SearchAppAnnie />
-        <Wrapper>
-            <HomepageTabNav>
-            <Grid container spacing={2}>
-                <CategoryCards
-                    title="Social Networking"
-                    catId={1}
-                    viewCategory={this.viewCategory}
-                />
-                    <CategoryCards
-                    title="Photos &amp; Videos"
-                    catId={2}
-                    viewCategory={this.viewCategory}
-                />
-                <CategoryCards
-                    title="Lifestyle"
-                    catId={3}
-                    viewCategory={this.viewCategory}
-                />
-                <CategoryCards
-                    title="Entertainment"
-                    catId={4}
-                    viewCategory={this.viewCategory}
-                />
-                <CategoryCards
-                    title="Games"
-                    catId={5}
-                    viewCategory={this.viewCategory}
-                />
-                <CategoryCards
-                    title="View All Apps"
-                /> 
+
+            <Wrapper>
+                <HomepageTabNav>
+
+                <Grid container spacing={2}>
+
+                    {this.state.allCategories.map(cat => (
+                        <CategoryCards
+                            key={cat.id}
+                            title={cat.name}
+                            catId={cat.id}
+                            viewCategory={this.viewCategory}
+                        />
+                    ))}
+
                 </Grid>
             </HomepageTabNav>
    

@@ -5,6 +5,7 @@ const categoryData =
     { "name": "Lifestyle"},
     { "name": "Entertainment"},
     { "name": "Games"},
+    { "name": "View All Apps"}
 ]
 
 module.exports = categoryData;
