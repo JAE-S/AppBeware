@@ -17,6 +17,7 @@ module.exports = (passport, db) => {
    router.get('/listed-app', AppController.getListedApp);
    router.get('/app-names-only', AppController.getAppNames);
    router.get('/filter-category/:id', AppController.filterCategory);
+   router.get('/get-categories', AppController.getCategories);
   //  router.post('/examples', AppController.createExample);
   //  router.delete('/examples/:id', AppController.deleteExample);
  

@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -84,28 +84,12 @@ export default function NavTabs() {
       <TabPanel id="trending" value={value} index={0}>
         <TopTrendingApps/>
       </TabPanel>
-      <TabPanel id="categories" value={value} index={1}>
-        <Grid container spacing={2}>
-            <CategoryCards
-                title="Social Networking"
-            />
-                <CategoryCards
-                title="Photos &amp; Videos"
-            />
-            <CategoryCards
-                title="Kids"
-            />
-            <CategoryCards
-                title="Entertainment"
-            />
-            <CategoryCards
-                title="Games"
-            />
-            <CategoryCards
-                title="View All Apps"
-            />
-            </Grid>
+      <TabPanel id="categories" value={value} index={1} {...props}>
+        {/* <Grid container spacing={2}> */}
+          {props.children}
+        {/* </Grid> */}
       </TabPanel>
     </div>
   );
 }
+

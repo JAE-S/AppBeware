@@ -27,6 +27,12 @@ module.exports = function (db) {
         }).then(function(dbAppCategories) {
           res.json(dbAppCategories)
         });
+      },
+
+      getCategories: function (req, res) {
+        db.Category.findAll({}).then(function (dbCategory) {
+          res.json(dbCategory);
+        });
       }
 
 

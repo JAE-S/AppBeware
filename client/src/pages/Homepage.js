@@ -1,6 +1,6 @@
 // Import React 
 // =========================================================
-    import React from "react";  
+    import React, { Component } from "react";  
 
 // Import Material Ui Components
 // =========================================================
@@ -12,10 +12,10 @@
     import Nav from "../components/Nav"
     import HeaderContainer from "../components/HeaderContainer"
     import HomepageTabNav from "../components/HomepageTabNav"
-    // import CategoryCards from "../components/CategoryCards"
-    // import HoverBadgeInfo from "../components/HoverBadgeInfo"
+    import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     // import Footer from "../components/Footer"
+    import API from "../utils/API";
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -25,21 +25,50 @@
     import SC_icon from "../assets/images/shields/sexual_content.png";
     import VC_icon from "../assets/images/shields/violent_content.png";
 
+class Homepage extends Component {
 
-function Homepage() {
+    state = {
+        allListedApps: [],
+        allCategories: []        
+    }
 
-    return (
-        <>
-        <Nav/>
-        <HeaderContainer> 
-            <Wrapper> 
-            <Grid container spacing={8}>
-                 <Grid item xs={12} sm={3}>
-                 <div>
-                    <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
-                </div>
-                </Grid>
-                
+    getCategories = () => {
+        API.getCategories()
+            .then(res => 
+                this.setState({ allCategories: res.data })
+            ).catch(err => console.log(err));
+    }
+
+    getListedApps = () => {
+        API.getListedApps()
+            .then(res =>
+                this.setState({ allListedApps: res.data })
+            ).catch(err => console.log(err));
+    }
+
+    viewCategory = () => {
+        console.log(this.state.allListedApps);
+        console.log(this.state.allCategories);
+        console.log("You clicked me");
+    }
+
+    componentDidMount() {
+        this.getListedApps();
+        this.getCategories();
+    }
+
+    render() {
+        return (
+            <>
+            <Nav/>
+            <HeaderContainer> 
+                <Wrapper> 
+                <Grid container spacing={8}>
+                    <Grid item xs={12} sm={3}>
+                    <div>
+                        <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
+                    </div>
+                    </Grid>
                 <Grid item xs={12} sm={9}>
                    <Table> 
                        <TableBody> 
@@ -89,12 +118,45 @@ function Homepage() {
    
             <SearchAppAnnie />
         <Wrapper>
-            <HomepageTabNav/>
+            <HomepageTabNav>
+            <Grid container spacing={2}>
+                <CategoryCards
+                    title="Social Networking"
+                    catId={1}
+                    viewCategory={this.viewCategory}
+                />
+                    <CategoryCards
+                    title="Photos &amp; Videos"
+                    catId={2}
+                    viewCategory={this.viewCategory}
+                />
+                <CategoryCards
+                    title="Lifestyle"
+                    catId={3}
+                    viewCategory={this.viewCategory}
+                />
+                <CategoryCards
+                    title="Entertainment"
+                    catId={4}
+                    viewCategory={this.viewCategory}
+                />
+                <CategoryCards
+                    title="Games"
+                    catId={5}
+                    viewCategory={this.viewCategory}
+                />
+                <CategoryCards
+                    title="View All Apps"
+                /> 
+                </Grid>
+            </HomepageTabNav>
    
         </Wrapper>
         {/* <Footer/> */}
         </>
     )
+        // )
+    }
 }
 
 export default Homepage; 
