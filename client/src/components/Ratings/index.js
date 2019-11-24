@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';
-import Brightness1Rounded from '@material-ui/icons/Favorite';
+import { Brightness1Rounded } from '@material-ui/icons/';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
@@ -48,7 +48,7 @@ const labels = {
   };
   
 function getLabelText(value) {
-  return `${value} Heart${value !== 1 ? 's' : ''}`;
+  return `${value} ${value !== 1 ? 's' : ''}`;
 }
 
 export function CustomizedRatings() {
@@ -57,7 +57,7 @@ export function CustomizedRatings() {
   return (
     <div>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Custom icon and color</Typography>
+        {/* <Typography component="legend">Custom icon and color</Typography> */}
         <StyledRating
           name="customized-color"
           value={2}
@@ -71,15 +71,16 @@ export function CustomizedRatings() {
   );
 }
 
-export function appRatings() {
+export function AppRatings(props) {
+  const [hover, setHover] = React.useState(-1);
     return (
       <div>
         <Box component="fieldset" mb={3} borderColor="transparent">
-          <Typography component="legend">Custom icon and color</Typography>
+          {/* <Typography component="legend">Custom icon and color</Typography> */}
           <StyledRating
             getLabelText={getLabelText}
             name="read-only" 
-            value={value} 
+            value={props.ratingValue} 
             readOnly
             icon={<Brightness1Rounded fontSize="inherit" />}
             IconContainerComponent={IconContainer}
