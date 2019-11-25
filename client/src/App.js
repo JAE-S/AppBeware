@@ -13,7 +13,7 @@
   import TermsConditions from "./pages/TermsConditions"
 // Import CSS
 // =========================================================
-  import "./App.css"
+  import "./assets/styling/appStyle.css"
 
 // App
 // =========================================================
