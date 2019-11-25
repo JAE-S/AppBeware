@@ -359,7 +359,7 @@ export default function SearchAppAnnie() {
   return (
     <div className={classes.root}>
     <Wrapper>
-      <h2 align="center"> Search for an app or see what's tending! </h2>
+      <h2 align="center"> Search for an app or see what's trending! </h2>
       <NoSsr className="formStyle">
         <Select
           classes={classes}
