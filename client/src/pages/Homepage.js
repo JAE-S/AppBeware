@@ -1,6 +1,7 @@
 // Import React 
 // =========================================================
     import React, { Component } from "react";  
+    
 // Import Material Ui Components
 // =========================================================
     import { Grid, Table, TableBody, TableRow } from '@material-ui/core';
@@ -31,7 +32,8 @@
         state = {
             allListedApps: [],
             allCategories: [],
-            allShields: []        
+            allShields: [],
+            appNames: []          
         }
 
         getCategories = () => {
@@ -48,6 +50,13 @@
                 ).catch(err => console.log(err));
         }
 
+        getAppNames = () => {
+            API.getAppNames()
+                .then(res => 
+                    this.setState({ appNames: res.data })
+                ).catch(err => console.log(err));
+        }
+
         getShields = () => {
             API.getShields()
                 .then(res =>
@@ -57,13 +66,14 @@
 
         viewCategory = () => {
             console.log("You clicked me");
-            console.log(this.state.allShields);
-            console.log(this);
+            console.log(this.state.appNames);
+
         }
 
         componentDidMount() {
-            this.getListedApps();
             this.getCategories();
+            this.getAppNames();
+            this.getListedApps();
             this.getShields();
         }
 
