@@ -14,9 +14,13 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    // import Footer from "../components/Footer"
+
+    import Footer from "../components/Footer"
+
+
 // Import API 
 // =========================================================
+
     import API from "../utils/API";
 // Import Media
 // =========================================================
@@ -163,14 +167,45 @@
                         ))}
 
                     </Grid>
+
+                
+                </Wrapper>
+            </HeaderContainer>
+
+            <SearchAppAnnie />
+
+            <Wrapper>
+                <HomepageTabNav>
+
+                <Grid container spacing={2}>
+
+                    {this.state.allCategories.map(cat => (
+                        <CategoryCards
+                            key={cat.id}
+                            title={cat.name}
+                            catId={cat.id}
+                            viewCategory={this.viewCategory}
+                        />
+                    ))}
+
+                </Grid>
+            </HomepageTabNav>
+   
+        </Wrapper>
+        <Footer/>
+        </>
+    )
+        // )
+
                 </HomepageTabNav>
     
             </Wrapper>
-            {/* <Footer/> */}
+         <Footer/>
             </>
         )
             // )
         }
+
     }
 
     export default Homepage; 
