@@ -1,13 +1,15 @@
-import React from "react";
-import "./style.css";
+// Import React
+// =========================================================
+    import React from "react";
+// Import Styles
+// =========================================================
+    import "./style.css";
 
-
-function Wrapper(props) {
+// Import Styles
+// =========================================================
+export default function Wrapper(props) {
     
-
-    return <main className="wrapper" {...props} > 
-    {props.children}
-    </main>
+    return <div className="wrapper" {...props} > 
+                {props.children}
+            </div>
 }
-
-export default Wrapper; 

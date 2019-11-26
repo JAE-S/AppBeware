@@ -11,6 +11,7 @@
 // =========================================================
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
+    import Footer from "../components/Footer"
     import {AppRatings, CustomizedRatings }from "../components/Ratings"
 // Import Media
 // =========================================================
@@ -121,6 +122,7 @@
         return (
             <>
                 <Nav/>
+                <main>
                     <div className="header"> 
                         <Grid container spacing={4}>
                 
@@ -231,8 +233,8 @@
                             commentsRight={test_profiles[1].comments}
                         />
                     </Wrapper>
-
-            {/* <Footer/> */}
+            </main>
+            <Footer/>
             </>
         )
     }
