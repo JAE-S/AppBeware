@@ -1,6 +1,6 @@
 // Import React
 // =========================================================
-import React from "react"; 
+    import React from "react"; 
 // Import Material Ui Components
 // =========================================================
     // import { Grid } from '@material-ui/core';
@@ -8,7 +8,11 @@ import React from "react";
 // =========================================================
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
+    import Footer from "../components/Footer"
     import HeaderContainer from "../components/HeaderContainer"
+// Import Styles
+// =========================================================
+    import "../assets/styling/appStyle.css"
 
 // Export Default Profile Page Function
 // =========================================================
@@ -17,6 +21,7 @@ import React from "react";
         return (
             <>
             <Nav/>
+            <main>
             <HeaderContainer> 
                 <Wrapper align="center" style={{paddingTop: 80}}> 
                     
@@ -24,7 +29,8 @@ import React from "react";
                 
                 </Wrapper>
             </HeaderContainer>
-            {/* <Footer/> */}
+            </main>
+            <Footer/>
             </>
         )
     }

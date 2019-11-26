@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./node_modules/axios";
 import API from "../../utils/API";
 import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "./new-types";
 
