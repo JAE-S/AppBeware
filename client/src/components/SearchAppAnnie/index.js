@@ -379,8 +379,8 @@ export default function SearchAppAnnie() {
         />
         <div className={classes.divider} />
       </NoSsr>
-      <Button onClick={viewAllApps}>View All Apps </Button>
-      <Button onClick={viewAppNames}>View App Names Only </Button>
+      {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
+      {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
       </Wrapper>
     </div>
     
