@@ -1,3 +1,4 @@
+
 // Import React
 // =========================================================
    import React from 'react';
@@ -30,49 +31,23 @@
       },
     }));
 
-  function Copyright() {
-    return (
-      
-      <Typography  justify="center" variant="body2" >
-        {' © '}
-      
-        <Link color="inherit" href="http://appbeware.com/">
-          AppBeware
-        </Link>{' 2019 | '}
-        
-        <Link color="inherit" href="../TermsConditions">
+    function Copyright() {
+      return (
+         
+      <Typography  justify="center" variant="body2">
+          {' © '}
+          <Link color="inherit" href="http://appbeware.com/">
+            AppBeware
+          </Link>{' 2019 | '}
+          
+     <Link color="inherit" href="../TermsConditions">
             Disclaimer
-        </Link>
-      </Typography>
-    )
-  }
-
-
-      {' | Sign Out'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-     minHeight: '15vh',
-   
-  },
-  main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
-  },
-  footer: {
-    color: "#ffffff",
-    padding: theme.spacing(3, 2),
-    marginTop: 'auto',
-    backgroundColor: "#56585D",
-    textAlign: 'center'
-           
-  },
-}));
+          </Link>
+    
+          {' | Sign Out'}
+        </Typography>
+      )
+    }
 
 export default function StickyFooter() {
   const classes = useStyles();
@@ -89,3 +64,4 @@ export default function StickyFooter() {
     </div>
   );
 }
+

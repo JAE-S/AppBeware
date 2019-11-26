@@ -1,10 +1,9 @@
 // Import React 
 // =========================================================
     import React, { Component } from "react";  
-    
 // Import Material Ui Components
 // =========================================================
-    import { Grid, Table, TableBody, TableRow } from '@material-ui/core';
+    import { Grid } from '@material-ui/core';
 // Import Custom Components
 // =========================================================
     import SearchAppAnnie from "../components/SearchAppAnnie"
@@ -87,62 +86,45 @@
                <main>
                 <HeaderContainer> 
                     <Wrapper> 
-                        <Grid container spacing={8}>
+                        <Grid container spacing={1}>
                             <Grid item xs={12} sm={3}>
                             <div>
-                                <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
+                                <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
                             </div>
                             </Grid>
                             
-                            <Grid item xs={12} sm={9}>
-                            <Table> 
-                                <TableBody> 
-                                    
-                                    <TableRow> 
-
-                                    {/* {this.state.allShields.map(shield => (
-                                        <ShieldLayout 
-                                            shieldIcon={shield.icon}
-                                            altTxt={shield.altText}
-                                            title={shield.name}
-                                            info={shield.info}
-                                        />
-                                    ))} */}
-
+                            <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
+        
                                 <ShieldLayout 
                                     shieldIcon={ PR_icon }
                                     altTxt="Predator Risk icon"
                                     title="Predator Risk"
                                     info="Apps that expose children to predators through solicitation, sharing personal information, encouragement to meet in person, intent to engage in sexual activity, stalking or harm."
-                            />
+                                />
                                 <ShieldLayout 
                                     shieldIcon={ DB_icon }
                                     altTxt="Dangerous Behavior icon"
                                     title="Dangerous Behavior"
                                     info="Apps that promote self harm, suicide, eating disorders, choking games, dangerous challenges or other acts where serious injury or death may result."
-                            />
+                                />
                                 <ShieldLayout 
                                     shieldIcon={ CB_icon }
                                     altTxt="Cyberbullying icon"
                                     title="Cyberbulling "
                                     info="Harassment in the comments and parody videos being created to humiliate and tease some users, particularly users with disabilities. Bullying people from different religious or ethnic backgrounds, blackmail, extortion, public humiliation or harassment."
-                            />
+                                />
                                 <ShieldLayout 
                                     shieldIcon={ VC_icon }
                                     altTxt="Violent Content icon"
                                     title="Violent Content"
                                     info="Apps that depict or facilitate gratuitous violence or other dangerous activities against people or animals.  These include threats, gun violence, terroism, use, sale or depictions of explosives or firearms."
-                            />
+                                />
                                 <ShieldLayout 
                                     shieldIcon={ SC_icon }
                                     altTxt="Sexual Content icon"
                                     title="Sexual Content"
                                     info="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
-                            />
-                                </TableRow>
-                                        
-                                    </TableBody> 
-                                </Table>
+                                />
                             
                             </Grid>
                         </Grid>
