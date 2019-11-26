@@ -9,7 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
       {' © '}
-      <Link color="inherit" href="https://appbeware.com/">
+      <Link color="inherit" href="http://appbeware.com/">
         AppBeware
       </Link>{' 2019 | '}
       
