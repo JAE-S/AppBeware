@@ -9,10 +9,11 @@
 // =========================================================
    import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
 
+
 function Copyright() {
   return (
      
-    <Typography  justify="center" variant="body2" color="textSecondary">
+  <Typography  justify="center" variant="body2" color="textSecondary">
       {' © '}
       <Link color="inherit" href="http://appbeware.com/">
         AppBeware
@@ -22,34 +23,31 @@ function Copyright() {
         Disclaimer
       </Link>
 
-
       {' | Sign Out'}
     </Typography>
-  );
-}
 
 // Styles
 // =========================================================
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    //  minHeight: '15vh',
-   
-  },
-  main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
-  },
-  footer: {
-    color: "#ffffff",
-    padding: theme.spacing(3, 2),
-    marginTop: 'auto',
-    backgroundColor: "#56585D",
-    textAlign: 'center'
-           
-  },
-}));
+    const useStyles = makeStyles(theme => ({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        // minHeight: '15vh',
+      },
+      main: {
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(2),
+      },
+      footer: {
+        color: "#f7f7f7",
+        padding: theme.spacing(3, 2),
+        marginTop: 'auto',
+        backgroundColor: "#56585D",
+        textAlign: 'center'
+      },
+    }));
+
+  
 
 export default function StickyFooter() {
   const classes = useStyles();
