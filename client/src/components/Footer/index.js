@@ -15,24 +15,23 @@ function Copyright() {
      
   <Typography  justify="center" variant="body2" color="textSecondary">
       {' © '}
-      <Link color="inherit" href="http://appbeware.com/">
+      <Link color="inherit" To="/Homepage">
         AppBeware
       </Link>{' 2019 | '}
       
- <Link color="inherit" href="../TermsConditions">
+ <Link color="inherit" To="/TermsConditions">
         Disclaimer
       </Link>
 
       {' | Sign Out'}
     </Typography>
-
+  )}
 // Styles
 // =========================================================
     const useStyles = makeStyles(theme => ({
       root: {
         display: 'flex',
         flexDirection: 'column',
-        // minHeight: '15vh',
       },
       main: {
         marginTop: theme.spacing(8),
@@ -46,8 +45,6 @@ function Copyright() {
         textAlign: 'center'
       },
     }));
-
-  
 
 export default function StickyFooter() {
   const classes = useStyles();
@@ -64,4 +61,3 @@ export default function StickyFooter() {
     </div>
   );
 }
-
