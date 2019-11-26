@@ -1,13 +1,15 @@
+
 // Import React
 // =========================================================
+    import {BrowserRouter as Router, Link, Route, Switch, 
+} from 'react-router-dom';
     import React from 'react'; 
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import {AppBar, Toolbar, IconButton, Typography, Badge, MenuItem, Menu } from '@material-ui/core';
-    // import {InputBase} from '@material-ui/core';
+    import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     // import SearchIcon from '@material-ui/icons/Search';
@@ -15,12 +17,13 @@
     // import AccountCircle from '@material-ui/icons/AccountCircle';
     import NotificationsIcon from '@material-ui/icons/Notifications';
     import MoreIcon from '@material-ui/icons/MoreVert';
-// Import Custom Components
+// Components
 // =========================================================
   import Modal from "../Modals";
   import AboutTheShields from "../AboutTheShields";
 
-// Export Default function Nav
+
+// Custom Styles
 // =========================================================
   const useStyles = makeStyles(theme => ({
       nav: {
@@ -36,6 +39,7 @@
           display: 'none',
           [theme.breakpoints.up('sm')]: {
           display: 'block',
+          color:'#fff'
           },
       },
       search: {
@@ -90,158 +94,167 @@
       }, 
   }));
 
-  export default function Nav() {
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+export default function Nav() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const handleProfileMenuOpen = event => {
-      setAnchorEl(event.currentTarget);
-    };
+  const handleProfileMenuOpen = event => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleMobileMenuClose = () => {
-      setMobileMoreAnchorEl(null);
-    };
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
 
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-      handleMobileMenuClose();
-    };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
 
-    const handleMobileMenuOpen = event => {
-      setMobileMoreAnchorEl(event.currentTarget);
-    };
+  const handleMobileMenuOpen = event => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
 
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        id={menuId}
-        keepMounted
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={handleMenuClose}
-      >
-      <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-        <h3>Jane Doe</h3> 
-        <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
+  const menuId = 'primary-search-account-menu';
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+     <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+      <h3>Jane Doe</h3> 
+      <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
+     </MenuItem>
+     <MenuItem onClick={handleMenuClose}>
+      <Link to="/ProfilePage" style={{ textDecoration: 'none' }}>
         Profile
+      </Link>
+     </MenuItem>
+     <MenuItem onClick={handleMenuClose}>
+        <Badge className={classes.alert} badgeContent={17} color="secondary">
+            Alerts
+        </Badge>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-          <Badge className={classes.alert} badgeContent={17} color="secondary">
-              Alerts
-          </Badge>
-        </MenuItem>
-        <MenuItem onClick={handleMenuClose}>
-          <Modal
-              modalTitle="What are the Shields?"
-              openModal="About The Shields"
-              modalBody={<AboutTheShields/>}
-              modalButton1="Close"
-          />
-        </MenuItem>
-        <MenuItem onClick={handleMenuClose}> 
-          Sign Out
-        </MenuItem>
-      </Menu>
-    );
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        id={mobileMenuId}
-        keepMounted
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={handleMobileMenuClose}
-      >
-        <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-        <h3>Jane Doe</h3> 
-        <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        Profile
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-          <Badge className={classes.alert} badgeContent={17} color="secondary">
-              Alerts
-          </Badge>
-        </MenuItem>
-        <MenuItem onClick={handleMenuClose}>
-          <Modal
+        <Modal
             modalTitle="What are the Shields?"
             openModal="About The Shields"
             modalBody={<AboutTheShields/>}
             modalButton1="Close"
-          />
-        </MenuItem>
-        <MenuItem onClick={handleMenuClose}> 
-          Sign Out
-        </MenuItem>
-      </Menu>
-    );
+        />
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}> 
+        Sign Out
+      </MenuItem>
+    </Menu>
+  );
 
-    return (
-      <div className={classes.grow}>
-        <AppBar className={classes.nav} position="static">
-          <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+      <h3>Jane Doe</h3> 
+      <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
+     </MenuItem>
+     <MenuItem onClick={handleMenuClose}>
+      Profile
+     </MenuItem>
+     <MenuItem onClick={handleMenuClose}>
+        <Badge className={classes.alert} badgeContent={17} color="secondary">
+            Alerts
+        </Badge>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Modal
+          modalTitle="What are the Shields?"
+          openModal="About The Shields"
+          modalBody={<AboutTheShields/>}
+          modalButton1="Close"
+        />
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}> 
+        Sign Out
+      </MenuItem>
+    </Menu>
+  );
+
+  return (
+    <div className={classes.grow}>
+      <AppBar className={classes.nav} position="static">
+        <Toolbar>
+          
+          <Typography className={classes.title} variant="h6" noWrap>            
+            <Link className={classes.title} style={{ textDecoration: 'none' }} to='/Homepage' >
               AppBeware
-            </Typography>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-            {/* <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase style={{ paddingLeft: "50px" }}
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div> */}
-              <IconButton aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <Dashboard  />
-              </IconButton>
+              </Link>
+          </Typography>
+
+   
+
+          
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+          {/* <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
-            <div className={classes.sectionMobile}>
-              <IconButton
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-        {renderMenu}
-      </div>
-    );
-  }
+            <InputBase style={{ paddingLeft: "50px" }}
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div> */}
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <Dashboard  />
+            </IconButton>
+          </div>
+          <div className={classes.sectionMobile}>
+            <IconButton
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+      {renderMobileMenu}
+      {renderMenu}
+    </div>
+  );
+}

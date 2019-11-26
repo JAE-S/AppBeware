@@ -8,12 +8,14 @@
 // =========================================================
    import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
 
+
 // Styles
 // =========================================================
     const useStyles = makeStyles(theme => ({
       root: {
         display: 'flex',
         flexDirection: 'column',
+        minHeight: '15vh',
       },
       main: {
         marginTop: theme.spacing(8),
@@ -24,39 +26,37 @@
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
         backgroundColor: "#56585D",
+        textAlign: 'center'
       },
     }));
 
-    function Copyright() {
-      return (
-        <Typography variant="body2">
-          {' © '}
-          <Link color="inherit" href="http://appbeware.com/">
-            AppBeware
-          </Link>{' 2019 | '}
-          
-          <Link color="inherit" href="../TermsConditions">
-              Disclaimer
-          </Link>
-          {' | Sign Out'}
-        </Typography>
-      );
-    }
+function Copyright() {
+  return (
+     
+    <Typography  justify="center" variant="body2" color="textSecondary">
+      {' © '}
+      <Link color="inherit" href="http://appbeware.com/">
+        AppBeware
+      </Link>{' 2019 | '}
+      
+ <Link color="inherit" href="../TermsConditions">
+        Disclaimer
+      </Link>
 
 // Export StickyFooter
 // =========================================================
   export default function StickyFooter() {
     const classes = useStyles();
 
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-          <footer className={classes.footer}>
-          <Container align="center" maxWidth="sm">
-          
-            <Copyright />
-          </Container>
-        </footer>
-      </div>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+        <footer className={classes.footer}>
+        <Container maxWidth="sm">
+         
+          <Copyright />
+        </Container>
+      </footer>
+    </div>
+  );
+}
