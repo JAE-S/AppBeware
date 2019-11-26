@@ -14,7 +14,7 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    // import Footer from "../components/Footer"
+    import Footer from "../components/Footer"
     import API from "../utils/API";
 // Import Media
 // =========================================================
@@ -156,7 +156,7 @@ class Homepage extends Component {
             </HomepageTabNav>
    
         </Wrapper>
-        {/* <Footer/> */}
+        <Footer/>
         </>
     )
         // )
