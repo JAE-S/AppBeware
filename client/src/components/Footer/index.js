@@ -1,3 +1,4 @@
+
 // Import React
 // =========================================================
    import React from 'react';
@@ -8,6 +9,22 @@
 // =========================================================
    import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
 
+
+function Copyright() {
+  return (
+     
+  <Typography  justify="center" variant="body2" color="textSecondary">
+      {' © '}
+      <Link color="inherit" href="http://appbeware.com/">
+        AppBeware
+      </Link>{' 2019 | '}
+      
+ <Link color="inherit" href="../TermsConditions">
+        Disclaimer
+      </Link>
+
+      {' | Sign Out'}
+    </Typography>
 
 // Styles
 // =========================================================
@@ -30,27 +47,10 @@
       },
     }));
 
-  function Copyright() {
-    return (
-      
-      <Typography  justify="center" variant="body2" >
-        {' © '}
-      
-        <Link color="inherit" href="http://appbeware.com/">
-          AppBeware
-        </Link>{' 2019 | '}
-        
-        <Link color="inherit" href="../TermsConditions">
-            Disclaimer
-        </Link>
-      </Typography>
-    )
-  }
+  
 
-// Export StickyFooter
-// =========================================================
-  export default function StickyFooter() {
-    const classes = useStyles();
+export default function StickyFooter() {
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -64,3 +64,4 @@
     </div>
   );
 }
+
