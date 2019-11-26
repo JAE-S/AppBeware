@@ -1,4 +1,8 @@
 // Splash page actions 
+export const signIn= "signIn"
+export const googleSignIn= "googleSignIn"
+export const newGoogleUser = "newGoogleUser"
+export const registerNewUser = "registerNewUser"
 
 // Navbar Actions 
 export const getUserDetials = "getUserDetails"
