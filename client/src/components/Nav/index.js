@@ -1,7 +1,7 @@
 
 // Import React
 // =========================================================
-    import {BrowserRouter as Router, Link, Route, Switch, 
+    import {BrowserRouter as Router, Link,
 } from 'react-router-dom';
     import React from 'react'; 
 // Import Material UI Styles
