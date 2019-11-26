@@ -22,7 +22,6 @@
   import Modal from "../Modals";
   import AboutTheShields from "../AboutTheShields";
 
-
 // Custom Styles
 // =========================================================
   const useStyles = makeStyles(theme => ({

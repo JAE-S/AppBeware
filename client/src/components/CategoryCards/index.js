@@ -12,7 +12,7 @@
 // =========================================================
   const useStyles = makeStyles({
     card: {
-      maxWidth: "300px", 
+      maxWidth: "270px", 
       width: "100%",
       margin: "10px"
     },
