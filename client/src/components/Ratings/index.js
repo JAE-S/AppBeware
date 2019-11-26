@@ -62,8 +62,8 @@ function getLabelText(value) {
 // Export function -> CustomizedRatings (Choose rating)
 // =========================================================
   export function CustomizedRatings() {
-      const value = 2;
-      const [hover, setHover] = React.useState(-1);
+      // const value = 2;
+      // const [hover, setHover] = React.useState(-1);
     return (
       <div>
         <Box component="fieldset" mb={3} borderColor="transparent">
@@ -83,7 +83,7 @@ function getLabelText(value) {
 // Export function -> AppRatings (Read Only)
 // =========================================================
   export function AppRatings(props) {
-    const [hover, setHover] = React.useState(-1);
+    // const [hover, setHover] = React.useState(-1);
       return (
         <div>
           <Box component="fieldset" mb={3} borderColor="transparent">

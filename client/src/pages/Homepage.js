@@ -14,7 +14,7 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    // import Footer from "../components/Footer"
+    import Footer from "../components/Footer"
 // Import API 
 // =========================================================
     import API from "../utils/API";
@@ -26,6 +26,9 @@
     import PR_icon from "../assets/images/shields/predator_risk.png";
     import SC_icon from "../assets/images/shields/sexual_content.png";
     import VC_icon from "../assets/images/shields/violent_content.png";
+// Import Styles
+// =========================================================
+    import "../assets/styling/appStyle.css"
 
     class Homepage extends Component {
 
@@ -81,6 +84,7 @@
             return (
                 <>
                 <Nav/>
+               <main>
                 <HeaderContainer> 
                     <Wrapper> 
                         <Grid container spacing={8}>
@@ -150,26 +154,24 @@
 
                 <Wrapper>
                     <HomepageTabNav>
+                        <Grid container spacing={2}>
 
-                    <Grid container spacing={2}>
+                            {this.state.allCategories.map(cat => (
+                                <CategoryCards
+                                    key={cat.id}
+                                    title={cat.name}
+                                    catId={cat.id}
+                                    viewCategory={this.viewCategory}
+                                />
+                            ))}
 
-                        {this.state.allCategories.map(cat => (
-                            <CategoryCards
-                                key={cat.id}
-                                title={cat.name}
-                                catId={cat.id}
-                                viewCategory={this.viewCategory}
-                            />
-                        ))}
-
-                    </Grid>
-                </HomepageTabNav>
-    
-            </Wrapper>
-            {/* <Footer/> */}
-            </>
+                        </Grid>
+                    </HomepageTabNav>
+                </Wrapper>
+                </main>
+            <Footer/>
+         </>
         )
-            // )
         }
     }
 

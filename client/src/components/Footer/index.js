@@ -1,33 +1,62 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+// Import React
+// =========================================================
+   import React from 'react';
+// Import Material UI Styles
+// =========================================================
+   import { makeStyles } from '@material-ui/core/styles';
+// Import Material UI Components
+// =========================================================
+   import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
-  },
-});
+// Styles
+// =========================================================
+    const useStyles = makeStyles(theme => ({
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      main: {
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(2),
+      },
+      footer: {
+        color: "#f7f7f7",
+        padding: theme.spacing(3, 2),
+        marginTop: 'auto',
+        backgroundColor: "#56585D",
+      },
+    }));
 
-export default function SimpleBottomNavigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+    function Copyright() {
+      return (
+        <Typography variant="body2">
+          {' © '}
+          <Link color="inherit" href="http://appbeware.com/">
+            AppBeware
+          </Link>{' 2019 | '}
+          
+          <Link color="inherit" href="../TermsConditions">
+              Disclaimer
+          </Link>
+          {' | Sign Out'}
+        </Typography>
+      );
+    }
 
-  return (
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
-    </BottomNavigation>
-  );
-}
+// Export StickyFooter
+// =========================================================
+  export default function StickyFooter() {
+    const classes = useStyles();
+
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+          <footer className={classes.footer}>
+          <Container align="center" maxWidth="sm">
+          
+            <Copyright />
+          </Container>
+        </footer>
+      </div>
+    );
+  }
