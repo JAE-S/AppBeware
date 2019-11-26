@@ -1,0 +1,277 @@
+{
+	"getUserDetails": [
+		{
+			"userName": "Anya T.",
+            "email": "anyatyler@gmail.com",
+            "photo": "anyatyler.png",
+			"password": "*****",
+            "dateJoined": "May 12, 2018", 
+            "appReviews": [ { "appName": "Burnbook",
+                            "dateAdded": "May 14, 2018", 
+                            "shieldAlerts": ["Cyberbullying", "Dangerous Behavior"], 
+                            "dangerRating": 3, 
+                            "review": "Watch out for this app." 
+                         },  
+                         { "appName": "Holla",
+                            "dateAdded": "August 2, 2018", 
+                            "shieldAlerts": ["Predator Risk"], 
+                            "dangerRating": 4, 
+                            "review": "Watch out for this app." 
+                         }  
+                        ], 
+            "appAlerts": ["Burnbook", "Holla" ]  
+		},
+		{
+			"userName": "Tony S.",
+            "email": "tonysmith@yahoo.com",
+            "photo": "tonysmith.png",
+			"password": "*****",
+            "dateJoined": "October 16, 2019", 
+            "appReviews": { "appName": "TikTok",
+                            "dateAdded": "November 16, 2019", 
+                            "shieldAlerts": ["Predator Risk"], 
+                            "dangerRating": 2, 
+                            "review": "Watch out for this app." 
+                        },  
+            "appAlerts": ["TikTok"]  
+		}
+    ],
+    
+    "newUser":  {
+        "userName": "Bret B.", 
+        "email": "bretb@gmail.com",
+        "password": "Bret12345678" 
+    },
+
+    "newGoogleUser":  {
+        "userName": "Jack R." 
+    },
+
+    "signIn": {
+        "userName": "Anya T.", 
+        "password": "Anya1234" 
+    },
+
+    "signOut": false,
+
+    "renderCategories": [
+        {
+            "Social Networking": ["List", "of", "apps", "in", "the", "Social Networking", "Category."]
+        },
+        {
+            "Photos & Videos": ["List", "of", "apps", "in", "the", "Photos & Video", "Category."] 
+        },
+        {
+            "Lifestyle": ["List", "of", "apps", "in", "the", "Lifestyle", "Category."]
+        },
+        {
+            "Entertainment":  ["List", "of", "apps", "in", "the", "Entertainment", "Category."]
+        },
+        {
+            "Games": ["List", "of", "apps", "in", "the", "Games", "Category."] 
+        }
+    ],
+
+    "renderTrending": [ 
+        {
+            "logoUrl": "https://images-na.ssl-images-amazon.com/images/I/61S7YvhOwVL.png",
+            "name": "Burnbook",
+            "warnRatingAverage": 2.63,
+            "shields": "CB_icon",
+            "createdAt": "2 hours ago", 
+            "shieldAlerts": ["../../public/assets/shields/cyberbullying.png"]
+        },
+        { "logoUrl": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
+            "name": "Holla",
+            "warnRatingAverage": 4.1,
+            "shiels": "PR_icon",
+            "createdAt": "1 hours ago",
+            "shieldAlerts": ["../../public/assets/shields/predator_risk.png"]
+          },
+        {
+            "logoUrl": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
+            "appIcon": "TikTok",
+            "appTitle": "TickTok",  
+            "lastUpdated": "8 hours ago", 
+            "dangerRating": 2.83, 
+            "shieldAlerts": ["../../public/assets/shields/dangerous_behavior.png"]
+        }
+    ], 
+
+    "renderAllAppData": {
+        "fetching": true,
+        "allAppsInDatabase": [
+            {   
+                "logoUrl": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
+                "appName": "TikTok",
+                "linkToAppStore": {
+                        "andriod": "https://play.google.com/store/apps/details?id=com.ss.android.ugc.trill&hl=en_US",
+                        "ios": "https://apps.apple.com/ug/app/tiktok-make-your-day/id835599320",
+                        "notAvailable": "No link was found"
+                    },
+                "lastUpdated":  "8 hours ago", 
+                "shieldAlerts": [ "Predator Risk" ], 
+                "dangerRating": [ 2, 4, 3 ], 
+                "numberOfDownLoads": 2000, 
+                "reviews": [ 
+                    {
+                        "reviewerProfileImage": "image.png", 
+                        "reviewersUserName": "Name L.", 
+                        "dangerRating": 1, 
+                        "shieldAlert": [
+                                {
+                                    "PredatorRisk": true 
+                                }, 
+                                {
+                                    "DangerousBehavior": false 
+                                }, 
+                                {
+                                    "Cyberbullying": false 
+                                }, 
+                                {
+                                    "Violent Content": false
+                                }, 
+                                {
+                                    "Sexual Content": false 
+                                }
+                        ],
+                        "Comments": "field not required",
+                        "helpful": 1,
+                        "createdAt": "May 15, 2019"
+                    }, 
+                    {
+                        "reviewerProfileImage": "image.png", 
+                        "reviewersUserName": "Name L.", 
+                        "dangerRating": 1, 
+                        "shieldAlert": [
+                                {
+                                    "PredatorRisk": true 
+                                }, 
+                                {
+                                    "DangerousBehavior": false 
+                                }, 
+                                {
+                                    "Cyberbullying": true
+                                }, 
+                                {
+                                    "Violent Content": false
+                                }, 
+                                {
+                                    "Sexual Content": false 
+                                }
+                        ],
+                        "Comments": "field not required",
+                        "helpful": 4,
+                        "createdAt": "October 2, 2019"
+                    }
+                ] 
+            } 
+            
+        ],
+        "noData": "alert our team to add this app"
+    }, 
+
+    "renderSingleAppData": {      
+                "logoUrl": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
+                "appName": "TikTok",
+                "linkToAppStore": {
+                        "andriod": "https://play.google.com/store/apps/details?id=com.ss.android.ugc.trill&hl=en_US",
+                        "ios": "https://apps.apple.com/ug/app/tiktok-make-your-day/id835599320",
+                        "notAvailable": "No link was found"
+                    },
+                "lastUpdated":  "8 hours ago", 
+                "shieldAlerts": [ "Predator Risk" ], 
+                "dangerRating": [ 2, 4, 3 ], 
+                "numberOfDownLoads": 2000, 
+                "reviews": [ 
+                    {
+                        "reviewerProfileImage": "image.png", 
+                        "reviewersUserName": "Name L.", 
+                        "dangerRating": 1, 
+                        "shieldAlert": [
+                                {
+                                    "PredatorRisk": true 
+                                }, 
+                                {
+                                    "DangerousBehavior": false 
+                                }, 
+                                {
+                                    "Cyberbullying": false 
+                                }, 
+                                {
+                                    "Violent Content": false
+                                }, 
+                                {
+                                    "Sexual Content": false 
+                                }
+                        ],
+                        "comments": "field not required",
+                        "attachments": ["image_1.png", "image_2.png" ],
+                        "helpful": 1,
+                        "createdAt": "May 15, 2019"
+                    }, 
+                    {
+                        "reviewerProfileImage": "image.png", 
+                        "reviewersUserName": "Name L.", 
+                        "dangerRating": 1, 
+                        "shieldAlert": [
+                                {
+                                    "PredatorRisk": true 
+                                }, 
+                                {
+                                    "DangerousBehavior": false 
+                                }, 
+                                {
+                                    "Cyberbullying": true
+                                }, 
+                                {
+                                    "Violent Content": false
+                                }, 
+                                {
+                                    "Sexual Content": false 
+                                }
+                        ],
+                        "comments": "field not required",
+                        "attachments": ["image_1.png"],
+                        "helpful": 4,
+                        "createdAt": "October 2, 2019"
+                    }
+                ]  
+    }, 
+
+    "addAppToDatabase": {
+
+                "logoUrl": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
+                "appName": "TikTok",
+                "linkToAppStore": {
+                        "andriod": "https://play.google.com/store/apps/details?id=com.ss.android.ugc.trill&hl=en_US",
+                        "ios": "https://apps.apple.com/ug/app/tiktok-make-your-day/id835599320",
+                        "notAvailable": "No link was found"
+                    },
+                "createdAt":  "date", 
+                "numberOfDownLoads": 2000, 
+                "dangerRating": 5, 
+                "shieldAlerts": [
+                        {
+                            "PredatorRisk": true 
+                        }, 
+                        {
+                            "DangerousBehavior": false 
+                        }, 
+                        {
+                            "Cyberbullying": false 
+                        }, 
+                        {
+                            "Violent Content": false
+                        }, 
+                        {
+                            "Sexual Content": false 
+                        }
+                ],
+                "comments": "field not required",
+                "attachments": "image.png"
+    }, 
+
+	"errors": []
+	
+}
