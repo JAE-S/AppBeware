@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, Button} from '@material-ui/core/';
+import API from "../../utils/API"
 
 class Form extends Component {
   // Setting the initial values of this.state.username and this.state.password
@@ -22,8 +23,15 @@ class Form extends Component {
   // When the form is submitted, prevent the default event and alert the username and password
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Username: ${this.state.username}\nPassword: ${this.state.password}`);
+    if(this.state.username && this.state.password){
+    API.signIn({
+      username: this.state.username,
+      password: this.state.password
+    }).then(res => {
     this.setState({ username: "", password: "" });
+    console.log(res.data)
+    })
+    }
   };
 
   render() {

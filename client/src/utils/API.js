@@ -24,6 +24,11 @@ export default {
 
   getShields: function() {
     return axios.get('/api/get-shields');
+  },
+
+  signIn: function(userInfo) {
+    console.log("getting Info " + userInfo)
+    return axios.post('/api/login', userInfo)
   }
 
 
