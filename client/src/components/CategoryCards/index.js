@@ -8,61 +8,65 @@
 // =========================================================
     import { Card, CardActions, CardContent, Button, Typography, Grid} from '@material-ui/core/';
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: "300px", 
-    width: "100%",
-    margin: "10px"
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  buttonSpacing: {
-    display: "block",
-    margin: "0 auto",
-    background: "red", 
-    color: "white"
-  },
-});
+// Styling
+// =========================================================
+  const useStyles = makeStyles({
+    card: {
+      maxWidth: "270px", 
+      width: "100%",
+      margin: "10px"
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+    buttonSpacing: {
+      display: "block",
+      margin: "0 auto",
+      background: "red", 
+      color: "white"
+    },
+  });
 
-export default function SimpleCard(props) {
-  const classes = useStyles();
+// Export SimpleCard -> Category Cards
+// =========================================================
+  export default function SimpleCard(props) {
+    const classes = useStyles();
 
-  return (
-    <Card align="center" className={classes.card}>
-      <CardContent>
-      <Grid container spacing={4}>
-            <Grid item sm={4}>
-                <div style={{ height: "80px", 
-                              width: "80px", 
-                              backgroundColor: "#4FBBC1", 
-                              borderRadius: "10px"}}
-                /> 
-            </Grid>
-            <Grid item sm={8}>
-                <Typography variant="h6" component="h2">
-                    {props.title}
-                </Typography>
-                <CardActions >
-                <Button 
-                  className={classes.buttonSpacing}
-                  size="small"
-                  onClick={props.viewCategory}
-                  >View Apps
-                </Button>
-            </CardActions>
-            </Grid>
- 
-        </Grid>
-        </CardContent>
-    </Card>
-  );
-}
+    return (
+      <Card align="center" className={classes.card}>
+        <CardContent>
+        <Grid container spacing={4}>
+              <Grid item sm={4}>
+                  <div style={{ height: "80px", 
+                                width: "80px", 
+                                backgroundColor: "#4FBBC1", 
+                                borderRadius: "10px"}}
+                  /> 
+              </Grid>
+              <Grid item sm={8}>
+                  <Typography variant="h6" component="h2">
+                      {props.title}
+                  </Typography>
+                  <CardActions >
+                  <Button 
+                    className={classes.buttonSpacing}
+                    size="small"
+                    onClick={props.viewCategory}
+                    >View Apps
+                  </Button>
+              </CardActions>
+              </Grid>
+  
+          </Grid>
+          </CardContent>
+      </Card>
+    );
+  }

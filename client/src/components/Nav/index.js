@@ -1,5 +1,8 @@
+
 // Import React
 // =========================================================
+    import {BrowserRouter as Router, Link,
+} from 'react-router-dom';
     import React from 'react'; 
 // Import Material UI Styles
 // =========================================================
@@ -19,7 +22,6 @@
   import Modal from "../Modals";
   import AboutTheShields from "../AboutTheShields";
 
-
 // Custom Styles
 // =========================================================
   const useStyles = makeStyles(theme => ({
@@ -36,6 +38,7 @@
           display: 'none',
           [theme.breakpoints.up('sm')]: {
           display: 'block',
+          color:'#fff'
           },
       },
       search: {
@@ -131,7 +134,9 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-      Profile
+      <Link to="/ProfilePage" style={{ textDecoration: 'none' }}>
+        Profile
+      </Link>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
         <Badge className={classes.alert} badgeContent={17} color="secondary">
@@ -193,9 +198,16 @@ export default function Nav() {
     <div className={classes.grow}>
       <AppBar className={classes.nav} position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            AppBeware
+          
+          <Typography className={classes.title} variant="h6" noWrap>            
+            <Link className={classes.title} style={{ textDecoration: 'none' }} to='/Homepage' >
+              AppBeware
+              </Link>
           </Typography>
+
+   
+
+          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           {/* <div className={classes.search}>

@@ -1,15 +1,19 @@
-import React from "react";
-import "./style.css";
+// Import React 
+// =========================================================
+    import React from "react";
+// Import Styling
+// =========================================================
+    import "./style.css";
 
+// Export HeaderContainer
+// =========================================================
+    function HeaderContainer(props) {
+        
+        return <div className="headerContainer" {...props} > 
 
-function HeaderContainer(props) {
-    
+                 {props.children}
+        
+                </div>
+    }
 
-    return <div className="headerContainer" {...props} > 
-
-        {props.children}
-    
-    </div>
-}
-
-export default HeaderContainer; 
+    export default HeaderContainer; 

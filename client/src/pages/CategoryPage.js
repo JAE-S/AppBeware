@@ -4,14 +4,17 @@
 // Import Material Ui Components
 // =========================================================
     import { Table, TableRow, TableBody, TableCell } from '@material-ui/core/';
-
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
-    import HeaderContainer from "../components/HeaderContainer"
+    import Footer from "../components/Footer"
+    // import HeaderContainer from "../components/HeaderContainer"
     import SearchAppAnnie from "../components/SearchAppAnnie"
     import { Image, AddToWatchList , ViewApp, AppDetails} from "../components/SearchResults";
+// Import styles
+// =========================================================
+    import "../assets/styling/appStyle.css"
 
 // Export Default Category Page Function
 // =========================================================
@@ -41,13 +44,14 @@ class Categories extends Component {
         return (
             <>
             <Nav/>
-            <HeaderContainer> 
+            <main>
+            {/* <HeaderContainer>  */}
                 <Wrapper align="center" style={{paddingTop: 80}}> 
                     
                 <h3>This is the App Category page</h3>
                 
                 </Wrapper>
-            </HeaderContainer>
+            {/* </HeaderContainer> */}
             <Wrapper> 
                 <SearchAppAnnie />
 
@@ -90,7 +94,8 @@ class Categories extends Component {
                </Table>
 
             </Wrapper>
-            {/* <Footer/> */}
+            </main>
+            <Footer/>
             </>
         )
     }
