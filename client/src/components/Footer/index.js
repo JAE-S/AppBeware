@@ -7,7 +7,8 @@ import Link from '@material-ui/core/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+     
+    <Typography  justify="center" variant="body2" color="textSecondary">
       {' © '}
       <Link color="inherit" href="http://appbeware.com/">
         AppBeware
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+     minHeight: '15vh',
    
   },
   main: {
@@ -34,10 +36,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   footer: {
-    textcolor: "#ffffff",
+    color: "#ffffff",
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
     backgroundColor: "#56585D",
+    textAlign: 'center'
+           
   },
 }));
 
@@ -56,3 +60,4 @@ export default function StickyFooter() {
     </div>
   );
 }
+
