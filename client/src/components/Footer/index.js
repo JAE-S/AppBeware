@@ -15,7 +15,7 @@
       root: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '15vh',
+        // minHeight: '15vh',
       },
       main: {
         marginTop: theme.spacing(8),
@@ -30,18 +30,22 @@
       },
     }));
 
-function Copyright() {
-  return (
-     
-    <Typography  justify="center" variant="body2" color="textSecondary">
-      {' © '}
-      <Link color="inherit" href="http://appbeware.com/">
-        AppBeware
-      </Link>{' 2019 | '}
+  function Copyright() {
+    return (
       
- <Link color="inherit" href="../TermsConditions">
-        Disclaimer
-      </Link>
+      <Typography  justify="center" variant="body2" >
+        {' © '}
+      
+        <Link color="inherit" href="http://appbeware.com/">
+          AppBeware
+        </Link>{' 2019 | '}
+        
+        <Link color="inherit" href="../TermsConditions">
+            Disclaimer
+        </Link>
+      </Typography>
+    )
+  }
 
 // Export StickyFooter
 // =========================================================

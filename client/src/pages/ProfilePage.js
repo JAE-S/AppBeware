@@ -22,13 +22,13 @@
             <>
             <Nav/>
             <main>
-            <HeaderContainer> 
-                <Wrapper align="center" style={{paddingTop: 80}}> 
+                <HeaderContainer> 
+                    <Wrapper align="center" style={{paddingTop: 80}}> 
+                        
+                    <h3>This is the profile page</h3>
                     
-                <h3>This is the profile page</h3>
-                
-                </Wrapper>
-            </HeaderContainer>
+                    </Wrapper>
+                </HeaderContainer>
             </main>
             <Footer/>
             </>
