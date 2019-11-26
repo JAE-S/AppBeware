@@ -11,11 +11,11 @@
     import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import { Typography, Button, NoSsr, TextField, Paper, Chip } from '@material-ui/core';
+    import { Typography, Button, NoSsr, TextField } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     import MenuItem from '@material-ui/core/MenuItem';
-    import CancelIcon from '@material-ui/icons/Cancel';
+    // import CancelIcon from '@material-ui/icons/Cancel';
 // Import API
 // =========================================================
     import API from '../../utils/API';
@@ -23,7 +23,6 @@
 // Import CSS
 // =========================================================
     import "./style.css"
-
 
 // function listAppNames() {
 //   const appNames = API.getAppNames().then(function() {
@@ -360,7 +359,7 @@ export default function SearchAppAnnie() {
   return (
     <div className={classes.root}>
     <Wrapper>
-      <h2 align="center"> Search for an app or see what's tending! </h2>
+      <h2 align="center"> Search for an app or see what's trending! </h2>
       <NoSsr className="formStyle">
         <Select
           classes={classes}
@@ -380,8 +379,8 @@ export default function SearchAppAnnie() {
         />
         <div className={classes.divider} />
       </NoSsr>
-      {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
-      {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
+      <Button onClick={viewAllApps}>View All Apps </Button>
+      <Button onClick={viewAppNames}>View App Names Only </Button>
       </Wrapper>
     </div>
     
