@@ -1,4 +1,4 @@
-import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "../actions/new-types";
+import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "../Actions/new-types";
 
 const initialState = {
     allCategories: [],

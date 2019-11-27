@@ -27,8 +27,18 @@ export default {
   },
 
   signIn: function(userInfo) {
-    console.log("getting Info " + userInfo)
+    console.log("getting Info " + userInfo.username + userInfo.password)
     return axios.post('/api/login', userInfo)
+  },
+
+  signOut: function(userInfo) {
+    console.log("Signing Out " + userInfo)
+    return axios.get('/api/logout')
+  },
+
+  googleSignIn: function (userInfo) {
+    console.log("Logging in under google " + userInfo)
+    return axios.post('/api/googleLogin')
   }
 
 

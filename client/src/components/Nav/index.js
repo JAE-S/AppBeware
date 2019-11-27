@@ -21,6 +21,7 @@
 // =========================================================
   import Modal from "../Modals";
   import AboutTheShields from "../AboutTheShields";
+import API from '../../utils/API';
 
 // Custom Styles
 // =========================================================
@@ -118,6 +119,12 @@ export default function Nav() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleSignOut = () => {
+    API.signOut()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -151,7 +158,7 @@ export default function Nav() {
             modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}> 
+      <MenuItem onClick={handleSignOut}> 
         Sign Out
       </MenuItem>
     </Menu>
@@ -188,7 +195,7 @@ export default function Nav() {
           modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}> 
+      <MenuItem onClick={handleSignOut}> 
         Sign Out
       </MenuItem>
     </Menu>

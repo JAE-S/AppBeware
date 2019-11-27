@@ -15,6 +15,7 @@
 // =========================================================
     import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+import API from "../utils/API";
 
 // Custom Styles 
 // =========================================================
@@ -41,9 +42,15 @@ const useStyles = makeStyles(theme => ({
       },
 }));
 
-function SplashPage() {
 
+function SplashPage() {
+  
+//  googleButton = () => {
+//   API.googleSignIn().then(console.log("clicked?"))
+// }
   const classes = useStyles(); 
+
+  // const google = googleButton();
 
   return (
     <Wrapper style={{ minHeight: "100vh", maxWidth: "1200px", display: "flex"}}>
@@ -77,9 +84,17 @@ function SplashPage() {
                   modalButton1="Submit"
                 />
               </Grid>
-              <Grid item md={12}>
+              <Grid item md={12}
+              //  onClick={() => this.googleButton()}
+               >
               <h3 style={{ padding: 20 }} className={classes.or}>OR</h3>
-              <div><img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/></div>
+              <div><img 
+              className={classes.sButtons} 
+              id="googleSignIn" 
+              style={{ backgroundColor: "transparent", height: 60}}
+              alt="Google Sign In Button" 
+              src={ GoogleImage }
+              /></div>
               </Grid>
             </Paper>
         </Grid>
