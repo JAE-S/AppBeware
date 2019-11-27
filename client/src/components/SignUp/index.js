@@ -17,10 +17,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 // Import Styles
 // =========================================================
-import "./style.css"
 import Modal from "../Modals"
 import SignIn from "../SignIn"
 
@@ -72,11 +72,12 @@ export default function SignUp() {
                 id="username-sign-up"
                 label="User Name"
                 name="username"
-    
               />
+              
             </Grid>
           
             <Grid item xs={12}>
+           
               <TextField
                 variant="outlined"
                 required
@@ -88,7 +89,19 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
               />
+            
+              
             </Grid>
+
+{/* <FormControl>
+  <InputLabel htmlFor="my-input">Email address</InputLabel>
+  <Input id="my-input" aria-describedby="my-helper-text" />
+  <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+</FormControl> */}
+
+
+
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
