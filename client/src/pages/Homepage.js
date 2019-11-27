@@ -17,6 +17,8 @@
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer"
     import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp } from "../store/actions/appActions";
+    import { viewAllShields } from "../store/actions/shieldActions";
 
 // Import API 
 // =========================================================
@@ -36,32 +38,7 @@
     class Homepage extends Component {
 
         state = {
-            allListedApps: [],
-            allCategories: [],
-            singleCategory: [],
-            allShields: [],
-            appNames: []          
-        }
-
-        getListedApps = () => {
-            API.getListedApps()
-                .then(res =>
-                    this.setState({ allListedApps: res.data })
-                ).catch(err => console.log(err));
-        }
-
-        getAppNames = () => {
-            API.getAppNames()
-                .then(res => 
-                    this.setState({ appNames: res.data })
-                ).catch(err => console.log(err));
-        }
-
-        getShields = () => {
-            API.getShields()
-                .then(res =>
-                    this.setState({ allShields: res.data })
-                ).catch(err => console.log(err));
+         
         }
 
         // Runs Redux to grab all of the categories necessary to render the homepage
@@ -71,11 +48,12 @@
             this.props.history.push('/categoryPage');
         }
 
+        // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllCategories();
-            this.getAppNames();
-            this.getListedApps();
-            this.getShields();
+            this.props.viewAppNames();
+            this.props.viewAllListedApps();
+            this.props.viewAllShields();
         }
 
         render() {
@@ -166,7 +144,17 @@
     }
 
     const mapStateToProps = state => ({
-        categories: state.categories.allCategories
+        categories: state.categories.allCategories,
+        apps: state.apps.allListedApps,
+        shields: state.shields.allShields
     })
 
-    export default connect(mapStateToProps, { viewAllCategories, viewSingleCategory })(Homepage); 
+    export default connect(mapStateToProps, 
+        { 
+            viewAllCategories, 
+            viewSingleCategory, 
+            viewAllListedApps, 
+            viewAppNames, 
+            viewAllShields 
+        })
+        (Homepage); 
