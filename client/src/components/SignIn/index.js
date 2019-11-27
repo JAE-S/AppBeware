@@ -13,6 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+// Import Styles
+// =========================================================
+
+import Modal from "../Modals"
+ import SignUp from "../SignUp"
+
+
+
+// Styles
+// =========================================================
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -32,6 +42,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
 
 export default function SignIn() {
   const classes = useStyles();
@@ -90,9 +101,13 @@ export default function SignIn() {
             </Grid>
             <Grid item>
               
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+             <Modal 
+                  modalTitle="Create An Account"
+                  openModal="Don't have an account? Sign Up"
+                  modalBody={<SignUp/>}
+                  
+                />
+          
             </Grid>
           </Grid>
         </form>
