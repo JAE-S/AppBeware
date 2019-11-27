@@ -93,7 +93,7 @@
                             </Grid>
                             
                             <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
-                                    // Just here for future use if needed
+                                    {/* // Just here for future use if needed */}
                                     {/* {this.state.allShields.map(shield => (
                                         <ShieldLayout 
                                             shieldIcon={shield.icon}

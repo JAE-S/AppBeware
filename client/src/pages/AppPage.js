@@ -4,7 +4,7 @@
 // Import Material UI components 
 // =========================================================
     import { Grid, Typography, Button, Table, TableBody, TableRow, TableCell }from '@material-ui/core/';
-// Import Material UI Components
+// Import Material UI icons
 // =========================================================
     import { Brightness1Rounded, AddAlert} from '@material-ui/icons/';
 // Import Custom Components
@@ -12,6 +12,8 @@
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
+    import Modal from "../components/Modals"
+    import AddAppReview from "../components/AddAppReview"
     import {AppRatings, CustomizedRatings }from "../components/Ratings"
 // Import Media
 // =========================================================
@@ -203,11 +205,12 @@
                                 <h2 >Reviews: </h2>
                             </Grid>
                             <Grid align="right" item xs={2}>
-                                <Button>
-                                    <Typography variant="caption" color="textSecondary">
-                                        Add a review 
-                                    </Typography>
-                                </Button>
+                            <Modal
+                                modalTitle={` Share your concerns about ${data[0].name}.`}
+                                openModal="Add Review"
+                                modalBody={<AddAppReview/>}
+                                modalButton1="Submit"
+                            />
                             </Grid>
                         </Grid>
                         <CommentGrid

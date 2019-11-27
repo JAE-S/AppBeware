@@ -34,7 +34,7 @@ const data = [
     warnRatingAverage: 2.83,
     badges: DB_icon,
     createdAt: '8 hours ago',
-  },
+  }
 
 ];
 

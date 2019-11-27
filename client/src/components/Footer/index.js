@@ -13,7 +13,7 @@
 function Copyright() {
   return (
      
-  <Typography  justify="center" variant="body2" color="textSecondary">
+  <Typography  justify="center" variant="body2">
       {' © '}
       <Link color="inherit" To="/Homepage">
         AppBeware

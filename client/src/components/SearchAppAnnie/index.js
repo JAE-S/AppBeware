@@ -89,6 +89,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     paddingTop: 30,
     zIndex: 3,
+    position: "relative", 
     backgroundColor: "#F7C533",
     // height: 250,
     width: "100%",
@@ -137,14 +138,14 @@ const useStyles = makeStyles(theme => ({
     right: 0,
   },
   divider: {
-    height: theme.spacing(2),
     padding: "10px 20px!important",
-        height: 50,
+    height: 50,
   },
 }));
 
 function NoOptionsMessage(props) {
   return (
+    <>
     <Typography
       color="textSecondary"
       className={props.selectProps.classes.noOptionsMessage}
@@ -152,6 +153,8 @@ function NoOptionsMessage(props) {
     >
       {props.children}
     </Typography>
+    <Button>{props.alertTeam}</Button>
+    </>
   );
 }
 
@@ -220,7 +223,10 @@ Control.propTypes = {
 
 function Option(props) {
   return (
-    <MenuItem
+    <>
+    {/* {suggestions.map((suggestion, i) => ( */}
+ 
+    <MenuItem 
       ref={props.innerRef}
       selected={props.isFocused}
       component="div"
@@ -230,9 +236,14 @@ function Option(props) {
       {...props.innerProps}
     >
       {props.children}
+      <p>{props.shiledCount}</p>
+      {/* <Button>{suggestion.label}</Button> */}
+      <Button>Add app </Button>
     </MenuItem>
-   
+     {/* ))} */}
+     </>
   );
+  
 }
 
 Option.propTypes = {
@@ -285,7 +296,7 @@ Placeholder.propTypes = {
 function SingleValue(props) {
   return (
     <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-      {props.children}
+     {props.children}
     </Typography>
   );
 }
@@ -308,11 +319,10 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-
 const components = {
   Control,
   NoOptionsMessage,
-  // Option,
+  Option,
   Placeholder,
   SingleValue,
   ValueContainer,
@@ -374,10 +384,11 @@ export default function SearchAppAnnie() {
           placeholder="Snapchat"
           options={suggestions}
           components={components}
+         
           value={single}
           onChange={handleChangeSingle}
         />
-        <div className={classes.divider} />
+       <div className={classes.divider} />
       </NoSsr>
       {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
       {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
@@ -386,3 +397,7 @@ export default function SearchAppAnnie() {
     
   );
 }
+
+     {/* {suggestions.map((suggestion, i) => (
+                    <div key={i}>
+                    <p value={suggestion.label} label={suggestion.label}> {suggestion.label}</p></div> ))} */}
