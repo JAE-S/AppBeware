@@ -1,6 +1,8 @@
-// Import React 
+// Import React and Redux
 // =========================================================
     import React, { Component } from "react";  
+    import { connect } from "react-redux";
+    
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
@@ -14,6 +16,8 @@
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer"
+    import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
+
 // Import API 
 // =========================================================
     import API from "../utils/API";
@@ -34,15 +38,9 @@
         state = {
             allListedApps: [],
             allCategories: [],
+            singleCategory: [],
             allShields: [],
             appNames: []          
-        }
-
-        getCategories = () => {
-            API.getCategories()
-                .then(res => 
-                    this.setState({ allCategories: res.data })
-                ).catch(err => console.log(err));
         }
 
         getListedApps = () => {
@@ -66,14 +64,15 @@
                 ).catch(err => console.log(err));
         }
 
-        viewCategory = () => {
-            console.log("You clicked me");
-            console.log(this.state.appNames);
-
+        // Runs Redux to grab all of the categories necessary to render the homepage
+        // COMPLETE
+        viewCategory = (catId) => {
+            this.props.viewSingleCategory(catId)
+            this.props.history.push('/categoryPage');
         }
 
         componentDidMount() {
-            this.getCategories();
+            this.props.viewAllCategories();
             this.getAppNames();
             this.getListedApps();
             this.getShields();
@@ -94,7 +93,16 @@
                             </Grid>
                             
                             <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
-        
+                                    // Just here for future use if needed
+                                    {/* {this.state.allShields.map(shield => (
+                                        <ShieldLayout 
+                                            shieldIcon={shield.icon}
+                                            altTxt={shield.altText}
+                                            title={shield.name}
+                                            info={shield.info}
+                                        />
+                                    ))} */}
+
                                 <ShieldLayout 
                                     shieldIcon={ PR_icon }
                                     altTxt="Predator Risk icon"
@@ -138,7 +146,7 @@
                     <HomepageTabNav>
                         <Grid container spacing={2}>
 
-                            {this.state.allCategories.map(cat => (
+                        {this.props.categories.map(cat => (
                                 <CategoryCards
                                     key={cat.id}
                                     title={cat.name}
@@ -157,4 +165,8 @@
         }
     }
 
-    export default Homepage; 
+    const mapStateToProps = state => ({
+        categories: state.categories.allCategories
+    })
+
+    export default connect(mapStateToProps, { viewAllCategories, viewSingleCategory })(Homepage); 

@@ -12,11 +12,14 @@ export default function(state=initialState, action) {
         case VIEW_ALL_CATEGORIES:
             return {
                 ...state,
-                allCategories: action.payload
+                allCategories: action.payload.data
             }
 
-        
-
+        case VIEW_SINGLE_CATEGORY:
+            return {
+                ...state,
+                singleCategory: action.payload.data
+            }
 
         default: 
             return state;

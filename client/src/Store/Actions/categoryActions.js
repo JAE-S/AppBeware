@@ -1,4 +1,3 @@
-import axios from "./node_modules/axios";
 import API from "../../utils/API";
 import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "./new-types";
 
@@ -11,4 +10,14 @@ export const viewAllCategories = () => dispatch => {
         }))
         .catch(err => console.log(err));
     
+}
+
+export const viewSingleCategory = (catId) => dispatch => {
+    API.filterCategory(catId)
+        .then(singleCategory => dispatch({
+            type: VIEW_SINGLE_CATEGORY,
+            payload: singleCategory
+        }))
+        .catch(err => console.log(err));
+
 }

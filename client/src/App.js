@@ -6,7 +6,7 @@
 
   // Import Components
 // =========================================================
-  import store from "./Store/store";
+  import store from "./store/store";
   import SplashPage from "./pages/SplashPage"
   import Homepage from "./pages/Homepage"
   import ProfilePage from "./pages/ProfilePage"

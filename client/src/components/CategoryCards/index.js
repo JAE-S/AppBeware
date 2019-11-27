@@ -59,7 +59,7 @@
                   <Button 
                     className={classes.buttonSpacing}
                     size="small"
-                    onClick={props.viewCategory}
+                    onClick={() => props.viewCategory(props.catId)}
                     >View Apps
                   </Button>
               </CardActions>
