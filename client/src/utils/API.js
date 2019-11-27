@@ -39,9 +39,13 @@ export default {
   googleSignIn: function (userInfo) {
     console.log("Logging in under google " + userInfo)
     return axios.post('/api/googleLogin')
+  },
+  
+  filterCategory: function (catId) {
+    console.log("Inside filter Category - API.js");
+    console.log("API has catId set to: " + catId);
+    return axios.get('/api/filter-category/' + catId)
   }
-
-
 
 
 
