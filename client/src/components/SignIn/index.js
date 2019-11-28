@@ -1,4 +1,11 @@
+// AppBeware Sign In
+// Import React 
+// =========================================================
 import React from 'react';
+
+// Import Material UI components 
+// =========================================================
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +19,18 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+// Import Styles
+// =========================================================
+
+import Modal from "../Modals"
+import SignUp from "../SignUp"
+
+
+
+// Custom Styles 
+// =========================================================
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -32,6 +51,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
 
 export default function SignIn() {
   const classes = useStyles();
@@ -90,9 +110,13 @@ export default function SignIn() {
             </Grid>
             <Grid item>
               
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+             <Modal 
+                  modalTitle="Create An Account"
+                  openModal="Don't have an account? Sign Up"
+                  modalBody={<SignUp/>}
+                  
+                />
+          
             </Grid>
           </Grid>
         </form>
