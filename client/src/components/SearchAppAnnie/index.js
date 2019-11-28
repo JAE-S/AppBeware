@@ -1,17 +1,17 @@
 // Import React 
 // =========================================================
-    import React from 'react';
+    import React, { Component} from 'react';
+    import { connect } from "react-redux"
 // Import Node Packages
 // =========================================================
     import Select from 'react-select';
     import PropTypes from 'prop-types';
-    import clsx from 'clsx';
 // Import Material UI styles
 // =========================================================
     import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import { Typography, Button, NoSsr, TextField } from '@material-ui/core';
+    import { Grid, Typography, Button, NoSsr, TextField } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     import MenuItem from '@material-ui/core/MenuItem';
@@ -20,17 +20,15 @@
 // =========================================================
     import API from '../../utils/API';
     import Wrapper from "../Wrapper"
+    // import CategoryCards from "../CategoryCards"
+// Custom Components
+// =========================================================
+    // import { viewAppNames} from "../../store/actions/appActions";
 // Import CSS
 // =========================================================
     import "./style.css"
+// import { isNull } from 'util';
 
-// function listAppNames() {
-//   const appNames = API.getAppNames().then(function() {
-//     console.log(appNames);
-//   });
-// };
-
-// listAppNames();
 
 const suggestions = [
   { label: '9GAG', id: 1},
@@ -153,7 +151,7 @@ function NoOptionsMessage(props) {
     >
       {props.children}
     </Typography>
-    <Button>{props.alertTeam}</Button>
+    <Button>button {props.alertTeam}</Button>
     </>
   );
 }
@@ -390,6 +388,17 @@ export default function SearchAppAnnie() {
         />
        <div className={classes.divider} />
       </NoSsr>
+      {/* <div> */}
+         {/* {this.props.appNames.map(dog => (
+              <div 
+                  key={dog.id}
+                  title={dog.label}
+                  dogId={dog.id}
+                  // viewCategory={this.viewCategory}
+              />
+          )
+              )} */}
+        
       {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
       {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
       </Wrapper>
@@ -397,6 +406,58 @@ export default function SearchAppAnnie() {
     
   );
 }
+
+// class SearchAppAnnie extends Component {
+
+
+//   // Grabbing all necessary data from Redux
+//   componentDidMount() {
+//       this.props.viewAppNames();
+//   }
+
+//   render() {
+//       return (
+//           <>
+//           {/* <Nav/> */}
+//          {/* <main> */}
+        
+//           <Wrapper>
+//                   <Grid container spacing={2}>
+
+//                   {this.props.appNames.map(dog => (
+//                       <CategoryCards
+//                           key={dog.id}
+//                           title={dog.label}
+//                           dogId={dog.id}
+//                           viewCategory={this.viewCategory}
+//                       />
+//                   )
+//                       )}
+
+//                   </Grid>
+        
+//           </Wrapper>
+//           {/* </main> */}
+//       {/* <Footer/> */}
+//    </>
+//   )
+//   }
+// }
+
+
+// const mapStateToProps = state => ({
+ 
+//   appNames: state.apps.allAppNames
+
+// })
+// export default connect(mapStateToProps, 
+//   { 
+//       viewAppNames, 
+
+//   })
+//   (SearchAppAnnie); 
+
+
 
      {/* {suggestions.map((suggestion, i) => (
                     <div key={i}>

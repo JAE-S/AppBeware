@@ -5,28 +5,13 @@
 // Import Material UI Styles
 // =========================================================
    import { makeStyles } from '@material-ui/core/styles';
+   import { Link } from 'react-router-dom'
 // Import Material UI Components
 // =========================================================
-   import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
+   import { CssBaseline, Typography, Container } from '@material-ui/core/';
 
 
-function Copyright() {
-  return (
-     
-  <Typography  justify="center" variant="body2">
-      {' © '}
-      <Link color="inherit" To="/Homepage">
-        AppBeware
-      </Link>{' 2019 | '}
-      
- <Link color="inherit" To="/TermsConditions">
-        Disclaimer
-      </Link>
-
-      {' | Sign Out'}
-    </Typography>
-  )}
-// Styles
+   // Styles
 // =========================================================
     const useStyles = makeStyles(theme => ({
       root: {
@@ -42,9 +27,27 @@ function Copyright() {
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
         backgroundColor: "#56585D",
-        textAlign: 'center'
+        textAlign: 'center',
+        textDecoration: "none"
       },
     }));
+
+function Copyright() {
+  return (
+     
+  <Typography  justify="center" variant="body2">
+      {' © '}
+      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/Homepage">
+        AppBeware
+      </Link>{' 2019 | '}
+      
+      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/termsConditionsPage">
+        Disclaimer
+      </Link>
+
+      {' | Sign Out'}
+    </Typography>
+  )}
 
 export default function StickyFooter() {
   const classes = useStyles();
