@@ -1,3 +1,4 @@
+
 import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "../actions/new-types";
 
 const initialState = {

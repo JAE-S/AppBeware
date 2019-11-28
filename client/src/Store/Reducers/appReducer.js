@@ -3,7 +3,7 @@ import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES } from "../actions/new-t
 const initialState = {
     allListedApps: [],
     singleApp: {},
-    allAppNames: []
+    allAppNames: [],
 };
 
 export default function(state=initialState, action) {

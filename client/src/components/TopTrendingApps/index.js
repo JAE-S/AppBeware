@@ -107,7 +107,7 @@ Media.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default function YouTube() {
+export default function TopApp() {
   return (
     <Box overflow="hidden">
       {/* <Media loading /> */}
