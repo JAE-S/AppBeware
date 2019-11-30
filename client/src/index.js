@@ -8,7 +8,7 @@
 // Import Components
 // =========================================================
     import App from './App'
-    import configureStore, { history }  from './store/store'
+    import configureStore, { history }  from './Store/store'
 
     
 // Configure the store for Redux

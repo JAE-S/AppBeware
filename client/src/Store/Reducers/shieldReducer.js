@@ -1,4 +1,4 @@
-import { VIEW_ALL_SHIELDS } from "../actions/new-types";
+import { VIEW_ALL_SHIELDS } from "../Actions/new-types";
 
 const initialState = {
     allShields: []

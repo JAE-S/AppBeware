@@ -8,17 +8,6 @@ import { connect } from "react-redux";
 import { Grid } from '@material-ui/core';
 // Import Custom Components
 // =========================================================
-<<<<<<< HEAD
-    import SearchAppAnnie from "../components/SearchAppAnnie"
-    import Wrapper from "../components/Wrapper"
-    import Nav from "../components/Nav"
-    import HeaderContainer from "../components/HeaderContainer"
-    import HomepageTabNav from "../components/HomepageTabNav"
-    import CategoryCards from "../components/CategoryCards"
-    import ShieldLayout from "../components/HomepageShieldLayout"
-    import Footer from "../components/Footer"
-    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-=======
 import SearchAppAnnie from "../components/SearchAppAnnie"
 import Wrapper from "../components/Wrapper"
 import Nav from "../components/Nav"
@@ -27,10 +16,9 @@ import HomepageTabNav from "../components/HomepageTabNav"
 import CategoryCards from "../components/CategoryCards"
 import ShieldLayout from "../components/HomepageShieldLayout"
 import Footer from "../components/Footer"
-import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
-import { viewAllListedApps, viewAppNames, viewSingleApp } from "../store/actions/appActions";
-import { viewAllShields } from "../store/actions/shieldActions";
->>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
+import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+import { viewAllListedApps, viewAppNames, viewSingleApp } from "../Store/Actions/appActions";
+import { viewAllShields } from "../Store/Actions/shieldActions";
 
 // Import API 
 // =========================================================

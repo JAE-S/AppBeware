@@ -17,16 +17,10 @@
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
 // =========================================================
-<<<<<<< HEAD
-  import Modal from "../Modals";
-  import AboutTheShields from "../AboutTheShields";
-import API from '../../utils/API';
-=======
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
 
     
->>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
 
 // Custom Styles
 // =========================================================
@@ -125,9 +119,9 @@ export default function Nav() {
   };
 
   const handleSignOut = () => {
-    API.signOut()
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    // API.signOut()
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
   }
 
   const menuId = 'primary-search-account-menu';

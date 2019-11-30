@@ -6,11 +6,7 @@
   import PropTypes from 'prop-types'
 
 // Import Components
-// =========================================================
-<<<<<<< HEAD
-  import store from "./Store/store";
-=======
->>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
+// =========================================================  
   import SplashPage from "./pages/SplashPage"
   import Homepage from "./pages/Homepage"
   import ProfilePage from "./pages/ProfilePage"
@@ -25,23 +21,6 @@
   
 // App Routes
 // =========================================================
-<<<<<<< HEAD
-class App extends Component {
-  
-  render() {
-    return (
-      <Provider store = { store }>
-        <Router>
-              <Switch>
-                  <Route exact path="/" component={SplashPage} />
-                  <Route exact path="/homepage" component={Homepage} />
-                  <Route exact path="/categoryPage" component={CategoryPage} />
-                  <Route exact path="/appPage" component={AppPage} />
-                  <Route exact path="/profilePage" component={ProfilePage} />
-                  <Route exact path="/alertPage" component={AlertPage} />
-                  <Route exact path="/termsConditionsPage" component={TermsConditions} />
-                
-=======
     const App = ({ history }) => {
       return ( 
         <ConnectedRouter history={history}>
@@ -53,7 +32,6 @@ class App extends Component {
               <Route exact path="/appPage" component={AppPage} />
               <Route  path="/profilePage" component={ProfilePage} />
               <Route exact path="/termsConditionsPage" component={TermsConditions} />
->>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
               </Switch>
           </>
         </ConnectedRouter>

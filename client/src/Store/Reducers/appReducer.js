@@ -1,4 +1,4 @@
-import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES } from "../actions/new-types";
+import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES } from "../Actions/new-types";
 
 const initialState = {
     allListedApps: [],

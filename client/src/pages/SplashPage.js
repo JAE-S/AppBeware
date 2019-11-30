@@ -89,15 +89,7 @@ function SplashPage() {
               //  onClick={() => this.googleButton()}
                >
               <h3 style={{ padding: 20 }} className={classes.or}>OR</h3>
-<<<<<<< HEAD
-              <div><img 
-              className={classes.sButtons} 
-              id="googleSignIn" 
-              style={{ backgroundColor: "transparent", height: 60}}
-              alt="Google Sign In Button" 
-              src={ GoogleImage }
-              /></div>
-=======
+              
               <div>
                  <Modal 
                   modalTitle="Sign in with Google"
@@ -110,7 +102,6 @@ function SplashPage() {
                 
                 
                 </div>
->>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
               </Grid>
             </Paper>
         </Grid>
