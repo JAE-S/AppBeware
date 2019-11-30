@@ -4,9 +4,6 @@ import React from 'react';
 
 // Import Material UI components 
 // =========================================================
-<<<<<<< HEAD
-  import { Input, Button} from '@material-ui/core/';
-=======
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -22,7 +19,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
->>>>>>> 9cc944276282d5905fc64473cbc0388d3a471cd9
 // Import Styles
 // =========================================================
 import Modal from "../Modals"

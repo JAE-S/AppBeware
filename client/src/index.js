@@ -10,7 +10,7 @@
 // Import Components
 // =========================================================
     import App from './App'
-    import configureStore from "./Store/store.js"
+    import configureStore from "./Store"
     import history from "./Store/history";
 
     // window.store = store;
