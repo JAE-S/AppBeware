@@ -5,7 +5,7 @@ import { routerMiddleware } from 'connected-react-router'
 // connectRouter, 
 // import thunk from "redux-thunk";
 import history from './history'
-import createRootReducer from "./reducers";
+import createRootReducer from "./reducers/index";
 
 const initialState = {};
 

@@ -15,7 +15,7 @@
     // import HeaderContainer from "../components/HeaderContainer"
     import SearchAppAnnie from "../components/SearchAppAnnie"
     import { Image, AddToWatchList , ViewApp, AppDetails} from "../components/SearchResults";
-    import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
+    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
 
 // Import styles
 // =========================================================

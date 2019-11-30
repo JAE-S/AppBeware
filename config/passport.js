@@ -45,10 +45,10 @@ module.exports = (db, app, passport) => {
   app.use(passport.session());
 
   // Hook up Passport Local Strategy
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
     // console.log('new local strategy', email, password);
     // When a user tries to log in this code runs
-    db.User.findOne({ where: { email: email } }).then((user) => {
+    db.User.findOne({ where: { username: username } }).then((user) => {
       // If there's no user with the given email
       if (!user) {
         return done(null, false, { error: 'No user found.' });

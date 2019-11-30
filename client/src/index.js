@@ -10,8 +10,8 @@
 // Import Components
 // =========================================================
     import App from './App'
-    import configureStore from "./store/store.js"
-    import history from "./store/history";
+    import configureStore from "./Store/store.js"
+    import history from "./Store/history";
 
     // window.store = store;
 // Configure the store for Redux

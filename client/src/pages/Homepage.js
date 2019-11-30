@@ -16,9 +16,9 @@ import HomepageTabNav from "../components/HomepageTabNav"
 import CategoryCards from "../components/CategoryCards"
 import ShieldLayout from "../components/HomepageShieldLayout"
 import Footer from "../components/Footer"
-import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
-import { viewAllListedApps, viewAppNames, viewSingleApp } from "../store/actions/appActions";
-import { viewAllShields } from "../store/actions/shieldActions";
+import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+import { viewAllListedApps, viewAppNames, viewSingleApp } from "../Store/Actions/appActions";
+import { viewAllShields } from "../Store/Actions/shieldActions";
 
 // Import API 
 // =========================================================
