@@ -19,14 +19,22 @@ module.exports = function (db) {
       },
 
       filterCategory: function (req, res) {
-        db.ListedApp.findAll({
-          where: {
-            CategoryId: req.params.id
-          },
-          include: db.Category
-        }).then(function(dbAppCategories) {
-          res.json(dbAppCategories)
-        });
+
+        // req.params.id = category ID.  If it is equal to 6, that indicates we should pull all apps.
+        if (req.params.id === "6") {
+          db.ListedApp.findAll({}).then(function (dbAppCategories) {
+            res.json(dbAppCategories);
+          });
+        } else {
+          db.ListedApp.findAll({
+            where: {
+              CategoryId: req.params.id
+            },
+            include: db.Category
+          }).then(function(dbAppCategories) {
+            res.json(dbAppCategories)
+          });
+        }
       },
 
       getCategories: function (req, res) {

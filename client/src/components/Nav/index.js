@@ -1,8 +1,7 @@
 // Import React
 // =========================================================
-    import {BrowserRouter as Router, Link,
-} from 'react-router-dom';
     import React from 'react'; 
+    import { Link } from 'react-router-dom'
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
@@ -18,9 +17,16 @@
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
 // =========================================================
+<<<<<<< HEAD
   import Modal from "../Modals";
   import AboutTheShields from "../AboutTheShields";
 import API from '../../utils/API';
+=======
+    import Modal from "../Modals";
+    import AboutTheShields from "../AboutTheShields";
+
+    
+>>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
 
 // Custom Styles
 // =========================================================
@@ -140,7 +146,7 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-      <Link to="/ProfilePage" style={{ textDecoration: 'none' }}>
+      <Link to="/profilePage" style={{ textDecoration: 'none' }}>
         Profile
       </Link>
      </MenuItem>
@@ -179,7 +185,9 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
+      <Link to="/profilePage" style={{ textDecoration: 'none' }}>
       Profile
+      </Link>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
         <Badge className={classes.alert} badgeContent={17} color="secondary">

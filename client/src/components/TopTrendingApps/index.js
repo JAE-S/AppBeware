@@ -34,7 +34,7 @@ const data = [
     warnRatingAverage: 2.83,
     badges: DB_icon,
     createdAt: '8 hours ago',
-  },
+  }
 
 ];
 
@@ -107,7 +107,7 @@ Media.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default function YouTube() {
+export default function TopApp() {
   return (
     <Box overflow="hidden">
       {/* <Media loading /> */}

@@ -1,17 +1,17 @@
 // Import React 
 // =========================================================
-    import React from 'react';
+    import React, { Component} from 'react';
+    import { connect } from "react-redux"
 // Import Node Packages
 // =========================================================
     import Select from 'react-select';
     import PropTypes from 'prop-types';
-    import clsx from 'clsx';
 // Import Material UI styles
 // =========================================================
     import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import { Typography, Button, NoSsr, TextField } from '@material-ui/core';
+    import { Grid, Typography, Button, NoSsr, TextField } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     import MenuItem from '@material-ui/core/MenuItem';
@@ -20,17 +20,15 @@
 // =========================================================
     import API from '../../utils/API';
     import Wrapper from "../Wrapper"
+    // import CategoryCards from "../CategoryCards"
+// Custom Components
+// =========================================================
+    // import { viewAppNames} from "../../store/actions/appActions";
 // Import CSS
 // =========================================================
     import "./style.css"
+// import { isNull } from 'util';
 
-// function listAppNames() {
-//   const appNames = API.getAppNames().then(function() {
-//     console.log(appNames);
-//   });
-// };
-
-// listAppNames();
 
 const suggestions = [
   { label: '9GAG', id: 1},
@@ -89,6 +87,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     paddingTop: 30,
     zIndex: 3,
+    position: "relative", 
     backgroundColor: "#F7C533",
     // height: 250,
     width: "100%",
@@ -137,14 +136,14 @@ const useStyles = makeStyles(theme => ({
     right: 0,
   },
   divider: {
-    height: theme.spacing(2),
     padding: "10px 20px!important",
-        height: 50,
+    height: 50,
   },
 }));
 
 function NoOptionsMessage(props) {
   return (
+    <>
     <Typography
       color="textSecondary"
       className={props.selectProps.classes.noOptionsMessage}
@@ -152,6 +151,8 @@ function NoOptionsMessage(props) {
     >
       {props.children}
     </Typography>
+    <Button>button {props.alertTeam}</Button>
+    </>
   );
 }
 
@@ -220,7 +221,10 @@ Control.propTypes = {
 
 function Option(props) {
   return (
-    <MenuItem
+    <>
+    {/* {suggestions.map((suggestion, i) => ( */}
+ 
+    <MenuItem 
       ref={props.innerRef}
       selected={props.isFocused}
       component="div"
@@ -230,9 +234,14 @@ function Option(props) {
       {...props.innerProps}
     >
       {props.children}
+      <p>{props.shiledCount}</p>
+      {/* <Button>{suggestion.label}</Button> */}
+      <Button>Add app </Button>
     </MenuItem>
-   
+     {/* ))} */}
+     </>
   );
+  
 }
 
 Option.propTypes = {
@@ -285,7 +294,7 @@ Placeholder.propTypes = {
 function SingleValue(props) {
   return (
     <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-      {props.children}
+     {props.children}
     </Typography>
   );
 }
@@ -308,11 +317,10 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 };
 
-
 const components = {
   Control,
   NoOptionsMessage,
-  // Option,
+  Option,
   Placeholder,
   SingleValue,
   ValueContainer,
@@ -374,11 +382,23 @@ export default function SearchAppAnnie() {
           placeholder="Snapchat"
           options={suggestions}
           components={components}
+         
           value={single}
           onChange={handleChangeSingle}
         />
-        <div className={classes.divider} />
+       <div className={classes.divider} />
       </NoSsr>
+      {/* <div> */}
+         {/* {this.props.appNames.map(dog => (
+              <div 
+                  key={dog.id}
+                  title={dog.label}
+                  dogId={dog.id}
+                  // viewCategory={this.viewCategory}
+              />
+          )
+              )} */}
+        
       {/* <Button onClick={viewAllApps}>View All Apps </Button> */}
       {/* <Button onClick={viewAppNames}>View App Names Only </Button> */}
       </Wrapper>
@@ -386,3 +406,59 @@ export default function SearchAppAnnie() {
     
   );
 }
+
+// class SearchAppAnnie extends Component {
+
+
+//   // Grabbing all necessary data from Redux
+//   componentDidMount() {
+//       this.props.viewAppNames();
+//   }
+
+//   render() {
+//       return (
+//           <>
+//           {/* <Nav/> */}
+//          {/* <main> */}
+        
+//           <Wrapper>
+//                   <Grid container spacing={2}>
+
+//                   {this.props.appNames.map(dog => (
+//                       <CategoryCards
+//                           key={dog.id}
+//                           title={dog.label}
+//                           dogId={dog.id}
+//                           viewCategory={this.viewCategory}
+//                       />
+//                   )
+//                       )}
+
+//                   </Grid>
+        
+//           </Wrapper>
+//           {/* </main> */}
+//       {/* <Footer/> */}
+//    </>
+//   )
+//   }
+// }
+
+
+// const mapStateToProps = state => ({
+ 
+//   appNames: state.apps.allAppNames
+
+// })
+// export default connect(mapStateToProps, 
+//   { 
+//       viewAppNames, 
+
+//   })
+//   (SearchAppAnnie); 
+
+
+
+     {/* {suggestions.map((suggestion, i) => (
+                    <div key={i}>
+                    <p value={suggestion.label} label={suggestion.label}> {suggestion.label}</p></div> ))} */}

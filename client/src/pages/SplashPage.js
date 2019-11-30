@@ -6,6 +6,7 @@
    import Wrapper from "../components/Wrapper"
    import SignIn from "../components/SignIn"
    import SignUp from "../components/SignUp"
+  import SignInGoogle from "../components/SignInGoogle"
    import Modal from "../components/Modals"
 // Import Material UI components 
 // =========================================================
@@ -88,6 +89,7 @@ function SplashPage() {
               //  onClick={() => this.googleButton()}
                >
               <h3 style={{ padding: 20 }} className={classes.or}>OR</h3>
+<<<<<<< HEAD
               <div><img 
               className={classes.sButtons} 
               id="googleSignIn" 
@@ -95,6 +97,20 @@ function SplashPage() {
               alt="Google Sign In Button" 
               src={ GoogleImage }
               /></div>
+=======
+              <div>
+                 <Modal 
+                  modalTitle="Sign in with Google"
+                  openModal={<img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/>}
+                  modalBody={<SignInGoogle/>}
+               
+                />
+                
+                
+                
+                
+                </div>
+>>>>>>> 3ca700dfb9422f7ad93eed69a7e3c5102c370ecf
               </Grid>
             </Paper>
         </Grid>
