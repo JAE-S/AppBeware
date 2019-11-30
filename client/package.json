@@ -10,6 +10,7 @@
     "autosuggest-highlight": "^3.1.1",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.6.1",
+    "downshift": "^3.4.4",
     "history": "^4.10.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
