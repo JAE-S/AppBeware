@@ -8,7 +8,8 @@
     import { fade, makeStyles } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
+    import {AppBar, Toolbar, IconButton, Typography, Badge, MenuItem, Menu } from '@material-ui/core';
+    // InputBase,
 // Import Material UI Icons
 // =========================================================
     // import SearchIcon from '@material-ui/icons/Search';

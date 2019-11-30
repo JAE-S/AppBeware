@@ -22,11 +22,11 @@ export default function(state=initialState, action) {
                 allAppNames: action.payload.data
             }
 
-//         case VIEW_SINGLE_APP:
-//             return {
-//                 ...state,
-//                 singleApp: action.payload.data
-//             }
+        case VIEW_SINGLE_APP:
+            return {
+                ...state,
+                singleApp: action.payload.data
+            }
 
         default: 
             return state;

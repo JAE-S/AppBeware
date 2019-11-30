@@ -2,8 +2,6 @@
 // =========================================================
   import React from "react";
   import { Route, Switch } from 'react-router'
-  import { ConnectedRouter } from 'connected-react-router'
-  import PropTypes from 'prop-types'
 
 // Import Components
 // =========================================================
@@ -21,9 +19,9 @@
   
 // App Routes
 // =========================================================
-    const App = ({ history }) => {
+    const App = () => {
+
       return ( 
-        <ConnectedRouter history={history}>
           <>
             <Switch>
               <Route exact path="/" component={SplashPage} />
@@ -34,12 +32,7 @@
               <Route exact path="/termsConditionsPage" component={TermsConditions} />
               </Switch>
           </>
-        </ConnectedRouter>
       )
-    }
-
-    App.propTypes = {
-      history: PropTypes.object,
     }
 
     export default App;

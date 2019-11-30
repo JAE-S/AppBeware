@@ -1,86 +1,29 @@
 // Import React 
 // =========================================================
-    import React, { Component} from 'react';
-    import { connect } from "react-redux"
+    import React from 'react';
 // Import Node Packages
 // =========================================================
     import Select from 'react-select';
-    import PropTypes from 'prop-types';
+    // import PropTypes from 'prop-types';
 // Import Material UI styles
 // =========================================================
     import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import { Grid, Typography, Button, NoSsr, TextField } from '@material-ui/core';
+    import { NoSsr} from '@material-ui/core';
+    // import {  Typography, Button, NoSsr, TextField } from '@material-ui/core';
+
 // Import Material UI Icons
 // =========================================================
-    import MenuItem from '@material-ui/core/MenuItem';
+    // import MenuItem from '@material-ui/core/MenuItem';
     // import CancelIcon from '@material-ui/icons/Cancel';
-// Import API
-// =========================================================
-    import API from '../../utils/API';
-    import Wrapper from "../Wrapper"
-    // import CategoryCards from "../CategoryCards"
 // Custom Components
 // =========================================================
-    // import { viewAppNames} from "../../store/actions/appActions";
+  import Wrapper from "../Wrapper"
 // Import CSS
 // =========================================================
     import "./style.css"
-// import { isNull } from 'util';
 
-
-const suggestions = [
-  { label: '9GAG', id: 1},
-  { label: 'ASKfm', id: 2},
-  { label: 'Badoo', id: 3},
-  { label: 'Bigo Live', id: 4},
-  { label: 'Blendr', id: 5},
-  { label: 'Bumble', id: 6},
-  { label: 'Burnbook', id: 7},
-  { label: 'BYF'},
-  { label: 'Chatous'},
-  { label: 'Comvo'},
-  { label: 'Cydia'},
-  { label: 'Discord'},
-  { label: 'Grindr'},
-  { label: 'GroupME'},
-  { label: 'Holla'},
-  { label: 'Hot or Not'},
-  { label: 'Houseparty'},
-  { label: 'IMVU'},
-  { label: 'Instagram'},
-  { label: 'Jailbreak'},
-  { label: 'Kik'},
-  { label: 'Line'},
-  { label: 'Lipsi'},
-  { label: 'LiveME'},
-  { label: 'MeetMe'},
-  { label: 'Omegle'},
-  { label: 'Periscope'},
-  { label: 'Sarahah'},
-  { label: 'Secret Calculator'},
-  { label: 'Skout'},
-  { label: 'Snapchat'},
-  { label: 'Social Media Freedom'},
-  { label: 'Tellonym'},
-  { label: 'TikTok'},
-  { label: 'Tinder'},
-  { label: 'Tumblr'},
-  { label: 'Twitch'},
-  { label: 'Voxer'},
-  { label: 'VSCO'},
-  { label: 'WhatsApp'},
-  { label: 'Whisper'},
-  { label: 'Wishbone'},
-  { label: 'YouNow'},
-  { label: 'YouTube'},
-  { label: 'Yubo'},
-  { label: 'ZEPETO'}
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
-}));
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -141,192 +84,216 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function NoOptionsMessage(props) {
-  return (
-    <>
-    <Typography
-      color="textSecondary"
-      className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}
-    >
-      {props.children}
-    </Typography>
-    <Button>button {props.alertTeam}</Button>
-    </>
-  );
-}
+// function NoOptionsMessage(props) {
+//   return (
+//     <>
+//     <Typography
+//       color="textSecondary"
+//       className={props.selectProps.classes.noOptionsMessage}
+//       {...props.innerProps}
+//     >
+//       {props.children}
+//     </Typography>
+//     <Button>button {props.alertTeam}</Button>
+//     </>
+//   );
+// }
 
-NoOptionsMessage.propTypes = {
-  // The children to be rendered.
-  children: PropTypes.node,
-   // Props to be passed on to the wrapper.
-  innerProps: PropTypes.object.isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
+// NoOptionsMessage.propTypes = {
+//   // The children to be rendered.
+//   children: PropTypes.node,
+//    // Props to be passed on to the wrapper.
+//   innerProps: PropTypes.object.isRequired,
+//   selectProps: PropTypes.object.isRequired,
+// };
 
-function inputComponent({ inputRef, ...props }) {
-  return <div ref={inputRef} {...props} />;
-}
+// function inputComponent({ inputRef, ...props }) {
+//   return <div ref={inputRef} {...props} />;
+// }
 
-inputComponent.propTypes = {
-  inputRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.any.isRequired,
-    }),
-  ]),
-};
+// inputComponent.propTypes = {
+//   inputRef: PropTypes.oneOfType([
+//     PropTypes.func,
+//     PropTypes.shape({
+//       current: PropTypes.any.isRequired,
+//     }),
+//   ]),
+// };
 
-function Control(props) {
-  const {
-    children,
-    innerProps,
-    innerRef,
-    selectProps: { classes, TextFieldProps },
-  } = props;
+// function Control(props) {
+//   const {
+//     children,
+//     innerProps,
+//     innerRef,
+//     selectProps: { classes, TextFieldProps },
+//   } = props;
 
-  return (
-    <TextField
-      fullWidth
-      InputProps={{
-        inputComponent,
-        inputProps: {
-          className: classes.input,
-          ref: innerRef,
-          children,
-          ...innerProps,
-        },
-      }}
-      {...TextFieldProps}
-    />
-  );
-}
+//   return (
+//     <TextField
+//       fullWidth
+//       InputProps={{
+//         inputComponent,
+//         inputProps: {
+//           className: classes.input,
+//           ref: innerRef,
+//           children,
+//           ...innerProps,
+//         },
+//       }}
+//       {...TextFieldProps}
+//     />
+//   );
+// }
 
-Control.propTypes = {
-  // Children to render.
-  children: PropTypes.node,
-  // The mouse down event and the innerRef to pass down to the controller element.
-  innerProps: PropTypes.shape({
-    onMouseDown: PropTypes.func.isRequired,
-  }).isRequired,
-  innerRef: PropTypes.oneOfType([
-    PropTypes.oneOf([null]),
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.any.isRequired,
-    }),
-  ]).isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
+// Control.propTypes = {
+//   // Children to render.
+//   children: PropTypes.node,
+//   // The mouse down event and the innerRef to pass down to the controller element.
+//   innerProps: PropTypes.shape({
+//     onMouseDown: PropTypes.func.isRequired,
+//   }).isRequired,
+//   innerRef: PropTypes.oneOfType([
+//     PropTypes.oneOf([null]),
+//     PropTypes.func,
+//     PropTypes.shape({
+//       current: PropTypes.any.isRequired,
+//     }),
+//   ]).isRequired,
+//   selectProps: PropTypes.object.isRequired,
+// };
 
-function Option(props) {
-  return (
-    <>
-    {/* {suggestions.map((suggestion, i) => ( */}
+// function Option(props) {
+//   return (
+//     <>
+//     {/* {suggestions.map((suggestion, i) => ( */}
  
-    <MenuItem 
-      ref={props.innerRef}
-      selected={props.isFocused}
-      component="div"
-      style={{
-        fontWeight: props.isSelected ? 500 : 400,
-      }}
-      {...props.innerProps}
-    >
-      {props.children}
-      <p>{props.shiledCount}</p>
-      {/* <Button>{suggestion.label}</Button> */}
-      <Button>Add app </Button>
-    </MenuItem>
-     {/* ))} */}
-     </>
-  );
+//     <MenuItem 
+//       ref={props.innerRef}
+//       selected={props.isFocused}
+//       component="div"
+//       style={{
+//         fontWeight: props.isSelected ? 500 : 400,
+//       }}
+//       {...props.innerProps}
+//     >
+//       {props.children}
+//       <p>{props.shiledCount}</p>
+//       {/* <Button>{suggestion.label}</Button> */}
+//       <Button>Add app </Button>
+//     </MenuItem>
+//      {/* ))} */}
+//      </>
+//   );
   
-}
+// }
 
-Option.propTypes = {
-  // The children to be rendered.
-  children: PropTypes.node,
-   // props passed to the wrapping element for the group.
-  innerProps: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    onMouseMove: PropTypes.func.isRequired,
-    onMouseOver: PropTypes.func.isRequired,
-    tabIndex: PropTypes.number.isRequired,
-  }).isRequired,
+// Option.propTypes = {
+//   // The children to be rendered.
+//   children: PropTypes.node,
+//    // props passed to the wrapping element for the group.
+//   innerProps: PropTypes.shape({
+//     id: PropTypes.string.isRequired,
+//     key: PropTypes.string.isRequired,
+//     onClick: PropTypes.func.isRequired,
+//     onMouseMove: PropTypes.func.isRequired,
+//     onMouseOver: PropTypes.func.isRequired,
+//     tabIndex: PropTypes.number.isRequired,
+//   }).isRequired,
 
-   // Inner ref to DOM Node
-  innerRef: PropTypes.oneOfType([
-    PropTypes.oneOf([null]),
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.any.isRequired,
-    }),
-  ]).isRequired,
+//    // Inner ref to DOM Node
+//   innerRef: PropTypes.oneOfType([
+//     PropTypes.oneOf([null]),
+//     PropTypes.func,
+//     PropTypes.shape({
+//       current: PropTypes.any.isRequired,
+//     }),
+//   ]).isRequired,
 
-   // Whether the option is focused.
-  isFocused: PropTypes.bool.isRequired,
-   // Whether the option is selected.
-  isSelected: PropTypes.bool.isRequired,
-};
+//    // Whether the option is focused.
+//   isFocused: PropTypes.bool.isRequired,
+//    // Whether the option is selected.
+//   isSelected: PropTypes.bool.isRequired,
+// };
 
-function Placeholder(props) {
-  const { selectProps, innerProps = {}, children } = props;
-  return (
-    <Typography color="textSecondary" className={selectProps.classes.placeholder} {...innerProps}>
-      {children}
-    </Typography>
-  );
-}
+// function Placeholder(props) {
+//   const { selectProps, innerProps = {}, children } = props;
+//   return (
+//     <Typography color="textSecondary" className={selectProps.classes.placeholder} {...innerProps}>
+//       {children}
+//     </Typography>
+//   );
+// }
 
-Placeholder.propTypes = {
+// Placeholder.propTypes = {
 
-   // The children to be rendered.
-  children: PropTypes.node,
+//    // The children to be rendered.
+//   children: PropTypes.node,
  
-   // props passed to the wrapping element for the group.
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
-};
+//    // props passed to the wrapping element for the group.
+//   innerProps: PropTypes.object,
+//   selectProps: PropTypes.object.isRequired,
+// };
 
-function SingleValue(props) {
-  return (
-    <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-     {props.children}
-    </Typography>
-  );
-}
+// function SingleValue(props) {
+//   return (
+//     <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+//      {props.children}
+//     </Typography>
+//   );
+// }
 
-SingleValue.propTypes = {
-  // The children to be rendered.
-  children: PropTypes.node,
-// Props passed to the wrapping element for the group.
-  innerProps: PropTypes.any.isRequired,
-  selectProps: PropTypes.object.isRequired,
-};
+// SingleValue.propTypes = {
+//   // The children to be rendered.
+//   children: PropTypes.node,
+// // Props passed to the wrapping element for the group.
+//   innerProps: PropTypes.any.isRequired,
+//   selectProps: PropTypes.object.isRequired,
+// };
 
-function ValueContainer(props) {
-  return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
-}
+// function ValueContainer(props) {
+//   return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
+// }
 
-ValueContainer.propTypes = {
-  // The children to be rendered.
-  children: PropTypes.node,
-  selectProps: PropTypes.object.isRequired,
-};
+// ValueContainer.propTypes = {
+//   // The children to be rendered.
+//   children: PropTypes.node,
+//   selectProps: PropTypes.object.isRequired,
+// };
 
-const components = {
-  Control,
-  NoOptionsMessage,
-  Option,
-  Placeholder,
-  SingleValue,
-  ValueContainer,
-};
+// const components = {
+//   Control,
+//   NoOptionsMessage,
+//   Option,
+//   Placeholder,
+//   SingleValue,
+//   ValueContainer,
+// };
 
-export default function SearchAppAnnie() {
+
+// const CustomOption = props => {
+//   const { data, innerRef, innerProps } = props;
+//   return data.custom ? (
+//     <div ref={innerRef} {...innerProps}>
+//       I'm a custom link
+//     </div>
+//   ) : (
+//     <components.Option {...props} />
+//   );
+// };
+
+// const options = [
+//   { value: "chocolate", label: "Chocolate" },
+//   { value: "strawberry", label: "Strawberry" },
+//   { value: "vanilla", label: "Vanilla" },
+//   { custom: true }
+// ];
+
+// function App() {
+//   return <Select components={{ Option: CustomOption }} options={options} />;
+// }
+
+
+export default function SearchAppAnnie(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);
@@ -336,23 +303,23 @@ export default function SearchAppAnnie() {
   };
 
 
-  const viewAllApps = () => {
-    console.log("You clicked me!");
-    API.getListedApps()
-      .then(function(response) {
-        console.log("I'm back");
-        console.log(response.data);
-      });
-  };
+  // const viewAllApps = () => {
+  //   console.log("You clicked me!");
+  //   API.getListedApps()
+  //     .then(function(response) {
+  //       console.log("I'm back");
+  //       console.log(response.data);
+  //     });
+  // };
 
-  const viewAppNames = () => {
-    console.log("Looking for app names in alphabetical order");
-    API.getAppNames()
-      .then(function(response) {
-        console.log("I'm back");
-        console.log(response.data);
-      })
-  };
+  // const viewAppNames = () => {
+  //   console.log("Looking for app names in alphabetical order");
+  //   API.getAppNames()
+  //     .then(function(response) {
+  //       console.log("I'm back");
+  //       console.log(response.data);
+  //     })
+  // };
 
   const selectStyles = {
     input: base => ({
@@ -365,10 +332,10 @@ export default function SearchAppAnnie() {
   };
 
   return (
-    <div className={classes.root}>
-    <Wrapper>
+    <div >
+    <Wrapper className={classes.root}>
       <h2 align="center"> Search for an app or see what's trending! </h2>
-      <NoSsr className="formStyle">
+      <NoSsr>
         <Select
           classes={classes}
           styles={selectStyles}
@@ -380,12 +347,15 @@ export default function SearchAppAnnie() {
             },
           }}
           placeholder="Snapchat"
-          options={suggestions}
-          components={components}
+          options={props.title}
+          // components={components}
          
-          value={single}
+          // value={single}
           onChange={handleChangeSingle}
-        />
+        >
+        {props.children}
+        </Select>
+         
        <div className={classes.divider} />
       </NoSsr>
       {/* <div> */}
@@ -406,59 +376,3 @@ export default function SearchAppAnnie() {
     
   );
 }
-
-// class SearchAppAnnie extends Component {
-
-
-//   // Grabbing all necessary data from Redux
-//   componentDidMount() {
-//       this.props.viewAppNames();
-//   }
-
-//   render() {
-//       return (
-//           <>
-//           {/* <Nav/> */}
-//          {/* <main> */}
-        
-//           <Wrapper>
-//                   <Grid container spacing={2}>
-
-//                   {this.props.appNames.map(dog => (
-//                       <CategoryCards
-//                           key={dog.id}
-//                           title={dog.label}
-//                           dogId={dog.id}
-//                           viewCategory={this.viewCategory}
-//                       />
-//                   )
-//                       )}
-
-//                   </Grid>
-        
-//           </Wrapper>
-//           {/* </main> */}
-//       {/* <Footer/> */}
-//    </>
-//   )
-//   }
-// }
-
-
-// const mapStateToProps = state => ({
- 
-//   appNames: state.apps.allAppNames
-
-// })
-// export default connect(mapStateToProps, 
-//   { 
-//       viewAppNames, 
-
-//   })
-//   (SearchAppAnnie); 
-
-
-
-     {/* {suggestions.map((suggestion, i) => (
-                    <div key={i}>
-                    <p value={suggestion.label} label={suggestion.label}> {suggestion.label}</p></div> ))} */}
