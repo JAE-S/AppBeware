@@ -1,6 +1,6 @@
 import API from "../../utils/API";
-import { VIEW_ALL_APPS, VIEW_SINGLE_APPS, VIEW_APP_NAMES } from "./new-types";
-
+import { VIEW_ALL_APPS, VIEW_APP_NAMES } from "./new-types";
+// VIEW_SINGLE_APPS, 
 export const viewAllListedApps = () => dispatch => {
     API.getListedApps()
         .then(allListedApps => dispatch({
@@ -19,6 +19,6 @@ export const viewAppNames = () => dispatch => {
         .catch(err => console.log(err));
 }
 
-export const viewSingleApp = (appId) => dispatch => {
-    // TODO:
-}
+// export const viewSingleApp = (appId) => dispatch => {
+//     // TODO:
+// }

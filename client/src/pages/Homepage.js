@@ -22,7 +22,7 @@ import { viewAllShields } from "../store/actions/shieldActions";
 
 // Import API 
 // =========================================================
-import API from "../utils/API";
+// import API from "../utils/API";
 // Import Media
 // =========================================================
 import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -156,5 +156,4 @@ export default connect(mapStateToProps,
         viewAllListedApps, 
         viewAppNames, 
         viewAllShields 
-    })
-    (Homepage); 
+    })(Homepage); 

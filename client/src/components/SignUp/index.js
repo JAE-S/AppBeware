@@ -3,7 +3,7 @@
   import React, { Component } from "react";
 // Import Material UI Components
 // =========================================================
-  import { Input, Button, DialogActions} from '@material-ui/core/';
+  import { Input, Button} from '@material-ui/core/';
 // Import Styles
 // =========================================================
   import "./style.css"
