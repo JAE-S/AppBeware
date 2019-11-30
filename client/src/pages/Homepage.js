@@ -16,7 +16,7 @@
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer"
-    import { viewAllCategories, viewSingleCategory } from "../store/actions/categoryActions";
+    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
 
 // Import API 
 // =========================================================

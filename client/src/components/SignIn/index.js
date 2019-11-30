@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-import { Input, Button} from '@material-ui/core/';
-import API from "../../utils/API"
-=======
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -17,7 +12,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
->>>>>>> 7b2fbab1d0a4b47476de70aba05e741b24dcd7ca
 
 const useStyles = makeStyles(theme => ({
   paper: {
