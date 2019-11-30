@@ -1,24 +1,36 @@
 // Import React
 // =========================================================
-    import * as React from "react";
-    import { render } from "react-dom";
+    import React from "react";
+    import { render } from "react-dom"
+
 // Redux Requirementts
 // =========================================================
     import { Provider } from 'react-redux'
+    import { ConnectedRouter } from 'connected-react-router' 
 // Import Components
 // =========================================================
     import App from './App'
-    import configureStore, { history }  from './Store/store'
+    import configureStore from "./Store/store.js"
+    import history from "./Store/history";
 
-    
+    // window.store = store;
 // Configure the store for Redux
 // =========================================================
     const store = configureStore()
 // Render the application
 // =========================================================
-    render(
+   render(
         <Provider store={store}>
-            <App history={history} />
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
         </Provider>,
         document.getElementById("root"),
     );
+
+    // render(
+    //     <Provider store={store}>
+    //         <App history={history} />
+    //     </Provider>,
+    //     document.getElementById("root"),
+    // );

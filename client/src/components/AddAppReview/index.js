@@ -12,7 +12,7 @@
 
     // Import Material UI icons
 // =========================================================
-    import { Brightness1Rounded, AddAlert, NotificationImportant, NotificationsOff, Check} from '@material-ui/icons/';
+    import { Brightness1Rounded, AddAlert, NotificationsOff, Check} from '@material-ui/icons/';
     // SettingsIcon
 // Import Components
 // =========================================================
@@ -240,19 +240,18 @@ function QontoStepIcon(props) {
       const handleReset = () => {
         setActiveStep(0);
       };
-      const [state, setState] = React.useState({
-        checkedA: true,
-        checkedB: true,
-        checkedF: true,
-        checkedG: true,
-      });
+      // const [state, setState] = React.useState({
+      //   checkedA: true,
+      //   checkedB: true,
+      //   checkedF: true,
+      //   checkedG: true,
+      // });
     
-    
-      const handleChange = name => event => {
-        setValue(event.target.value);
-        setState({ ...state, [name]: event.target.checked });
-      };
-      const [value, setValue] = React.useState('Controlled');
+      // const handleChange = name => event => {
+      //   setValue(event.target.value);
+      //   setState({ ...state, [name]: event.target.checked });
+      // };
+      // const [value, setValue] = React.useState('Controlled');
     
       return (
         <div className={classes.root}>
