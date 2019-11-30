@@ -1,11 +1,11 @@
 // Import React and Redux
 // =========================================================
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "./node_modules/redux";
 import { routerMiddleware } from 'connected-react-router'
 // connectRouter, 
 // import thunk from "redux-thunk";
 import history from './history'
-import createRootReducer from "./reducers";
+import createRootReducer from "./Reducers";
 
 const initialState = {};
 
