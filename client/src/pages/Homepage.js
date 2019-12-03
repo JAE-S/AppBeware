@@ -35,6 +35,7 @@ import VC_icon from "../assets/images/shields/violent_content.png";
 // =========================================================
 import "../assets/styling/appStyle.css"
 
+
 class Homepage extends Component {
 
     state = {
