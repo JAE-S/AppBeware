@@ -59,8 +59,8 @@
                   <Button 
                     className={classes.buttonSpacing}
                     size="small"
-                    onClick={props.viewCategory}
-                    >View Apps
+                    onClick={() => props.viewCategory(props.catId)}
+                    >show me some stuff
                   </Button>
               </CardActions>
               </Grid>

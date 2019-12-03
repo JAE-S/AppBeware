@@ -1,26 +1,26 @@
-
 // Import React
 // =========================================================
-    import {BrowserRouter as Router, Link,
-} from 'react-router-dom';
     import React from 'react'; 
+    import { Link } from 'react-router-dom'
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
 // Import Material UI components
 // =========================================================
-    import {AppBar, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu } from '@material-ui/core';
+    import {AppBar, Toolbar, IconButton, Typography, Badge, MenuItem, Menu } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
-    // import SearchIcon from '@material-ui/icons/Search';
     import Dashboard from '@material-ui/icons/Dashboard';
-    // import AccountCircle from '@material-ui/icons/AccountCircle';
     import NotificationsIcon from '@material-ui/icons/Notifications';
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
 // =========================================================
-  import Modal from "../Modals";
-  import AboutTheShields from "../AboutTheShields";
+    import Modal from "../Modals";
+    import AboutTheShields from "../AboutTheShields";
+    import {Alerts, Count, Notifications } from "../Alerts";
+import { getThemeProps } from '@material-ui/styles';
+
+    
 
 // Custom Styles
 // =========================================================
@@ -118,6 +118,12 @@ export default function Nav() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleSignOut = () => {
+    // API.signOut()
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -134,14 +140,18 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-      <Link to="/ProfilePage" style={{ textDecoration: 'none' }}>
+      <Link to="/profilePage" style={{ textDecoration: 'none' }}>
         Profile
       </Link>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-        <Badge className={classes.alert} badgeContent={17} color="secondary">
-            Alerts
-        </Badge>
+        <Modal
+            modalTitle="Alert Settings"
+            openModal="Alert Settings"
+            modalBody={<Alerts/>}
+            modalButton1="Close"
+        />
+       
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Modal
@@ -151,7 +161,7 @@ export default function Nav() {
             modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}> 
+      <MenuItem onClick={handleSignOut}> 
         Sign Out
       </MenuItem>
     </Menu>
@@ -173,10 +183,12 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
+      <Link to="/profilePage" style={{ textDecoration: 'none' }}>
       Profile
+      </Link>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-        <Badge className={classes.alert} badgeContent={17} color="secondary">
+        <Badge className={classes.alert} badgeContent={<Count/>} color="secondary">
             Alerts
         </Badge>
       </MenuItem>
@@ -188,7 +200,7 @@ export default function Nav() {
           modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}> 
+      <MenuItem onClick={handleSignOut}> 
         Sign Out
       </MenuItem>
     </Menu>
@@ -205,27 +217,11 @@ export default function Nav() {
               </Link>
           </Typography>
 
-   
-
-          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase style={{ paddingLeft: "50px" }}
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton aria-label={`show ${<Count/>} new notifications`} color="inherit">
+              <Badge badgeContent={<Count/>} color="secondary">
+                <Notifications showAlerts={<NotificationsIcon />}/>
               </Badge>
             </IconButton>
             <IconButton

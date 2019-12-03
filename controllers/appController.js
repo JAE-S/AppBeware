@@ -18,15 +18,46 @@ module.exports = function (db) {
         });
       },
 
-      filterCategory: function (req, res) {
+      selectTrendingApps: function (req, res) {
+        console.log("Inside appController");
+        let tempArray = [];
+        db.ListedApp.findAll({}).then(function (dbListedApps) {
+          for (i=0; i<3; i++) {
+            let randomIndex = Math.floor(Math.random() * dbListedApps.length + 1)
+            console.log("Random number is : " + randomIndex);
+            tempArray.push(dbListedApps[randomIndex])
+          }
+          res.json(tempArray);
+        });
+      },
+
+      viewSingleApp: function (req, res) {
+        console.log("Inside appController - viewSingleApp - looking for ID: " + req.params.id);
         db.ListedApp.findAll({
           where: {
-            CategoryId: req.params.id
-          },
-          include: db.Category
-        }).then(function(dbAppCategories) {
-          res.json(dbAppCategories)
-        });
+            id: req.params.id
+          }
+        }).then(function(dbSingleApp) {
+          res.json(dbSingleApp)
+        })
+      },
+      
+      filterCategory: function (req, res) {
+        // req.params.id = category ID.  If it is equal to 6, that indicates we should pull all apps.
+        if (req.params.id === "6") {
+          db.ListedApp.findAll({}).then(function (dbAppCategories) {
+            res.json(dbAppCategories);
+          });
+        } else {
+          db.ListedApp.findAll({
+            where: {
+              CategoryId: req.params.id
+            },
+            include: db.Category
+          }).then(function(dbAppCategories) {
+            res.json(dbAppCategories)
+          });
+        }
       },
 
       getCategories: function (req, res) {

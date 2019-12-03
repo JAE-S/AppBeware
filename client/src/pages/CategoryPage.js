@@ -1,10 +1,13 @@
-// Import React
+// Import React and Redux
 // =========================================================
     import React, { Component } from "react"; 
-// Import Material Ui Components
+    import { connect } from "react-redux";
+
+    // Import Material Ui Components
 // =========================================================
     import { Table, TableRow, TableBody, TableCell } from '@material-ui/core/';
-// Import Components
+
+    // Import Components
 // =========================================================
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
@@ -12,6 +15,8 @@
     // import HeaderContainer from "../components/HeaderContainer"
     import SearchAppAnnie from "../components/SearchAppAnnie"
     import { Image, AddToWatchList , ViewApp, AppDetails} from "../components/SearchResults";
+    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+
 // Import styles
 // =========================================================
     import "../assets/styling/appStyle.css"
@@ -38,6 +43,12 @@ class Categories extends Component {
         event.preventDefault(); 
         console.log("view this app")
           
+    }
+
+    testButton = () => {
+        console.log("you clicked me");
+        console.log(this.props.categories);
+        console.log(this.props);
     }
 
      render() {
@@ -92,6 +103,10 @@ class Categories extends Component {
                     ))}
                     </TableBody>
                </Table>
+               <button
+                    onClick={this.testButton}
+                >Testing Only
+                </button>
 
             </Wrapper>
             </main>
@@ -100,4 +115,9 @@ class Categories extends Component {
         )
     }
 }
-export default Categories;
+
+const mapStateToProps = state => ({
+    categories: state.categories.singleCategory
+})
+
+export default connect(mapStateToProps, { viewAllCategories, viewSingleCategory })(Categories); 

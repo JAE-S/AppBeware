@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+
+import { viewSingleApp, selectTrendingApps } from "../../Store/Actions/appActions";
+
 import PropTypes from 'prop-types';
 import { Grid, Card, Box, Typography } from '@material-ui/core/';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -34,84 +38,84 @@ const data = [
     warnRatingAverage: 2.83,
     badges: DB_icon,
     createdAt: '8 hours ago',
-  },
+  }
 
 ];
 
-function Media(props) {
-  const { loading = false } = props;
+        function Media(props) {
+          const { loading = false } = props;
 
-  return (
-    <Grid container wrap="nowrap">
-      {(loading ? Array.from(new Array(3)) : data).map((item, index) => (
-     <Card style={{ maxWidth: "300px", width: "100%", margin: "10px", padding: "5px"}}>
-        <Box key={index} style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
-          {item ? (
-               <Grid container wrap="wrap" spacing={2}>
-             <Grid item xm={4}>
-            <img className="trendImage" style={{ width: 80, height: 80, borderRadius: 16 }} alt={item.name} src={item.logoUrl} />
+          return (
+            <Grid container wrap="nowrap">
+              {(loading ? Array.from(new Array(3)) : data).map((item, index) => (
+            <Card style={{ maxWidth: "300px", width: "100%", margin: "10px", padding: "5px"}}>
+                <Box key={index} style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
+                  {item ? (
+                      <Grid container wrap="wrap" spacing={2}>
+                    <Grid item xm={4}>
+                    <img className="trendImage" style={{ width: 80, height: 80, borderRadius: 16 }} alt={item.name} src={item.logoUrl} />
+                    </Grid>
+                    <Grid item xm={8}>
+                    <div>
+                    <Typography gutterBottom variant="body2">
+                      {item.name}
+                  </Typography>
+                  </div>
+                  <div>
+                  <Typography variant="caption" color="textSecondary">
+                        {`${"Last Updated: "} • ${item.createdAt}`}
+                  </Typography>
+                  </div>
+                  <div>
+                  <Typography variant="caption" color="textSecondary">
+                      <button>View App</button>
+                  </Typography>
+                  </div>
+                  </Grid>
+                  
+                  </Grid>
+                  ) : (
+                    <Skeleton variant="rect" width={80} height={80} />
+                  )}
+
+                  {item ? (
+                    <Box pr={2}>
+                    
+                      <Typography className="dangerRating" variant="body2" color="textSecondary">
+                        {`${"Danger Rating: " + item.warnRatingAverage}`}
+                      </Typography>
+
+                      <div>
+                        <img 
+                          alt={item.name}
+                          src={item.badges}
+                          style={{ width: 40, height: 40 }}
+                        />
+                      </div>
+
+                    </Box>
+                  ) : (
+                    <Box pt={0.5}>
+                      <Skeleton />
+                      <Skeleton width="60%" />
+                    </Box>
+                  )}
+                </Box>
+                </Card>
+              ))}
             </Grid>
-            <Grid item xm={8}>
-            <div>
-            <Typography gutterBottom variant="body2">
-              {item.name}
-          </Typography>
-          </div>
-          <div>
-          <Typography variant="caption" color="textSecondary">
-                {`${"Last Updated: "} • ${item.createdAt}`}
-          </Typography>
-          </div>
-          <div>
-          <Typography variant="caption" color="textSecondary">
-              <button>View App</button>
-          </Typography>
-          </div>
-          </Grid>
-          
-          </Grid>
-          ) : (
-            <Skeleton variant="rect" width={80} height={80} />
-          )}
+          );
+        }
 
-          {item ? (
-            <Box pr={2}>
-             
-              <Typography className="dangerRating" variant="body2" color="textSecondary">
-                {`${"Danger Rating: " + item.warnRatingAverage}`}
-              </Typography>
+        Media.propTypes = {
+          loading: PropTypes.bool,
+        };
 
-              <div>
-                <img 
-                  alt={item.name}
-                  src={item.badges}
-                  style={{ width: 40, height: 40 }}
-                />
-              </div>
-
+        export default function TopApp() {
+          return (
+            <Box overflow="hidden">
+              {/* <Media loading /> */}
+              <Media />
             </Box>
-          ) : (
-            <Box pt={0.5}>
-              <Skeleton />
-              <Skeleton width="60%" />
-            </Box>
-          )}
-        </Box>
-        </Card>
-      ))}
-    </Grid>
-  );
-}
-
-Media.propTypes = {
-  loading: PropTypes.bool,
-};
-
-export default function YouTube() {
-  return (
-    <Box overflow="hidden">
-      {/* <Media loading /> */}
-      <Media />
-    </Box>
-  );
-}
+          );
+        }
