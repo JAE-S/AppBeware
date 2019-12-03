@@ -1,9 +1,10 @@
-import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES } from "../Actions/new-types";
+import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS } from "../Actions/new-types";
 
 const initialState = {
     allListedApps: [],
-    singleApp: {},
+    singleApp: [],
     allAppNames: [],
+    trendingApps: []
 };
 
 export default function(state=initialState, action) {
@@ -20,6 +21,12 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 allAppNames: action.payload.data
+            }
+
+        case SELECT_TRENDING_APPS:
+            return {
+                ...state,
+                trendingApps: action.payload.data
             }
 
         case VIEW_SINGLE_APP:

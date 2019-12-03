@@ -18,6 +18,16 @@ export default {
     return axios.get('/api/app-names-only');
   },
 
+  selectTrendingApps: function() {
+    console.log("Inside select Trending Apps - API.js");
+    return axios.get('/api/select-trending-apps')
+  },
+
+  getSingleApp: function(appId) {
+    console.log("Inside get single app - API.js - using appId: " + appId)
+    return axios.get('/api/get-single-app/' + appId);
+  },
+
   getCategories: function() {
     return axios.get('/api/get-categories');
   },
