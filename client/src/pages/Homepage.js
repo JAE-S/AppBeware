@@ -17,7 +17,7 @@ import CategoryCards from "../components/CategoryCards"
 import ShieldLayout from "../components/HomepageShieldLayout"
 import Footer from "../components/Footer"
 import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-import { viewAllListedApps, viewAppNames, viewSingleApp } from "../Store/Actions/appActions";
+import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
 import { viewAllShields } from "../Store/Actions/shieldActions";
 
 // Import API 
@@ -35,6 +35,7 @@ import VC_icon from "../assets/images/shields/violent_content.png";
 // =========================================================
 import "../assets/styling/appStyle.css"
 
+
 class Homepage extends Component {
 
     state = {
@@ -48,11 +49,16 @@ class Homepage extends Component {
         this.props.history.push('/categoryPage');
     }
 
-    // // Grabbing all necessary data from Redux
+    viewApp = () => {
+        console.log("Clicking to view individual app");
+    }
+
+    // Grabbing all necessary data from Redux
     // componentDidMount() {
     //     this.props.viewAllCategories();
     //     this.props.viewAppNames();
     //     this.props.viewAllListedApps();
+    //     this.props.selectTrendingApps();
     //     this.props.viewAllShields();
     // }
 
@@ -118,7 +124,7 @@ class Homepage extends Component {
                 </Wrapper>
             </HeaderContainer>
 
-            <SearchAppAnnie />
+            {/* <SearchAppAnnie /> */}
 
             <Wrapper>
                 <HomepageTabNav>
@@ -146,6 +152,8 @@ class Homepage extends Component {
 const mapStateToProps = state => ({
     categories: state.categories.allCategories,
     apps: state.apps.allListedApps,
+    trendingApps: state.apps.trendingApps,
+    appNames: state.apps.allAppNames,
     shields: state.shields.allShields
 })
 
@@ -155,5 +163,6 @@ export default connect(mapStateToProps,
         viewSingleCategory, 
         viewAllListedApps, 
         viewAppNames, 
+        selectTrendingApps,
         viewAllShields 
     })(Homepage); 

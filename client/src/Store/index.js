@@ -3,23 +3,33 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { routerMiddleware } from 'connected-react-router'
 // connectRouter, 
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 import history from './history'
 import createRootReducer from "./reducers";
 
+const enhancers = []
 const initialState = {};
+const middleware = [thunk, routerMiddleware(history)];
+
+if (process.env.NODE_ENV === 'development') {
+  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
+
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension())
+  }
+}
+
+const composedEnhancers = compose(
+  applyMiddleware(...middleware),
+  ...enhancers
+)
 
 export default function configureStore(preloadedState) {
-  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
     createRootReducer(history),
     initialState, 
     preloadedState,
-    composeEnhancer(
-      applyMiddleware(
-        routerMiddleware(history),
-      ),
-    ),
+    composedEnhancers,
   )
 
   // // Hot reloading
@@ -29,8 +39,8 @@ export default function configureStore(preloadedState) {
   //     store.replaceReducer(createRootReducer(history));
   //   });
   // }
-
   return store
+
 }
 // const initialState = {};
 
@@ -72,4 +82,3 @@ export default function configureStore(preloadedState) {
 // //   )
   
 //   export default store;
-

@@ -72,7 +72,11 @@ class signIn extends Component{
       username: this.state.username,
       password: this.state.password
     })
-    .then(res => console.log(res))
+    .then(res => {
+      if(res.data.loggedIn){
+        
+      }
+    })
   }
 
   
