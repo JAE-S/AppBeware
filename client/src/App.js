@@ -10,8 +10,7 @@ import Homepage from "./pages/Homepage"
 import ProfilePage from "./pages/ProfilePage"
 import CategoryPage from "./pages/CategoryPage"
 import AppPage from "./pages/AppPage"
-// import AlertPage from "./pages/Alert"
-import TermsConditions from "./pages/TermsConditions"
+import Disclaimer from "./pages/Disclaimer"
 // Import CSS
 // =========================================================
 import "./assets/styling/appStyle.css"
@@ -29,7 +28,7 @@ import "./assets/styling/appStyle.css"
             <Route exact path="/categoryPage" component={CategoryPage} />
             <Route exact path="/appPage" component={AppPage} />
             <Route  path="/profilePage" component={ProfilePage} />
-            <Route exact path="/termsConditionsPage" component={TermsConditions} />
+            <Route exact path="/disclaimer" component={Disclaimer} />
             </Switch>
         </>
     )
