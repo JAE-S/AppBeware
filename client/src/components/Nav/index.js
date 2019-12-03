@@ -121,7 +121,7 @@ export default function Nav() {
 
   const handleSignOut = () => {
     API.signOut()
-    .then(res => console.log(res))
+    // .then(res => console.log(res))
     .catch(err => console.log(err))
   }
 
@@ -201,7 +201,7 @@ export default function Nav() {
           modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleSignOut}> 
+      <MenuItem onClick={handleSignOut} href="/"> 
         Sign Out
       </MenuItem>
     </Menu>
