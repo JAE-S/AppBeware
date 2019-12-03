@@ -20,7 +20,7 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
-
+    import API from '../../utils/API'
     
 
 // Custom Styles
@@ -120,9 +120,9 @@ export default function Nav() {
   };
 
   const handleSignOut = () => {
-    // API.signOut()
-    // .then(res => console.log(res))
-    // .catch(err => console.log(err))
+    API.signOut()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   const menuId = 'primary-search-account-menu';
