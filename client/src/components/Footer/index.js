@@ -19,7 +19,7 @@ function Copyright() {
         AppBeware
       </Link>{' 2019 | '}
       
- <Link color="inherit" To="/TermsConditions">
+ <Link color="inherit" To="/Disclaimer">
         Disclaimer
       </Link>
 

@@ -13,7 +13,7 @@
   import CategoryPage from "./pages/CategoryPage"
   import AppPage from "./pages/AppPage"
   import AlertPage from "./pages/Alert"
-  import TermsConditions from "./pages/TermsConditions"
+  import Disclaimer from "./pages/Disclaimer"
 // Import CSS
 // =========================================================
   import "./assets/styling/appStyle.css"
@@ -35,7 +35,8 @@ class App extends Component {
                   <Route exact path="/appPage" component={AppPage} />
                   <Route exact path="/profilePage" component={ProfilePage} />
                   <Route exact path="/alertPage" component={AlertPage} />
-                  <Route exact path="/termsConditionsPage" component={TermsConditions} />
+                  <Route exact path="/splashpage" component={SplashPage} />
+                  <Route exact path="/disclaimer" component={Disclaimer} />
                 
               </Switch>
         </Router>
