@@ -26,3 +26,10 @@ yarn-error.log*
 
 .dropbox
 config/config.js
+
+client/src/Store/SCOTT--store.js
+client/src/pages/SCOTT--Homepage.js
+client/src/components/SearchAppAnnie/SCOTT--index.js
+client/src/components/TopTrendingApps/SCOTT--index.js
+client/src/Store/Reducers/test-reducer.js
+client/src/Store/OLD-index.js

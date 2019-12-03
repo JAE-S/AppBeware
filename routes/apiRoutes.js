@@ -16,6 +16,8 @@ module.exports = (passport, db) => {
    // App
    router.get('/listed-app', AppController.getListedApp);
    router.get('/app-names-only', AppController.getAppNames);
+   router.get('/select-trending-apps', AppController.selectTrendingApps);
+   router.get('/get-single-app/:id', AppController.viewSingleApp);
    router.get('/filter-category/:id', AppController.filterCategory);
    router.get('/get-categories', AppController.getCategories);
    router.get('/get-shields', AppController.getShields);
