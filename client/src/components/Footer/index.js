@@ -1,4 +1,5 @@
 
+
 // Import React
 // =========================================================
    import React from 'react';
@@ -41,7 +42,7 @@ function Copyright() {
         AppBeware
       </Link>{' 2019 | '}
       
-      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/termsConditionsPage">
+      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/Disclaimer">
         Disclaimer
       </Link>
 

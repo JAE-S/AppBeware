@@ -56,10 +56,10 @@ class Homepage extends Component {
     // Grabbing all necessary data from Redux
     componentDidMount() {
         this.props.viewAllCategories();
-    //     this.props.viewAppNames();
-    //     this.props.viewAllListedApps();
-    //     this.props.selectTrendingApps();
-    //     this.props.viewAllShields();
+        this.props.viewAppNames();
+        this.props.viewAllListedApps();
+        this.props.selectTrendingApps();
+        this.props.viewAllShields();
     }
 
     render() {
@@ -124,7 +124,7 @@ class Homepage extends Component {
                 </Wrapper>
             </HeaderContainer>
 
-            {/* <SearchAppAnnie /> */}
+            <SearchAppAnnie />
 
             <Wrapper>
                 <HomepageTabNav>

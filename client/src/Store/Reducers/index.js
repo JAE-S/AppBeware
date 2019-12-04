@@ -11,10 +11,10 @@
 // Combine Reducers 
 // =========================================================
     const createRootReducer = (history) => combineReducers({
+        router: connectRouter(history),
         categories: categoryReducer,
         apps: appReducer,
-        shields: shieldReducer,
-        router: connectRouter(history),
+        shields: shieldReducer
     })
 
     export default createRootReducer
