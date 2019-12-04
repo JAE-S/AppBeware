@@ -2,7 +2,7 @@
 // Import React 
 // =========================================================
 import React, {Component} from 'react';
-import API from '../../Utils/API'
+import API from '../../utils/API'
 
 // Import Material UI components 
 // =========================================================

@@ -16,7 +16,7 @@
 // =========================================================
     import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-    import API from "../Utils/API";
+    import API from "../utils/API";
 
 // Custom Styles 
 // =========================================================
