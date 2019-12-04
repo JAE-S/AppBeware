@@ -1,6 +1,13 @@
 export const VIEW_ALL_CATEGORIES = "VIEW_ALL_CATEGORIES";
 export const VIEW_SINGLE_CATEGORY = "VIEW_SINGLE_CATEGORY";
 
+export const VIEW_ALL_APPS = "VIEW_ALL_APPS";
+export const VIEW_SINGLE_APP = "VIEW_SINGLE_APP";
+export const VIEW_APP_NAMES = "VIEW_APP_NAMES";
+export const SELECT_TRENDING_APPS = "SELECT_TRENDING_APPS";
+
+export const VIEW_ALL_SHIELDS = "VIEW_ALL_SHIELDS";
+
 
 
 // Functions to add based on initial state.json

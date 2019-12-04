@@ -1,22 +1,23 @@
 
+
 // Import React
 // =========================================================
    import React from 'react';
 // Import Material UI Styles
 // =========================================================
    import { makeStyles } from '@material-ui/core/styles';
+   import { Link } from 'react-router-dom'
 // Import Material UI Components
 // =========================================================
-   import { CssBaseline, Typography, Container, Link} from '@material-ui/core/';
+   import { CssBaseline, Typography, Container } from '@material-ui/core/';
 
 
-// Styles
+   // Styles
 // =========================================================
     const useStyles = makeStyles(theme => ({
       root: {
         display: 'flex',
         flexDirection: 'column',
-        // minHeight: '15vh',
       },
       main: {
         marginTop: theme.spacing(8),
@@ -27,27 +28,27 @@
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
         backgroundColor: "#56585D",
-        textAlign: 'center'
+        textAlign: 'center',
+        textDecoration: "none"
       },
     }));
 
-    function Copyright() {
-      return (
-         
-      <Typography  justify="center" variant="body2">
-          {' © '}
-          <Link color="inherit" href="http://appbeware.com/">
-            AppBeware
-          </Link>{' 2019 | '}
-          
-     <Link color="inherit" href="../TermsConditions">
-            Disclaimer
-          </Link>
-    
-          {' | Sign Out'}
-        </Typography>
-      )
-    }
+function Copyright() {
+  return (
+     
+  <Typography  justify="center" variant="body2">
+      {' © '}
+      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/Homepage">
+        AppBeware
+      </Link>{' 2019 | '}
+      
+      <Link style={{ textDecoration: "none", color: "#f7f7f7"}} color="inherit" to="/Disclaimer">
+        Disclaimer
+      </Link>
+
+      {' | Sign Out'}
+    </Typography>
+  )}
 
 export default function StickyFooter() {
   const classes = useStyles();
@@ -64,4 +65,3 @@ export default function StickyFooter() {
     </div>
   );
 }
-

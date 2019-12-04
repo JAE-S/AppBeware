@@ -32,7 +32,7 @@
 
     return (
       <div>
-        <Button onClick={handleClickOpen('paper')}>{props.openModal}</Button>
+        <div onClick={handleClickOpen('paper')}>{props.openModal}</div>
         <Dialog
           open={open}
           onClose={handleClose}
