@@ -1,14 +1,14 @@
 const officialCategoryData =
     [
-        { 'label': '6000', 'name': 'Business', 'platform': 'ios'},
+        { 'label': '6000', 'name': 'Business', 'platform': 'ios', 'categoryId': null},
         { 'label': '6001', 'name': 'Weather', 'platform': 'ios'},
         { 'label': '6002', 'name': 'Utilities', 'platform': 'ios'},
         { 'label': '6003', 'name': 'Travel', 'platform': 'ios'},
-        { 'label': '6004', 'name': 'Sports', 'platform': 'ios'},
+        { 'label': '6004', 'name': 'Sports', 'platform': 'ios', 'categoryId': 4},
         { 'label': '6005', 'name': 'Social Networking', 'platform': 'ios'},
         { 'label': '6006', 'name': 'Reference', 'platform': 'ios'},
         { 'label': '6007', 'name': 'Productivity', 'platform': 'ios'},
-        { 'label': '6008', 'name': 'Photo & Video', 'platform': 'ios'},
+        { 'label': '6008', 'name': 'Photo & Video', 'platform': 'ios', 'categoryId': 2},
         { 'label': '6009', 'name': 'News', 'platform': 'ios'},
         { 'label': '6010', 'name': 'Navigation', 'platform': 'ios'},
         { 'label': '6011', 'name': 'Music', 'platform': 'ios'},
