@@ -41,20 +41,25 @@ export default {
     return axios.post('/api/login', userInfo)
   },
 
-  signOut: function(userInfo) {
-    console.log("Signing Out " + userInfo)
+  signOut: function() {
+    console.log("Signing Out ")
     return axios.get('/api/logout')
+    .then(res => console.log(res))
   },
 
   googleSignIn: function (userInfo) {
     console.log("Logging in under google " + userInfo)
     return axios.post('/api/googleLogin')
   },
-  
+
   filterCategory: function (catId) {
     console.log("Inside filter Category - API.js");
     console.log("API has catId set to: " + catId);
     return axios.get('/api/filter-category/' + catId)
+  },
+
+  userInfo: function() {
+    return axios.get('/api/userInfo')
   }
 
 

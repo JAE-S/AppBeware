@@ -70,6 +70,21 @@ module.exports = function (db) {
         db.Shield.findAll({}).then(function (dbShield) {
           res.json(dbShield);
         });
+      },
+
+      userInfo: function (req, res) {
+        db.User.findOne({
+          where: {
+            id: req.session.passport.user.id
+          }
+        })
+        .then(() => {
+          const user= {
+            userInfo: req.session.passport.user,
+            isloggedin: req.isAuthenticated()
+          }
+          res.json(user)
+        })
       }
 
 

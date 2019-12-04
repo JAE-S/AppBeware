@@ -1,7 +1,8 @@
 // AppBeware Sign In
 // Import React 
 // =========================================================
-import React from 'react';
+import React, {Component} from 'react';
+import API from '../../Utils/API'
 
 // Import Material UI components 
 // =========================================================
@@ -32,6 +33,8 @@ import SignUp from "../SignUp"
 // Custom Styles 
 // =========================================================
 
+<<<<<<< HEAD
+=======
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -60,11 +63,134 @@ dialog: {
   
 
 }));
+>>>>>>> c6316b3808ab8aa8dd9717efb9c921f77b8c9978
 
+class signIn extends Component{
+  state = {
+    username: '',
+    password: '',
+  }
 
-export default function SignIn() {
-  const classes = useStyles();
+  makeStyles = theme => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  });
+  handleInputchange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
 
+<<<<<<< HEAD
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.signIn({
+      username: this.state.username,
+      password: this.state.password
+    })
+    .then(res => {
+      if(res.data.loggedIn){
+
+      }
+    })
+  }
+
+  
+  render(){
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={this.makeStyles.paper}>
+          <Avatar className={this.makeStyles.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={this.makeStyles.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="username"
+              autoComplete="email"
+              autoFocus
+              onChange={this.handleInputchange}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={this.handleInputchange}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={this.makeStyles.submit}
+              onClick={this.handleFormSubmit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                {/* <Link href="#" variant="body2">
+                  Forgot password?
+                </Link> */}
+              </Grid>
+              <Grid item>
+                
+              <Modal 
+                    modalTitle="Create An Account"
+                    openModal="Don't have an account? Sign Up"
+                    modalBody={<SignUp/>}
+                    
+                  />
+            
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <Box mt={8}>
+  
+        </Box>
+      </Container>
+    );
+              }
+            }
+
+export default signIn
+=======
   return (
     <Container  maxWidth="xs">
       <CssBaseline />
@@ -130,3 +256,4 @@ export default function SignIn() {
     </Container>
   );
 }
+>>>>>>> c6316b3808ab8aa8dd9717efb9c921f77b8c9978

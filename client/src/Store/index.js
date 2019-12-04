@@ -6,6 +6,7 @@ import { routerMiddleware } from 'connected-react-router'
 import thunk from "redux-thunk";
 import history from './history'
 import createRootReducer from "./Reducers";
+import { viewAllCategories } from "./Actions/categoryActions";
 
 const enhancers = []
 const initialState = {};
