@@ -60,7 +60,7 @@
                     className={classes.buttonSpacing}
                     size="small"
                     onClick={() => props.viewCategory(props.catId)}
-                    >show me some stuff
+                    >View Category
                   </Button>
               </CardActions>
               </Grid>

@@ -7,16 +7,28 @@ export function Image(props) {
             <img
                 alt={props.title}
                 src={props.image}
+                style={{ width: 80, height: 80, borderRadius: 16 }}
             />
         </TableCell>
     )
 }
-
 export function AppDetails(props){
     return (
         <TableCell>
-            Facebook
             <h3>{props.title}</h3> 
+        </TableCell>
+    )
+}
+
+export function Badges(props){
+    return (
+        <TableCell>
+            {props.title}
+              {/* <img
+                alt={props.title}
+                src={props.badgeAlerts}
+                style={{ width: 80, height: 80, borderRadius: 16 }}
+            /> */}
         </TableCell>
     )
 }
@@ -33,10 +45,11 @@ export function ViewApp(props){
     return (
         <TableCell>
             <Button
-                onClick={props.handleSaveBtn}
+                onClick={props.handleViewApp}
             >
-                view app 
+            {props.title}
             </Button> 
+            
         </TableCell>
     )
 }
