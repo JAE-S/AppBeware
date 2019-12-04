@@ -33,6 +33,37 @@ import SignUp from "../SignUp"
 // Custom Styles 
 // =========================================================
 
+<<<<<<< HEAD
+=======
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    
+  },
+
+dialog: {
+    width: '80%',
+    maxHeight: 435,
+  },
+
+  
+
+}));
+>>>>>>> c6316b3808ab8aa8dd9717efb9c921f77b8c9978
 
 class signIn extends Component{
   state = {
@@ -66,6 +97,7 @@ class signIn extends Component{
     })
   }
 
+<<<<<<< HEAD
   handleFormSubmit = event => {
     event.preventDefault();
     API.signIn({
@@ -158,3 +190,70 @@ class signIn extends Component{
             }
 
 export default signIn
+=======
+  return (
+    <Container  maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember"  />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            
+            <Grid item>
+              
+             <Modal 
+                  modalTitle="Create An Account"
+                  openModal="Don't have an account? Sign Up"
+                  modalBody={<SignUp/>}
+                  
+                />
+          
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      
+    </Container>
+  );
+}
+>>>>>>> c6316b3808ab8aa8dd9717efb9c921f77b8c9978

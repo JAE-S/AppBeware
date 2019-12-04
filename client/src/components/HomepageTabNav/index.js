@@ -90,7 +90,7 @@
           </Tabs>
         </AppBar>
         <TabPanel id="trending" value={value} index={0}>
-          <TopTrendingApps/>
+          <TopTrendingApps />
         </TabPanel>
         <TabPanel id="categories" value={value} index={1} {...props}>
           {/* <Grid container spacing={2}> */}

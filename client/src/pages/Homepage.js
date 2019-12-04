@@ -2,6 +2,7 @@
 // =========================================================
 import React, { Component } from "react";  
 import { connect } from "react-redux";
+import { push } from 'connected-react-router'
 
 // Import Material Ui Components
 // =========================================================
@@ -49,8 +50,12 @@ class Homepage extends Component {
         this.props.history.push('/categoryPage');
     }
 
-    viewApp = () => {
-        console.log("Clicking to view individual app");
+    viewApp = (appId) => {
+        console.log("Clicking View App");
+        this.props.viewSingleApp(appId)
+        this.props.history.push('/appPage');
+        // this.props.history.push('/categoryPage');
+    
     }
 
     // Grabbing all necessary data from Redux
