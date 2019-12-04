@@ -1,40 +1,33 @@
 // Import React and Redux
 // =========================================================
-import React, { Component } from "react";  
-import { connect } from "react-redux";
-import { push } from 'connected-react-router'
+    import React, { Component } from "react";  
+    import { connect } from "react-redux";
+    import { push } from 'connected-react-router'
 
 // Import Material Ui Components
 // =========================================================
-import { Grid } from '@material-ui/core';
+    import { Grid } from '@material-ui/core';   
 // Import Custom Components
 // =========================================================
-import SearchAppAnnie from "../components/SearchAppAnnie"
-import Wrapper from "../components/Wrapper"
-import Nav from "../components/Nav"
-import HeaderContainer from "../components/HeaderContainer"
-import HomepageTabNav from "../components/HomepageTabNav"
-import CategoryCards from "../components/CategoryCards"
-import ShieldLayout from "../components/HomepageShieldLayout"
-import Footer from "../components/Footer"
-import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
-import { viewAllShields } from "../Store/Actions/shieldActions";
+    import SearchAppAnnie from "../components/SearchAppAnnie"
+    import Wrapper from "../components/Wrapper"
+    import Nav from "../components/Nav"
+    import HeaderContainer from "../components/HeaderContainer"
+    import HomepageTabNav from "../components/HomepageTabNav"
+    import CategoryCards from "../components/CategoryCards"
+    import ShieldLayout from "../components/HomepageShieldLayout"
+    import Footer from "../components/Footer"
+    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
+    import { viewAllShields } from "../Store/Actions/shieldActions";
 
-// Import API 
-// =========================================================
-// import API from "../utils/API";
 // Import Media
 // =========================================================
-import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-import CB_icon from "../assets/images/shields/cyberbullying.png";
-import DB_icon from "../assets/images/shields/dangerous_behavior.png";
-import PR_icon from "../assets/images/shields/predator_risk.png";
-import SC_icon from "../assets/images/shields/sexual_content.png";
-import VC_icon from "../assets/images/shields/violent_content.png";
+    import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+
 // Import Styles
 // =========================================================
-import "../assets/styling/appStyle.css"
+    import "../assets/styling/appStyle.css"
 
 
 class Homepage extends Component {
@@ -55,7 +48,6 @@ class Homepage extends Component {
         this.props.viewSingleApp(appId)
         this.props.history.push('/appPage');
         // this.props.history.push('/categoryPage');
-    
     }
 
     // Grabbing all necessary data from Redux

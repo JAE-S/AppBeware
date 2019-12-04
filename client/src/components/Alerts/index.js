@@ -4,11 +4,15 @@
 // Import Material UI Styles
 // =========================================================
     import { makeStyles, withStyles  } from '@material-ui/core/styles';
-    // import { purple } from '@material-ui/core/colors';
 // Import Material UI Components
 // =========================================================
     import { Table, TableBody, TableRow, TableCell, Menu, Grid, MenuItem, Tooltip, FormGroup, FormControlLabel, Switch } from '@material-ui/core/';
-    // Import Media
+// Import Material UI Icons
+// =========================================================
+    import CloseIcon from '@material-ui/icons/Close';    
+
+    import "../../assets/styling/appStyle.css"
+// Import Media
 // =========================================================
     import CB_icon from "../../assets/images/shields/cyberbullying.png";
     import DB_icon from "../../assets/images/shields/dangerous_behavior.png";
@@ -87,9 +91,17 @@
                                                     value="checkedA"
                                                     />
                                                 }
-                                            />
+                                            /> 
                                         </Grid>
                                         <Grid item>On</Grid>
+                                        <Grid item>
+                                        <Tooltip title={`Remove ${app.name} from alerts`}>
+                                            <CloseIcon  
+                                                type="submit"
+                                                className="closeIcon"
+                                            />
+                                        </Tooltip>
+                                        </Grid>
                                     </Grid>
                                 </FormGroup>
                             </TableCell>
@@ -132,9 +144,9 @@
           <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
           
           {data.map((app, index) => 
-           <MenuItem key={index} onClick={handleClose}>
-            <img alt={app.name} src={app.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.name}
-           </MenuItem>
+            <MenuItem key={index} onClick={handleClose}>
+                <img alt={app.name} src={app.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.name}
+            </MenuItem>
             )}
            
           </Menu>

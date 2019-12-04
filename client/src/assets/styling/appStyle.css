@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
     overflow: none; 
   }
   main {
@@ -15,7 +15,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #F7F7F7;
+    /* background-color: #F7F7F7; */
+    background-color: rgb(255, 255, 255)!important;
+
   }
   
   h5 {
@@ -51,4 +53,11 @@
 
 .MuiGrid-spacing-xs-2 {
 margin: 0px!important; 
+}
+
+.closeIcon {
+  color: silver; 
+}
+.closeIcon:hover {
+  color: #FC4A1A; 
 }
