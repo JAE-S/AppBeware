@@ -31,6 +31,7 @@
     "bcrypt": "^3.0.6",
     "concurrently": "^5.0.0",
     "connect-session-sequelize": "^6.0.0",
+    "connected-react-router": "^6.6.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

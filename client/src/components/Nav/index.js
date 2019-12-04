@@ -140,7 +140,7 @@ export default function Nav() {
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>
-      <Link to="/profilePage" style={{ textDecoration: 'none' }}>
+      <Link to="/profilePage" style={{ textDecoration: 'none', color: 'black' }}>
         Profile
       </Link>
      </MenuItem>
