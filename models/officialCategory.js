@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         platform: {
             allowNull: false,
             type: DataTypes.STRING
+        },
+        categoryId: {
+            allowNull: true,
+            type: DataTypes.INTEGER
         }
     });
 
