@@ -17,7 +17,7 @@
 // Import Media
 // =========================================================
     import Tony_Smith from "../assets/images/test_profiles/Tony_Smith.png";   
-    import API from "../Utils/API"
+    import API from "../utils/API"
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {

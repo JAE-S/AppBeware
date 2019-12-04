@@ -1,4 +1,4 @@
-import API from "../../Utils/API";
+import API from "../../utils/API";
 import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY } from "./new-types";
 
 export const viewAllCategories = () => dispatch => {
