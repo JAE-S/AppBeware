@@ -5,7 +5,7 @@ import { routerMiddleware } from 'connected-react-router'
 // connectRouter, 
 import thunk from "redux-thunk";
 import history from './history'
-import createRootReducer from "./reducers/index";
+import createRootReducer from "./Reducers";
 import { viewAllCategories } from "./Actions/categoryActions";
 
 const enhancers = []
@@ -35,6 +35,6 @@ export default function configureStore() {
   //     store.replaceReducer(createRootReducer(history));
   //   });
   // }
-  // return store
+  return store
 
 }

@@ -56,6 +56,10 @@ export default {
     console.log("Inside filter Category - API.js");
     console.log("API has catId set to: " + catId);
     return axios.get('/api/filter-category/' + catId)
+  },
+
+  userInfo: function() {
+    return axios.get('/api/userInfo')
   }
 
 

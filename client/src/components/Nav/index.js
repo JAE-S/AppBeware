@@ -17,7 +17,7 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
-    import API from '../../utils/API'
+    import API from '../../Utils/API'
     import {Alerts, Count, Notifications } from "../Alerts";
 import { getThemeProps } from '@material-ui/styles';
 

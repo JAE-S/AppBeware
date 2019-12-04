@@ -1,4 +1,4 @@
-import API from "../../utils/API";
+import API from "../../Utils/API";
 import { VIEW_ALL_SHIELDS } from "./new-types";
 
 export const viewAllShields = () => dispatch => {

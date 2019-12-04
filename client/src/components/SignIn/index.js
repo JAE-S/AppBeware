@@ -2,7 +2,7 @@
 // Import React 
 // =========================================================
 import React, {Component} from 'react';
-import API from '../../utils/API'
+import API from '../../Utils/API'
 
 // Import Material UI components 
 // =========================================================
@@ -74,7 +74,7 @@ class signIn extends Component{
     })
     .then(res => {
       if(res.data.loggedIn){
-        
+
       }
     })
   }

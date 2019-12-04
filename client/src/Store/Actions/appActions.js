@@ -1,4 +1,4 @@
-import API from "../../utils/API";
+import API from "../../Utils/API";
 import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS } from "./new-types";
 
 export const viewAllListedApps = () => dispatch => {
