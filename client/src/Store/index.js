@@ -5,11 +5,12 @@ import { routerMiddleware } from 'connected-react-router'
 // connectRouter, 
 import thunk from "redux-thunk";
 import history from './history'
-import createRootReducer from "./reducers";
+import createRootReducer from "./reducers/index";
+import { viewAllCategories } from "./Actions/categoryActions";
 
-const enhancers = []
-const initialState = {};
-const middleware = [thunk, routerMiddleware(history)];
+// const enhancers = []
+// const initialState = {};
+// const middleware = [thunk, routerMiddleware(history)];
 
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -19,18 +20,27 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
-)
 
-export default function configureStore(preloadedState) {
-  const store = createStore(
-    createRootReducer(history),
-    initialState, 
-    preloadedState,
-    composedEnhancers,
-  )
+
+
+
+
+
+
+
+
+// const composedEnhancers = compose(
+//   applyMiddleware(...middleware),
+//   ...enhancers
+// )
+
+// export default function configureStore(preloadedState) {
+//   const store = createStore(
+//     createRootReducer(history),
+//     initialState, 
+//     preloadedState,
+//     composedEnhancers,
+//   )
 
   // // Hot reloading
   // if (module.hot) {
@@ -39,9 +49,9 @@ export default function configureStore(preloadedState) {
   //     store.replaceReducer(createRootReducer(history));
   //   });
   // }
-  return store
+  // return store
 
-}
+// }
 // const initialState = {};
 
 // const enhancers = []
@@ -82,3 +92,61 @@ export default function configureStore(preloadedState) {
 // //   )
   
 //   export default store;
+
+//===============================
+// Ethan's attempt
+//===============================
+// const CATS_REQUESTED = 'CATS_REQUESTED';
+// const CATS_RECIEVED = 'CATS_RECEIVED';
+// const CATS_FAILED = 'CATS_FAILED';
+
+// const initialState = {data: [], status: ""};
+
+// function viewAllCategories() {
+//   return function(dispatch) {
+//     dispatch({
+//       type: CATS_REQUESTED
+//     });
+//   }
+
+//   fetch(viewAllCategories)
+//   .then( response => response.json())
+//   .then( data => dispatch({
+//     type: CATS_RECIEVED,
+//     payload: data
+//   }))
+//   .catch(error => dispatch({
+//     type: CATS_FAILED,
+//     payload: error
+//   }))
+// }
+
+
+// function categories(state = initalState, action) {
+//   switch (action.type) {
+//     case CATS_REQUESTED: 
+//       state = Object.assign({}, state, {status: "waiting"});
+//       break;
+//     case CATS_RECIEVED: 
+//       state = Object.assign({}, state, {data: [...action.payload], status: 'recieved'});
+//       break;
+//     case CATS_FAILED: 
+//       state = Object.assign({}, state, {status: "failed", error:action.payload});
+//       break;
+//   }
+// }
+
+// return state;
+
+// let store = createStore(categories, initialState, applyMiddleware(thunk));
+
+// store.dispatch(viewAllCategories());
+// store.subscribe(() => {
+//   const state = store.getState()
+//   if(state.status == "waiting"){
+//     return "loading"
+//   }
+//   if(state.status == "recieved"){
+//     return state.data[0]
+//   }
+// })

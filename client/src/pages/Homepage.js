@@ -54,13 +54,13 @@ class Homepage extends Component {
     }
 
     // Grabbing all necessary data from Redux
-    // componentDidMount() {
-    //     this.props.viewAllCategories();
+    componentDidMount() {
+        this.props.viewAllCategories();
     //     this.props.viewAppNames();
     //     this.props.viewAllListedApps();
     //     this.props.selectTrendingApps();
     //     this.props.viewAllShields();
-    // }
+    }
 
     render() {
         return (
