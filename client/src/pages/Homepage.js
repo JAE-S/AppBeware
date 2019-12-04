@@ -82,17 +82,17 @@ class Homepage extends Component {
                         </Grid>
                         
                         <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
-                                {/* // Just here for future use if needed */}
-                                {/* {this.state.allShields.map(shield => (
+
+                                {this.props.shields.map(shield => (
                                     <ShieldLayout 
                                         shieldIcon={shield.icon}
                                         altTxt={shield.altText}
                                         title={shield.name}
                                         info={shield.info}
                                     />
-                                ))} */}
+                                ))}
 
-                            <ShieldLayout 
+                            {/* <ShieldLayout 
                                 shieldIcon={ PR_icon }
                                 altTxt="Predator Risk icon"
                                 title="Predator Risk"
@@ -121,7 +121,7 @@ class Homepage extends Component {
                                 altTxt="Sexual Content icon"
                                 title="Sexual Content"
                                 info="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
-                            />
+                            /> */}
                         
                         </Grid>
                     </Grid>
