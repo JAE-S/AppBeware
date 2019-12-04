@@ -25,7 +25,7 @@
   }
 
   .header {
-    margin-top: 80px!important; 
+    margin-top: 40px!important; 
     margin: 0 auto; 
     max-width: 800px; 
     padding: 20px;
@@ -60,4 +60,10 @@ margin: 0px!important;
 }
 .closeIcon:hover {
   color: #FC4A1A; 
+}
+
+.WithStyles\(ForwardRef\(LinearProgress\)\)-root-309 {
+  /* max-width: 100px;  */
+  width: 90%; 
+
 }
