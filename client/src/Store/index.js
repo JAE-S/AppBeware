@@ -9,27 +9,22 @@ import createRootReducer from "./Reducers";
 
 const enhancers = []
 const initialState = {};
-const middleware = [thunk, routerMiddleware(history)];
+const middleware = [thunk];
 
-if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
+// We might require (preloadedState) as a parameter and then place it right below initial state
+// Necessary for hot reloading???
 
-  if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension())
-  }
-}
-
-const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
-)
-
-export default function configureStore(preloadedState) {
+export default function configureStore() {
   const store = createStore(
     createRootReducer(history),
-    initialState, 
-    preloadedState,
-    composedEnhancers,
+    initialState,
+    compose(
+      applyMiddleware(
+        routerMiddleware(history),
+        ...middleware
+      ),
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
   )
 
   // // Hot reloading
@@ -42,43 +37,3 @@ export default function configureStore(preloadedState) {
   return store
 
 }
-// const initialState = {};
-
-// const enhancers = []
-
-// const middleware = [
-//     thunk,
-//     routerMiddleware(history)
-//   ]
-
-// const store = createStore(
-//     rootReducer, 
-//     initialState, 
-//     compose(
-//         applyMiddleware(...middleware),
-//         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//     )
-// );
-
-// // export default store;
-
-// if (process.env.NODE_ENV === 'development') {
-//     const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
-  
-//     if (typeof devToolsExtension === 'function') {
-//       enhancers.push(devToolsExtension())
-//     }
-//   }
-  
-//   const composedEnhancers = compose(
-//     applyMiddleware(...middleware),
-//     ...enhancers
-//   )
-  
-// //   const store = createStore(
-// //     connectRouter(history)(rootReducer),
-// //     initialState,
-// //     composedEnhancers
-// //   )
-  
-//   export default store;
