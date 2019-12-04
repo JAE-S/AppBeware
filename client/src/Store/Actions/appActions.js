@@ -1,5 +1,6 @@
 import API from "../../utils/API";
 import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS } from "./new-types";
+import { push } from 'connected-react-router'
 
 export const viewAllListedApps = () => dispatch => {
     API.getListedApps()
