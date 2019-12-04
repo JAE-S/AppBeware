@@ -75,14 +75,14 @@ class Homepage extends Component {
                         
                         <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
 
-                            {this.props.shields.map(shield => (
-                                <ShieldLayout 
-                                    shieldIcon={shield.icon}
-                                    altTxt={shield.altText}
-                                    title={shield.name}
-                                    info={shield.info}
-                                />
-                            ))}
+                                {this.props.shields.map(shield => (
+                                    <ShieldLayout 
+                                        shieldIcon={shield.icon}
+                                        altTxt={shield.altText}
+                                        title={shield.name}
+                                        info={shield.info}
+                                    />
+                                ))}
                         
                         </Grid>
                     </Grid>
@@ -101,6 +101,7 @@ class Homepage extends Component {
                                 key={cat.id}
                                 title={cat.name}
                                 catId={cat.id}
+                                imageUrl={cat.imageUrl}
                                 viewCategory={this.viewCategory}
                             />
                         ))}

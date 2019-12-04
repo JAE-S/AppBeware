@@ -45,7 +45,10 @@
               alignItems="center"
         >
               <Grid item sm={4}>
-                  <div style={{ height: "80px", 
+                  <img 
+                    src={props.imageUrl} 
+                    alt={props.title}
+                    style={{ height: "80px", 
                                 width: "80px", 
                                 backgroundColor: "#4FBBC1", 
                                 borderRadius: "10px"}}

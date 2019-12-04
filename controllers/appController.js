@@ -85,6 +85,23 @@ module.exports = function (db) {
           }
           res.json(user)
         })
+      },
+
+      testLink: function (req, res) {
+        console.log("Inside top level of testLink");
+        // db.ClassStudents.create({
+        //   classId: req.params.cid,
+        //   studentId: req.params.sid
+        // })
+        db.ClassStudents.create({
+          classId: req.params.id,
+          studentId: "3"
+        })
+        .then(newLink => {
+          console.log("Inside creation");
+          console.log(`Class ID: ${newLink.classId}, with Student ID ${newLink.studentId} has been created.`);
+          res.json(newLink);
+        });
       }
 
 
