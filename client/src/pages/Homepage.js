@@ -91,37 +91,6 @@ class Homepage extends Component {
                                         info={shield.info}
                                     />
                                 ))}
-
-                            {/* <ShieldLayout 
-                                shieldIcon={ PR_icon }
-                                altTxt="Predator Risk icon"
-                                title="Predator Risk"
-                                info="Apps that expose children to predators through solicitation, sharing personal information, encouragement to meet in person, intent to engage in sexual activity, stalking or harm."
-                            />
-                            <ShieldLayout 
-                                shieldIcon={ DB_icon }
-                                altTxt="Dangerous Behavior icon"
-                                title="Dangerous Behavior"
-                                info="Apps that promote self harm, suicide, eating disorders, choking games, dangerous challenges or other acts where serious injury or death may result."
-                            />
-                            <ShieldLayout 
-                                shieldIcon={ CB_icon }
-                                altTxt="Cyberbullying icon"
-                                title="Cyberbulling "
-                                info="Harassment in the comments and parody videos being created to humiliate and tease some users, particularly users with disabilities. Bullying people from different religious or ethnic backgrounds, blackmail, extortion, public humiliation or harassment."
-                            />
-                            <ShieldLayout 
-                                shieldIcon={ VC_icon }
-                                altTxt="Violent Content icon"
-                                title="Violent Content"
-                                info="Apps that depict or facilitate gratuitous violence or other dangerous activities against people or animals.  These include threats, gun violence, terroism, use, sale or depictions of explosives or firearms."
-                            />
-                            <ShieldLayout 
-                                shieldIcon={ SC_icon }
-                                altTxt="Sexual Content icon"
-                                title="Sexual Content"
-                                info="Apps that contain or promote sexual content, such as nudity, pornography, or any content or services intended to be sexually gratifying."
-                            /> */}
                         
                         </Grid>
                     </Grid>
@@ -140,6 +109,7 @@ class Homepage extends Component {
                                 key={cat.id}
                                 title={cat.name}
                                 catId={cat.id}
+                                imageUrl={cat.imageUrl}
                                 viewCategory={this.viewCategory}
                             />
                         ))}
