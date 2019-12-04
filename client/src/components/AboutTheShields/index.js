@@ -40,8 +40,14 @@
     export default function AboutTheShields(){
     
         return (
+            
             <Table>
                 <TableBody> 
+                    
+                     <InfoTable
+                        title="Danger Ratings"
+                        description="Using a one to five danger rating system the AppBeware community can rate apps based on the potential danger, one being mildly dangerous up to five being the most dangerous."
+                    /> 
             
                     <InfoTable
                         shieldIcon={ DB_icon }

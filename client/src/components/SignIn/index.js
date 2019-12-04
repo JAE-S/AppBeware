@@ -49,7 +49,16 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    
   },
+
+dialog: {
+    width: '80%',
+    maxHeight: 435,
+  },
+
+  
+
 }));
 
 
@@ -57,7 +66,7 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container  maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -90,7 +99,7 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember"  />}
             label="Remember me"
           />
           <Button
@@ -103,11 +112,7 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              {/* <Link href="#" variant="body2">
-                Forgot password?
-              </Link> */}
-            </Grid>
+            
             <Grid item>
               
              <Modal 
@@ -121,9 +126,7 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
- 
-      </Box>
+      
     </Container>
   );
 }
