@@ -22,6 +22,9 @@ module.exports = (passport, db) => {
    router.get('/filter-category/:id', AppController.filterCategory);
    router.get('/get-categories', AppController.getCategories);
    router.get('/get-shields', AppController.getShields);
+  //  router.post('/test-link/studentid=:sid?classid=:cid', AppController.testLink);
+   router.post('/test-link/:id', AppController.testLink);
+
 
   //  router.post('/examples', AppController.createExample);
   //  router.delete('/examples/:id', AppController.deleteExample);
