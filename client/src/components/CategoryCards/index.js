@@ -10,11 +10,12 @@
 
 // Styling
 // =========================================================
+  import "./style.css"
   const useStyles = makeStyles({
     card: {
-      maxWidth: "270px", 
+      maxWidth: "280px", 
       width: "100%",
-      margin: "10px"
+      margin: "5px"
     },
     bullet: {
       display: 'inline-block',
@@ -27,12 +28,6 @@
     pos: {
       marginBottom: 12,
     },
-    buttonSpacing: {
-      display: "block",
-      margin: "0 auto",
-      background: "red", 
-      color: "white"
-    },
   });
 
 // Export SimpleCard -> Category Cards
@@ -43,7 +38,12 @@
     return (
       <Card align="center" className={classes.card}>
         <CardContent>
-        <Grid container spacing={4}>
+        <Grid container 
+              spacing={1}
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+        >
               <Grid item sm={4}>
                   <div style={{ height: "80px", 
                                 width: "80px", 
@@ -52,17 +52,20 @@
                   /> 
               </Grid>
               <Grid item sm={8}>
-                  <Typography variant="h6" component="h2">
-                      {props.title}
-                  </Typography>
-                  <CardActions >
-                  <Button 
-                    className={classes.buttonSpacing}
-                    size="small"
-                    onClick={() => props.viewCategory(props.catId)}
-                    >View Category
-                  </Button>
-              </CardActions>
+                    <h3 style={{marginBottom: "5px"}} align="left">{props.title}</h3>
+                <CardActions>
+                  <div align="left" id="container">
+                    <button className="learn-more"
+                            size="small"
+                            onClick={() => props.viewCategory(props.catId)}
+                    >
+                      <span className="circle">
+                        <span className="icon arrow"></span>
+                      </span>
+                      <h4 ><span className="button-text">View Category</span></h4>
+                    </button>
+                  </div>
+                </CardActions>
               </Grid>
   
           </Grid>

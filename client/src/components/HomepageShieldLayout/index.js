@@ -3,7 +3,8 @@
   import React from 'react';
 // Import Custom Components
 // =========================================================
-    import HoverShieldInfo from "../HoverShieldInfo"    
+    import HoverShieldInfo from "../HoverShieldInfo"  
+
 // Export HomePageShieldLayout function
 // =========================================================
     const icon = {
@@ -12,6 +13,8 @@
         height: "auto",
         padding: "20px 4px 0px 4px"
     }
+
+    const addDots = "../";
 
     export default function HomePageShieldLayout(props) {
         return (
@@ -22,8 +25,8 @@
                   badgeName={
                     <img  
                       style={icon} 
-                      alt={props.altTxt} 
-                      src={props.shieldIcon}
+                      alt={props.altText} 
+                      src={ props.shieldIcon }
                     />} 
                   />
                 <h4 align="center">{props.title}</h4>

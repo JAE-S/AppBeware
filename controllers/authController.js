@@ -39,7 +39,7 @@ module.exports = (passport, db) => {
         })(req, res, next);
       },
       logout: (req, res, next) => {
-          console.log("should have redirected")
+        console.log("anything1")
         req.logout();
         req.session.destroy((err) => {
           if (err) {

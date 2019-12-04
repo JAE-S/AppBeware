@@ -17,6 +17,7 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
+    import API from '../../utils/API'
     import {Alerts, Count, Notifications } from "../Alerts";
 import { getThemeProps } from '@material-ui/styles';
 
@@ -119,9 +120,9 @@ export default function Nav() {
   };
 
   const handleSignOut = () => {
-    // API.signOut()
+    API.signOut()
     // .then(res => console.log(res))
-    // .catch(err => console.log(err))
+    .catch(err => console.log(err))
   }
 
   const menuId = 'primary-search-account-menu';
@@ -200,7 +201,7 @@ export default function Nav() {
           modalButton1="Close"
         />
       </MenuItem>
-      <MenuItem onClick={handleSignOut}> 
+      <MenuItem onClick={handleSignOut} href="/"> 
         Sign Out
       </MenuItem>
     </Menu>

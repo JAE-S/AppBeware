@@ -12,6 +12,7 @@ module.exports = (passport, db) => {
   router.put('/user/:id', ensureAuthenticated, AuthController.updateUser);
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
+  router.get('/userInfo', AppController.userInfo)
 
    // App
    router.get('/listed-app', AppController.getListedApp);

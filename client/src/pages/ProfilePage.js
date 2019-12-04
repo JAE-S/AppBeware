@@ -1,6 +1,6 @@
 // Import React
 // =========================================================
-    import React from "react"; 
+    import React, { Component } from "react"; 
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
@@ -16,25 +16,34 @@
     import "../assets/styling/appStyle.css"
 // Import Media
 // =========================================================
-    import Tony_Smith from "../assets/images/test_profiles/Tony_Smith.png";
-
-    const test_profiles = [
-
-        { image: Tony_Smith,
-          fullName: "Tony Smith",
-          username: "Tony S.",
-          password: "*****", 
-          email: "tonysmith@gmail.com",
-          phone: "123-456-7890"
-        }
-      ];
-
-   
-
+    import Tony_Smith from "../assets/images/test_profiles/Tony_Smith.png";   
+    import API from "../utils/API"
 // Export Default Profile Page Function
 // =========================================================
-    export default function Profile() {
+    class Profile extends Component {
 
+        state = {
+            email: '',
+            password: '',
+            name: ''
+        }
+        
+        componentDidMount() {
+            this.getProfileInfo()
+        }
+
+        getProfileInfo() {
+            API.userInfo()
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    email:res.data.userInfo.username,
+                    name: res.data.userInfo.firstName + ' ' + res.data.userInfo.lastName
+                })
+            })
+        }
+
+        render() {
         return (
             <>
             <Nav/>
@@ -46,10 +55,10 @@
                         justify="center"
                         alignItems="center" >
                             <Grid item xs={12}> 
-                             <img alt={`${test_profiles[0].fullName}'s profile photo`}src={test_profiles[0].image} style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                             <img alt={`'s profile photo`} style={{ height: 200, width: 200, borderRadius: "50%"}}/>
                             </Grid>
                             <Grid item xs={12} > 
-                                <h3>{test_profiles[0].fullName}</h3>
+                                <h3>{}</h3>
                             </Grid>
                         </Grid> 
                     </Wrapper>
@@ -57,26 +66,26 @@
                 <Wrapper align="center" style={{padding: 40}}> 
                     <UserDetailsPanel
                         ariaControls="userName"
-                        title={"Username"}
-                        currentDetails={test_profiles[0].username}
+                        title={"Name"}
+                        currentDetails={this.state.name}
                         edit={"hi"}
                     />
                      <UserDetailsPanel
                         ariaControls="password"
                         title={"Password"}
-                        currentDetails={test_profiles[0].password}
+                        currentDetails={'******'}
                         edit={"hi"}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
                         title={"Email"}
-                        currentDetails={test_profiles[0].email}
+                        currentDetails={this.state.email}
                         edit={" "}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
                         title={"Phone Number"}
-                        currentDetails={test_profiles[0].phone}
+                        currentDetails={'.'}
                         edit={"hi"}
                     />
                 </Wrapper>
@@ -86,6 +95,7 @@
             </>
         )
     }
+    }
 
 
-
+export default Profile ; 
