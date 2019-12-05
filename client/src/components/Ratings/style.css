@@ -1,0 +1,16 @@
+
+
+.makeStyles-margin-254{
+    padding: 6px; 
+}
+
+.WithStyles\(ForwardRef\(LinearProgress\)\)-bar-256
+{
+    background-image: linear-gradient(#FC4A1A, rgb(250, 157, 132), #FC4A1A);
+}
+
+.shadow {
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+ }

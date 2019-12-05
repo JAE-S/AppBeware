@@ -4,14 +4,15 @@
   import PropTypes from 'prop-types';
 // Import Material UI Styles
 // =========================================================
-  import { withStyles } from '@material-ui/core/styles';
+  import { withStyles, lighten, makeStyles } from '@material-ui/core/styles';
 // Import Material UI Components 
 // =========================================================
   import Rating from '@material-ui/lab/Rating';
-  import { Tooltip, Box } from '@material-ui/core/';
+  import { Tooltip, Box, Grid, LinearProgress } from '@material-ui/core/';
 // Import Material UI Icons
 // =========================================================
   import { Brightness1Rounded } from '@material-ui/icons/';
+  import Linear from "./progess"
 
 // Styling + labels 
 // =========================================================
@@ -41,19 +42,28 @@
       4.5: 'Excellent',
       5: 'Excellent+',
     };
+    const useStyles = makeStyles(theme => ({
+      root: {
+        flexGrow: 1,
+      },
+      margin: {
+        margin: theme.spacing(1),
+      },
+    }));
+    
 
-  function IconContainer(props) {
-    const { value, ...other } = props;
-    return (
-      <Tooltip title={labels[value] || ''}>
-        <span {...other} />
-      </Tooltip>
-    );
-  }
+  // function IconContainer(props) {
+  //   const { value, ...other } = props;
+  //   return (
+  //     <Tooltip title={labels[value] || ''}>
+  //       <span {...other} />
+  //     </Tooltip>
+  //   );
+  // }
   
-  IconContainer.propTypes = {
-    value: PropTypes.number.isRequired,
-  };
+  // IconContainer.propTypes = {
+  //   value: PropTypes.number.isRequired,
+  // };
   
 function getLabelText(value) {
   return `${value} ${value !== 1 ? 's' : ''}`;
@@ -73,7 +83,7 @@ function getLabelText(value) {
             getLabelText={getLabelText}
             precision={0.5}
             icon={<Brightness1Rounded fontSize="inherit" />}
-            IconContainerComponent={IconContainer}
+            // IconContainerComponent={IconContainer}
           />
         </Box>
       </div>
@@ -83,19 +93,17 @@ function getLabelText(value) {
 // Export function -> AppRatings (Read Only)
 // =========================================================
   export function AppRatings(props) {
-    // const [hover, setHover] = React.useState(-1);
       return (
         <div>
-          <Box component="fieldset" mb={3} borderColor="transparent">
-            <StyledRating
-              getLabelText={getLabelText}
-              name="read-only" 
-              value={props.ratingValue} 
-              readOnly
-              icon={<Brightness1Rounded fontSize="inherit" />}
-              IconContainerComponent={IconContainer}
-            />
-          </Box>
+          <Grid container
+                direction="row" 
+                justify="flex-start" 
+                alignItems="flex-start"
+          >
+            <Grid item style={{paddingLeft: 4, paddingRight: 4}}>
+          </Grid>
+          {props.reviewCount}
+          </Grid>
         </div>
       );
     }
