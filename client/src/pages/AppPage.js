@@ -15,7 +15,7 @@
     import Modal from "../components/Modals"
     import AddAppReview from "../components/AddAppReview"
     import {AppRatings, CustomizedRating }from "../components/Ratings"
-    import {SmallGird, CommentGrid, HeaderContainer, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
+    import {CommentGrid, HeaderContainer, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
 
 // Import Redux Actions 
 // =========================================================
@@ -62,23 +62,28 @@ const test_profiles = [
 
 const dangerRating = [ 
     {  name: "one",
-       logoUrl: One, 
+       logoUrl: One,
+       description: "rating", 
        reviewCount: 1 
     },
     {  name: "two", 
        logoUrl: Two,
+       description: "rating", 
        reviewCount: 3 
      },
      {  name: "three",
         logoUrl:Three,
+        description: "rating", 
         reviewCount: 2 
      },
      {  name: "four",
         logoUrl: Four,
+        description: "rating", 
         reviewCount: 3 
      },
      {  name: "five", 
         logoUrl: Five,
+        description: "rating", 
         reviewCount: 1
      },
 ]
@@ -127,8 +132,9 @@ render() {
                                     ratingIcon={danger.logoUrl}
                                     altTxt={danger.name}
                                     riskLevel={danger.name}
+                                    info={danger.description}
                                     ratingScale={normalise(danger.reviewCount)}
-                                    reviewCount={danger.reviewCount}
+                                    reviewCount={`${danger.reviewCount} Reviews`}
                                 />
                             ))}
                         </Grid>
@@ -141,7 +147,7 @@ render() {
                                     shieldIcon={shield.icon}
                                     title={shield.name}
                                     altTxt={shield.altText}
-                                    info={shield.name}
+                                    info={`${shield.name} - ${shield.info}`}
                                     ratingScale={normalise(4)}
                                     reviewCount={"* # review *"}
                                 />

@@ -9,7 +9,7 @@ import React from "react";
     import { Brightness1Rounded, AddAlert} from '@material-ui/icons/';
 // Import Custom Components
 // =========================================================
-    import Wrapper from "../Wrapper"
+    import HoverShieldInfo from "../HoverShieldInfo"  
     // import Modal from "../../components/Modals"
     // import AddAppReview from "./components/AddAppReview"
     import {CustomizedRatings }from "../Ratings"
@@ -128,11 +128,18 @@ const data = [
     export function DangerRatings(props) {
         return (
             <SmallGrid 
+            
                 smallGirdLeft={
-                    <img 
-                        alt={props.name} 
-                        src={props.ratingIcon}
-                        style={{  justifyContent: "center", Width: "40px", height: "40px"}} 
+                    // This pulls in the danger rating info not the badges - the badge information is in the function below
+                    <HoverShieldInfo
+                        badgeInfo={props.info}
+                        badgeName={
+                            <img 
+                                alt={props.name} 
+                                src={props.ratingIcon}
+                                style={{ justifyContent: "center", Width: "40px", height: "40px"}} 
+                            />
+                        }
                     />
                 }
                 smallGirdRight={
@@ -153,10 +160,15 @@ const data = [
           
             <SmallGrid 
                 smallGirdLeft={
-                    <img 
-                        alt={props.title} 
-                        src={props.shieldIcon}
-                        style={{  justifyContent: "center", Width: "40px", height: "40px"}} 
+                    <HoverShieldInfo
+                        badgeInfo={props.info}
+                        badgeName={
+                            <img 
+                                alt={props.title} 
+                                src={props.shieldIcon}
+                                style={{justifyContent: "center", Width: "40px", height: "40px"}} 
+                            />
+                        }
                     />
                 }
                 smallGirdRight={

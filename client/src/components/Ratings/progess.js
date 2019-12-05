@@ -1,16 +1,19 @@
 import React from 'react';
 import { lighten, makeStyles, withStyles } from '@material-ui/core/styles';
 import { LinearProgress, Grid }from '@material-ui/core/';
-
+import "./style.css"
 
 const BorderLinearProgress = withStyles({
   root: {
     height: 10,
-    backgroundColor: lighten('#ff6c5c', 0.5),
+    backgroundColor: lighten('#A9A9A9', 0.5),
+    borderRadius: 8,
   },
   bar: {
     borderRadius: 20,
-    backgroundColor: '#ff6c5c',
+    backgroundColor: '#FC4A1A',
+    // backgroundImage: linearGradient('#FC4A1A', '#F8977C', '#FC4A1A'),
+    borderRadius: 8,
   },
 })(LinearProgress);
 
