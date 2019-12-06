@@ -98,3 +98,9 @@ margin: 0px!important;
     border-top: 1px solid silver; 
     padding-top: 20px;
  }
+
+ #customized-color-4 {
+   background-image: url("../images/danger_rating_icons/danger_rating_4.png");
+   background-size: cover; 
+
+ }

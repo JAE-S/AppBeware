@@ -12,7 +12,7 @@
 // Import Material UI Icons
 // =========================================================
   import { Brightness1Rounded } from '@material-ui/icons/';
-  import Linear from "./progess"
+  import "../../assets/styling/appStyle.css"
 
 // Styling + labels 
 // =========================================================
@@ -31,16 +31,11 @@
   })(Rating);
 
   const labels = {
-      0.5: 'Useless',
-      1: 'Useless+',
-      1.5: 'Poor',
-      2: 'Poor+',
-      2.5: 'Ok',
-      3: 'Ok+',
-      3.5: 'Good',
-      4: 'Good+',
-      4.5: 'Excellent',
-      5: 'Excellent+',
+      1: '1+',
+      2: '2+',
+      3: '3+',
+      4: '4+',
+      5: '5+',
     };
     const useStyles = makeStyles(theme => ({
       root: {
@@ -52,18 +47,18 @@
     }));
     
 
-  // function IconContainer(props) {
-  //   const { value, ...other } = props;
-  //   return (
-  //     <Tooltip title={labels[value] || ''}>
-  //       <span {...other} />
-  //     </Tooltip>
-  //   );
-  // }
+  function IconContainer(props) {
+    const { value, ...other } = props;
+    return (
+      <Tooltip title={labels[value] || ''}>
+        <span {...other} />
+      </Tooltip>
+    );
+  }
   
-  // IconContainer.propTypes = {
-  //   value: PropTypes.number.isRequired,
-  // };
+  IconContainer.propTypes = {
+    value: PropTypes.number.isRequired,
+  };
   
 function getLabelText(value) {
   return `${value} ${value !== 1 ? 's' : ''}`;
@@ -72,21 +67,36 @@ function getLabelText(value) {
 // Export function -> CustomizedRatings (Choose rating)
 // =========================================================
   export function CustomizedRatings() {
-      // const value = 2;
-      // const [hover, setHover] = React.useState(-1);
+      const value = 2;
+      const [hover, setHover] = React.useState(-1);
     return (
       <div>
-        <Box component="fieldset" mb={3} borderColor="transparent">
-          <StyledRating
-            name="customized-color"
-            value={2}
-            getLabelText={getLabelText}
-            precision={0.5}
-            icon={<Brightness1Rounded fontSize="inherit" />}
-            // IconContainerComponent={IconContainer}
-          />
-        </Box>
-      </div>
+        {/* <Box component="fieldset" mb={3} borderColor="transparent"> */}
+        <Grid container
+                direction="row" 
+                justify="center" 
+                alignItems="center"
+          >
+          <Grid item xs={3}> 
+          <h5>Mild Concern</h5>
+          </Grid>
+
+          <Grid align="center" item xs={6}> 
+          <button><StyledRating
+              name="customized-color"
+              value={1}
+              getLabelText={getLabelText}
+              precision={1}
+              icon={<Brightness1Rounded fontSize="inherit" />}
+              IconContainerComponent={IconContainer}
+            /></button>
+          </Grid>
+          <Grid item xs={3}> 
+            <h5>Severe Concern</h5>
+          </Grid>
+        </Grid>
+        {/* </Box> severe */}
+       </div>
     );
   }
 
