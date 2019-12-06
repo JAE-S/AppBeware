@@ -47,6 +47,17 @@ class Categories extends Component {
         this.props.history.push('/appPage'); 
     }
 
+    onTagsChange = () => {
+        console.log("You clicked me!");
+        console.log(this);
+    }
+
+    viewCategory = (catId) => {
+        this.props.viewSingleCategory(catId)
+        this.props.viewSingleCategoryInfo(catId)
+        // this.props.history.push('/categoryPage');
+    }
+
      render(props) {
         return (
             <>
@@ -88,7 +99,9 @@ class Categories extends Component {
                     freeSolo
                     id="search-categories"
                     disableClearable
+                    onClick={this.viewClick}
                     options={this.props.categories.map(option => option.name)}
+                    onChange={this.onTagsChange}
                     renderInput={params => (
                     <TextField
                         {...params}
