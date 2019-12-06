@@ -66,6 +66,16 @@ module.exports = function (db) {
         });
       },
 
+      getSingleCategoryInfo: function (req, res) {
+        db.Category.findAll({
+          where: {
+            id: req.params.id
+          }
+        }).then(function(dbSingleCategoryInfo) {
+          res.json(dbSingleCategoryInfo);
+        });
+      },
+
       getShields: function (req, res) {
         db.Shield.findAll({}).then(function (dbShield) {
           res.json(dbShield);

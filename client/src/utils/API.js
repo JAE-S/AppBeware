@@ -32,6 +32,11 @@ export default {
     return axios.get('/api/get-categories');
   },
 
+  getCategoryInfo: function(catId) {
+    console.log("Inside get single category info - API.js - using catId: " + catId);
+    return axios.get('api/get-single-category-info/' + catId);
+  },
+
   getShields: function() {
     return axios.get('/api/get-shields');
   },
