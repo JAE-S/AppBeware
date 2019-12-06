@@ -20,6 +20,15 @@ export const viewSingleCategory = (catId) => dispatch => {
         }))
         .catch(err => console.log(err));
 
+} 
+
+export const viewSingleCategoryInfo = (catId) => dispatch => {
+    API.getCategoryInfo(catId)
+        .then(singleCategoryInfo => dispatch({
+            type: VIEW_SINGLE_CATEGORY_INFO,
+            payload: singleCategoryInfo
+        }))
+        .catch(err => console.log(err));
 }
 
 export const viewSingleCategoryInfo = (catId) => dispatch => {

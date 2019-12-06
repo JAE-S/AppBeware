@@ -46,12 +46,12 @@ export function ViewApp(props){
         <TableCell>
             <Button
                 onClick={() => props.viewApp(props.appId)}
-                >
+            >
             {props.title}
             </Button> 
             
         </TableCell>
-    )
+    ) 
 }
 
 export function AddToWatchList(props){
