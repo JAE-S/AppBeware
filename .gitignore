@@ -33,3 +33,6 @@ client/src/components/SearchAppAnnie/SCOTT--index.js
 client/src/components/TopTrendingApps/SCOTT--index.js
 client/src/Store/Reducers/test-reducer.js
 client/src/Store/OLD-index.js
+client/src/pages/SCOTT-AppPage.js
+client/src/pages/OLD--SCOTT-Homepage.js
+client/src/pages/SCOTT-Homepage.js
