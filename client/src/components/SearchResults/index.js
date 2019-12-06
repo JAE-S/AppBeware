@@ -45,8 +45,8 @@ export function ViewApp(props){
     return (
         <TableCell>
             <Button
-                onClick={props.handleViewApp}
-            >
+                onClick={() => props.viewApp(props.appId)}
+                >
             {props.title}
             </Button> 
             

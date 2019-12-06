@@ -17,7 +17,7 @@
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer"
-    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
 
@@ -40,6 +40,7 @@ class Homepage extends Component {
     // COMPLETE
     viewCategory = (catId) => {
         this.props.viewSingleCategory(catId)
+        this.props.viewSingleCategoryInfo(catId)
         this.props.history.push('/categoryPage');
     }
 
@@ -118,6 +119,7 @@ class Homepage extends Component {
 
 const mapStateToProps = state => ({
     categories: state.categories.allCategories,
+    singleCategoryInfo: state.categories.singleCategoryInfo,
     apps: state.apps.allListedApps,
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
@@ -128,6 +130,7 @@ export default connect(mapStateToProps,
     { 
         viewAllCategories, 
         viewSingleCategory, 
+        viewSingleCategoryInfo,
         viewAllListedApps, 
         viewAppNames, 
         selectTrendingApps,
