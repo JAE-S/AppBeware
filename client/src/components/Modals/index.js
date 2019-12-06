@@ -46,7 +46,7 @@
         >
           <DialogTitle id="scroll-dialog-title">
           
-            {props.modalTitle}
+            {props.modalIcon} {props.modalTitle}
 
           </DialogTitle>
           <DialogContent dividers={scroll === 'paper'}>

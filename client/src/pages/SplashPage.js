@@ -7,16 +7,27 @@
    import SignIn from "../components/SignIn"
    import SignUp from "../components/SignUp"
   import SignInGoogle from "../components/SignInGoogle"
+  import googleSignIn from '../assets/images/googleSignIn.png';
    import Modal from "../components/Modals"
 // Import Material UI components 
 // =========================================================
    import { makeStyles } from '@material-ui/core/styles';
-   import { Paper, Grid} from '@material-ui/core';
+   import PropTypes from 'prop-types';
+   import clsx from 'clsx';
+   import { withStyles } from '@material-ui/core/styles';
+   import Avatar from '@material-ui/core/Avatar';
+   import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+   import { Paper, Grid, Button} from '@material-ui/core';
+   import Typography from '@material-ui/core/Typography';
 // Assets
 // =========================================================
     import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
     import API from "../utils/API";
+
+// Import Styles
+// =========================================================
+    import "../assets/styling/appStyle.css"
 
 // Custom Styles 
 // =========================================================
@@ -41,6 +52,19 @@ const useStyles = makeStyles(theme => ({
     typography: {
         padding: theme.spacing(2),
       },
+
+  //   root: {
+  //   background: 'linear-gradient(45deg, #13BAC7 30%, #13BAC7 90%)',
+  //   borderRadius: 3,
+  //   border: 0,
+  //   color: 'white',
+  //   height: 48,
+  //   padding: '0 30px',
+  //   margin: '5px',
+  //   // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  // },
+
+
 }));
 
 
@@ -66,41 +90,48 @@ function SplashPage() {
                   <h1 className={classes.title}>AppBeware</h1>
                 </Grid>
               </Grid>
-              <h3 style={{ padding: 20 }} className={classes.about}>
+              <h3 style={{ padding: 20 }} className={classes.about} className="splash">
                 AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
               </h3>
+
               <Grid item md={12}>
                 <Modal 
-                  modalTitle="Sign In"
-                  openModal="Sign In"
-                  modalBody={<SignIn/>}
-                  modalButton1="Submit"
+                  modalIcon={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}>
+                    <Avatar className={classes.avatar}>
+                      <LockOutlinedIcon /> 
+                    </Avatar> </div>}
+                    modalTitle={
+                      <div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Typography component="h1" variant="h5">
+                        Sign In
+                      </Typography></div>}
+                    openModal={<Button  className="teal" >Sign In</Button>}
+                    modalBody={<SignIn/>}
+                  
                 />
               </Grid>
               <Grid item md={12}>
+                
                 <Modal 
-                  modalTitle="Create An Account"
-                  openModal="Sign Up"
+                 modalIcon={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Avatar className={classes.avatar}>
+                      <LockOutlinedIcon /> 
+                    </Avatar></div>} 
+                  modalTitle={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Typography component="h1" variant="h5">
+                  Sign up
+                  </Typography></div>}
+                 openModal={<Button variant="outlined" className="teal" >Sign Up</Button>}
                   modalBody={<SignUp/>}
-                  modalButton1="Submit"
+                  
                 />
               </Grid>
-              <Grid item md={12}
-              //  onClick={() => this.googleButton()}
-               >
-              <h3 style={{ padding: 20 }} className={classes.or}>OR</h3>
+               <Grid item md={12}> 
+              <h3 style={{ padding: 20 }} className={classes.or } className="splash">or</h3>
               
-              <div>
+              <div >
                  <Modal 
-                  modalTitle="Sign in with Google"
+                  modalTitle={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><img src={googleSignIn} style={{ width: "70%", }} alt="Google Sign In" /></div>}
                   openModal={<img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/>}
                   modalBody={<SignInGoogle/>}
-               
                 />
-                
-                
-                
-                
                 </div>
               </Grid>
             </Paper>
