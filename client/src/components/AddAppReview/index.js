@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     instructions: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
+      color: "#57585D",
     },
     container: {
         display: 'flex',
@@ -42,6 +43,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
         width: 200,
       },
+
   }));
 
   const useQontoStepIconStyles = makeStyles({
@@ -109,7 +111,7 @@ const useStyles = makeStyles(theme => ({
   };
 
   function getSteps() {
-    return ['Select Shield Alerts', 'Select A Danger Al', 'Share Your Concerns'];
+    return ['Select Shield Alerts', 'Select A Danger Alert', 'Share Your Concerns'];
   }
 
   function getStepContent(step) {
@@ -184,14 +186,13 @@ const useStyles = makeStyles(theme => ({
                   alignItems="center"
               >
               <Grid item>
-                <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                <Button disabled={activeStep === 0} onClick={handleBack} className="back">
                   Back
                 </Button>
                   <Button
                     variant="contained"
-                    style={{backgroundColor: "#13BAC7", color: "white"}}
+                    className="teal"
                     onClick={handleNext}
-                    className={classes.button}
                   >
                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </Button>

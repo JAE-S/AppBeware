@@ -4,11 +4,11 @@
   import PropTypes from 'prop-types';
 // Import Material UI Styles
 // =========================================================
-  import { withStyles, lighten, makeStyles } from '@material-ui/core/styles';
+  import { withStyles, makeStyles } from '@material-ui/core/styles';
 // Import Material UI Components 
 // =========================================================
   import Rating from '@material-ui/lab/Rating';
-  import { Tooltip, Box, Grid, LinearProgress } from '@material-ui/core/';
+  import { Tooltip, Grid, } from '@material-ui/core/';
 // Import Material UI Icons
 // =========================================================
   import { Brightness1Rounded } from '@material-ui/icons/';
@@ -18,10 +18,10 @@
 // =========================================================
   const StyledRating = withStyles({
     iconFilled: {
-      color: '#ff6d75',
+      color: '#FF8B6C',
     },
     iconHover: {
-      color: '#ff3d47',
+      color: '#FC4A1A',
     },
     rating1: {
       width: 200,
@@ -29,6 +29,12 @@
       alignItems: 'center',
     },
   })(Rating);
+
+  function onChange(evet, value) {
+   if (value === 1){
+     console.log("true")
+   }
+}
 
   const labels = {
       1: '1+',
@@ -66,36 +72,40 @@ function getLabelText(value) {
 
 // Export function -> CustomizedRatings (Choose rating)
 // =========================================================
-  export function CustomizedRatings() {
-      const value = 2;
+  export function CustomizedRatings(props) {
+    const [value, setValue] = React.useState(1);
       const [hover, setHover] = React.useState(-1);
     return (
       <div>
-        {/* <Box component="fieldset" mb={3} borderColor="transparent"> */}
         <Grid container
                 direction="row" 
                 justify="center" 
                 alignItems="center"
+                style={{paddingLeft: 5, paddingRight: 5}}
           >
           <Grid item xs={3}> 
-          <h5>Mild Concern</h5>
+          <h4 align="center" style={{color: "#99aa26" }}>Mild Concern</h4>
           </Grid>
 
-          <Grid align="center" item xs={6}> 
+          <Grid align="center"justify="space-between"  item xs={6}> 
           <button><StyledRating
               name="customized-color"
-              value={1}
+              value={props.customValue}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
               getLabelText={getLabelText}
               precision={1}
-              icon={<Brightness1Rounded fontSize="inherit" />}
+              icon={<Brightness1Rounded fontSize="inherit"  style={{margin: 5}} />}
               IconContainerComponent={IconContainer}
+             
+              
             /></button>
           </Grid>
           <Grid item xs={3}> 
-            <h5>Severe Concern</h5>
+            <h4 align="center" style={{color: "#FC4A1A" }}>Severe Concern</h4>
           </Grid>
         </Grid>
-        {/* </Box> severe */}
        </div>
     );
   }

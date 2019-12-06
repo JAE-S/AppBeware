@@ -13,7 +13,7 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     // import HeaderContainer from "../components/HeaderContainer"
-    import { Image, Badges, AddToWatchList, ViewApp, AppDetails} from "../components/SearchResults";
+    import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
     import Autocomplete from '@material-ui/lab/Autocomplete';
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewSingleApp } from "../Store/Actions/appActions";
@@ -126,7 +126,7 @@ class Categories extends Component {
                             <AppDetails
                                 title={app.name}
                             />
-                            <Badges 
+                            <Shields
                                 title="placeholder for badges"
                                 badgeAlerts="Placeholder for badges"
                                 // image={app.logoUrl}
@@ -135,9 +135,6 @@ class Categories extends Component {
                                title="View App"
                                viewApp={this.viewApp}
                                appId={app.id}
-                            />
-                             <AddToWatchList 
-                               handleAddToWatchList = {this.AddToWatchList.bind(this)}
                             />
                             
                         </TableRow>

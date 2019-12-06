@@ -53,6 +53,9 @@ const useStyles = makeStyles(theme => ({
     typography: {
         padding: theme.spacing(2),
       },
+      Wrapper: {
+
+      }
 
 
 }));
@@ -60,12 +63,7 @@ const useStyles = makeStyles(theme => ({
 
 function SplashPage() {
   
-//  googleButton = () => {
-//   API.googleSignIn().then(console.log("clicked?"))
-// }
   const classes = useStyles(); 
-
-  // const google = googleButton();
 
   return (
     <div>
@@ -87,44 +85,68 @@ function SplashPage() {
 
               <Grid item md={12}>
                 <Modal 
-                  modalIcon={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}>
-                    <Avatar className={classes.avatar}>
-                      <LockOutlinedIcon /> 
-                    </Avatar> </div>}
-                    modalTitle={
-                      <div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Typography component="h1" variant="h5">
+                  modalIcon={
+                    <div>
+                      <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon /> 
+                      </Avatar> 
+                    </div>
+                  }
+                  modalTitle={
+                    <div>
+                      <Typography component="h1" variant="h5">
                         Sign In
-                      </Typography></div>}
-                    openModal={<Button  className="teal" >Sign In</Button>}
-                    modalBody={<SignIn/>}
+                      </Typography>
+                    </div>
+                  }
+                  openModal={<Button  className="teal login" >Sign In</Button>}
+                  modalBody={<SignIn/>}
                   
                 />
               </Grid>
               <Grid item md={12}>
                 
                 <Modal 
-                 modalIcon={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Avatar className={classes.avatar}>
-                      <LockOutlinedIcon /> 
-                    </Avatar></div>} 
-                  modalTitle={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><Typography component="h1" variant="h5">
-                  Sign up
-                  </Typography></div>}
-                 openModal={<Button variant="outlined" className="teal" >Sign Up</Button>}
-                  modalBody={<SignUp/>}
+                 modalIcon={
+                    <div>
+                      <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon /> 
+                      </Avatar>
+                    </div>
+                 } 
+                  modalTitle={
+                    <div>
+                      <Typography component="h1" variant="h5">
+                        Sign up
+                      </Typography>
+                    </div>
+                  }
+                 openModal={<Button variant="outlined" className="teal-signup login" >Sign Up</Button>}
+                 modalBody={<SignUp/>}
                   
                 />
               </Grid>
-               <Grid item md={12}> 
-              <h3 style={{ padding: 20 }} className={classes.or } className="splash">or</h3>
+              {/* GOOGLE SIGN - FUTURE DEVELOPMENT */}
+              {/* <Grid item md={12}> 
+                <h3 style={{ padding: 20 }} className={classes.or } className="splash">
+                  or
+                </h3>
               
-              <div >
+              <div>
                  <Modal 
-                  modalTitle={<div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}><img src={googleSignIn} style={{ width: "70%", }} alt="Google Sign In" /></div>}
-                  openModal={<img className={classes.sButtons} style={{ backgroundColor: "transparent", height: 60}} alt="Google Sign In Button" src={ GoogleImage }/>}
+                  modalTitle={
+                    <div style={{ display: "flex", flexDdirection: "row", alignItems: "center", justifyContent: "center"}}>
+                      <img src={googleSignIn} style={{ width: "70%", }} alt="Google Sign In" />
+                    </div>}
+                  openModal={
+                    <img className={classes.sButtons} 
+                      alt="Google Sign In Button" src={ GoogleImage }
+                      style={{ backgroundColor: "transparent", height: 60}}/>
+                    }
                   modalBody={<SignInGoogle/>}
                 />
                 </div>
-              </Grid>
+              </Grid> */}
             </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
