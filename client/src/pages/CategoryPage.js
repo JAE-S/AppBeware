@@ -47,9 +47,9 @@ class Categories extends Component {
         this.props.history.push('/appPage'); 
     }
 
-    onTagsChange = () => {
-        console.log("You clicked me!");
-        console.log(this);
+    onTagsChange = (event) => {
+        const tempCatId = parseInt(event.target.getAttribute('data-option-index')) + 1;
+        this.viewCategory(tempCatId);
     }
 
     viewCategory = (catId) => {
@@ -99,8 +99,8 @@ class Categories extends Component {
                     freeSolo
                     id="search-categories"
                     disableClearable
-                    onClick={this.viewClick}
                     options={this.props.categories.map(option => option.name)}
+                    // getOptionLabel={this.props.categories.map(option => option.name)}
                     onChange={this.onTagsChange}
                     renderInput={params => (
                     <TextField
