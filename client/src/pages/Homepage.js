@@ -78,6 +78,7 @@ class Homepage extends Component {
 
                                 {this.props.shields.map(shield => (
                                     <ShieldLayout 
+                                        key={shield.id}
                                         shieldIcon={shield.icon}
                                         altTxt={shield.altText}
                                         title={shield.name}
@@ -91,7 +92,9 @@ class Homepage extends Component {
                 </Wrapper>
             </HeaderContainer>
 
-            <SearchAppAnnie />
+            <SearchAppAnnie 
+                viewApp={this.viewApp}
+            />
 
             <Wrapper>
                 <HomepageTabNav>
