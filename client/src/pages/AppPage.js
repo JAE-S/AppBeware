@@ -164,7 +164,11 @@ return (
                 </Grid>
                 <Grid align="right" item xs={2}>
                 <Modal
-                    modalTitle={` Share your concerns about ${data[0].name}.`}
+                    modalTitle={
+                        <h3 style={{color: "#57585D", margin: 0}}>
+                            Create a Review for <a style={{color: "#13BAC7"}}> {data[0].name}</a>
+                        </h3>
+                    }
                     openModal="Add Review"
                     modalBody={<AddAppReview/>}
                     modalButton1="Submit"
