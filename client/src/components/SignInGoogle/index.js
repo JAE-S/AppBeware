@@ -85,7 +85,7 @@ class Form extends Component {
               
               
 
-               <img src={googleSignIn} style={{ width: "100%" }} alt="Google Sign In" />
+               
                 <TextField
                   variant="outlined"
                   margin="normal"

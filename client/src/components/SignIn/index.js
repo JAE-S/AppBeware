@@ -82,16 +82,12 @@ class signIn extends Component{
   
   render(){
     return (
-      <Container component="main" maxWidth="xs">
+      <Container  maxWidth="xs">
         <CssBaseline />
         <div className={this.makeStyles.paper}>
-          <Avatar className={this.makeStyles.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
           <form className={this.makeStyles.form} noValidate>
+            <Grid container spacing={2}>
+            <Grid item xs={12} >
             <TextField
               variant="outlined"
               margin="normal"
@@ -104,6 +100,8 @@ class signIn extends Component{
               autoFocus
               onChange={this.handleInputchange}
             />
+            </Grid>
+            <Grid item xs={12}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -116,11 +114,14 @@ class signIn extends Component{
               autoComplete="current-password"
               onChange={this.handleInputchange}
             />
-            <FormControlLabel
+            </Grid>
+            </Grid>
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
+
               type="submit"
               fullWidth
               variant="contained"
@@ -130,14 +131,9 @@ class signIn extends Component{
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                {/* <Link href="#" variant="body2">
-                  Forgot password?
-                </Link> */}
-              </Grid>
-              <Grid item>
-                
+             <Grid container justify="flex-end">
+            <Grid item>
+                              
               <Modal 
                     modalTitle="Create An Account"
                     openModal="Don't have an account? Sign Up"
@@ -149,9 +145,7 @@ class signIn extends Component{
             </Grid>
           </form>
         </div>
-        <Box mt={8}>
-  
-        </Box>
+       
       </Container>
     );
               }
