@@ -10,11 +10,11 @@ const studentData = require('./studentData');
 
 module.exports = db => {
     db.User.create({
-        firstName: 'Joe',
-        lastName: 'Gates',
-        username: 'jgates@gmail.com',
-        password: 'purple99',
-        profilePic: "#",
+       firstName: 'admin',
+        lastName: 'admin',
+        username: 'admin@gmail.com',
+        password: '1234',
+        profilePic: "https://randomuser.me/api/portraits/lego/6.jpg",
         isAdmin: true
     })
 
@@ -23,25 +23,42 @@ module.exports = db => {
         lastName: 'Gates',
         username: 'jgates@gmail.com',
         password: 'purple99',
-        profilePic: "#",
+        profilePic: "https://randomuser.me/api/portraits/men/38.jpg",
+        isAdmin: true
+    })
+     db.User.create({
+        firstName: 'Peter',
+        lastName: 'Parker',
+        username: 'pparker@gmail.com',
+        password: 'red99',
+        profilePic: "https://randomuser.me/api/portraits/men/24.jpg",
         isAdmin: true
     })
 
       db.User.create({
-        firstName: 'Joe',
-        lastName: 'Gates',
-        username: 'jgates@gmail.com',
+        firstName: 'Jackie',
+        lastName: 'Truitt',
+        username: 'jtruitt@gmail.com',
         password: 'purple99',
-        profilePic: "#",
+        profilePic: "https://randomuser.me/api/portraits/women/92.jpg",
         isAdmin: true
     })
 
       db.User.create({
-        firstName: 'Joe',
-        lastName: 'Gates',
-        username: 'jgates@gmail.com',
-        password: 'purple99',
-        profilePic: "#",
+        firstName: 'Tom',
+        lastName: 'Barnes',
+        username: 'tbarnes@gmail.com',
+        password: 'teal99',
+        profilePic: "https://randomuser.me/api/portraits/men/59.jpg",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Mary',
+        lastName: 'Sutter',
+        username: 'msutter@gmail.com',
+        password: 'yellow99',
+        profilePic: "https://randomuser.me/api/portraits/women/20.jpg",
         isAdmin: true
     })
 
@@ -49,8 +66,8 @@ module.exports = db => {
         firstName: 'Sara',
         lastName: 'Thomas',
         username: 'sthomas@gmail.com',
-        password: 'green99',
-        profilePic: "#",
+        password: 'black99',
+        profilePic: "https://randomuser.me/api/portraits/women/26.jpg",
         isAdmin: true
     })
 
@@ -58,8 +75,8 @@ module.exports = db => {
         firstName: 'Ahmed',
         lastName: 'Saleem',
         username: 'asaleem@gmail.com',
-        password: 'green99',
-        profilePic: "#",
+        password: 'grey99',
+        profilePic: "https://randomuser.me/api/portraits/men/14.jpg",
         isAdmin: true
     })
 
@@ -67,7 +84,7 @@ module.exports = db => {
         firstName: 'Misty',
         lastName: 'Thomas',
         username: 'mthomas@gmail.com',
-        profilePic: "#",
+        profilePic: "https://randomuser.me/api/portraits/women/84.jpg",
         password: 'orange99',
         isAdmin: true
     })

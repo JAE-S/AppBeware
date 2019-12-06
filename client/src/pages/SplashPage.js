@@ -6,6 +6,7 @@
    import Wrapper from "../components/Wrapper"
    import SignIn from "../components/SignIn"
    import SignUp from "../components/SignUp"
+    import Footer from "../components/Footer"
   import SignInGoogle from "../components/SignInGoogle"
   import googleSignIn from '../assets/images/googleSignIn.png';
    import Modal from "../components/Modals"
@@ -53,17 +54,6 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2),
       },
 
-  //   root: {
-  //   background: 'linear-gradient(45deg, #13BAC7 30%, #13BAC7 90%)',
-  //   borderRadius: 3,
-  //   border: 0,
-  //   color: 'white',
-  //   height: 48,
-  //   padding: '0 30px',
-  //   margin: '5px',
-  //   // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  // },
-
 
 }));
 
@@ -78,6 +68,7 @@ function SplashPage() {
   // const google = googleButton();
 
   return (
+    <div>
     <Wrapper style={{ minHeight: "100vh", maxWidth: "1200px", display: "flex"}}>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={6}>
@@ -141,6 +132,8 @@ function SplashPage() {
         </Grid>
       </Grid>
     </Wrapper>
+    <Footer/>
+    </div>
   )
 
 }
