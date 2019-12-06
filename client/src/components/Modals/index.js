@@ -58,15 +58,7 @@
               {props.modalBody}
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
-            {/* Button for absout sheilds page -> in Nav component */}
-            <Button onClick={handleClose} color="primary">
-              {props.modalButton1}
-            </Button>
-            {/* <Button onClick={handleClose} color="primary">
-              {props.modalButton2}
-            </Button> */}
-          </DialogActions>
+         
         </Dialog>
       </div>
     );

@@ -75,10 +75,9 @@ const data = [
                         {props.dangerRatingRight}
                     </TableCell>
                     <TableCell>
-                        <TableRow>
+                
                             <h4>Comments</h4> 
                             {props.commentsRight}
-                        </TableRow>
                         <Button>
                             <Typography variant="caption" color="textSecondary">
                                 Helpful

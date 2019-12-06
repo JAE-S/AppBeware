@@ -38,7 +38,7 @@
           }
       }));
       
-      export default function ControlledExpansionPanels(props) {
+      export default function  ControlledExpansionPanels(props) {
         const classes = useStyles();
         const [expanded, setExpanded] = React.useState(false);
       
@@ -85,14 +85,14 @@
                     />
                 </Grid> 
                 <Grid item sx={4}> 
-                    <CloseIcon  
+                    <button><CloseIcon  
                         type="submit"
                         style={{color: "#FC4A1A"}}
-                    />
+                    /></button>
             
-                    <DoneIcon 
+                    <button><DoneIcon 
                         style={{color: "green"}}
-                    />
+                    /></button>
                     </Grid>
                     </Grid>
                 </form>    
