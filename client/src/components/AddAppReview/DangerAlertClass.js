@@ -20,33 +20,33 @@ import { push } from 'connected-react-router'
 
 // Grid Layout
 // =========================================================
-    function SmallGrid(props) {
-        return (
-            <Grid container spacing={0} style={{ display: "flex", alignItems: "center"}}>
-                <Grid align="right" item xs={2}>
-                    {props.smallGirdLeft}
-                </Grid>
-                <Grid align="left" item xs={10}>
-                    {props.smallGirdRight}
-                </Grid>
-            </Grid>
-        ) 
-    }
+    // function SmallGrid(props) {
+    //     return (
+    //         <Grid container spacing={0} style={{ display: "flex", alignItems: "center"}}>
+    //             <Grid align="right" item xs={2}>
+    //                 {props.smallGirdLeft}
+    //             </Grid>
+    //             <Grid align="left" item xs={10}>
+    //                 {props.smallGirdRight}
+    //             </Grid>
+    //         </Grid>
+    //     ) 
+    // }
 
-   function DangerAlertsFunction(props){
+//    function DangerAlertsFunction(props){
 
-        return (
-            <Grid container spacing={4}>
-            <Grid item xs={12} sm={6}>
-                <h3 align="center" >Danger Rating</h3>
-                <SmallGrid 
-                    // smallGirdLeft={<Brightness1Rounded style={{ fontSize: "36px", color: "red"}} />}
-                    smallGirdRight={<CustomizedRatings ratingValue={5}/>}
-                />
-            </Grid> 
-        </Grid>
-        )
-    }
+//         return (
+//             <Grid container spacing={4}>
+//             <Grid item xs={12} sm={6}>
+//                 <h3 align="center" >Danger Rating</h3>
+//                 <SmallGrid 
+//                     // smallGirdLeft={<Brightness1Rounded style={{ fontSize: "36px", color: "red"}} />}
+//                     smallGirdRight={}
+//                 />
+//             </Grid> 
+//         </Grid>
+//         )
+//     }
 
 // ShieldAlertsFunction
 // =========================================================
@@ -60,7 +60,7 @@ import { push } from 'connected-react-router'
         render() {
             return (
                 <>
-                <DangerAlertsFunction/>
+               <CustomizedRatings ratingValue={5}/>
                 </>
             )
         }
