@@ -74,11 +74,24 @@ margin: 0px!important;
     color: #13BAC7!important;
   }
 
-/* .MuiStepIcon-root.MuiStepIcon-active, 
-.MuiStepIcon-root.MuiStepIcon-completed 
+.teal
   {
     background-color: #13BAC7!important;
-  } */
+    border: "0";
+    margin: 5px!important; 
+    width:  100px!important; 
+    border-radius: 3;
+    color: 'white';
+    height: "48";
+    padding: '0 30px';
+    }
+
+  .splash{
+    font-family: source-sans-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+  }
 
  .modal-footer {
     margin-top: 80px;

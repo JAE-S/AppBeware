@@ -14,6 +14,61 @@ module.exports = db => {
         lastName: 'Gates',
         username: 'jgates@gmail.com',
         password: 'purple99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Joe',
+        lastName: 'Gates',
+        username: 'jgates@gmail.com',
+        password: 'purple99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Joe',
+        lastName: 'Gates',
+        username: 'jgates@gmail.com',
+        password: 'purple99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Joe',
+        lastName: 'Gates',
+        username: 'jgates@gmail.com',
+        password: 'purple99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Sara',
+        lastName: 'Thomas',
+        username: 'sthomas@gmail.com',
+        password: 'green99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Ahmed',
+        lastName: 'Saleem',
+        username: 'asaleem@gmail.com',
+        password: 'green99',
+        profilePic: "#",
+        isAdmin: true
+    })
+
+      db.User.create({
+        firstName: 'Misty',
+        lastName: 'Thomas',
+        username: 'mthomas@gmail.com',
+        profilePic: "#",
+        password: 'orange99',
         isAdmin: true
     })
 
