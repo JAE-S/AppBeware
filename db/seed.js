@@ -10,8 +10,7 @@ const studentData = require('./studentData');
 
 module.exports = db => {
     db.User.create({
-       firstName: 'admin',
-        lastName: 'admin',
+       name: 'admin',
         email: 'admin@gmail.com',
         password: '1234',
         phoneNumber: '919-111-2222',
@@ -20,8 +19,7 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Joe',
-        lastName: 'Gates',
+        name: 'Joe Gates',
         email: 'jgates@gmail.com',
         password: 'purple99',
         phoneNumber: '919-111-2222',
@@ -30,9 +28,8 @@ module.exports = db => {
     });
  
      db.User.create({
-        firstName: 'Peter',
-        lastName: 'Parker',
-        email: 'pparker@gmail.com',
+        name: 'Peter Parker',
+         email: 'pparker@gmail.com',
         password: 'red99',
         phoneNumber: '919-111-2222',
         profilePicture: "https://randomuser.me/api/portraits/men/24.jpg",
@@ -40,8 +37,7 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Jackie',
-        lastName: 'Truitt',
+        name: 'Jackie Truitt',
         email: 'jtruitt@gmail.com',
         password: 'purple99',
         phoneNumber: '919-111-2222',
@@ -50,9 +46,8 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Tom',
-        lastName: 'Barnes',
-        email: 'tbarnes@gmail.com',
+        name: 'Tom Barnes',
+         email: 'tbarnes@gmail.com',
         password: 'teal99',
         phoneNumber: '919-111-2222',
         profilePicture: "https://randomuser.me/api/portraits/men/59.jpg",
@@ -60,8 +55,7 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Mary',
-        lastName: 'Sutter',
+        name: 'Mary Sutter',
         email: 'msutter@gmail.com',
         password: 'yellow99',
         phoneNumber: '919-111-2222',
@@ -70,8 +64,7 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Sara',
-        lastName: 'Thomas',
+        name: 'Sara Thomas',
         email: 'sthomas@gmail.com',
         password: 'black99',
         phoneNumber: '919-111-2222',
@@ -80,9 +73,8 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Ahmed',
-        lastName: 'Saleem',
-        email: 'asaleem@gmail.com',
+        name: 'Ahmed Saleem',
+       email: 'asaleem@gmail.com',
         password: 'grey99',
         phoneNumber: '919-111-2222',
         profilePicture: "https://randomuser.me/api/portraits/men/14.jpg",
@@ -90,8 +82,7 @@ module.exports = db => {
     });
 
       db.User.create({
-        firstName: 'Misty',
-        lastName: 'Thomas',
+        name: 'Misty Thomas',
         email: 'mthomas@gmail.com',
         password: 'orange99',
         phoneNumber: '919-111-2222',
