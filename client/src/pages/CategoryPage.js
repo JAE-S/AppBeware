@@ -13,9 +13,11 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     // import HeaderContainer from "../components/HeaderContainer"
-    import { Image, Badges, AddToWatchList, ViewApp, AppDetails} from "../components/SearchResults";
+    import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
     import Autocomplete from '@material-ui/lab/Autocomplete';
-    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
+    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
+    import { viewSingleApp } from "../Store/Actions/appActions";
+
 
 // Import styles
 // =========================================================
@@ -25,23 +27,13 @@
 // Export Default Category Page Function
 // =========================================================
 
-const categories = [ 
-    { name: "Social Networking"},
-    { name: "Photos & Videos"}, 
-    { name: "Lifestyle"},
-    { name: "Entertainment"},
-    { name: "Games"},
-    { name: "View All Apps"}
-]
-
 class Categories extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          appsInCategory: [],
           search: "",
-          message: "No apps have added to this category yet."
+          message: "No apps have been added to this category yet."
         };
      }; 
 
@@ -50,16 +42,20 @@ class Categories extends Component {
         console.log("add this app to watch list")
     }
 
-    ViewApp = event => { 
-        event.preventDefault(); 
-        console.log("view this app")
-          
+    viewApp = (appId) => {
+        this.props.viewSingleApp(appId)
+        this.props.history.push('/appPage'); 
     }
 
-    testButton = () => {
-        console.log("you clicked me");
-        console.log(this.props.categories);
-        console.log(this.props);
+    onTagsChange = (event) => {
+        const tempCatId = parseInt(event.target.getAttribute('data-option-index')) + 1;
+        this.viewCategory(tempCatId);
+    }
+
+    viewCategory = (catId) => {
+        this.props.viewSingleCategory(catId)
+        this.props.viewSingleCategoryInfo(catId)
+        // this.props.history.push('/categoryPage');
     }
 
      render(props) {
@@ -77,31 +73,35 @@ class Categories extends Component {
                         >
                 
                             <Grid align="center" item xs={12} sm={3}>
-                                <div style={{ backgroundColor: "grey", width: "100%", height: "auto", borderRadius: 16 }}>
-                                    category cover placeholder 
-                                </div>
-
-                                {/* <img alt={data[0].name} style={{ width: "100%", height: "auto", borderRadius: 16 }} src={data[0].logoUrl}/> */}
+                            <img 
+                                style={{ width: "100%", height: "auto", borderRadius: 16 }}
+                                src={this.props.singleCategoryInfo.imageUrl}
+                                alt={this.props.singleCategoryInfo.name}    
+                            />
                             </Grid> 
                             <Grid item xs={12}  sm={9}>
                                 <h1 style={{ borderBottom: "1px solid grey", marginRight: "20px"}}>
-                                    Category Title goes here. 
+                                {this.props.singleCategoryInfo.name}
+
                                 </h1>
                                 <Typography variant="caption" color="textSecondary">
-                                    Category description goes here 
+                                {this.props.singleCategoryInfo.description}
                                 </Typography>
                     
                             </Grid> 
                     
                         </Grid>
                 </Wrapper>
+
             <Wrapper> 
             <div style={{ width:"100%" }}>
                 <Autocomplete
                     freeSolo
                     id="search-categories"
                     disableClearable
-                    options={categories.map(option => option.name)}
+                    options={this.props.categories.map(option => option.name)}
+                    // getOptionLabel={this.props.categories.map(option => option.name)}
+                    onChange={this.onTagsChange}
                     renderInput={params => (
                     <TextField
                         {...params}
@@ -117,26 +117,7 @@ class Categories extends Component {
 
                 <Table> 
                     <TableBody>
-                        {/* THIS IS AN EXAMPLE TABLE ROW */}
-                        {/* <TableRow>
-                            <TableCell> 
-                                <div style={{ height: "100px", width: "100px", backgroundColor: "grey"  }}/> 
-                            </TableCell>
-                            <TableCell > 
-                                Facebook
-                            </TableCell>
-                            <TableCell > 
-                                placeholder for badges in category 
-                            </TableCell>
-                            <TableCell > 
-                                <button> Add to Watch list</button>
-                            </TableCell>
-                            <TableCell > 
-                                <button> View App</button>
-                            </TableCell>
-                         
-                        </TableRow> */}
-                    {this.props.categories.map((app, i) => (
+                    {this.props.singleCategory.map((app, i) => (
                         <TableRow key={i}>
                             <Image 
                                 title={app.name}
@@ -145,17 +126,15 @@ class Categories extends Component {
                             <AppDetails
                                 title={app.name}
                             />
-                            <Badges 
+                            <Shields
                                 title="placeholder for badges"
                                 badgeAlerts="Placeholder for badges"
                                 // image={app.logoUrl}
                             />
                             <ViewApp
                                title="View App"
-                            //    handleViewApp={app.name}
-                            />
-                             <AddToWatchList 
-                               handleAddToWatchList = {this.AddToWatchList.bind(this)}
+                               viewApp={this.viewApp}
+                               appId={app.id}
                             />
                             
                         </TableRow>
@@ -165,6 +144,7 @@ class Categories extends Component {
 
             </Wrapper>
             </main>
+
             <Footer/>
             </>
         )
@@ -172,8 +152,18 @@ class Categories extends Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories.singleCategory
+    singleCategory: state.categories.singleCategory,
+    categories: state.categories.allCategories,
+    singleCategoryInfo: state.categories.singleCategoryInfo
 })
 
-export default connect(mapStateToProps, { viewAllCategories, viewSingleCategory })(Categories); 
+export default connect(mapStateToProps, 
+    { 
+        viewAllCategories, 
+        viewSingleCategory, 
+        viewSingleCategoryInfo, 
+        viewSingleApp
+    })
+    (Categories); 
 
+    

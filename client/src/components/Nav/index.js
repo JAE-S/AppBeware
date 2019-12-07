@@ -137,7 +137,7 @@ export default function Nav(props) {
       onClose={handleMenuClose}
     >
      <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-      {/* <h3>{this.props.user.userInfo.name}</h3>  */}
+      {/* <h3>{props.user.userInfo.name}</h3>  */}
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>

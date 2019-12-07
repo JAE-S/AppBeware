@@ -98,11 +98,11 @@
                         style={{color: "#FC4A1A"}}
                     /></a>
             
-                    <a><DoneIcon 
+                    <button><DoneIcon 
                         style={{color: "green"}}
                         onSubmit={props.inputSubmit}
                         onClick={props.inputSubmit}
-                    /></a>
+                    /></button>
                     </Grid>
                     </Grid>
                 </form>    

@@ -60,6 +60,26 @@ export default {
 
   userInfo: function() {
     return axios.get('/api/userInfo')
+  },
+
+  register: function(registration) {
+    return axios.post('/api/register', registration)
+  },
+
+  updateName: function (update) {
+    return axios.put('/api/userName', update)
+  },
+
+  updateEmail: function (update) {
+    return axios.put('/api/userEmail', update)
+  },
+
+  updatePhone: function (update) {
+    return axios.put('/api/userPhone', update)
+  },
+
+  updatePassword: function (update) {
+    return axios.put('/api/userPassword', update)
   }
 
 };

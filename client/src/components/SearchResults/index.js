@@ -20,7 +20,7 @@ export function AppDetails(props){
     )
 }
 
-export function Badges(props){
+export function Shields(props){
     return (
         <TableCell>
             {props.title}
@@ -33,35 +33,27 @@ export function Badges(props){
     )
 }
 
-// export function Appbadges(props){
-//     return (
-//         <TableCell>
-//             <h3>{props.badges}</h3> 
-//         </TableCell>
-//     )
-// }
-
 export function ViewApp(props){
     return (
         <TableCell>
             <Button
-                onClick={props.handleViewApp}
+                onClick={() => props.viewApp(props.appId)}
             >
             {props.title}
             </Button> 
             
         </TableCell>
-    )
+    ) 
 }
 
-export function AddToWatchList(props){
-    return (
-        <TableCell>
-            <Button
-                onClick={props.handleSaveBtn}
-            >
-                Add to watch list
-            </Button> 
-        </TableCell>
-    )
-}
+// export function AddToWatchList(props){
+//     return (
+//         <TableCell>
+//             <Button
+//                 onClick={props.handleSaveBtn}
+//             >
+//                 Add to watch list
+//             </Button> 
+//         </TableCell>
+//     )
+// }

@@ -17,7 +17,7 @@
     import "../assets/styling/appStyle.css"
 // Import Media
 // =========================================================
-    import { userInfo } from '../Store/Actions/authentication';
+    import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
@@ -43,7 +43,7 @@
         //     })
         // }
         
-        render() {
+        render(props) {
         return (
             <>
             <Nav/>
@@ -67,27 +67,30 @@
                     <UserDetailsPanel
                         ariaControls="Name"
                         title={"Name"}
-                        // currentDetails={this.props.user.userInfo.userInfo.name}
+                        currentDetails={this.props.user.isloggedin}
                         edit={"hi"}
-                        imputSubmit= {'.'}
+                        inputSubmit= {this.props.updateName}
                     />
                      <UserDetailsPanel
                         ariaControls="password"
                         title={"Password"}
                         currentDetails={'******'}
                         edit={"hi"}
+                        inputSubmit= {this.props.updatePassword}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
                         title={"Email"}
                         // currentDetails={this.props.user.userInfo.userInfo.email}
                         edit={" "}
+                        inputSubmit= {this.props.updateEmail}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
                         title={"Phone Number"}
                         // currentDetails={this.props.user.userInfo.userInfo.phoneNumber}
                         edit={"hi"}
+                        inputSubmit = {this.props.updatePhone}
                     />
                 </Wrapper>
 

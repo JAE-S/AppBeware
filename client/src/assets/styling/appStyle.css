@@ -67,3 +67,124 @@ margin: 0px!important;
   width: 90%; 
 
 }
+
+.MuiStepIcon-root.MuiStepIcon-active, 
+.MuiStepIcon-root.MuiStepIcon-completed 
+  {
+    color: #FC4A1A!important;
+  }
+
+
+/* ----------  Button Classes ---------- */
+.teal, .teal-signup {
+  margin: 10px!important; 
+  border-radius: 3;
+  color: white!important;
+}
+
+.login {
+  width: 249px!important; 
+}
+
+.teal {
+ background-color: #13BAC7; background-image: -webkit-gradient(linear, left top, left bottom, from(#13BAC7), to(#15D2E0));
+ background-image: -webkit-linear-gradient(top, #13BAC7, #15D2E0);
+ background-image: -moz-linear-gradient(top, #13BAC7, #15D2E0);
+ background-image: -ms-linear-gradient(top, #13BAC7, #15D2E0);
+ background-image: -o-linear-gradient(top, #13BAC7, #15D2E0);
+ background-image: linear-gradient(to bottom, #13BAC7, #15D2E0);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#13BAC7, endColorstr=#15D2E0);
+}
+
+.teal-signup {
+  background-color: #0f8e98; background-image: -webkit-gradient(linear, left top, left bottom, from(#0f8e98), to(#11a6b1));
+  background-image: -webkit-linear-gradient(top, #0f8e98, #11a6b1);
+  background-image: -moz-linear-gradient(top, #0f8e98, #11a6b1);
+  background-image: -ms-linear-gradient(top, #0f8e98, #11a6b1);
+  background-image: -o-linear-gradient(top, #0f8e98, #11a6b1);
+  background-image: linear-gradient(to bottom, #0f8e98, #11a6b1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0f8e98, endColorstr=#11a6b1);
+}
+
+.back {
+  color: #A9A9A9!important;
+}
+
+.teal:hover, .teal-signup:hover, .back:hover {
+  color: #0f8e98!important;
+  background-color: #f4f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
+  background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -moz-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -ms-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: -o-linear-gradient(top, #f4f5f5, #dfdddd);
+  background-image: linear-gradient(to bottom, #f4f5f5, #dfdddd);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f5f5, endColorstr=#dfdddd);
+}
+/* ---------- End of Button Classes ---------- */
+
+/* ---------- Splash Page classes  ---------- */
+.splash{
+  font-family: source-sans-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+ .modal-footer {
+    margin-top: 40px;
+    border-top: 1px solid rgb(202, 202, 202); 
+    padding-top: 20px;
+ }
+
+ #customized-color-4 {
+   background-image: url("../images/danger_rating_icons/danger_rating_4.png");
+   background-size: cover; 
+
+ }
+
+ .MuiDialogContent-dividers {
+   border: none!important; 
+ }
+
+ #scroll-dialog-title {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: center;
+  border-bottom: 1px solid rgb(202, 202, 202); 
+  margin: 25px;
+  padding-bottom: 20px;
+ }
+
+.MuiAvatar-colorDefault {
+  margin: 0 auto; 
+  background-color: #FC4A1A!important; 
+  margin-bottom: 10px; 
+}
+
+.MuiStepper-root {
+  padding-top: 0!important; 
+  /* padding-bottom: 40px; */
+}
+
+.MuiDialog-paperWidthSm {
+  width: 600px; 
+}
+
+.MuiStepLabel-label.MuiStepLabel-active {
+  color: #FC4A1A!important;
+}
+
+.MuiFormControl-marginNormal {
+  width: 100%;
+}
+
+.MuiInputBase-root {
+  color: #57585D!important; 
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #FC4A1A!important;
+}
+
+.MuiOutlinedInput-root.Mui-focused {
+  /* border: 1px solid #FC4A1A!important; */
+
+}
