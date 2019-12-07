@@ -312,3 +312,9 @@ button:hover .button-text {
  background-image: -o-linear-gradient(top, #FC4A1A, #d20202);
  background-image: linear-gradient(to bottom, #FC4A1A, #d20202);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#FC4A1A, endColorstr=#d20202);
 }
+
+/* Alert Clicked styling */
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: #FC4A1A!important;
+}
