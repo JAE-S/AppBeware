@@ -1,3 +1,4 @@
+// AppBeware Sign Up
 // Import React 
 // =========================================================
 import React from 'react';
@@ -64,16 +65,11 @@ const SubmitRegistration = props => {
   
 
   return (
-    <Container  maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit(API.register())}>
+      <div className={useStyles.paper}>
+          
+        <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} >
               <Field
@@ -170,9 +166,7 @@ const SubmitRegistration = props => {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
      
-      </Box>
     </Container>
   );
 }

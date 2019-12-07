@@ -5,6 +5,8 @@
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
+    import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';  
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -81,7 +83,8 @@ import API from "../utils/API";
                         </Grid> 
                     </Wrapper>
                 </HeaderContainer>
-                <Wrapper align="center" style={{padding: 40}}> 
+                <Wrapper align="left" style={{padding: 40}}> 
+                <h2>Your Profile </h2>
                     <UserDetailsPanel
                         ariaControls="Name"
                         title={"Name"}
@@ -91,9 +94,10 @@ import API from "../utils/API";
                         name={'name'}
                         onChange={this.handleInputchange}
                     />
-                     <UserDetailsPanel
+
+                     <UserDetailsPanel 
                         ariaControls="password"
-                        title={"Password"}
+                        title={<h3>Password</h3>}
                         currentDetails={'******'}
                         edit={"hi"}
                         inputSubmit= {this.props.updatePassword}

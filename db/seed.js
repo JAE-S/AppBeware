@@ -10,13 +10,85 @@ const studentData = require('./studentData');
 
 module.exports = db => {
     db.User.create({
+       name: 'admin',
+        email: 'admin@gmail.com',
+        password: '1234',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/lego/6.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
         name: 'Joe Gates',
         email: 'jgates@gmail.com',
         password: 'purple99',
-        phoneNumber: '919-555-5555',
-        profilePicture: '',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/38.jpg",
         isAdmin: true
-    })
+    });
+ 
+     db.User.create({
+        name: 'Peter Parker',
+         email: 'pparker@gmail.com',
+        password: 'red99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/24.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Jackie Truitt',
+        email: 'jtruitt@gmail.com',
+        password: 'purple99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/92.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Tom Barnes',
+         email: 'tbarnes@gmail.com',
+        password: 'teal99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/59.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Mary Sutter',
+        email: 'msutter@gmail.com',
+        password: 'yellow99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/20.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Sara Thomas',
+        email: 'sthomas@gmail.com',
+        password: 'black99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/26.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Ahmed Saleem',
+       email: 'asaleem@gmail.com',
+        password: 'grey99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/14.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Misty Thomas',
+        email: 'mthomas@gmail.com',
+        password: 'orange99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/84.jpg",
+        isAdmin: true
+    });
 
     db.Shield.bulkCreate(shieldData).then(function () {
         return db.Category.bulkCreate(categoryData)

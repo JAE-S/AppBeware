@@ -3,19 +3,16 @@
     import React from 'react';
     import { connect } from "react-redux";
     import { push } from 'connected-react-router';
-
     import Downshift from "downshift";
-    // import PropTypes from 'prop-types';
     import { viewAppNames, viewSingleApp } from "../../Store/Actions/appActions";
-
-
 // Import Material UI components
 // =========================================================
 //  import { NoSsr} from '@material-ui/core';
-    import {  Input, Grid, Button } from '@material-ui/core';
+    import { Input, Grid, Button } from '@material-ui/core';
 
 // Import Material UI Icons
 // =========================================================
+  import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
     // import MenuItem from '@material-ui/core/MenuItem';
     // import CancelIcon from '@material-ui/icons/Cancel';
 // Custom Components
@@ -57,6 +54,22 @@ class SearchAppAnnie extends React.Component {
     this.props.push('/appPage');
   }
 
+  stateReducer = (state, changes) => {
+    // this prevents the menu from being closed when the user
+    // selects an item with a keyboard or mouse
+    switch (changes.type) {
+      case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickItem:
+        return {
+          ...changes,
+          isOpen: state.isOpen,
+          highlightedIndex: state.highlightedIndex,
+        }
+      default:
+        return changes
+    }
+  }
+
   render() {
     const item = {
       id: 123,
@@ -64,11 +77,12 @@ class SearchAppAnnie extends React.Component {
     }
   
     return (
-      <div className="root">
-      <Wrapper >
+      <div className="root" >
+      <Wrapper style={{position: "relative", zIndex: 1000}}>
        <h2 align="center"> Search for an app or see what's trending! </h2>
        
       <Downshift 
+        stateReducer={this.stateReducer}
         onChange={this.onChange} 
         itemToString={items => (items ? items.label : '')}
       >
@@ -76,14 +90,17 @@ class SearchAppAnnie extends React.Component {
           getInputProps,
           getItemProps,
           isOpen,
+          getToggleButtonProps,
+          getMenuProps,
           inputValue,
           highlightedIndex,
           selectedItem
         }) => (
-          <div>
+          <div style={{position: "relative", zIndex: 1000}}>
             <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })} />
+            
             {isOpen ? (
-              <div className="downshift-dropdown">
+              <div className="downshift-dropdown" >
                 {
                    // filter the Apps and return items that match the inputValue
                   // items
@@ -111,15 +128,20 @@ class SearchAppAnnie extends React.Component {
                         }}
                     >
                     <Grid item xs={4}>
-                      {item.label}
+                      <h3>{item.label}</h3>
                     </Grid>
                     <Grid item xs={4}>
                       <div style={{ color: "#F7F7F7", backgroundColor: "grey"}}> Temporary Placeholder for shield icons</div>
                     </Grid>
                     <Grid item xs={4}>
-                      <Button
-                        // onClick={() => this.viewApp(item.id)}
-                      >View {item.label}</Button>
+                      <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
+                        <button className="learn-more" size="small">
+                          <span className="circle">
+                            <span className="icon arrow"></span>
+                          </span>
+                          <h4><span className="button-text">View App</span></h4>
+                        </button>
+                      </div>
                       </Grid>
                     </Grid>
                   ))}
