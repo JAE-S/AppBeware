@@ -18,7 +18,7 @@
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer";
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
 
@@ -47,7 +47,8 @@ class Homepage extends Component {
 
     viewApp = (appId) => {
         console.log("Clicking View App");
-        this.props.viewSingleApp(appId)
+        this.props.viewSingleApp(appId);
+        this.props.viewAppReviews(appId);
         this.props.history.push('/appPage');
         // this.props.history.push('/categoryPage');
     }
@@ -140,6 +141,7 @@ const mapStateToProps = state => ({
     apps: state.apps.allListedApps,
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
+    appReviews: state.apps.appReviews,
     shields: state.shields.allShields,
     user: state.user.userInfo
 })
@@ -151,6 +153,7 @@ export default connect(mapStateToProps,
         viewSingleCategoryInfo,
         viewAllListedApps, 
         viewAppNames, 
+        viewAppReviews,
         selectTrendingApps,
         viewAllShields,
         userInfo

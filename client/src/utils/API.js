@@ -24,8 +24,18 @@ export default {
   },
 
   getSingleApp: function(appId) {
-    console.log("Inside get single app - API.js - using appId: " + appId)
+    console.log("Inside get single app - API.js - using appId: " + appId);
     return axios.get('/api/get-single-app/' + appId);
+  },
+
+  generateShieldsForApps: function(appId) {
+    console.log("Inside generateShieldsForApps API.js - utils");
+    return axios.get('api/get-app-shields/' + appId);
+  },
+
+  getAppReviews: function(appId) {
+    console.log("Inside getAppReviews API.js - utils");
+    return axios.get('api/get-app-reviews/' + appId);
   },
 
   getCategories: function() {

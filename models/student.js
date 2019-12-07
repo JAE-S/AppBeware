@@ -36,13 +36,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     });
-    Student.associate = (models) => {
-      Student.belongsToMany(models.Class, {
-        through: 'ClassStudents',
-        as: 'class',
-        foreignKey: 'studentId',
-        otherKey: 'classId'
-      });
-    };
+    // Student.associate = (models) => {
+    //   Student.belongsToMany(models.Class, {
+    //     through: 'ClassStudents',
+    //     as: 'class',
+    //     foreignKey: 'studentId',
+    //     otherKey: 'classId'
+    //   });
+    // };
     return Student;
   };

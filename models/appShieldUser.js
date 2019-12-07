@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-    const ClassStudent = sequelize.define('ClassStudent', {
+    const AppShieldUser = sequelize.define('AppShieldUser', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      myClassId: {
+      appId: {
         allowNull: false,
         type: DataTypes.INTEGER,
 
       },
-      myStudentId: {
+      shieldId: {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      count: {
+      userId: {
         allowNull: false,
         type: DataTypes.INTEGER
       }
     });
 
-    return ClassStudent;
+    return AppShieldUser;
   };
