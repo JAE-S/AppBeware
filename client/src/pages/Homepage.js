@@ -16,10 +16,11 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    import Footer from "../components/Footer"
+    import Footer from "../components/Footer"from "../Store/Actions/appActions";
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
+    import { userInfo } from '../Store/Actions/authentication';
 
 // Import Media
 // =========================================================
@@ -58,6 +59,7 @@ class Homepage extends Component {
         this.props.viewAllListedApps();
         this.props.selectTrendingApps();
         this.props.viewAllShields();
+        this.props.userInfo();
     }
 
     render() {
@@ -126,7 +128,8 @@ const mapStateToProps = state => ({
     apps: state.apps.allListedApps,
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
-    shields: state.shields.allShields
+    shields: state.shields.allShields,
+    user: state.user.userInfo
 })
 
 export default connect(mapStateToProps, 
@@ -137,5 +140,6 @@ export default connect(mapStateToProps,
         viewAllListedApps, 
         viewAppNames, 
         selectTrendingApps,
-        viewAllShields 
+        viewAllShields,
+        userInfo
     })(Homepage); 

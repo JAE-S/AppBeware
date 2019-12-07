@@ -94,7 +94,7 @@ import { getThemeProps } from '@material-ui/styles';
       }, 
   }));
 
-export default function Nav() {
+export default function Nav(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -137,7 +137,7 @@ export default function Nav() {
       onClose={handleMenuClose}
     >
      <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-      <h3>Jane Doe</h3> 
+      {/* <h3>{props.user.userInfo.name}</h3>  */}
       <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
      </MenuItem>
      <MenuItem onClick={handleMenuClose}>

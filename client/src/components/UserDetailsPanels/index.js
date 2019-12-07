@@ -17,6 +17,8 @@
 
     import "./style.css";
 
+    import API from "../../utils/API"
+
     const useStyles = makeStyles(theme => ({
         root: {
           width: '100%',
@@ -37,15 +39,21 @@
               backgroundColor: "white", 
           }
       }));
+
+      // const apiSwitch = apiCalls(call => {
+
+      // })
       
       export default function  ControlledExpansionPanels(props) {
         const classes = useStyles();
         const [expanded, setExpanded] = React.useState(false);
+
+        // const api = apiSwitch();
       
         const handleChange = panel => (event, isExpanded) => {
           setExpanded(isExpanded ? panel : false);
         };
-      
+
         return (
           <div className={classes.root}>
             <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -85,13 +93,15 @@
                     />
                 </Grid> 
                 <Grid item sx={4}> 
-                    <button><CloseIcon  
+                    <a><CloseIcon  
                         type="submit"
                         style={{color: "#FC4A1A"}}
-                    /></button>
+                    /></a>
             
                     <button><DoneIcon 
                         style={{color: "green"}}
+                        onSubmit={props.inputSubmit}
+                        onClick={props.inputSubmit}
                     /></button>
                     </Grid>
                     </Grid>

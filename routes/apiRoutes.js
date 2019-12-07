@@ -9,7 +9,10 @@ module.exports = (passport, db) => {
   router.post('/register', AuthController.register);
   router.post('/login', AuthController.login);
   router.get('/logout', AuthController.logout);
-  router.put('/user/:id', ensureAuthenticated, AuthController.updateUser);
+  router.put('/userName/:id', ensureAuthenticated, AuthController.updateName);
+  router.put('/userEmail/:id', ensureAuthenticated, AuthController.updateEmail);
+  router.put('/userPhone/:id', ensureAuthenticated, AuthController.updatePhone);
+  router.put('/userPassword/:id', ensureAuthenticated, AuthController.updatePassword);
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
   router.get('/userInfo', AppController.userInfo)

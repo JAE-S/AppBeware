@@ -1,6 +1,7 @@
 // Import React
 // =========================================================
     import React, { Component } from "react"; 
+    import { connect } from "react-redux"; 
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
@@ -16,34 +17,33 @@
     import "../assets/styling/appStyle.css"
 // Import Media
 // =========================================================
-    import Tony_Smith from "../assets/images/test_profiles/Tony_Smith.png";   
-    import API from "../utils/API"
+    import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
 
         state = {
-            email: '',
-            password: '',
-            name: ''
+
         }
         
         componentDidMount() {
-            this.getProfileInfo()
+            console.log("mounted")
+            this.props.userInfo();
         }
 
-        getProfileInfo() {
-            API.userInfo()
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    email:res.data.userInfo.username,
-                    name: res.data.userInfo.firstName + ' ' + res.data.userInfo.lastName
-                })
-            })
-        }
-
-        render() {
+        // getProfileInfo() {
+        //     API.userInfo()
+        //     .then(res => {
+        //         console.log(res)
+        //         this.setState({
+        //             email:res.data.userInfo.email,
+        //             name: res.data.userInfo.name,
+        //             phoneNumber: res.data.userInfo.phoneNumber
+        //         })
+        //     })
+        // }
+        
+        render(props) {
         return (
             <>
             <Nav/>
@@ -65,28 +65,32 @@
                 </HeaderContainer>
                 <Wrapper align="center" style={{padding: 40}}> 
                     <UserDetailsPanel
-                        ariaControls="userName"
+                        ariaControls="Name"
                         title={"Name"}
-                        currentDetails={this.state.name}
+                        currentDetails={this.props.user.isloggedin}
                         edit={"hi"}
+                        inputSubmit= {this.props.updateName}
                     />
                      <UserDetailsPanel
                         ariaControls="password"
                         title={"Password"}
                         currentDetails={'******'}
                         edit={"hi"}
+                        inputSubmit= {this.props.updatePassword}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
                         title={"Email"}
-                        currentDetails={this.state.email}
+                        // currentDetails={this.props.user.userInfo.userInfo.email}
                         edit={" "}
+                        inputSubmit= {this.props.updateEmail}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
                         title={"Phone Number"}
-                        currentDetails={'.'}
+                        // currentDetails={this.props.user.userInfo.userInfo.phoneNumber}
                         edit={"hi"}
+                        inputSubmit = {this.props.updatePhone}
                     />
                 </Wrapper>
 
@@ -97,5 +101,11 @@
     }
     }
 
+    const mapStateToProps = state => ({
+        user: state.user.userInfo
+    })
 
-export default Profile ; 
+    export default connect(mapStateToProps, 
+        {
+            userInfo
+        })(Profile); 
