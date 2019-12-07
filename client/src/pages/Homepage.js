@@ -98,7 +98,7 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper>
+            <Wrapper style={{zIndex: "1!important"}}>
                 <HomepageTabNav>
                     <Grid container spacing={2}>
 

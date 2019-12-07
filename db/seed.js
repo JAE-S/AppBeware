@@ -28,7 +28,7 @@ module.exports = db => {
         profilePicture: "https://randomuser.me/api/portraits/men/38.jpg",
         isAdmin: true
     });
-
+ 
      db.User.create({
         firstName: 'Peter',
         lastName: 'Parker',

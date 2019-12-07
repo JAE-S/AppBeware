@@ -90,7 +90,7 @@ function getLabelText(value) {
           <Grid align="center"justify="space-between"  item xs={6}> 
           <button><StyledRating
               name="customized-color"
-              value={props.customValue}
+              value={1}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}
