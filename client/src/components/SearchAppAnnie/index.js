@@ -54,8 +54,6 @@ class SearchAppAnnie extends React.Component {
     this.props.push('/appPage');
   }
 
-<<<<<<< HEAD
-=======
   stateReducer = (state, changes) => {
     // this prevents the menu from being closed when the user
     // selects an item with a keyboard or mouse
@@ -72,7 +70,6 @@ class SearchAppAnnie extends React.Component {
     }
   }
 
->>>>>>> 373dc6ec77fd87900da13bbb1c83da1caa1a14ed
   render() {
     const item = {
       id: 123,
@@ -85,10 +82,7 @@ class SearchAppAnnie extends React.Component {
        <h2 align="center"> Search for an app or see what's trending! </h2>
        
       <Downshift 
-<<<<<<< HEAD
-=======
         stateReducer={this.stateReducer}
->>>>>>> 373dc6ec77fd87900da13bbb1c83da1caa1a14ed
         onChange={this.onChange} 
         itemToString={items => (items ? items.label : '')}
       >
