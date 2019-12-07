@@ -1,6 +1,7 @@
 .headerContainer {
     width: 100%; 
     margin: 0 auto; 
-    background-image: url("../../assets/images/homepage_background.jpg"); 
+    /* background-image: url("../../assets/images/homepage_background.jpg");  */
     background-size: cover; 
+    /* background-color: rgb(53, 232, 245) */
 }
