@@ -10,10 +10,11 @@ const studentData = require('./studentData');
 
 module.exports = db => {
     db.User.create({
-        firstName: 'Joe',
-        lastName: 'Gates',
-        username: 'jgates@gmail.com',
+        name: 'Joe Gates',
+        email: 'jgates@gmail.com',
         password: 'purple99',
+        phoneNumber: '919-555-5555',
+        profilePicture: '',
         isAdmin: true
     })
 

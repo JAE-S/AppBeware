@@ -70,7 +70,7 @@ export default function SignUp() {
                 // value={this.state.username}
                 // onChange={this.handleInputChange}
                 id="username-sign-up"
-                label="User Name"
+                label="Name"
                 name="username"
               />
               

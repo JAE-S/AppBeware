@@ -37,7 +37,7 @@ export default {
   },
 
   signIn: function(userInfo) {
-    console.log("getting Info " + userInfo.username + userInfo.password)
+    console.log("getting Info " + userInfo.email + userInfo.password)
     return axios.post('/api/login', userInfo)
   },
 
@@ -61,8 +61,6 @@ export default {
   userInfo: function() {
     return axios.get('/api/userInfo')
   }
-
-
 
 };
 

@@ -9,8 +9,8 @@ module.exports = (passport, db) => {
           const newUser = {
             email: req.body.email,
             password: req.body.password,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName
+            name: req.body.name,
+            phoneNumber: req.body.phoneNumber
           };
   
           return db.User.create(newUser).then(() => {
@@ -49,19 +49,43 @@ module.exports = (passport, db) => {
           res.redirect('/');
         });
       },
-      updateUser: (req, res) => {
+      updateName: (req, res) => {
         // console.log('req.body:', req.body);
         db.User.update({
-          email: req.body.email,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          password: req.body.password
+          name: req.body.name
         }, {
           where: { id: req.params.id }
         }).then(result => {
           // console.log(result);
           res.json(result);
         });
+      },
+      updateEmail: (req, res) => {
+        db.User.update({
+          email: req.body.email
+        }, {
+          where: { id: req.params.id }
+        }).then(result => {
+          res.json(result)
+        })
+      },
+      updatePhone: (req, res) => {
+        db.User.update({
+          phone: req.body.phone
+        }, {
+          where: { id: req.params.id }
+        }).then(result => {
+          res.json(result)
+        })
+      },
+      updatePassword: (req, res) => {
+        db.User.update({
+          password: req.body.password
+        }, {
+          where: { id: req.params.id }
+        }).then(result => {
+          res.json(result)
+        })
       },
       confirmAuth: (req, res) => {
         const email = req.body.email;

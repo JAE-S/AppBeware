@@ -1,6 +1,11 @@
 import API from "../../utils/API";
-import { SIGN_IN, SIGN_OUT} from "./new-types"
+import {USER_INFO} from "./new-types"
 
-export const signIn = () => dispatch => {
-
+export const userInfo = () => dispatch => {
+    API.userInfo()
+    .then(user => dispatch ({
+        type: USER_INFO,
+        payload: user
+    }))
+    .catch(err => console.log(err))
 }
