@@ -20,6 +20,8 @@ import "./assets/styling/appStyle.css"
 // =========================================================
   const App = () => {
 
+    // console.log(this.state)
+
     return ( 
         <>
           <Switch>

@@ -7,23 +7,27 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
-    firstName: {
+    name: {
       type: DataTypes.STRING
     },
-    lastName: {
-      type: DataTypes.STRING
-    },
-    username: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: {
         args: true,
-        msg: 'User already exists'
+        msg: 'Email already exists'
       }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    profilePicture: {
+      type: DataTypes.STRING
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,

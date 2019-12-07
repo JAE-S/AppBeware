@@ -7,6 +7,7 @@
     import categoryReducer from "./categoryReducer"
     import appReducer from "./appReducer"
     import shieldReducer from "./shieldReducer"
+    import authReducer from './authReducer'
 
 // Combine Reducers 
 // =========================================================
@@ -14,7 +15,8 @@
         router: connectRouter(history),
         categories: categoryReducer,
         apps: appReducer,
-        shields: shieldReducer
+        shields: shieldReducer,
+        user: authReducer
     })
 
     export default createRootReducer
