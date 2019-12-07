@@ -90,14 +90,12 @@ class SearchAppAnnie extends React.Component {
           getInputProps,
           getItemProps,
           isOpen,
-          getToggleButtonProps,
-          getMenuProps,
           inputValue,
           highlightedIndex,
           selectedItem
         }) => (
           <div style={{position: "relative", zIndex: 1000}}>
-            <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })} />
+            <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })}  />
             
             {isOpen ? (
               <div className="downshift-dropdown" >

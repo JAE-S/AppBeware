@@ -31,33 +31,44 @@ class Media extends Component {
         <Grid container wrap="nowrap">
           {this.props.trendingApps.map((item, index) => (
 
-            <Card style={{ maxWidth: "300px", width: "100%", margin: "10px", padding: "5px"}}>
+            <Card style={{ maxWidth: "300px", width: "100%", margin: "5px", padding: "5px"}}>
                 <Box key={index} style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
                   {item ? (
-                    <Grid container wrap="wrap" spacing={2}>
+                    <Grid 
+                        container 
+                        direction="row"
+                        justify="flex-start"
+                        alignItems="center"
+                        wrap="wrap" 
+                        spacing={2}>
                       <Grid item xm={4}>
-                        <img className="trendImage" style={{ width: 80, height: 80, borderRadius: 16 }} alt={item.name} src={item.logoUrl} />
+                        <img 
+                          className="trendImage" 
+                          onClick={() => this.viewApp(item.id)}
+                          alt={item.name}  
+                          src={item.logoUrl} 
+                          style={{ width: 80, height: 80, borderRadius: 16 }} 
+                        />
                       </Grid>
                       <Grid item xm={8}>
                         <div>
-                          <Typography gutterBottom variant="body2">
-                            {item.name}
-                          </Typography>
+                          {/* <Typography gutterBottom variant="body2"> */}
+                           <h3 
+                              onClick={() => this.viewApp(item.id)} 
+                              style={{margin: 0, color: "#57585D", borderBottom: "1px solid silver"}}
+                          >
+                              {item.name}
+                          </h3> 
+                          {/* </Typography> */}
                         </div>
                         <div>
-                          <Typography variant="caption" color="textSecondary">
+                          <Typography 
+                            variant="caption" 
+                            color="textSecondary">
 
-                            {`${"Last Updated: "} • `}
+                            {`${"Updated: "}`}
                             <Moment fromNow>{item.updatedAt}</Moment>
 
-                          </Typography>
-                        </div>
-                        <div>
-                          <Typography variant="caption" color="textSecondary">
-                              <button 
-                                onClick={() => this.viewApp(item.id)}
-                              >View App
-                              </button>
                           </Typography>
                         </div>
                       </Grid>              

@@ -68,15 +68,27 @@ class Homepage extends Component {
             <Nav/>
            <main>
             <HeaderContainer> 
+                <div className="headerBanner">
+                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> Check out our Alert system!</h1>
+                </div>
                 <Wrapper> 
-                    <Grid container spacing={1}>
+                    <Grid container 
+                        direction="row" 
+                        justify="center" 
+                        alignItems="center"
+                        spacing={1}
+                    >
+                    <Grid item xs={12}>
+
+                    {/* color: "#57585D" */}
+                    </Grid>
                         <Grid item xs={12} sm={3}>
                         <div>
                             <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
                         </div>
                         </Grid>
                         
-                        <Grid item xs={12} sm={9} style={{  display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
+                        <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
 
                                 {this.props.shields.map(shield => (
                                     <ShieldLayout 
@@ -98,8 +110,8 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper style={{zIndex: "1!important"}}>
-                <HomepageTabNav>
+            <Wrapper style={{zIndex: "1", position: "absolute" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+                <HomepageTabNav >
                     <Grid container spacing={2}>
 
                     {this.props.categories.map(cat => (
