@@ -1,53 +1,32 @@
 // Import React & Node packages
 // =========================================================
-import React, {Component} from 'react';
-import { connect } from "react-redux";
-import { push } from 'connected-react-router'
+    import React, {Component} from 'react';
+    import { connect } from "react-redux";
+    import { push } from 'connected-react-router'
 // Import Material UI components 
 // =========================================================
-    import { TextField, Button, Grid, Typography, StepLabel, FormControl, FormLabel, Step, Stepper, Checkbox, FormControlLabel } from '@material-ui/core/';
-
-// Import Material UI icons
+    import { Grid } from '@material-ui/core/';
+// Custom Components 
 // =========================================================
-    import { Brightness1Rounded, AddAlert, NotificationsOff, Check} from '@material-ui/icons/';
-
-// Import Components
-// =========================================================
-    import { CustomizedRatings }from "../Ratings"
     import HoverShieldInfo from "../HoverShieldInfo"
-
-    import { viewAllShields } from "../../Store/Actions/shieldActions";
-
-
-// Grid Layout
+// Redux Components 
 // =========================================================
-    // function SmallGrid(props) {
-    //     return (
-    //         <Grid container spacing={0} style={{ display: "flex", alignItems: "center"}}>
-    //             <Grid align="right" item xs={2}>
-    //                 {props.smallGirdLeft}
-    //             </Grid>
-    //             <Grid align="left" item xs={10}>
-    //                 {props.smallGirdRight}
-    //             </Grid>
-    //         </Grid>
-    //     ) 
-    // }
+    import { viewAllShields } from "../../Store/Actions/shieldActions";
 
    function ShieldAlertsFunction(props){
 
         return (
             <Grid item xs={2} sm={2}>
-                    <HoverShieldInfo
-                        badgeInfo={props.info}
-                        badgeName={
-                            <button><img 
-                                alt={props.title} 
-                                src={props.shieldIcon}
-                                style={{justifyContent: "center", Width: "60px", height: "60px"}} 
-                            /></button>
-                        }
-                    />
+                <HoverShieldInfo
+                    badgeInfo={props.info}
+                    badgeName={
+                        <button><img 
+                            alt={props.title} 
+                            src={props.shieldIcon}
+                            style={{justifyContent: "center", Width: "60px", height: "60px"}} 
+                        /></button>
+                    }
+                />
             </Grid>
         )
     }
@@ -67,11 +46,9 @@ import { push } from 'connected-react-router'
                     direction="row"
                     justify="center"
                     alignItems="center"
-                    spacing={1}>
-               <Grid item xs={12}> 
-                    <h4 align="center">Please click on the shield&#40;s&#41; that reflect your concerns.</h4>
-               </Grid> 
-                
+                    spacing={1}
+                >
+            
                 {this.props.shields.map(shield => (
                 <ShieldAlertsFunction
                     key={shield.name}
@@ -81,6 +58,10 @@ import { push } from 'connected-react-router'
                     info={`${shield.name} - ${shield.info}`}
                 />
                 ))}
+
+                <Grid item xs={12}> 
+                    <p align="center" style={{paddingTop: 20}}>Please click on the shield&#40;s&#41; that reflect your concerns.</p>
+               </Grid> 
            
                 </Grid>
             )

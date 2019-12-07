@@ -103,14 +103,10 @@ module.exports = function (db) {
         //   classId: req.params.cid,
         //   studentId: req.params.sid
         // })
-        db.ClassStudents.create({
-          classId: req.params.id,
-          studentId: "3"
-        })
-        .then(newLink => {
-          console.log("Inside creation");
-          console.log(`Class ID: ${newLink.classId}, with Student ID ${newLink.studentId} has been created.`);
-          res.json(newLink);
+        Class.findById(2).then(ClassData => {
+          ClassData.setStudent([3]).then(result => {
+            console.log(result);
+          });
         });
       }
 

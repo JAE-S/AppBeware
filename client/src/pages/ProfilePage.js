@@ -1,9 +1,12 @@
 // Import React
 // =========================================================
     import React, { Component } from "react"; 
+    import { connect } from "react-redux"; 
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
+    import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';  
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -16,34 +19,33 @@
     import "../assets/styling/appStyle.css"
 // Import Media
 // =========================================================
-    import Tony_Smith from "../assets/images/test_profiles/Tony_Smith.png";   
-    import API from "../utils/API"
+    import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
 
         state = {
-            email: '',
-            password: '',
-            name: ''
+
         }
         
         componentDidMount() {
-            this.getProfileInfo()
+            console.log("mounted")
+            this.props.userInfo();
         }
 
-        getProfileInfo() {
-            API.userInfo()
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    email:res.data.userInfo.username,
-                    name: res.data.userInfo.firstName + ' ' + res.data.userInfo.lastName
-                })
-            })
-        }
-
-        render() {
+        // getProfileInfo() {
+        //     API.userInfo()
+        //     .then(res => {
+        //         console.log(res)
+        //         this.setState({
+        //             email:res.data.userInfo.email,
+        //             name: res.data.userInfo.name,
+        //             phoneNumber: res.data.userInfo.phoneNumber
+        //         })
+        //     })
+        // }
+        
+        render(props) {
         return (
             <>
             <Nav/>
@@ -63,30 +65,36 @@
                         </Grid> 
                     </Wrapper>
                 </HeaderContainer>
-                <Wrapper align="center" style={{padding: 40}}> 
+                <Wrapper align="left" style={{padding: 40}}> 
+                <h2>Your Profile </h2>
                     <UserDetailsPanel
-                        ariaControls="userName"
-                        title={"Name"}
-                        currentDetails={this.state.name}
+                        ariaControls="Name"
+                        title={<h3>Name</h3>}
+                        currentDetails={this.props.user.isloggedin}
                         edit={"hi"}
+                        inputSubmit= {this.props.updateName}
                     />
-                     <UserDetailsPanel
+
+                     <UserDetailsPanel 
                         ariaControls="password"
-                        title={"Password"}
+                        title={<h3>Password</h3>}
                         currentDetails={'******'}
                         edit={"hi"}
+                        inputSubmit= {this.props.updatePassword}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
-                        title={"Email"}
-                        currentDetails={this.state.email}
+                        title={<h3>Email</h3>}
+                        currentDetails= {this.props.email}
                         edit={" "}
+                        inputSubmit= {this.props.updateEmail}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
-                        title={"Phone Number"}
-                        currentDetails={'.'}
+                        title={<h3>Phone Number</h3>}
+                        currentDetails={this.props.phoneNumber}
                         edit={"hi"}
+                        inputSubmit = {this.props.updatePhone}
                     />
                 </Wrapper>
 
@@ -97,5 +105,11 @@
     }
     }
 
+    const mapStateToProps = state => ({
+        user: state.user.userInfo
+    })
 
-export default Profile ; 
+    export default connect(mapStateToProps, 
+        {
+            userInfo
+        })(Profile); 

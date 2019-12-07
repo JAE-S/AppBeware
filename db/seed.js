@@ -12,82 +12,92 @@ module.exports = db => {
     db.User.create({
        firstName: 'admin',
         lastName: 'admin',
-        username: 'admin@gmail.com',
+        email: 'admin@gmail.com',
         password: '1234',
-        profilePic: "https://randomuser.me/api/portraits/lego/6.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/lego/6.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Joe',
         lastName: 'Gates',
-        username: 'jgates@gmail.com',
+        email: 'jgates@gmail.com',
         password: 'purple99',
-        profilePic: "https://randomuser.me/api/portraits/men/38.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/38.jpg",
         isAdmin: true
-    })
+    });
+
      db.User.create({
         firstName: 'Peter',
         lastName: 'Parker',
-        username: 'pparker@gmail.com',
+        email: 'pparker@gmail.com',
         password: 'red99',
-        profilePic: "https://randomuser.me/api/portraits/men/24.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/24.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Jackie',
         lastName: 'Truitt',
-        username: 'jtruitt@gmail.com',
+        email: 'jtruitt@gmail.com',
         password: 'purple99',
-        profilePic: "https://randomuser.me/api/portraits/women/92.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/92.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Tom',
         lastName: 'Barnes',
-        username: 'tbarnes@gmail.com',
+        email: 'tbarnes@gmail.com',
         password: 'teal99',
-        profilePic: "https://randomuser.me/api/portraits/men/59.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/59.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Mary',
         lastName: 'Sutter',
-        username: 'msutter@gmail.com',
+        email: 'msutter@gmail.com',
         password: 'yellow99',
-        profilePic: "https://randomuser.me/api/portraits/women/20.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/20.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Sara',
         lastName: 'Thomas',
-        username: 'sthomas@gmail.com',
+        email: 'sthomas@gmail.com',
         password: 'black99',
-        profilePic: "https://randomuser.me/api/portraits/women/26.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/26.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Ahmed',
         lastName: 'Saleem',
-        username: 'asaleem@gmail.com',
+        email: 'asaleem@gmail.com',
         password: 'grey99',
-        profilePic: "https://randomuser.me/api/portraits/men/14.jpg",
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/14.jpg",
         isAdmin: true
-    })
+    });
 
       db.User.create({
         firstName: 'Misty',
         lastName: 'Thomas',
-        username: 'mthomas@gmail.com',
-        profilePic: "https://randomuser.me/api/portraits/women/84.jpg",
+        email: 'mthomas@gmail.com',
         password: 'orange99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/84.jpg",
         isAdmin: true
-    })
+    });
 
     db.Shield.bulkCreate(shieldData).then(function () {
         return db.Category.bulkCreate(categoryData)

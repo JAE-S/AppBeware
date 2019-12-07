@@ -42,7 +42,7 @@ export default {
   },
 
   signIn: function(userInfo) {
-    console.log("getting Info " + userInfo.username + userInfo.password)
+    console.log("getting Info " + userInfo.email + userInfo.password)
     return axios.post('/api/login', userInfo)
   },
 
@@ -65,9 +65,27 @@ export default {
 
   userInfo: function() {
     return axios.get('/api/userInfo')
+  },
+
+  register: function(registration) {
+    return axios.post('/api/register', registration)
+  },
+
+  updateName: function (update) {
+    return axios.put('/api/userName', update)
+  },
+
+  updateEmail: function (update) {
+    return axios.put('/api/userEmail', update)
+  },
+
+  updatePhone: function (update) {
+    return axios.put('/api/userPhone', update)
+  },
+
+  updatePassword: function (update) {
+    return axios.put('/api/userPassword', update)
   }
-
-
 
 };
 

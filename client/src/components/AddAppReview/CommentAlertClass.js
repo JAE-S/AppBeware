@@ -5,28 +5,27 @@
     import { push } from 'connected-react-router'
 // Import Material UI components 
 // =========================================================
-    import { TextField, Button, Grid, Typography, StepLabel, FormControl, FormLabel, Step, Stepper, Checkbox, FormControlLabel } from '@material-ui/core/';
+    import { TextField, Button, Grid, Typography, FormControl, FormLabel, Checkbox, FormControlLabel } from '@material-ui/core/';
 
 // Import Material UI icons
 // =========================================================
-    import { Brightness1Rounded, AddAlert, NotificationsOff, Check} from '@material-ui/icons/';
+    import { AddAlert, NotificationsOff, Check} from '@material-ui/icons/';
 
 // Import Components
 // =========================================================
-    import { CustomizedRatings }from "../Ratings"
-    import HoverShieldInfo from "../HoverShieldInfo"
+
 
    function ShieldAlertsFunction(props){
 
         return (
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" style={{padding: "0 20px"}}>
                 <div>
                 <TextField
                     id="outlined-multiline-static"
-                    label="Multiline"
+                    label="What dangers have your experiened with this app?"
                     multiline
                     rows="4"
-                    defaultValue="What dangers have your experiened with this app?"
+                    defaultValue="...share your experience here."
                     margin="normal"
                     variant="outlined"
                 />

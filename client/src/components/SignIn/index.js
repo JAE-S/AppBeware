@@ -36,8 +36,8 @@ import SignUp from "../SignUp"
 
 class signIn extends Component{
   state = {
-    username: '',
-    password: '',
+    email: '',
+    password: ''
   }
 
   makeStyles = theme => ({
@@ -69,7 +69,7 @@ class signIn extends Component{
   handleFormSubmit = event => {
     event.preventDefault();
     API.signIn({
-      username: this.state.username,
+      email : this.state.email,
       password: this.state.password
     })
     .then(res => {
@@ -95,7 +95,7 @@ class signIn extends Component{
               fullWidth
               id="email"
               label="Email Address"
-              name="username"
+              name="email"
               autoComplete="email"
               autoFocus
               onChange={this.handleInputchange}
