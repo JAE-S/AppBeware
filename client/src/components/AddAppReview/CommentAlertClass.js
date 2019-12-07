@@ -9,7 +9,8 @@
 
 // Import Material UI icons
 // =========================================================
-    import { AddAlert, NotificationsOff, Check} from '@material-ui/icons/';
+    import { AddAlert } from '@material-ui/icons/';
+    import "../../assets/styling/appStyle.css"
 
 // Import Components
 // =========================================================
@@ -25,28 +26,24 @@
                     label="What dangers have your experiened with this app?"
                     multiline
                     rows="4"
-                    defaultValue="...share your experience here."
+                    placeholder="...share your experience here."
                     margin="normal"
                     variant="outlined"
                 />
             </div>
-            <div> 
-                <FormControl required component="fieldset">
-                    <FormLabel component="legend"> 
-                        Would you like to set an alert for this app?  
-                    </FormLabel>
+            <div align="center"> 
+                <FormControl  required component="fieldset">
+                    {/* <FormLabel component="legend">  */}
+                       <h4>Would you like to set an alert for this app?</h4> 
+                    {/* </FormLabel> */}
+                <div align="center">
                 <FormControlLabel 
                     control={<Checkbox icon={<AddAlert />} 
                     checkedIcon={<AddAlert />} 
                     value="alert" />}
                     label="Set Alert"
                 />
-                <FormControlLabel
-                    control={<Checkbox icon={<NotificationsOff />} 
-                    checkedIcon={<NotificationsOff />} 
-                    value="noAlert" />}
-                    label="No Alert"
-                />
+                </div>
                 </FormControl>
             </div> 
         </form>

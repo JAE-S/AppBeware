@@ -111,7 +111,7 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper style={{zIndex: "1", position: "absolute" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+            <Wrapper style={{zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
                 <HomepageTabNav >
                     <Grid container spacing={2}>
 
