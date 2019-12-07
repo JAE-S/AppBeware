@@ -18,12 +18,16 @@
 // Import Media
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
+import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
 
         state = {
-
+            name: '',
+            password: '',
+            email: '', 
+            phone: ''
         }
         
         componentDidMount() {
@@ -42,6 +46,20 @@
         //         })
         //     })
         // }
+
+        
+  handleInputchange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleFormSubmit = event => {
+      event.preventDefault();
+      
+  }
+
         
         render(props) {
         return (
@@ -67,9 +85,11 @@
                     <UserDetailsPanel
                         ariaControls="Name"
                         title={"Name"}
-                        currentDetails={this.props.user.isloggedin}
+                        currentDetails={this.props.user.name}
                         edit={"hi"}
                         inputSubmit= {this.props.updateName}
+                        name={'name'}
+                        onChange={this.handleInputchange}
                     />
                      <UserDetailsPanel
                         ariaControls="password"
@@ -77,20 +97,26 @@
                         currentDetails={'******'}
                         edit={"hi"}
                         inputSubmit= {this.props.updatePassword}
+                        name={'password'}
+                        onChange={this.handleInputchange}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
                         title={"Email"}
-                        // currentDetails={this.props.user.userInfo.userInfo.email}
+                        currentDetails={this.props.user.email}
                         edit={" "}
                         inputSubmit= {this.props.updateEmail}
+                        name={'email'}
+                        onChange={this.handleInputchange}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
                         title={"Phone Number"}
-                        // currentDetails={this.props.user.userInfo.userInfo.phoneNumber}
+                        currentDetails={this.props.user.phoneNumber}
                         edit={"hi"}
-                        inputSubmit = {this.props.updatePhone}
+                        inputSubmit = {this.handleFormSubmit}
+                        name={'phone'}
+                        onChange={this.handleInputchange}
                     />
                 </Wrapper>
 

@@ -18,11 +18,22 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import {Field, reduxForm} from 'redux-form'
 
 // Import Styles
 // =========================================================
 import Modal from "../Modals"
 import SignIn from "../SignIn"
+import API from '../../utils/API'
+
+const renderField = ({ input, label, type }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+    </div>
+  </div>
+)
 
 
 // Custom Styles 
@@ -47,8 +58,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignUp() {
+const SubmitRegistration = props => {
   const classes = useStyles();
+  const {error, handleSubmit, submitting} = props
+  
 
   return (
     <Container  maxWidth="xs">
@@ -60,15 +73,15 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit(API.register())}>
           <Grid container spacing={2}>
             <Grid item xs={12} >
-              <TextField
+              <Field
                 variant="outlined"
+                type="text"
                 required
                 fullWidth
-                // value={this.state.username}
-                // onChange={this.handleInputChange}
+                component={renderField}
                 id="username-sign-up"
                 label="Name"
                 name="username"
@@ -78,12 +91,12 @@ export default function SignUp() {
           
             <Grid item xs={12}>
            
-              <TextField
+              <Field
                 variant="outlined"
+                type="email"
                 required
                 fullWidth
-                // value={this.state.email}
-                // onChange={this.handleInputChange}
+                component ={renderField}
                 id="email-sign-up"
                 label="Email Address"
                 name="email"
@@ -92,6 +105,40 @@ export default function SignUp() {
             
               
             </Grid>
+          
+          <Grid item xs={12}>
+         
+            <Field
+              variant="outlined"
+              type="text"
+              required
+              fullWidth
+              component ={renderField}
+              id="phone-sign-up"
+              label="Phone Number"
+              name="phone"
+              autoComplete="phone"
+            />
+          
+            
+          </Grid>
+          
+          <Grid item xs={12}>
+         
+            <Field
+              variant="outlined"
+              type="password"
+              required
+              fullWidth
+              component ={renderField}
+              id="password-sign-up"
+              label="Password"
+              name="password"
+              autoComplete="password"
+            />
+          
+            
+          </Grid>
 
 {/* <FormControl>
   <InputLabel htmlFor="my-input">Email address</InputLabel>
@@ -99,24 +146,6 @@ export default function SignUp() {
   <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
 </FormControl> */}
 
-
-
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                // value={this.state.password}
-                // onChange={this.handleInputChange}
-                id="password-sign-up"
-                autoComplete="current-password"
-              />
-            </Grid>
-           
           </Grid>
           <Button
             type="submit"
@@ -147,3 +176,7 @@ export default function SignUp() {
     </Container>
   );
 }
+
+export default reduxForm({
+  form: 'registrationForm'
+})(SubmitRegistration)

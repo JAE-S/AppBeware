@@ -35,7 +35,8 @@ export const updateName = (update) => dispatch => {
     }))
     .catch(err => console.log(err))
 }
-export const updatePhone = (update) => dispatch => {
+export const updatePhone = (event, update) => dispatch => {
+    event.preventDefault()
     API.updatePhone(update)
     .then(user => dispatch ({
         type: UPDATE_PHONE,
