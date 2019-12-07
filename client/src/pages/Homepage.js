@@ -16,7 +16,7 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    import Footer from "../components/Footer"from "../Store/Actions/appActions";
+    import Footer from "../components/Footer";
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
@@ -98,7 +98,7 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper>
+            <Wrapper style={{zIndex: "1!important"}}>
                 <HomepageTabNav>
                     <Grid container spacing={2}>
 

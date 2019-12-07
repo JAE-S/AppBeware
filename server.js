@@ -43,9 +43,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get("/google", function(req, res) {
-    res.sendFile(path.join(__dirname, "./google-test.html"));
-  })
+// app.get("/google", function(req, res) {
+//     res.sendFile(path.join(__dirname, "./google-test.html"));
+//   })
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
