@@ -69,7 +69,6 @@
           setExpanded(isExpanded ? panel : false);
         };
 
-      
         return (
           <div className={classes.root}   >
             <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -113,10 +112,10 @@
                     />
                 </Grid> 
                 <Grid item sx={4}> 
-                    <button><CloseIcon  
+                    <a><CloseIcon  
                         type="submit"
                         style={{color: "#FC4A1A"}}
-                    /></button>
+                    /></a>
             
                     <button><DoneIcon 
                         style={{color: "green"}}
