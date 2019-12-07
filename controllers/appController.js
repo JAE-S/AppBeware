@@ -1,6 +1,16 @@
-/* eslint-disable no-var */
+const makeArrayOfShields = (dbArray) => {
+  console.log("Inside makeArrayOfShields");
+  const duplicateShieldArray = dbArray.map((item) => item.shieldId);
+  const noDuplicateShield = new Set(duplicateShieldArray);
+  const finalShieldArray = [...noDuplicateShield];
+  return finalShieldArray;
+};
+
+
+
 module.exports = function (db) {
     return {
+
       // Return all listed apps in our listedApp table
       getListedApp: function (req, res) {
         db.ListedApp.findAll({}).then(function (dbListedApps) {
@@ -15,6 +25,55 @@ module.exports = function (db) {
           order: [['name', 'ASC']]
         }).then(function(dbAppNames) {
           res.json(dbAppNames);
+        });
+      },
+
+      getAppShields: function (req, res) {
+        console.log("Inside getAppShields")
+        console.log(req.params.id)
+        db.AppShieldUser.findAll({
+          attributes: ['appId', 'shieldId'],
+          where: {
+            appId: req.params.id
+          },
+          order: [['shieldId', 'ASC']]
+        }).then(function(dbAppShieldUser) {
+          db.Shield.findAll({
+            where: {
+              id: makeArrayOfShields(dbAppShieldUser)
+            }
+          }).then(function(dpSpecificApps) {
+            res.json(dpSpecificApps)
+          });
+        });
+      },
+
+      getAppReviews: function (req, res) {
+        console.log("Inside getAppReviews - AppController")
+        db.AppReviews.findAll({
+          where: {
+            ListedAppId: req.params.id
+          },
+          include: [
+            {
+              model: db.User,
+            },
+            {
+              model: db.ListedApp
+            }
+          ]
+        }).then(function(dbAppReviews) {
+          res.json(dbAppReviews)
+        });
+      },
+
+      getSpecificShields: function (req, res) {
+        db.Shield.findAll({
+          where: {
+            id: [1,2,4]
+          }
+        }).then(function(dpSpecificApps) {
+          res.json(dpSpecificApps)
         });
       },
 
@@ -97,16 +156,13 @@ module.exports = function (db) {
         })
       },
 
-      testLink: function (req, res) {
+      getTest: function (req, res) {
         console.log("Inside top level of testLink");
-        // db.ClassStudents.create({
-        //   classId: req.params.cid,
-        //   studentId: req.params.sid
-        // })
-        Class.findById(2).then(ClassData => {
-          ClassData.setStudent([3]).then(result => {
-            console.log(result);
-          });
+
+        db.AppShieldUser.create(req.body).then(function (dbAppShieldUser) {
+          res.json(dbAppShieldUser);
+        }).catch(function(error) {
+          console.log(error)
         });
       }
 

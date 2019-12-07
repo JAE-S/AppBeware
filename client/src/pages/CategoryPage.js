@@ -16,7 +16,7 @@
     import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
     import Autocomplete from '@material-ui/lab/Autocomplete';
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewSingleApp } from "../Store/Actions/appActions";
+    import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
 
 
 // Import styles
@@ -43,7 +43,8 @@ class Categories extends Component {
     }
 
     viewApp = (appId) => {
-        this.props.viewSingleApp(appId)
+        this.props.viewSingleApp(appId);
+        this.props.viewAppReviews(appId);
         this.props.history.push('/appPage'); 
     }
 
@@ -154,7 +155,8 @@ class Categories extends Component {
 const mapStateToProps = state => ({
     singleCategory: state.categories.singleCategory,
     categories: state.categories.allCategories,
-    singleCategoryInfo: state.categories.singleCategoryInfo
+    singleCategoryInfo: state.categories.singleCategoryInfo,
+    appReviews: state.apps.appReviews
 })
 
 export default connect(mapStateToProps, 
@@ -162,7 +164,8 @@ export default connect(mapStateToProps,
         viewAllCategories, 
         viewSingleCategory, 
         viewSingleCategoryInfo, 
-        viewSingleApp
+        viewSingleApp,
+        viewAppReviews
     })
     (Categories); 
 

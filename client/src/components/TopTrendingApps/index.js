@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { push } from 'connected-react-router';
 import Moment from 'react-moment';
 
-import { viewSingleApp, selectTrendingApps } from "../../Store/Actions/appActions";
+import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
 
 import { Grid, Card, Box, Typography } from '@material-ui/core/';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -19,7 +19,8 @@ import CB_icon from "../../assets/images/shields/cyberbullying.png";
 class Media extends Component {      
 
   viewApp = (appId) => {
-    this.props.viewSingleApp(appId)
+    this.props.viewSingleApp(appId);
+    this.props.viewAppReviews(appId);
     this.props.push('/appPage');
   }
 
@@ -114,11 +115,13 @@ class Media extends Component {
 
 const mapStateToProps = state => ({
   trendingApps: state.apps.trendingApps,
-  singleApp: state.apps.singleApp
+  singleApp: state.apps.singleApp,
+  appReviews: state.apps.appReviews
 })
 
 export default connect(mapStateToProps, { 
       selectTrendingApps,
       viewSingleApp,
+      viewAppReviews,
       push
   })(Media); 

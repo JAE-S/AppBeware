@@ -22,12 +22,13 @@ module.exports = (passport, db) => {
    router.get('/app-names-only', AppController.getAppNames);
    router.get('/select-trending-apps', AppController.selectTrendingApps);
    router.get('/get-single-app/:id', AppController.viewSingleApp);
+   router.get('/get-app-shields/:id', AppController.getAppShields);
+   router.get('/get-app-reviews/:id', AppController.getAppReviews);
    router.get('/filter-category/:id', AppController.filterCategory);
    router.get('/get-categories', AppController.getCategories);
    router.get('/get-single-category-info/:id', AppController.getSingleCategoryInfo);
    router.get('/get-shields', AppController.getShields);
-  //  router.post('/test-link/studentid=:sid?classid=:cid', AppController.testLink);
-   router.post('/test-link/', AppController.testLink);
+  //  router.post('/get-app-shields/:id', AppController.getAppShields);
 
 
   //  router.post('/examples', AppController.createExample);
