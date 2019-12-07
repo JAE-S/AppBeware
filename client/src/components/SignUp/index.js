@@ -1,3 +1,4 @@
+// AppBeware Sign Up
 // Import React 
 // =========================================================
 import React from 'react';
@@ -51,15 +52,10 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container  maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
+      <div className={useStyles.paper}>
+          
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} >
@@ -141,9 +137,7 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
      
-      </Box>
     </Container>
   );
 }

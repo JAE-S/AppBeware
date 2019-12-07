@@ -16,9 +16,9 @@
     import HomepageTabNav from "../components/HomepageTabNav"
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
-    import Footer from "../components/Footer"
-    import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps} from "../Store/Actions/appActions";
+    import Footer from "../components/Footer"from "../Store/Actions/appActions";
+    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
 
@@ -41,6 +41,7 @@ class Homepage extends Component {
     // COMPLETE
     viewCategory = (catId) => {
         this.props.viewSingleCategory(catId)
+        this.props.viewSingleCategoryInfo(catId)
         this.props.history.push('/categoryPage');
     }
 
@@ -79,6 +80,7 @@ class Homepage extends Component {
 
                                 {this.props.shields.map(shield => (
                                     <ShieldLayout 
+                                        key={shield.id}
                                         shieldIcon={shield.icon}
                                         altTxt={shield.altText}
                                         title={shield.name}
@@ -92,7 +94,9 @@ class Homepage extends Component {
                 </Wrapper>
             </HeaderContainer>
 
-            <SearchAppAnnie />
+            <SearchAppAnnie 
+                viewApp={this.viewApp}
+            />
 
             <Wrapper>
                 <HomepageTabNav>
@@ -120,6 +124,7 @@ class Homepage extends Component {
 
 const mapStateToProps = state => ({
     categories: state.categories.allCategories,
+    singleCategoryInfo: state.categories.singleCategoryInfo,
     apps: state.apps.allListedApps,
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
@@ -131,6 +136,7 @@ export default connect(mapStateToProps,
     { 
         viewAllCategories, 
         viewSingleCategory, 
+        viewSingleCategoryInfo,
         viewAllListedApps, 
         viewAppNames, 
         selectTrendingApps,
