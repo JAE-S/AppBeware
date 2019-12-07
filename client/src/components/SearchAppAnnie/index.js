@@ -90,6 +90,8 @@ class SearchAppAnnie extends React.Component {
           getInputProps,
           getItemProps,
           isOpen,
+          getToggleButtonProps,
+          getMenuProps,
           inputValue,
           highlightedIndex,
           selectedItem
@@ -126,23 +128,20 @@ class SearchAppAnnie extends React.Component {
                         }}
                     >
                     <Grid item xs={4}>
-                      {item.label}
+                      <h3>{item.label}</h3>
                     </Grid>
                     <Grid item xs={4}>
                       <div style={{ color: "#F7F7F7", backgroundColor: "grey"}}> Temporary Placeholder for shield icons</div>
                     </Grid>
                     <Grid item xs={4}>
-                    <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
-                    <button className="learn-more"
-                            size="small"
-                            // onClick={() => props.viewCategory(props.catId)}
-                    >
-                      <span className="circle">
-                        <span className="icon arrow"></span>
-                      </span>
-                      <h4 ><span className="button-text">View App</span></h4>
-                    </button>
-                  </div>
+                      <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
+                        <button className="learn-more" size="small">
+                          <span className="circle">
+                            <span className="icon arrow"></span>
+                          </span>
+                          <h4><span className="button-text">View App</span></h4>
+                        </button>
+                      </div>
                       </Grid>
                     </Grid>
                   ))}

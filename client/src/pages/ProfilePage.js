@@ -5,6 +5,8 @@
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
+    import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';  
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -63,32 +65,34 @@
                         </Grid> 
                     </Wrapper>
                 </HeaderContainer>
-                <Wrapper align="center" style={{padding: 40}}> 
+                <Wrapper align="left" style={{padding: 40}}> 
+                <h2>Your Profile </h2>
                     <UserDetailsPanel
                         ariaControls="Name"
-                        title={"Name"}
+                        title={<h3>Name</h3>}
                         currentDetails={this.props.user.isloggedin}
                         edit={"hi"}
                         inputSubmit= {this.props.updateName}
                     />
-                     <UserDetailsPanel
+
+                     <UserDetailsPanel 
                         ariaControls="password"
-                        title={"Password"}
+                        title={<h3>Password</h3>}
                         currentDetails={'******'}
                         edit={"hi"}
                         inputSubmit= {this.props.updatePassword}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
-                        title={"Email"}
-                        // currentDetails={this.props.user.userInfo.userInfo.email}
+                        title={<h3>Email</h3>}
+                        currentDetails= {this.props.email}
                         edit={" "}
                         inputSubmit= {this.props.updateEmail}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
-                        title={"Phone Number"}
-                        // currentDetails={this.props.user.userInfo.userInfo.phoneNumber}
+                        title={<h3>Phone Number</h3>}
+                        currentDetails={this.props.phoneNumber}
                         edit={"hi"}
                         inputSubmit = {this.props.updatePhone}
                     />
