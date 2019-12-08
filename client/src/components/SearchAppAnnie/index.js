@@ -4,7 +4,7 @@
     import { connect } from "react-redux";
     import { push } from 'connected-react-router';
     import Downshift from "downshift";
-    import { viewAppNames, viewSingleApp } from "../../Store/Actions/appActions";
+    import { viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
 // Import Material UI components
 // =========================================================
 //  import { NoSsr} from '@material-ui/core';
@@ -50,7 +50,8 @@ class SearchAppAnnie extends React.Component {
 
   onChange = (selectedApp) => {
     // alert(`View ${selectedApp.label}`)
-    this.props.viewSingleApp(selectedApp.id)
+    this.props.viewSingleApp(selectedApp.id);
+    this.props.viewAppReviews(selectedApp.id);
     this.props.push('/appPage');
   }
 
@@ -90,14 +91,12 @@ class SearchAppAnnie extends React.Component {
           getInputProps,
           getItemProps,
           isOpen,
-          getToggleButtonProps,
-          getMenuProps,
           inputValue,
           highlightedIndex,
           selectedItem
         }) => (
           <div style={{position: "relative", zIndex: 1000}}>
-            <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })} />
+            <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })}  />
             
             {isOpen ? (
               <div className="downshift-dropdown" >
@@ -158,12 +157,16 @@ class SearchAppAnnie extends React.Component {
 
 const mapStateToProps = state => ({
   singleApp: state.apps.singleApp,
-  appNames: state.apps.allAppNames
+  appNames: state.apps.allAppNames,
+  shieldsForApps: state.apps.shieldsForApps,
+  appReviews: state.apps.appReviews
 })
 
 export default connect(mapStateToProps, 
   { 
     viewSingleApp,
     viewAppNames,
+    generateShieldsForApps,
+    viewAppReviews,
     push
   })(SearchAppAnnie); 

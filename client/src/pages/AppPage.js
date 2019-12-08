@@ -20,7 +20,7 @@ import {CommentGrid, HeaderContainer, DangerRatings, ShieldRatings} from "../com
 // Import Redux Actions 
 // =========================================================
 // import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
+import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
 import { viewAllShields } from "../Store/Actions/shieldActions";
 // Import Styles
 // =========================================================
@@ -182,17 +182,36 @@ class AppPage extends Component {
                     />
                     </Grid>
                 </Grid>
-                <CommentGrid
-                    // ---> Left Side
-                    imageLeft={<img alt={test_profiles[0].username} style={{  justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].image}/>}
-                    usernameLeft={test_profiles[0].username} 
-                    reviewCountLeft={test_profiles[0].reviewCount} 
-                    datePostedLeft={test_profiles[0].datePosted} 
-                    // ---> Right Side     
-                    badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].badges}/>}
-                    dangerRatingRight={<AppRatings ratingValue={test_profiles[0].dangerRating}/>}
-                    commentsRight={test_profiles[0].comments}
-                />
+
+                {this.props.appReviews.map(review => (
+
+                    <CommentGrid
+                        // ---> Left Side
+                        imageLeft={<img alt={review.User.name} style={{  justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} src={review.User.profilePicture}/>}
+                        usernameLeft={review.User.name} 
+                        // TODO: Ultimately need to generate this data - next 2 fields
+                        reviewCountLeft={3}
+                        datePostedLeft="Nov 18, 2019"
+                        // ---> Right Side     
+                        // TODO: Need to redo this so it's not hard-coded - badges
+                        badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={ PR_icon }/>}
+                        dangerRatingRight={<AppRatings ratingValue={review.dangerRating}/>}
+                        commentsRight={review.comments}
+                    />
+
+                ))}
+
+                    {/* <CommentGrid
+                        // ---> Left Side
+                        imageLeft={<img alt={test_profiles[0].username} style={{  justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].image}/>}
+                        usernameLeft={test_profiles[0].username} 
+                        reviewCountLeft={test_profiles[0].reviewCount} 
+                        datePostedLeft={test_profiles[0].datePosted} 
+                        // ---> Right Side     
+                        badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].badges}/>}
+                        dangerRatingRight={<AppRatings ratingValue={test_profiles[0].dangerRating}/>}
+                        commentsRight={test_profiles[0].comments}
+                    /> */}
         
             </Wrapper>
         </main>
@@ -204,6 +223,7 @@ class AppPage extends Component {
 
 const mapStateToProps = state => ({
     singleApp: state.apps.singleApp,
+    appReviews: state.apps.appReviews,
     // categories: state.categories.allCategories,
     // apps: state.apps.allListedApps,
     // trendingApps: state.apps.trendingApps,
@@ -219,5 +239,6 @@ export default connect(mapStateToProps,
     // viewAppNames, 
     // selectTrendingApps,
     viewSingleApp,
+    viewAppReviews,
     viewAllShields 
 })(AppPage); 
