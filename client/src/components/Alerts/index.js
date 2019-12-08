@@ -64,7 +64,7 @@
             setState({ ...state, [name]: event.target.checked });
         };
         return (
-            <Table style={{ width: "400px"}}>
+            <Table style={{ width: "100%"}}>
                 <TableBody>
                     {data.map((app, index) => 
                         <TableRow key={index} >

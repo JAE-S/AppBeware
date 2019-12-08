@@ -88,9 +88,6 @@
           display: 'none',
           },
       },
-      alert: {
-      //    borderRadius
-      }, 
   }));
 
 // Export Nav bar
@@ -139,7 +136,7 @@
       >
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
         {/* <h3>{props.user.userInfo.name}</h3>  */}
-        <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
+        <img alt="profile photo" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profilePage" style={{ textDecoration: 'none', color: 'black' }}>
@@ -190,7 +187,7 @@
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-          <Badge className={classes.alert} badgeContent={<Count/>} color="secondary">
+          <Badge badgeContent={<Count/>}>
               Alerts
           </Badge>
         </MenuItem>

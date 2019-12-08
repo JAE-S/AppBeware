@@ -5,22 +5,31 @@
 // import { push } from 'connected-react-router'
 // Import Components
 // =========================================================
-    import { CustomizedRatings }from "../Ratings"
+    import CustomizedRatings from "../Ratings"
     import { viewAllShields } from "../../Store/Actions/shieldActions";
 
 // ShieldAlertsFunction
 // =========================================================
 
     class ShieldAlertsClass extends Component {
+  
         // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllShields();
         }
+        // TODO://////////////////
+        // Functin to set danger rating 
+        handleInput = (event) => {
+            alert(event.target.value);
+          }
 
         render() {
             return (
                 <>
-                    <CustomizedRatings customValue={1}/>
+                  {/* // TODO:////////////////// */}
+                    <CustomizedRatings 
+                        value={this.handleInput}
+                    />
                      <p align="center">Please select a rating &#40;1 - 5 &#41; that reflects your concerns.</p>
                 </>
             )

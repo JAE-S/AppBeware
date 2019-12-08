@@ -29,13 +29,17 @@
                 />
             </div>
             <div align="center"> 
-                <FormControl  required component="fieldset">
+                <FormControl component="fieldset">
                     <h4>Would you like to set an alert for this app?</h4> 
                     <div align="center">
                         <FormControlLabel 
-                            control={<Checkbox icon={<AddAlert />} 
-                            checkedIcon={<AddAlert />} 
-                            value="alert" />}
+                            control={
+                                <Checkbox 
+                                    icon={<AddAlert />} 
+                                    checkedIcon={<AddAlert />} 
+                                    value="checkedA" 
+                                />
+                            }
                             label="Set Alert"
                         />
                     </div>
@@ -53,10 +57,17 @@
         componentDidMount() {
            
         }
+
+        // handleChange = () => event => {
+        //   };
+
         render() {
             return (
                 <>
-                    <ShieldAlertsFunction/>
+                    <ShieldAlertsFunction
+                      // TODO://////////////////
+                    // input props for shield alerts go here
+                    />
                 </>
             )
         }

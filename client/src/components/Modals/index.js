@@ -15,12 +15,10 @@
       setOpen(true);
       setScroll(scrollType);
     };
-
+ 
     const handleClose = () => {
       setOpen(false);
     };
-
-
 
     const descriptionElementRef = React.useRef(null);
     React.useEffect(() => {

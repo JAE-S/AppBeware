@@ -172,21 +172,21 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                         </Grid>
                     </Wrapper>
 
-                    {/* Comments */}    
+                    {/* Add App Review */}
                     <Grid container spacing={0} style={{ display: "flex", alignItems: "center", borderBottom: "2px solid grey", height: "54px"}}>
                         <Grid item xs={10}>
                             <h2>Reviews:</h2>
                         </Grid>
                         <Grid align="right" item xs={2}>
                         <Modal
-                            modalTitle={` Share your concerns about ${this.props.singleApp.name}.`}
+                            modalTitle={<h3 style={{color: "#57585D", margin: 0}}> Create A Review For <a style={{color: "#13BAC7"}}>{this.props.singleApp.name}</a></h3>}
                             openModal="Add Review"
                             modalBody={<AddAppReview/>}
                             modalButton1="Submit"
                         />
                         </Grid>
                     </Grid>
-
+                    {/* Comments */}    
                     {this.props.appReviews.map(review => (
 
                         <CommentGrid
