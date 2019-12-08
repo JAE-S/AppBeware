@@ -11,7 +11,7 @@ export default function(state=initialState, action) {
         case USER_INFO:
             return {
             ...state,
-            userInfo: action.payload.data
+            userInfo: action.payload.data.userInfo
         } 
 
         case UPDATE_NAME:

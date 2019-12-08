@@ -62,12 +62,19 @@
       export default function  ControlledExpansionPanels(props) {
         const classes = useStyles();
         const [expanded, setExpanded] = React.useState(false);
-
-        // const api = apiSwitch();
       
         const handleChange = panel => (event, isExpanded) => {
           setExpanded(isExpanded ? panel : false);
         };
+
+              
+        const handleInputchange = event => {
+          const {name, value} = event.target;
+          this.setState({
+            [name]: value
+          })
+        }
+
 
         return (
           <div className={classes.root}   >
@@ -108,7 +115,8 @@
                         type="text"
                         // label={props.title}
                         style={{width: "400px!important"}}
-                       
+                        name={props.name}
+                        onChange={props.onChange}
                     />
                 </Grid> 
                 <Grid item sx={4}> 
@@ -119,8 +127,8 @@
             
                     <button><DoneIcon 
                         style={{color: "green"}}
-                        onSubmit={props.inputSubmit}
                         onClick={props.inputSubmit}
+                        // onClick={props.inputSubmit(Input)}
                     /></button>
                     </Grid>
                     </Grid>

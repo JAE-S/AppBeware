@@ -1,7 +1,7 @@
 // AppBeware Sign Up
 // Import React 
 // =========================================================
-import React from 'react';
+import React, { Component } from 'react';
 
 // Import Material UI components 
 // =========================================================
@@ -19,16 +19,25 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import {Field, reduxForm} from 'redux-form'
 
 // Import Styles
 // =========================================================
 import Modal from "../Modals"
 import SignIn from "../SignIn"
+import API from '../../utils/API'
 
 
+class SignUp extends Component{
+  state = {
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+  }
 // Custom Styles 
 // =========================================================
-const useStyles = makeStyles(theme => ({
+useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -46,28 +55,47 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}));  
+    
+  onFieldChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
 
-export default function SignUp() {
-  const classes = useStyles();
-
-  return (
+    handleFormSubmit = event => {
+      event.preventDefault();
+      if(this.state.name && this.state.phone && this.state.password && this.state.email){
+        API.register({
+          name: this.state.name,
+          phoneNumber: this.state.phone,
+          password: this.state.password,
+          email: this.state.email
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+          }
+}
+  
+    render(){
+      return (
     <Container maxWidth="xs">
       <CssBaseline />
-      <div className={useStyles.paper}>
+      <div className={this.useStyles.paper}>
           
-        <form className={classes.form} noValidate>
+        <form className={this.useStyles.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} >
               <TextField
                 variant="outlined"
+                type="text"
                 required
                 fullWidth
-                // value={this.state.username}
-                // onChange={this.handleInputChange}
-                id="username-sign-up"
+                id="name-sign-up"
                 label="Name"
-                name="username"
+                name="name"
+                onChange={this.onFieldChange}
               />
               
             </Grid>
@@ -76,18 +104,52 @@ export default function SignUp() {
            
               <TextField
                 variant="outlined"
+                type="email"
                 required
                 fullWidth
-                // value={this.state.email}
-                // onChange={this.handleInputChange}
                 id="email-sign-up"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={this.onFieldChange}
               />
             
               
             </Grid>
+          
+          <Grid item xs={12}>
+         
+            <TextField
+              variant="outlined"
+              type="text"
+              required
+              fullWidth
+              id="phone-sign-up"
+              label="Phone Number"
+              name="phone"
+              autoComplete="phone"
+              onChange={this.onFieldChange}
+            />
+          
+            
+          </Grid>
+          
+          <Grid item xs={12}>
+         
+            <TextField
+              variant="outlined"
+              type="password"
+              required
+              fullWidth
+              id="password-sign-up"
+              label="Password"
+              name="password"
+              autoComplete="password"
+              onChange={this.onFieldChange}
+            />
+          
+            
+          </Grid>
 
 {/* <FormControl>
   <InputLabel htmlFor="my-input">Email address</InputLabel>
@@ -95,31 +157,14 @@ export default function SignUp() {
   <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
 </FormControl> */}
 
-
-
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                // value={this.state.password}
-                // onChange={this.handleInputChange}
-                id="password-sign-up"
-                autoComplete="current-password"
-              />
-            </Grid>
-           
           </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            // className={this.handleFormSubmit}
+            onClick={this.handleFormSubmit}
           >
             Sign Up
           </Button>
@@ -140,4 +185,7 @@ export default function SignUp() {
      
     </Container>
   );
+};
 }
+
+export default SignUp;

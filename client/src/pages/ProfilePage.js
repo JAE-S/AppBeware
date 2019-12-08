@@ -20,12 +20,16 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 // Import Media
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
+import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
 
         state = {
-
+            name: '',
+            password: '',
+            email: '', 
+            phone: ''
         }
         
         componentDidMount() {
@@ -44,6 +48,49 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
         //         })
         //     })
         // }
+
+        
+  handleInputchange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleFormSubmit = event => {
+      console.log("Inside Handle Form Submit");
+      event.preventDefault();
+      if(this.state.name){
+          API.updateName({
+              name: this.state.name
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.phone){
+          API.updatePhone({
+              phoneNumber: this.state.phone
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.email){
+          API.updateEmail({
+              email: this.state.email
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.password){
+          API.updatePassword({
+              password: this.state.password
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      
+  }
+
         
         render(props) {
         return (
@@ -69,10 +116,12 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
                 <h2>Your Profile </h2>
                     <UserDetailsPanel
                         ariaControls="Name"
-                        title={<h3>Name</h3>}
-                        currentDetails={this.props.user.isloggedin}
+                        title={"Name"}
+                        currentDetails={this.props.user.name}
                         edit={"hi"}
-                        inputSubmit= {this.props.updateName}
+                        inputSubmit = {this.handleFormSubmit}
+                        name={'name'}
+                        onChange={this.handleInputchange}
                     />
 
                      <UserDetailsPanel 
@@ -80,21 +129,27 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
                         title={<h3>Password</h3>}
                         currentDetails={'******'}
                         edit={"hi"}
-                        inputSubmit= {this.props.updatePassword}
+                        inputSubmit = {this.handleFormSubmit}
+                        name={'password'}
+                        onChange={this.handleInputchange}
                     />
                      <UserDetailsPanel
                         ariaControls="email"
-                        title={<h3>Email</h3>}
-                        currentDetails= {this.props.email}
+                        title={"Email"}
+                        currentDetails={this.props.user.email}
                         edit={" "}
-                        inputSubmit= {this.props.updateEmail}
+                        inputSubmit = {this.handleFormSubmit}
+                        name={'email'}
+                        onChange={this.handleInputchange}
                     />
                      <UserDetailsPanel
                         ariaControls="phone"
-                        title={<h3>Phone Number</h3>}
-                        currentDetails={this.props.phoneNumber}
+                        title={"Phone Number"}
+                        currentDetails={this.props.user.phoneNumber}
                         edit={"hi"}
-                        inputSubmit = {this.props.updatePhone}
+                        inputSubmit = {this.handleFormSubmit}
+                        name={'phone'}
+                        onChange={this.handleInputchange}
                     />
                 </Wrapper>
 
