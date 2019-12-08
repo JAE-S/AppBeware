@@ -1,12 +1,8 @@
 // Import React & Node packages
 // =========================================================
-import React, {Component} from 'react';
-import { connect } from "react-redux";
-import { push } from 'connected-react-router'
-// Import Material UI components 
-// =========================================================
-    import { Button, Grid } from '@material-ui/core/';
-
+    import React, { Component } from 'react';
+    import { connect } from "react-redux";
+// import { push } from 'connected-react-router'
 // Import Components
 // =========================================================
     import { CustomizedRatings }from "../Ratings"
@@ -42,14 +38,15 @@ const mapStateToProps = state => ({
     })
     
     export default connect(mapStateToProps, 
-    { 
-        // viewAllCategories, 
-        // viewSingleCategory, 
-        // viewAllListedApps, 
-        // viewAppNames, 
-        // selectTrendingApps,
-        viewAllShields 
-    })(ShieldAlertsClass);
+        { 
+            // viewAllCategories, 
+            // viewSingleCategory, 
+            // viewAllListedApps, 
+            // viewAppNames, 
+            // selectTrendingApps,
+            viewAllShields 
+        }
+    )(ShieldAlertsClass);
 
 
 

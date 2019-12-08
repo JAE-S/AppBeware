@@ -3,7 +3,7 @@
     import React from 'react';
 // Import Material UI components 
 // =========================================================
-    import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
+    import { Dialog, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
 
 // Export Modal 
 // =========================================================

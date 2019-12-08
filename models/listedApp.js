@@ -84,12 +84,10 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
     };
-    //   Student.belongsTo(models.Parent,
-    //     { constraints: false }
-    //   );
-    //   Student.belongsTo(models.Approved,
-    //     { constraints: false }
-    //   );
-    // };
+
+    ListedApp.associate = function (models) {
+        ListedApp.hasMany(models.AppReviews);
+    };
+
     return ListedApp;
   };

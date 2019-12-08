@@ -1,22 +1,15 @@
 // Import React
 // =========================================================
     import React, { Component } from 'react';
+// Import Redux Components
+// =========================================================
     import { connect } from "react-redux";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
-
 // Import Material UI Components
 // =========================================================
     import { Table, TableBody, TableRow, TableCell } from '@material-ui/core/';
-// Import Media
-// =========================================================
-    import CB_icon from "../../assets/images/shields/cyberbullying.png";
-    import DB_icon from "../../assets/images/shields/dangerous_behavior.png";
-    import PR_icon from "../../assets/images/shields/predator_risk.png";
-    import SC_icon from "../../assets/images/shields/sexual_content.png";
-    import VC_icon from "../../assets/images/shields/violent_content.png";
 
-// Table layout
-// =========================================================
+
     const icon = { 
         width: "100%",
         height: "auto"
@@ -25,13 +18,13 @@
         return (
             <TableRow> 
 
-                <TableCell > 
-                <img  style={icon} alt={props.altTxt} src={ props.shieldIcon}/>
+                <TableCell> 
+                    <img style={icon} alt={props.altTxt} src={ props.shieldIcon}/>
                 </TableCell>
 
                 <TableCell> 
-                <h3>{props.title}</h3>
-                <p>{props.description}</p> 
+                    <h3>{props.title}</h3>
+                    <p>{props.description}</p> 
                 </TableCell>
 
             </TableRow>
@@ -76,4 +69,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, 
     { 
         viewAllShields 
-    })(AboutTheShields); 
+    }
+)(AboutTheShields); 

@@ -5,31 +5,26 @@
 // Import Material Ui Styles
 // =========================================================
     import { makeStyles } from '@material-ui/core/styles';
-    import TextField from '@material-ui/core/TextField';
-    
- // Import Material Ui Components
+// Import Material Ui Components
 // =========================================================
-    import { Input, Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography } from '@material-ui/core';
+    import { TextField, Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
-    // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
     import EditIcon from '@material-ui/icons/Edit';
     import CloseIcon from '@material-ui/icons/Close';
     import DoneIcon from '@material-ui/icons/Done';
-
-    import "./style.css";
-
-    import API from "../../utils/API"
+// Import API
+// =========================================================
+    // import API from "../../utils/API"
 
     const useStyles = makeStyles(theme => ({
         root: {
           width: '100%',
           '& > *': {
-           margin: theme.spacing(0),
-           alignItems: 'center'
+            margin: theme.spacing(0),
+            alignItems: 'center'
+          },
         },
-       
-  },
         heading: {
           fontSize: theme.typography.pxToRem(15),
           flexBasis: '33.33%',
@@ -39,21 +34,19 @@
         secondaryHeading: {
           fontSize: theme.typography.pxToRem(15),
           color: theme.palette.text.secondary,
-          
         },
         margin: {
-            margin: theme.spacing(1),
-          },
-          detailsInput: {
-              backgroundColor: " #F7C533", 
-          },
+          margin: theme.spacing(1),
+        },
+        detailsInput: {
+          backgroundColor: " #F7C533", 
+        },
       textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(0),
-    // backgroundColor: " #F7C533", 
-    width: 700,
-  },
-      }));
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(0),
+        width: 700,
+      },
+    }));
 
       // const apiSwitch = apiCalls(call => {
 
@@ -93,36 +86,36 @@
                     justify="space-evenly"
                    alignItems="flex-end"
                 >
-                {/* <Grid item sx={4}  > 
-                  
-                   Update 
-                </Grid> */}
-                <Grid item sx={8} >
-             
-                <TextField id="filled-basic"  variant="filled"
-                className={classes.textField} 
-                        helperText="Edit your information"
-                        // className={classes.detailsInput}
-                        inputProps={props.inputProps} 
-                        id={props.title} 
-                        type="text"
-                        // label={props.title}
-                        style={{width: "400px!important"}}
-                       
-                    />
-                </Grid> 
-                <Grid item sx={4}> 
-                    <a><CloseIcon  
-                        type="submit"
-                        style={{color: "#FC4A1A"}}
-                    /></a>
-            
-                    <button><DoneIcon 
-                        style={{color: "green"}}
-                        onSubmit={props.inputSubmit}
-                        onClick={props.inputSubmit}
-                    /></button>
-                    </Grid>
+                  {/* <Grid item sx={4}  > 
+                    
+                    Update 
+                  </Grid> */}
+                  <Grid item sx={8} >
+              
+                  <TextField id="filled-basic"  variant="filled"
+                  className={classes.textField} 
+                          helperText="Edit your information"
+                          // className={classes.detailsInput}
+                          inputProps={props.inputProps} 
+                          id={props.title} 
+                          type="text"
+                          // label={props.title}
+                          style={{width: "400px!important"}}
+                        
+                      />
+                  </Grid> 
+                  <Grid item sx={4}> 
+                      <a><CloseIcon  
+                          type="submit"
+                          style={{color: "#FC4A1A"}}
+                      /></a>
+              
+                      <button><DoneIcon 
+                          style={{color: "green"}}
+                          onSubmit={props.inputSubmit}
+                          onClick={props.inputSubmit}
+                      /></button>
+                      </Grid>
                     </Grid>
                 </form>    
              

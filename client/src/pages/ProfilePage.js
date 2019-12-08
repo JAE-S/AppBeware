@@ -5,8 +5,6 @@
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
-    import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';  
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -17,9 +15,10 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
-// Import Media
+// Import Redux Components
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
+
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
@@ -45,64 +44,65 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
         //     })
         // }
         
-        render(props) {
-        return (
-            <>
-            <Nav/>
-            <main>
-                <HeaderContainer> 
-                    <Wrapper align="center" style={{padding: 40}}> 
-                       <Grid container
-                        direction="row"
-                        justify="center"
-                        alignItems="center" >
-                            <Grid item xs={12}> 
-                             <img alt={`'s profile photo`} style={{ height: 200, width: 200, borderRadius: "50%"}}/>
-                            </Grid>
-                            <Grid item xs={12} > 
-                                <h3>{}</h3>
-                            </Grid>
-                        </Grid> 
+        render() {
+            return (
+                <>
+                <Nav/>
+                <main>
+                    <HeaderContainer> 
+                        <Wrapper align="center" style={{padding: 40}}> 
+                        <Grid container
+                            direction="row"
+                            justify="center"
+                            alignItems="center" >
+                                <Grid item xs={12}> 
+                                    <img alt={`'s profile photo`} style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                                </Grid>
+                                <Grid item xs={12} > 
+                                    <h3>{}</h3>
+                                </Grid>
+                            </Grid> 
+                        </Wrapper>
+                    </HeaderContainer>
+                    <Wrapper align="left" style={{padding: 40}}> 
+                        <h2>Your Profile </h2>
+
+                        <UserDetailsPanel
+                            ariaControls="Name"
+                            title={<h3>Name</h3>}
+                            currentDetails={this.props.user.isloggedin}
+                            edit={"hi"}
+                            inputSubmit= {this.props.updateName}
+                        />
+
+                        <UserDetailsPanel 
+                            ariaControls="password"
+                            title={<h3>Password</h3>}
+                            currentDetails={'******'}
+                            edit={"hi"}
+                            inputSubmit= {this.props.updatePassword}
+                        />
+                        <UserDetailsPanel
+                            ariaControls="email"
+                            title={<h3>Email</h3>}
+                            currentDetails= {this.props.email}
+                            edit={" "}
+                            inputSubmit= {this.props.updateEmail}
+                        />
+                        <UserDetailsPanel
+                            ariaControls="phone"
+                            title={<h3>Phone Number</h3>}
+                            currentDetails={this.props.phoneNumber}
+                            edit={"hi"}
+                            inputSubmit = {this.props.updatePhone}
+                        />
                     </Wrapper>
-                </HeaderContainer>
-                <Wrapper align="left" style={{padding: 40}}> 
-                <h2>Your Profile </h2>
-                    <UserDetailsPanel
-                        ariaControls="Name"
-                        title={<h3>Name</h3>}
-                        currentDetails={this.props.user.isloggedin}
-                        edit={"hi"}
-                        inputSubmit= {this.props.updateName}
-                    />
 
-                     <UserDetailsPanel 
-                        ariaControls="password"
-                        title={<h3>Password</h3>}
-                        currentDetails={'******'}
-                        edit={"hi"}
-                        inputSubmit= {this.props.updatePassword}
-                    />
-                     <UserDetailsPanel
-                        ariaControls="email"
-                        title={<h3>Email</h3>}
-                        currentDetails= {this.props.email}
-                        edit={" "}
-                        inputSubmit= {this.props.updateEmail}
-                    />
-                     <UserDetailsPanel
-                        ariaControls="phone"
-                        title={<h3>Phone Number</h3>}
-                        currentDetails={this.props.phoneNumber}
-                        edit={"hi"}
-                        inputSubmit = {this.props.updatePhone}
-                    />
-                </Wrapper>
-
-            </main>
-            <Footer/>
-            </>
-        )
-    }
+                </main>
+                <Footer/>
+                </>
+            )
+        }
     }
 
     const mapStateToProps = state => ({
@@ -112,4 +112,5 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
     export default connect(mapStateToProps, 
         {
             userInfo
-        })(Profile); 
+        }
+    )(Profile); 

@@ -2,19 +2,16 @@
 // =========================================================
     import React, {Component} from 'react';
     import { connect } from "react-redux";
-    import { push } from 'connected-react-router'
+    // import { push } from 'connected-react-router'
 // Import Material UI components 
 // =========================================================
-    import { TextField, Button, Grid, Typography, FormControl, FormLabel, Checkbox, FormControlLabel } from '@material-ui/core/';
-
+    import { TextField, FormControl, Checkbox, FormControlLabel } from '@material-ui/core/';
 // Import Material UI icons
 // =========================================================
     import { AddAlert } from '@material-ui/icons/';
-    import "../../assets/styling/appStyle.css"
-
-// Import Components
+// Import Styling
 // =========================================================
-
+    import "../../assets/styling/appStyle.css"
 
    function ShieldAlertsFunction(props){
 
@@ -33,17 +30,15 @@
             </div>
             <div align="center"> 
                 <FormControl  required component="fieldset">
-                    {/* <FormLabel component="legend">  */}
-                       <h4>Would you like to set an alert for this app?</h4> 
-                    {/* </FormLabel> */}
-                <div align="center">
-                <FormControlLabel 
-                    control={<Checkbox icon={<AddAlert />} 
-                    checkedIcon={<AddAlert />} 
-                    value="alert" />}
-                    label="Set Alert"
-                />
-                </div>
+                    <h4>Would you like to set an alert for this app?</h4> 
+                    <div align="center">
+                        <FormControlLabel 
+                            control={<Checkbox icon={<AddAlert />} 
+                            checkedIcon={<AddAlert />} 
+                            value="alert" />}
+                            label="Set Alert"
+                        />
+                    </div>
                 </FormControl>
             </div> 
         </form>
@@ -58,16 +53,14 @@
         componentDidMount() {
            
         }
-
         render() {
             return (
                 <>
-               <ShieldAlertsFunction/>
+                    <ShieldAlertsFunction/>
                 </>
             )
         }
     }
-
 
 // Export the functions for add a review 
 // =========================================================
@@ -80,13 +73,14 @@ const mapStateToProps = state => ({
     })
     
     export default connect(mapStateToProps, 
-    { 
-        // viewAllCategories, 
-        // viewSingleCategory, 
-        // viewAllListedApps, 
-        // viewAppNames, 
-        // selectTrendingApps,
-        // viewAllShields 
-    })(ShieldAlertsClass);
+        { 
+            // viewAllCategories, 
+            // viewSingleCategory, 
+            // viewAllListedApps, 
+            // viewAppNames, 
+            // selectTrendingApps,
+            // viewAllShields 
+        }
+    )(ShieldAlertsClass);
 
 

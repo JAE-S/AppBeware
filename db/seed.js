@@ -2,15 +2,12 @@ const shieldData = require ('./shieldData');
 const listedAppData = require('./listedAppData');
 const categoryData = require('./categoryData');
 const officialCategoryData = require('./officialCategoryData');
-
-// For TESTING ONLY
-const classData = require('./classData');
-const studentData = require('./studentData');
-
+const appShieldUserData = require('./appShieldUserData');
+const tempAppReviewsData = require('./tempAppReviewsData');
 
 module.exports = db => {
     db.User.create({
-       name: 'admin',
+       name: 'Jonathan Graves',
         email: 'admin@gmail.com',
         password: '1234',
         phoneNumber: '919-111-2222',
@@ -97,9 +94,9 @@ module.exports = db => {
     }).then(function() {
         return db.OfficialCategory.bulkCreate(officialCategoryData);
     }).then(function() {
-        return db.Student.bulkCreate(studentData);
+      return db.AppShieldUser.bulkCreate(appShieldUserData);
     }).then(function() {
-        return db.Class.bulkCreate(classData);
+      return db.AppReviews.bulkCreate(tempAppReviewsData);
     });
     
 };

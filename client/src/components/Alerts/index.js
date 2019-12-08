@@ -3,7 +3,7 @@
     import React from 'react';
 // Import Material UI Styles
 // =========================================================
-    import { makeStyles, withStyles  } from '@material-ui/core/styles';
+    import { withStyles  } from '@material-ui/core/styles';
 // Import Material UI Components
 // =========================================================
     import { Table, TableBody, TableRow, TableCell, Menu, Grid, MenuItem, Tooltip, FormGroup, FormControlLabel, Switch } from '@material-ui/core/';

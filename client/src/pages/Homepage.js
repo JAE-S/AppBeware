@@ -3,7 +3,6 @@
     import React, { Component } from "react";  
     import { connect } from "react-redux";
     import { push } from 'connected-react-router'
-
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';   
@@ -17,15 +16,15 @@
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer";
+// Import Redux Components
+// =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps } from "../Store/Actions/appActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
-
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
@@ -47,7 +46,8 @@ class Homepage extends Component {
 
     viewApp = (appId) => {
         console.log("Clicking View App");
-        this.props.viewSingleApp(appId)
+        this.props.viewSingleApp(appId);
+        this.props.viewAppReviews(appId);
         this.props.history.push('/appPage');
         // this.props.history.push('/categoryPage');
     }
@@ -140,6 +140,7 @@ const mapStateToProps = state => ({
     apps: state.apps.allListedApps,
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
+    appReviews: state.apps.appReviews,
     shields: state.shields.allShields,
     user: state.user.userInfo
 })
@@ -151,6 +152,7 @@ export default connect(mapStateToProps,
         viewSingleCategoryInfo,
         viewAllListedApps, 
         viewAppNames, 
+        viewAppReviews,
         selectTrendingApps,
         viewAllShields,
         userInfo

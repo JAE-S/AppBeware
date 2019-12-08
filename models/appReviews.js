@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
-        userId: {
+        myUserId: {
             allowNull: false, 
             type: DataTypes.STRING
         },
-        appId: {
+        myAppId: {
             allowNull: false, 
             type: DataTypes.STRING
         },
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         comments: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         alert: {
@@ -47,5 +47,18 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     })
+
+    AppReviews.associate = function (models) {
+        AppReviews.belongsTo(models.User, {
+            foreignKey: {
+            allowNull: false
+            }
+        });
+        AppReviews.belongsTo(models.ListedApp, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
     return AppReviews
 }
