@@ -58,7 +58,36 @@ import API from "../utils/API";
   }
 
   handleFormSubmit = event => {
+      console.log("Inside Handle Form Submit");
       event.preventDefault();
+      if(this.state.name){
+          API.updateName({
+              name: this.state.name
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.phone){
+          API.updatePhone({
+              phoneNumber: this.state.phone
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.email){
+          API.updateEmail({
+              email: this.state.email
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.password){
+          API.updatePassword({
+              password: this.state.password
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
       
   }
 
@@ -90,7 +119,7 @@ import API from "../utils/API";
                         title={"Name"}
                         currentDetails={this.props.user.name}
                         edit={"hi"}
-                        inputSubmit= {this.props.updateName}
+                        inputSubmit = {this.handleFormSubmit}
                         name={'name'}
                         onChange={this.handleInputchange}
                     />
@@ -100,7 +129,7 @@ import API from "../utils/API";
                         title={<h3>Password</h3>}
                         currentDetails={'******'}
                         edit={"hi"}
-                        inputSubmit= {this.props.updatePassword}
+                        inputSubmit = {this.handleFormSubmit}
                         name={'password'}
                         onChange={this.handleInputchange}
                     />
@@ -109,7 +138,7 @@ import API from "../utils/API";
                         title={"Email"}
                         currentDetails={this.props.user.email}
                         edit={" "}
-                        inputSubmit= {this.props.updateEmail}
+                        inputSubmit = {this.handleFormSubmit}
                         name={'email'}
                         onChange={this.handleInputchange}
                     />

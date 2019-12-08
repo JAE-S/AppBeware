@@ -127,7 +127,7 @@
             
                     <button><DoneIcon 
                         style={{color: "green"}}
-                        onSubmit={props.inputSubmit}
+                        onClick={props.inputSubmit}
                         // onClick={props.inputSubmit(Input)}
                     /></button>
                     </Grid>

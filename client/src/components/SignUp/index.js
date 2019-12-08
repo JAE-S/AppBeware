@@ -1,7 +1,7 @@
 // AppBeware Sign Up
 // Import React 
 // =========================================================
-import React from 'react';
+import React, { Component } from 'react';
 
 // Import Material UI components 
 // =========================================================
@@ -27,19 +27,17 @@ import Modal from "../Modals"
 import SignIn from "../SignIn"
 import API from '../../utils/API'
 
-const renderField = ({ input, label, type }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type} />
-    </div>
-  </div>
-)
 
-
+class SignUp extends Component{
+  state = {
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+  }
 // Custom Styles 
 // =========================================================
-const useStyles = makeStyles(theme => ({
+useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -57,46 +55,63 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}));  
+    
+  onFieldChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
 
-const SubmitRegistration = props => {
-  const classes = useStyles();
-  const {error, handleSubmit, submitting} = props
+    handleFormSubmit = event => {
+      event.preventDefault();
+      if(this.state.name && this.state.phone && this.state.password && this.state.email){
+        API.register({
+          name: this.state.name,
+          phoneNumber: this.state.phone,
+          password: this.state.password,
+          email: this.state.email
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+          }
+}
   
-
-  return (
+    render(){
+      return (
     <Container maxWidth="xs">
       <CssBaseline />
-      <div className={useStyles.paper}>
+      <div className={this.useStyles.paper}>
           
-        <form className={classes.form} noValidate>
+        <form className={this.useStyles.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} >
-              <Field
+              <TextField
                 variant="outlined"
                 type="text"
                 required
                 fullWidth
-                component={renderField}
-                id="username-sign-up"
+                id="name-sign-up"
                 label="Name"
-                name="username"
+                name="name"
+                onChange={this.onFieldChange}
               />
               
             </Grid>
           
             <Grid item xs={12}>
            
-              <Field
+              <TextField
                 variant="outlined"
                 type="email"
                 required
                 fullWidth
-                component ={renderField}
                 id="email-sign-up"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={this.onFieldChange}
               />
             
               
@@ -104,16 +119,16 @@ const SubmitRegistration = props => {
           
           <Grid item xs={12}>
          
-            <Field
+            <TextField
               variant="outlined"
               type="text"
               required
               fullWidth
-              component ={renderField}
               id="phone-sign-up"
               label="Phone Number"
               name="phone"
               autoComplete="phone"
+              onChange={this.onFieldChange}
             />
           
             
@@ -121,16 +136,16 @@ const SubmitRegistration = props => {
           
           <Grid item xs={12}>
          
-            <Field
+            <TextField
               variant="outlined"
               type="password"
               required
               fullWidth
-              component ={renderField}
               id="password-sign-up"
               label="Password"
               name="password"
               autoComplete="password"
+              onChange={this.onFieldChange}
             />
           
             
@@ -148,7 +163,8 @@ const SubmitRegistration = props => {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            // className={this.handleFormSubmit}
+            onClick={this.handleFormSubmit}
           >
             Sign Up
           </Button>
@@ -169,8 +185,7 @@ const SubmitRegistration = props => {
      
     </Container>
   );
+};
 }
 
-export default reduxForm({
-  form: 'registrationForm'
-})(SubmitRegistration)
+export default SignUp;
