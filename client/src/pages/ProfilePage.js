@@ -93,7 +93,7 @@ import API from "../utils/API";
             <>
                 <Nav/>
                 <main>
-                    <HeaderContainer style={{backgroundColor: "#EAEAEA", borderBottom: "2px solid #13BAC7"}}> 
+                    <HeaderContainer style={{backgroundColor: "#EAEAEA", borderBottom: "4px solid #F7C533"}}> 
                         <Wrapper align="center" style={{padding: 40}}> 
                         <Grid container
                             direction="row"
