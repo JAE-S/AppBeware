@@ -1,98 +1,95 @@
 // Import React & Node packages
 // =========================================================
-import React from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from "react-redux";
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+  import React, { Component } from 'react';
+  import { Link } from 'react-router-dom'
+  import { connect } from "react-redux";
+  import PropTypes from 'prop-types';
+  import clsx from 'clsx';
 // Import Material Styles
 // =========================================================
-import { makeStyles } from '@material-ui/core/styles';
+  import { makeStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
-import { Button, Grid, Typography, StepLabel, Step, Stepper} from '@material-ui/core/';
+  import { Button, Grid, Typography, StepLabel, Step, Stepper, StepButton } from '@material-ui/core/';
 
 // Import Material UI icons
 // =========================================================
   import { Check } from '@material-ui/icons/';
 // Import Components
 // =========================================================
-  import ShieldAlertsClass from "./ShieldAlertClass";
+  import ShieldAlertsClass from "./ShieldAlertsClass";
   import DangerAlertClass from "./DangerAlertClass"
   import CommentAlertClass from './CommentAlertClass';
+//   import { ShieldAlertsClass, DangerAlertsClass, CommentAlertsClass } from "./test";
 
 // Styling
 // =========================================================
 import "../../assets/styling/appStyle.css"
-const useStyles = makeStyles(theme => ({
-    root: {
-      width: '100%',
-    },
-    button: {
-      marginRight: theme.spacing(1),
-    },
-    instructions: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-      color: "#57585D",
-    },
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-      },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-      },
 
-  }));
+const getStyles = () => {
+    return {
+        root: {
+            width: '100%',
+            minHeight: "300px",
+          },
+          instructions: {
+            color: "#57585D",
+          },
+          container: {
+              display: 'flex',
+              flexWrap: 'wrap',
+            },
+          textField: {
+              width: 200,
+            },
+    };
+  };
 
-  const useQontoStepIconStyles = makeStyles({
-    root: {
-      color: '#eaeaf0',
-      display: 'flex',
-      height: 22,
-      alignItems: 'center',
-    },
-    active: {
-      color: '#13BAC7',
-    },
-    circle: {
-      width: 8,
-      height: 8,
-      borderRadius: '50%',
-      backgroundColor: 'currentColor',
-    },
-    completed: {
-      color: '#13BAC7',
-      zIndex: 1,
-      fontSize: 18,
-    },
-  })
+  const useQontoStepIconStyles = () => {
+    return {
+        root: {
+            color: '#eaeaf0',
+            display: 'flex',
+            height: 22,
+            alignItems: 'center',
+          },
+          active: {
+            color: '#13BAC7',
+          },
+          circle: {
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            backgroundColor: 'currentColor',
+          },
+          completed: {
+            color: '#13BAC7',
+            zIndex: 1,
+            fontSize: 18,
+          },
+    };
+  };
 
-  function shieldAlerts(){
+    function shieldAlerts(){
 
-      return (
+        return (
         <ShieldAlertsClass/>
-      )
-  }
-  function dangerRating(){
+        )
+    }
+    function dangerRating(){
 
-      return (
-          <DangerAlertClass/>
-      )
-  }
-  function shareConcerns(){
-      return (
-        <CommentAlertClass/>
-      )
-  }
+        return (
+            <DangerAlertClass/>
+        )
+    }
 
-// Stepper
-// =========================================================
+    function shareConcerns(){
+    return (
+      <CommentAlertClass/>
+    )
+    }
 
-  function QontoStepIcon(props) {
+function QontoStepIcon(props) {
     const classes = useQontoStepIconStyles();
     const { active, completed } = props;
 
@@ -116,73 +113,106 @@ const useStyles = makeStyles(theme => ({
     return ['Select Shield Alerts', 'Select A Danger Alert', 'Share Your Concerns'];
   }
 
-  function getStepContent(step) {
-    switch (step) {
-      case 0:
+  function getStepContent(stepIndex) {
+    switch (stepIndex) {
+        case 0:
         return shieldAlerts();
       case 1:
         return dangerRating();
       case 2:
         return shareConcerns();
       default:
-        return 'Unknown step';
+        return 'Select Shield Alerts';
     }
   }
 
-  export default function AddAppReview(){
-    const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
-    const steps = getSteps();
-
-    const handleNext = () => {
-      setActiveStep(prevActiveStep => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-      setActiveStep(prevActiveStep => prevActiveStep - 1);
-    };
-    const handleReset = () => {
-      setActiveStep(0);
-    };
-    // const [state, setState] = React.useState({
-    //   checkedA: true,
-    //   checkedB: true,
-    //   checkedF: true,
-    //   checkedG: true,
-    // });
-
-    // const handleChange = name => event => {
-    //   setValue(event.target.value);
-    //   setState({ ...state, [name]: event.target.checked });
-    // };
-    // const [value, setValue] = React.useState('Controlled');
-
-    return (
-      <div className={classes.root}>
+  class AddAppReview extends  Component {
+    state = {
+        stepIndex: 0,
+        visited: [],
+      }; 
       
-        <Stepper alternativeLabel activeStep={activeStep}>
-          {steps.map(label => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-  
-        <div>
-          {activeStep === steps.length ? (
-            <div align="center">
+      componentWillMount() {
+        const {stepIndex, visited} = this.state;
+        this.setState({visited: visited.concat(stepIndex)});
+      }
+    
+      componentWillUpdate(nextProps, nextState) {
+        const {stepIndex, visited} = nextState;
+        if (visited.indexOf(stepIndex) === -1) {
+          this.setState({visited: visited.concat(stepIndex)});
+        }
+      }
+    
+      handleNext = () => {
+        const {stepIndex} = this.state;
+        if (stepIndex < 2) {
+          this.setState({stepIndex: stepIndex + 1});
+        }
+      };
+    
+      handlePrev = () => {
+        const {stepIndex} = this.state;
+        if (stepIndex > 0) {
+          this.setState({stepIndex: stepIndex - 1});
+        }
+      };
+      handleFinish = () => {
+        return (
+          <div align="center">
                <h3> Thank you for sharing you&apos;re concerns!</h3>
                <div className="modal-footer">
-                <Link to="/homePage" style={{textDecoration: "none"}}>
-                  <Button onClick={handleReset} className="teal">
-                      Return to the homePage
-                  </Button>
-                </Link>
+                    <Link to="/homePage" style={{textDecoration: "none"}}>
+                    <Button className="teal">
+                        Return to the homePage
+                    </Button>
+                    </Link>
               </div>
             </div>
-          ) : (
+        )
+      }
+    
+      render() {
+        const {stepIndex, visited } = this.state;
+        const styles = getStyles();
+        const steps = getSteps();
+    
+        return (
+          <div style={styles.root}>
+            <Stepper alternativeLabel active={stepIndex}>
+                <Step 
+                    key='Select Shield Alerts' 
+                    active={stepIndex === 0}
+                    completed={visited.indexOf(0) !== -1} 
+                >
+                    <StepLabel onClick={() => this.setState({stepIndex: 0})}>
+                        Select Shield Alerts
+                    </StepLabel>
+                </Step>
+                <Step 
+                    key='Select A Danger Alert'
+                    completed={visited.indexOf(1) !== -1} 
+                    active={stepIndex === 1}
+                >
+                    <StepLabel onClick={() => this.setState({stepIndex: 1})}>
+                       Select Danger Alert
+                    </StepLabel>
+                </Step>
+                <Step 
+                    key='Share Your Concerns'
+                    completed={visited.indexOf(2) !== -1} 
+                    active={stepIndex === 2}
+                >
+                    <StepLabel onClick={() => this.setState({stepIndex: 2})}>
+                        Share Your Concerns
+                    </StepLabel>
+                </Step>
+            </Stepper>
+          
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <Typography className={styles.instructions}>
+                {getStepContent(stepIndex)}
+              </Typography>
               <Grid container 
                   className="modal-footer"
                   direction="row"
@@ -190,26 +220,44 @@ const useStyles = makeStyles(theme => ({
                   alignItems="center"
               >
               <Grid item>
-             
-                <Button disabled={activeStep === 0} onClick={handleBack} className="back">
+              <div>
+                <Button 
+                    disabled={stepIndex === 0} 
+                    onClick={this.handlePrev} 
+                    className="back"
+                >
                   Back
                 </Button>
+
+                {stepIndex === steps.length - 1 ? (
                   <Button
                     variant="contained"
                     className="teal"
-                    onClick={handleNext}
-                  >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    onClick={this.handleFinish}
+                  > 
+                    Finish 
                   </Button>
+                ) : ( 
+                  <Button
+                    variant="contained"
+                    className="teal"
+                    onClick={this.handleNext}
+                  > 
+                    Next 
+                  </Button>
+                )}
+               </div>
                   </Grid>
               </Grid>
             </div>
-          )}
-        </div>
+        
       </div>
-    );
-  }
-
+ 
+        );
+      }
+    }
+  export default AddAppReview;
+      
 // const mapStateToProps = state => ({
 //   // categories: state.categories.allCategories,
 //   // singleCategoryInfo: state.categories.singleCategoryInfo,

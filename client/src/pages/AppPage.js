@@ -13,7 +13,9 @@ import { Grid } from '@material-ui/core';
     import Nav from "../components/Nav"
     import Footer from "../components/Footer"
     import Modal from "../components/Modals"
-    import AddAppReview from "../components/AddAppReview"
+    // import AddAppReview from "../components/AddAppReview"
+    import AddAppReview from "../components/AddAppReview/index"
+
     import { AppRatings }from "../components/Ratings"
     import {CommentGrid, HeaderContainer, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
 // Import Redux Components
