@@ -15,25 +15,7 @@
   import Modal from "../Modals";
   import SignIn from "../SignIn";
 
-  const useStyles = makeStyles(theme => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }))  
+
 
 
 class SignUp extends Component{
@@ -65,13 +47,12 @@ class SignUp extends Component{
     }
   }
   
-    render(){
+    render(){ 
       return (
         <Container maxWidth="xs">
           <CssBaseline />
-          <div className={this.useStyles.paper}>
-              
-            <form className={this.useStyles.form} noValidate>
+          <div>
+            <form noValidate>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
@@ -129,22 +110,25 @@ class SignUp extends Component{
               </Grid>
 
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              // className={this.handleFormSubmit}
-              onClick={this.handleFormSubmit}
-            >
-              Sign Up
-            </Button>
+              <Button
+                className="teal"
+                type="submit"
+                fullWidth
+                variant="contained"
+                onClick={this.handleFormSubmit}
+              >
+                Sign Up
+              </Button>
             <Grid container justify="flex-end">
               <Grid item>
 
                   <Modal 
                     modalTitle="Sign in to your Account"
-                    openModal={<p style={{cursor: "pointer"}}>Already have an account? Sign in</p>}
+                    openModal={
+                      <p style={{cursor: "pointer"}}>
+                        Already have an account? Sign in
+                      </p>
+                    }
                     modalBody={<SignIn/>}
                   />
             

@@ -102,16 +102,11 @@ class signIn extends Component{
                   />
                 </Grid>
               </Grid>
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
+              
               <Button
-
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
                 className="teal"
                 onClick={this.handleFormSubmit}
               >
@@ -122,7 +117,11 @@ class signIn extends Component{
                               
                 <Modal 
                       modalTitle="Create An Account"
-                      openModal={<p style={{cursor: "pointer"}}>Don't have an account? Sign Up</p>}
+                      openModal={
+                        <p style={{cursor: "pointer"}}>
+                          Don't have an account? Sign Up
+                        </p>
+                      }
                       modalBody={<SignUp/>}  
                 />
             
