@@ -15,131 +15,129 @@
   import Modal from "../Modals";
   import SignIn from "../SignIn";
 
-
-
-
-class SignUp extends Component{
-  state = {
-    name: '',
-    phone: '',
-    email: '',
-    password: '',
-  }
-
-  onFieldChange = event => {
-    const {name, value} = event.target;
-    this.setState({
-      [name]: value
-    })
-  }
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if(this.state.name && this.state.phone && this.state.password && this.state.email){
-      API.register({
-        name: this.state.name,
-        phoneNumber: this.state.phone,
-        password: this.state.password,
-        email: this.state.email
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+// SignUp Class Component
+// =========================================================
+  class SignUp extends Component{
+    state = {
+      name: '',
+      phone: '',
+      email: '',
+      password: '',
     }
-  }
-  
-    render(){ 
-      return (
-        <Container maxWidth="xs">
-          <CssBaseline />
-          <div>
-            <form noValidate>
-              <Grid container spacing={2}>
+
+    onFieldChange = event => {
+      const {name, value} = event.target;
+      this.setState({
+        [name]: value
+      })
+    }
+
+    handleFormSubmit = event => {
+      event.preventDefault();
+      if(this.state.name && this.state.phone && this.state.password && this.state.email){
+        API.register({
+          name: this.state.name,
+          phoneNumber: this.state.phone,
+          password: this.state.password,
+          email: this.state.email,
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      }
+    }
+      render(){ 
+        return (
+          <Container maxWidth="xs">
+            <CssBaseline />
+            <div>
+              <form noValidate>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      type="text"
+                      required
+                      fullWidth
+                      id="name-sign-up"
+                      label="Name"
+                      name="name"
+                      onChange={this.onFieldChange}
+                    />
+                  </Grid>
+              
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      type="email"
+                      required
+                      fullWidth
+                      id="email-sign-up"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      onChange={this.onFieldChange}
+                    />
+                </Grid>
+
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
                     type="text"
                     required
                     fullWidth
-                    id="name-sign-up"
-                    label="Name"
-                    name="name"
+                    id="phone-sign-up"
+                    label="Phone Number"
+                    name="phone"
+                    autoComplete="phone"
                     onChange={this.onFieldChange}
                   />
                 </Grid>
-            
+              
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
-                    type="email"
+                    type="password"
                     required
                     fullWidth
-                    id="email-sign-up"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    id="password-sign-up"
+                    label="Password"
+                    name="password"
+                    autoComplete="password"
                     onChange={this.onFieldChange}
                   />
-              </Grid>
+                </Grid>
 
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  type="text"
-                  required
+              </Grid>
+                <Button
+                  className="teal"
+                  type="submit"
                   fullWidth
-                  id="phone-sign-up"
-                  label="Phone Number"
-                  name="phone"
-                  autoComplete="phone"
-                  onChange={this.onFieldChange}
-                />
-              </Grid>
-            
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  type="password"
-                  required
-                  fullWidth
-                  id="password-sign-up"
-                  label="Password"
-                  name="password"
-                  autoComplete="password"
-                  onChange={this.onFieldChange}
-                />
-              </Grid>
+                  variant="contained"
+                  onClick={this.handleFormSubmit}
+                >
+                  Sign Up
+                </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
 
-            </Grid>
-              <Button
-                className="teal"
-                type="submit"
-                fullWidth
-                variant="contained"
-                onClick={this.handleFormSubmit}
-              >
-                Sign Up
-              </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-
-                  <Modal 
-                    modalTitle="Sign in to your Account"
-                    openModal={
-                      <p style={{cursor: "pointer"}}>
-                        Already have an account? Sign in
-                      </p>
-                    }
-                    modalBody={<SignIn/>}
-                  />
-            
+                    <Modal 
+                      modalTitle="Sign in to your Account"
+                      openModal={
+                        <p style={{cursor: "pointer"}}>
+                          Already have an account? Sign in
+                        </p>
+                      }
+                      modalBody={<SignIn/>}
+                    />
+              
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-      
-      </Container>
-    );
-  };
-}
+            </form>
+          </div>
+        
+        </Container>
+      );
+    };
+  }
 
-export default SignUp;
+  export default SignUp;

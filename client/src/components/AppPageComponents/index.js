@@ -8,28 +8,11 @@
 // =========================================================
     import HoverShieldInfo from "../HoverShieldInfo"  
     import LinearProgressBar from "../Ratings/progess"
-// Import Media
-// =========================================================
-    import PR_icon from "../../assets/images/shields/predator_risk.png";
     
 // Custom Styles 
 // =========================================================
     import "../../assets/styling/appStyle.css"
     
-    const data = [
-
-        { logoUrl: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
-        name: "Holla",
-        createdAt: '1 hours ago',
-        warnRatingAverage: 4,
-        badges: PR_icon,
-        link: "https://holla.world/", 
-        description: "HOLLA is a free, live video streaming app that randomly matches people in video chats across the globe. Think prank calling and party lines for the virtual age, and that pretty much sums up the HOLLA app.", 
-
-        },
-    
-    ];
-
 // Grid Layout
 // =========================================================
     export function SmallGrid(props) {

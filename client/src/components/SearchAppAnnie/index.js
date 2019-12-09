@@ -7,12 +7,10 @@
     import { viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
 // Import Material UI components
 // =========================================================
-//  import { NoSsr} from '@material-ui/core';
-    import { Input, Grid, Button } from '@material-ui/core';
+    import { Input, Grid,} from '@material-ui/core';
 
 // Import Material UI Icons
 // =========================================================
-  import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
     // import MenuItem from '@material-ui/core/MenuItem';
     // import CancelIcon from '@material-ui/icons/Cancel';
 // Custom Components

@@ -135,8 +135,10 @@
         onClose={handleMenuClose}
       >
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-        {/* <h3>{props.user.userInfo.name}</h3>  */}
-        <img alt="profile photo" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
+      {/* // TODO:////////////////// */}
+      {/* Add user name to nav bar */}
+        <h3>{props.userName}</h3> 
+        <img alt="Profile" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profilePage" style={{ textDecoration: 'none', color: 'black' }}>
