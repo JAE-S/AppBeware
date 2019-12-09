@@ -5,8 +5,6 @@
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
-    import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';  
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
@@ -17,15 +15,19 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
-// Import Media
+// Import Redux Components
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
+    import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
 
         state = {
-
+            name: '',
+            password: '',
+            email: '', 
+            phone: ''
         }
         
         componentDidMount() {
@@ -45,64 +47,120 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
         //     })
         // }
         
-        render(props) {
+  handleInputchange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleFormSubmit = event => {
+      console.log("Inside Handle Form Submit");
+      event.preventDefault();
+      if(this.state.name){
+          API.updateName({
+              name: this.state.name
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.phone){
+          API.updatePhone({
+              phoneNumber: this.state.phone
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.email){
+          API.updateEmail({
+              email: this.state.email
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      if(this.state.password){
+          API.updatePassword({
+              password: this.state.password
+          })
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+      }
+      
+  }
+        
+    render() {
         return (
             <>
-            <Nav/>
-            <main>
-                <HeaderContainer> 
-                    <Wrapper align="center" style={{padding: 40}}> 
-                       <Grid container
-                        direction="row"
-                        justify="center"
-                        alignItems="center" >
-                            <Grid item xs={12}> 
-                             <img alt={`'s profile photo`} style={{ height: 200, width: 200, borderRadius: "50%"}}/>
-                            </Grid>
-                            <Grid item xs={12} > 
-                                <h3>{}</h3>
-                            </Grid>
-                        </Grid> 
+                <Nav/>
+                <main>
+                    <HeaderContainer style={{backgroundColor: "#EAEAEA", borderBottom: "4px solid #F7C533"}}> 
+                        <Wrapper align="center" style={{padding: 40}}> 
+                            <Grid container
+                                direction="row"
+                                justify="center"
+                                alignItems="center" 
+                            >
+                                <Grid item xs={12}> 
+                                    <img alt={`${this.props.user.name}'s Profile`} src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                                </Grid>
+                                
+                                <Grid item xs={12} > 
+                                    <h3>Name: {this.props.user.name}</h3>
+                                </Grid>
+
+                            </Grid> 
+                        </Wrapper>
+                    </HeaderContainer>
+                    <Wrapper align="left" style={{padding: 40, maxWidth: "800px"}}> 
+                        
+                        <UserDetailsPanel
+                            ariaControls="UserName"
+                            title="Username"
+                            currentDetails={this.props.user.name}
+                            edit={"hi"}
+                            inputSubmit = {this.handleFormSubmit}
+                            name={'name'}
+                            description="Enter a new username."
+                            onChange={this.handleInputchange}
+                        />
+
+                        <UserDetailsPanel 
+                            ariaControls="password"
+                            title="Password"
+                            currentDetails={'******'}
+                            edit={"hi"}
+                            inputSubmit = {this.handleFormSubmit}
+                            name={'password'}
+                            description="Enter a new password."
+                            onChange={this.handleInputchange}
+                        />
+                        <UserDetailsPanel
+                            ariaControls="email"
+                            title="Email"
+                            currentDetails={this.props.user.email}
+                            edit={" "}
+                            inputSubmit = {this.handleFormSubmit}
+                            name={'email'}
+                            description="Enter a new email."
+                            onChange={this.handleInputchange}
+                        />
+                        <UserDetailsPanel
+                            ariaControls="phone"
+                            title="Phone Number"
+                            currentDetails={this.props.user.phoneNumber}
+                            edit={"hi"}
+                            inputSubmit = {this.handleFormSubmit}
+                            name={'phone'}
+                            description="Enter a new phone number."
+                            onChange={this.handleInputchange}
+                        />
                     </Wrapper>
-                </HeaderContainer>
-                <Wrapper align="left" style={{padding: 40}}> 
-                <h2>Your Profile </h2>
-                    <UserDetailsPanel
-                        ariaControls="Name"
-                        title={<h3>Name</h3>}
-                        currentDetails={this.props.user.isloggedin}
-                        edit={"hi"}
-                        inputSubmit= {this.props.updateName}
-                    />
 
-                     <UserDetailsPanel 
-                        ariaControls="password"
-                        title={<h3>Password</h3>}
-                        currentDetails={'******'}
-                        edit={"hi"}
-                        inputSubmit= {this.props.updatePassword}
-                    />
-                     <UserDetailsPanel
-                        ariaControls="email"
-                        title={<h3>Email</h3>}
-                        currentDetails= {this.props.email}
-                        edit={" "}
-                        inputSubmit= {this.props.updateEmail}
-                    />
-                     <UserDetailsPanel
-                        ariaControls="phone"
-                        title={<h3>Phone Number</h3>}
-                        currentDetails={this.props.phoneNumber}
-                        edit={"hi"}
-                        inputSubmit = {this.props.updatePhone}
-                    />
-                </Wrapper>
-
-            </main>
-            <Footer/>
+                </main>
+                <Footer/>
             </>
-        )
-    }
+            )
+        }
     }
 
     const mapStateToProps = state => ({
@@ -112,4 +170,5 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
     export default connect(mapStateToProps, 
         {
             userInfo
-        })(Profile); 
+        }
+    )(Profile); 

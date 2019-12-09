@@ -17,7 +17,10 @@
     flex-direction: column;
     /* background-color: #F7F7F7; */
     background-color: rgb(255, 255, 255)!important;
-
+    color: #57585D;
+  }
+  .MuiTypography-h6, .MuiTableCell-body, h1, h2,h3,h4,h5,h6{
+    color: #57585D;
   }
   
   h5 {
@@ -320,4 +323,12 @@ button:hover .button-text {
 
 .MuiCheckbox-colorSecondary.Mui-checked {
   color: #FC4A1A!important;
+}
+
+.Mui-Focussed {
+  color: #13BAC7;
+}
+
+.MuiBadge-colorSecondary {
+  background-color: #FC4A1A!important;
 }

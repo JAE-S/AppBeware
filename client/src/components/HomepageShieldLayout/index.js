@@ -14,21 +14,20 @@
         padding: "20px 4px 0px 4px"
     }
 
-    const addDots = "../";
-
     export default function HomePageShieldLayout(props) {
         return (
             <>
-              <div style={icon} > 
+              <div style={icon}> 
                 <HoverShieldInfo
                   badgeInfo={props.info}
                   badgeName={
                     <img  
                       style={icon} 
                       alt={props.altText} 
-                      src={ props.shieldIcon }
-                    />} 
-                  />
+                      src={props.shieldIcon}
+                    />
+                  } 
+                />
                 <h4 align="center">{props.title}</h4>
               </div>
             </>

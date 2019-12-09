@@ -1,37 +1,22 @@
-// AppBeware Sign In
 // Import React 
 // =========================================================
-import React, {Component} from 'react';
-import API from '../../utils/API'
-
+  import React, {Component} from 'react';
+  import API from '../../utils/API'
+// Import Material UI Styles
+// =========================================================
+  import { makeStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
-
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import HUE from '@material-ui/core/colors/HUE';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import FormHelperText from '@material-ui/core/FormHelperText';
-
-// Import Styles
+  import { Container, Button, CssBaseline, TextField, Grid } from '@material-ui/core/';
+// Import Material UI Icons
 // =========================================================
+  import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// Import Components
+// =========================================================
+  import Modal from "../Modals"
+  import SignUp from "../SignUp"
 
-import Modal from "../Modals"
-import SignUp from "../SignUp"
-
-
-
-// Custom Styles 
+// SignIn Component
 // =========================================================
 
 
@@ -68,6 +53,7 @@ class signIn extends Component{
       margin: theme.spacing(3, 0, 2),
     },
   });
+
   handleInputchange = event => {
     const {name, value} = event.target;
     this.setState({
@@ -88,7 +74,6 @@ class signIn extends Component{
     })
   }
 
-  
   render(){
     return (
       <Container  maxWidth="xs">
@@ -96,60 +81,57 @@ class signIn extends Component{
         <div className={this.makeStyles.paper}>
           <form className={this.makeStyles.form} noValidate>
             <Grid container spacing={2}>
-            <Grid item xs={12} >
-            <TextField
-              variant="outlined"
-              margin="normal"
-            
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={this.handleInputchange}
-            />
-            </Grid>
-            <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="standard-password-input"
-              autoComplete="current-password"
-              onChange={this.handleInputchange}
-            />
-            </Grid>
-            </Grid>
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
-            <Button
-
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={this.makeStyles.submit}
-              onClick={this.handleFormSubmit}
-            >
-              Sign In
-            </Button>
-             <Grid container justify="flex-end">
-            <Grid item>
-                              
-              <Modal 
-                    modalTitle="Create An Account"
-                    openModal="Don't have an account? Sign Up"
-                    modalBody={<SignUp/>}
-                    
+              <Grid item xs={12} >
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={this.handleInputchange}
+              />
+              </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={this.handleInputchange}
                   />
+                </Grid>
+              </Grid>
+              
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                className="teal"
+                onClick={this.handleFormSubmit}
+              >
+                Sign In
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                              
+                <Modal 
+                      modalTitle="Create An Account"
+                      openModal={
+                        <p style={{cursor: "pointer"}}>
+                          Don't have an account? Sign Up
+                        </p>
+                      }
+                      modalBody={<SignUp/>}  
+                />
             
               </Grid>
             </Grid>
@@ -158,7 +140,7 @@ class signIn extends Component{
        
       </Container>
     );
-              }
-            }
+  }
+}
 
 export default signIn

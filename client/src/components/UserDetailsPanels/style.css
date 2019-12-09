@@ -1,0 +1,48 @@
+.MuiExpansionPanel-rounded:last-child {
+    border-bottom-left-radius: 0px!important; 
+    border-bottom-right-radius: 0px!important;
+    /* border-bottom: 1px solid #13BAC7; */
+    border-left: 6px solid #F7C533;
+}
+.MuiExpansionPanel-rounded:first-child {
+    border-top-left-radius: 0px!important; 
+    border-top-left-radius:0px!important; 
+}
+
+.MuiCollapse-wrapper {
+    margin-bottom: 10px; 
+}
+
+.profile-text {
+    color: #56585D;
+}
+
+.profile-text:hover {
+    color: #F7C533;
+}
+
+.MuiExpansionPanelDetails-root {
+    padding: 10px!important;
+}
+
+.MuiFormHelperText-contained {
+    margin-left: 0px!important;
+}
+
+.MuiFilledInput-root, .MuiFormHelperText-root  {
+    background-color: transparent!important;
+    max-width: 400px; 
+    width: 100%; 
+    margin: 0 auto!important;
+}
+.MuiFormHelperText-root {
+    margin-top: 10px!important;
+}
+.makeStyles-textField-230 {
+    margin-left: 40px!important;
+    margin-right: 40px!important; 
+}
+
+.MuiFilledInput-input {
+    padding: 0px!important; 
+}

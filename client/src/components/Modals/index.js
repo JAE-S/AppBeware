@@ -3,7 +3,7 @@
     import React from 'react';
 // Import Material UI components 
 // =========================================================
-    import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
+    import { Dialog, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core/';
 
 // Export Modal 
 // =========================================================
@@ -15,12 +15,10 @@
       setOpen(true);
       setScroll(scrollType);
     };
-
+ 
     const handleClose = () => {
       setOpen(false);
     };
-
-
 
     const descriptionElementRef = React.useRef(null);
     React.useEffect(() => {

@@ -83,11 +83,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
             }
         });
-    };
-
-    ListedApp.associate = function (models) {
         ListedApp.hasMany(models.AppReviews);
     };
+
+    // ListedApp.associate = function (models) {
+    //     ListedApp.hasMany(models.AppReviews);
+    // };
 
     return ListedApp;
   };

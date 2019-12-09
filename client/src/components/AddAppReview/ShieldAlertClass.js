@@ -20,11 +20,17 @@
                 <HoverShieldInfo
                     badgeInfo={props.info}
                     badgeName={
-                        <button><img 
-                            alt={props.title} 
-                            src={props.shieldIcon}
-                            style={{justifyContent: "center", Width: "60px", height: "60px"}} 
-                        /></button>
+                        <button  
+                            onClick={props.handleClick}
+                            value={props.title}
+                        >
+                            <img 
+                                alt={props.title} 
+                                src={props.shieldIcon}
+                                style={{justifyContent: "center", Width: "60px", height: "60px"}} 
+                               
+                            />
+                        </button>
                     }
                 />
             </Grid>
@@ -35,12 +41,25 @@
 // =========================================================
 
     class ShieldAlertsClass extends Component {
+
+        state = {
+            currentShieldSelection: "",
+            allShieldSelection: []
+        }
+
         // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllShields();
         }
+        
+        // TODO://////////////////
+        // Function for set shield review
+        handleClick = (shield, event) => {
+            alert(shield)
+        }
 
         render() {
+    
             return (
                 <Grid container 
                     direction="row"
@@ -50,13 +69,15 @@
                 >
             
                 {this.props.shields.map(shield => (
-                <ShieldAlertsFunction
-                    key={shield.name}
-                    shieldIcon={shield.icon}
-                    title={shield.name}
-                    altTxt={shield.altText}
-                    info={`${shield.name} - ${shield.info}`}
-                />
+                    <ShieldAlertsFunction
+                        key={shield.name}
+                        value={shield.name}
+                        shieldIcon={shield.icon}
+                        title={shield.name}
+                        altTxt={shield.altText}
+                        info={`${shield.name} - ${shield.info}`}
+                        handleClick={() => this.handleClick(shield.name)}
+                    />
                 ))}
 
                 <Grid item xs={12}> 

@@ -3,7 +3,6 @@
     import React, { Component } from "react";  
     import { connect } from "react-redux";
     import { push } from 'connected-react-router'
-
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';   
@@ -17,15 +16,15 @@
     import CategoryCards from "../components/CategoryCards"
     import ShieldLayout from "../components/HomepageShieldLayout"
     import Footer from "../components/Footer";
+// Import Redux Components
+// =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
-
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"

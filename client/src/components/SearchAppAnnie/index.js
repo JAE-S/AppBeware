@@ -5,14 +5,15 @@
     import { push } from 'connected-react-router';
     import Downshift from "downshift";
     import { viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
-// Import Material UI components
+   
+    import sampleData from "./sampleData.js";
+
+    // Import Material UI components
 // =========================================================
-//  import { NoSsr} from '@material-ui/core';
-    import { Input, Grid, Button } from '@material-ui/core';
+    import { Input, Grid,} from '@material-ui/core';
 
 // Import Material UI Icons
 // =========================================================
-  import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
     // import MenuItem from '@material-ui/core/MenuItem';
     // import CancelIcon from '@material-ui/icons/Cancel';
 // Custom Components
@@ -103,8 +104,11 @@ class SearchAppAnnie extends React.Component {
                 {
                    // filter the Apps and return items that match the inputValue
                   // items
-                  this.props.appNames
-                  .filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
+
+                  // TODO: Need to put this back to redux State.
+                  // this.props.appNames
+                  
+                  sampleData.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
                   // map the return value and return a div
                   .map((item, index) => (
                     <Grid container 
