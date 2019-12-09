@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import HUE from '@material-ui/core/colors/HUE';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -41,6 +42,14 @@ class signIn extends Component{
   }
 
   makeStyles = theme => ({
+    palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#ff4400',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    },
     paper: {
       marginTop: theme.spacing(8),
       display: 'flex',
@@ -91,6 +100,7 @@ class signIn extends Component{
             <TextField
               variant="outlined"
               margin="normal"
+            
               required
               fullWidth
               id="email"
@@ -110,7 +120,7 @@ class signIn extends Component{
               name="password"
               label="Password"
               type="password"
-              id="password"
+              id="standard-password-input"
               autoComplete="current-password"
               onChange={this.handleInputchange}
             />
