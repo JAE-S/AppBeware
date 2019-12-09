@@ -4,14 +4,16 @@
     import { connect } from "react-redux";
     import { push } from 'connected-react-router';
     import Downshift from "downshift";
+// Import Redux Actions
+// =========================================================
     import { viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
-   
     import sampleData from "./sampleData.js";
-
+// Import Material UI Styles
+// =========================================================
+    import { withStyles } from '@material-ui/core/styles';
     // Import Material UI components
 // =========================================================
-    import { Input, Grid,} from '@material-ui/core';
-
+    import {TextField, Input, Grid,} from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     // import MenuItem from '@material-ui/core/MenuItem';
@@ -23,28 +25,27 @@
 // =========================================================
     import "./style.css"
 
-// function NoOptionsMessage(props) {
-//   return (
-//     <>
-//     <Typography
-//       color="textSecondary"
-//       className={props.selectProps.classes.noOptionsMessage}
-//       {...props.innerProps}
-//     >
-//       {props.children}
-//     </Typography>
-//     <Button>button {props.alertTeam}</Button>
-//     </>
-//   );
-// }
-
-// NoOptionsMessage.propTypes = {
-//   // The children to be rendered.
-//   children: PropTypes.node,
-//    // Props to be passed on to the wrapper.
-//   innerProps: PropTypes.object.isRequired,
-//   selectProps: PropTypes.object.isRequired,
-// };
+  const InputOverRideOutline = withStyles({
+    root: {
+      '& label.Mui-focused': {
+        color: '#13BAC7', // Teal
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#13BAC7', // Teal
+      },
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#A9A9A9', // Grey
+        },
+        '&:hover fieldset': {
+          borderColor: '#F7C533', // Yellow
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: '#13BAC7', // Teal
+        },
+      },
+    },
+  })(TextField);
 
 class SearchAppAnnie extends React.Component {
   state = {};
@@ -97,7 +98,11 @@ class SearchAppAnnie extends React.Component {
           selectedItem
         }) => (
           <div style={{position: "relative", zIndex: 1000}}>
-            <Input className="searchInput" {...getInputProps({ placeholder: "Search for an App" })}  />
+            <InputOverRideOutline 
+              className="searchInput" 
+              {...getInputProps({ placeholder: "Search for an App" })}  
+              style={{margin: 20}}
+            />
             
             {isOpen ? (
               <div className="downshift-dropdown" >

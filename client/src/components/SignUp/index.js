@@ -3,7 +3,7 @@
   import React, { Component } from 'react';
 // Import Material UI Styles
 // =========================================================
-  import { makeStyles } from '@material-ui/core/styles';
+  import { makeStyles, withStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
   import { Container, Grid,Button, LockOutlinedIcon, Typography, CssBaseline, TextField, FormHelperText, FormControlLabel, Checkbox  } from '@material-ui/core/';
@@ -15,9 +15,31 @@
   import Modal from "../Modals";
   import SignIn from "../SignIn";
 
+  const InputOverRideOutline = withStyles({
+    root: {
+      '& label.Mui-focused': {
+        color: '#13BAC7', // Teal
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#13BAC7', // Teal
+      },
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: '#A9A9A9', // Grey
+        },
+        '&:hover fieldset': {
+          borderColor: '#F7C533', // Yellow
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: '#13BAC7', // Teal
+        },
+      },
+    },
+  })(TextField);
+
 // SignUp Class Component
 // =========================================================
-  class SignUp extends Component{
+  class SignUp extends Component {
     state = {
       name: '',
       phone: '',
@@ -53,7 +75,7 @@
               <form noValidate>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <TextField
+                    <InputOverRideOutline
                       variant="outlined"
                       type="text"
                       required
@@ -66,7 +88,7 @@
                   </Grid>
               
                   <Grid item xs={12}>
-                    <TextField
+                    <InputOverRideOutline
                       variant="outlined"
                       type="email"
                       required
@@ -80,7 +102,7 @@
                 </Grid>
 
                 <Grid item xs={12}>
-                  <TextField
+                  <InputOverRideOutline
                     variant="outlined"
                     type="text"
                     required
@@ -94,7 +116,7 @@
                 </Grid>
               
                 <Grid item xs={12}>
-                  <TextField
+                  <InputOverRideOutline
                     variant="outlined"
                     type="password"
                     required

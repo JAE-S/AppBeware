@@ -2,6 +2,13 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux";
+// Import Redux Actions
+// =========================================================
+    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
+    import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
+// Import Material UI Styles
+// =========================================================
+    import { withStyles } from '@material-ui/core/styles';
 // Import Material Ui Components
 // =========================================================
     import { Typography, Grid, Table, TableRow, TableBody, TextField } from '@material-ui/core/';
@@ -12,14 +19,33 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
-// Import Redux Components
-// =========================================================
-    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
 // Import styles
 // =========================================================
     import "../assets/styling/appStyle.css"
     
+    const InputOverRideOutline = withStyles({
+        root: {
+          '& label.Mui-focused': {
+            color: '#13BAC7', // Teal
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: '#13BAC7', // Teal
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: '#A9A9A9', // Grey
+            },
+            '&:hover fieldset': {
+              borderColor: '#F7C533', // Yellow
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#13BAC7', // Teal
+            },
+          },
+        },
+      })(TextField);
+
+
 // Export Default Category Page Function
 // =========================================================
     class Categories extends Component {
@@ -91,7 +117,7 @@
 
                 <Wrapper> 
                 <div style={{ width:"100%" }}>
-                    <Autocomplete
+                    <InputOverRideOutline
                         freeSolo
                         id="search-categories"
                         disableClearable

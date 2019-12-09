@@ -213,12 +213,7 @@ margin: 0px!important;
 }
 
 .MuiFormLabel-root.Mui-focused {
-  color: #FC4A1A!important;
-}
-
-.MuiOutlinedInput-root.Mui-focused {
-  /* border: 1px solid #FC4A1A!important; */
-
+  font-weight: bold;
 }
 
 /* Button Effect */

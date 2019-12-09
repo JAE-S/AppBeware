@@ -35,56 +35,30 @@ import Three from "../assets/images/danger_rating_icons/danger_rating_3.png";
 import Four from "../assets/images/danger_rating_icons/danger_rating_4.png";
 import Five from "../assets/images/danger_rating_icons/danger_rating_5.png";
 
-
-// Test data
-// const data = [
-//     {   
-//         logoUrl: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
-//         name: "Holla",
-//         createdAt: '1 hours ago',
-//         warnRatingAverage: 4,
-//         link: "https://holla.world/", 
-//         description: "HOLLA is a free, live video streaming app that randomly matches people in video chats across the globe. Think prank calling and party lines for the virtual age, and that pretty much sums up the HOLLA app.", 
-//     }
-// ];
-
-// const test_profiles = [
-
-//     { 
-//         image: Tony_Smith,
-//         username: "Tony S.",
-//         reviewCount: 3,
-//         datePosted: "Nov. 18, 2019",
-//         badges: PR_icon,
-//         dangerRating: 4, 
-//         comments: "My child was talking to strangers through this app."
-//     }
-// ];
-
 const dangerRating = [ 
     {  name: "one",
     logoUrl: One,
-    description: "rating", 
+    description: "Mild Concern", 
     reviewCount: 1 
     },
     {  name: "two", 
     logoUrl: Two,
-    description: "rating", 
+    description: "Moderate Concern", 
     reviewCount: 3 
     },
     {  name: "three",
         logoUrl:Three,
-        description: "rating", 
+        description: "High Concern", 
         reviewCount: 2 
     },
     {  name: "four",
         logoUrl: Four,
-        description: "rating", 
+        description: "Very High Concern", 
         reviewCount: 3 
     },
     {  name: "five", 
         logoUrl: Five,
-        description: "rating", 
+        description: "Severe Concern", 
         reviewCount: 1
     },
 ]
@@ -121,7 +95,6 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                         altText={data[0].name}
                         description={data[0].description} 
                         link={data[0].link}
-
                     /> */}
 
                     <HeaderContainer
@@ -193,7 +166,11 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
 
                         <CommentGrid
                             // ---> Left Side
-                            imageLeft={<img alt={review.User.name} style={{ justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} src={review.User.profilePicture}/>}
+                            imageLeft={
+                                <img 
+                                    alt={review.User.name} 
+                                    style={{ justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} 
+                                    src={review.User.profilePicture}/>}
                             usernameLeft={review.User.name} 
                             // TODO: Ultimately need to generate this data - next 2 fields
                             reviewCountLeft={3}

@@ -37,11 +37,12 @@
 }
 .MuiFormHelperText-root {
     margin-top: 10px!important;
+    margin-left: 20px!important;
 }
-.makeStyles-textField-230 {
+/* .makeStyles-textField-230 {
     margin-left: 40px!important;
     margin-right: 40px!important; 
-}
+} */
 
 .MuiFilledInput-input {
     padding: 0px!important; 

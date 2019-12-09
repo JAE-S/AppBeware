@@ -3,7 +3,7 @@
     import React from "react"; 
 // Import Material Ui Styles
 // =========================================================
-    import { makeStyles } from '@material-ui/core/styles';
+    import { makeStyles, withStyles } from '@material-ui/core/styles';
 // Import Material Ui Components
 // =========================================================
     import { TextField, Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography, Tooltip } from '@material-ui/core';
@@ -14,7 +14,29 @@
     import DoneIcon from '@material-ui/icons/Done';
 // Import Style 
 // =========================================================
-  import "./style.css"
+    import "./style.css"
+
+    const InputOverRideOutline = withStyles({
+      root: {
+        '& label.Mui-focused': {
+          color: '#13BAC7', // Teal
+        },
+        '& .MuiInput-underline:after': {
+          borderBottomColor: '#13BAC7', // Teal
+        },
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: '#A9A9A9', // Grey
+          },
+          '&:hover fieldset': {
+            borderColor: '#F7C533', // Yellow
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: '#13BAC7', // Teal
+          },
+        },
+      },
+    })(TextField);
 
     const useStyles = makeStyles(theme => ({
         root: {
@@ -38,14 +60,10 @@
         margin: {
           margin: theme.spacing(1),
         },
-        detailsInput: {
-          backgroundColor: " #F7C533", 
-        },
-      textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(0),
-        width: 700,
-      },
+        textField: {
+          width: "400px!important", 
+          margin: "0px!important", 
+        }
     }));
 
       // const apiSwitch = apiCalls(call => {
@@ -103,17 +121,14 @@
                   >
 
                     <Grid item sx={12} >
-                      <TextField
+                      <InputOverRideOutline
                         id={props.title}
                         name={props.name}
                         onChange={props.onChange}
                         inputProps={props.inputProps} 
                         type="text" 
-                        variant="filled"
                         helperText={props.description}
-                        // className={classes.detailsInput}
                         className={classes.textField} 
-                        style={{width: "400px!important"}}
                       />
                     </Grid> 
 
