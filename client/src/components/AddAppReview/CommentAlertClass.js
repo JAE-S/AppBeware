@@ -3,6 +3,9 @@
     import React, {Component} from 'react';
     import { connect } from "react-redux";
     // import { push } from 'connected-react-router'
+// Import Material Ui Styles
+// =========================================================
+    import { withStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
     import { TextField, FormControl, Checkbox, FormControlLabel } from '@material-ui/core/';
@@ -13,12 +16,34 @@
 // =========================================================
     import "../../assets/styling/appStyle.css"
 
+    const InputOverRideOutline = withStyles({
+        root: {
+          '& label.Mui-focused': {
+            color: '#13BAC7', // Teal
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: '#13BAC7', // Teal
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: '#A9A9A9', // Grey
+            },
+            '&:hover fieldset': {
+              borderColor: '#F7C533', // Yellow
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#13BAC7', // Teal
+            },
+          },
+        },
+      })(TextField);
+
    function CommentAlertsFunction(props){
 
         return (
             <form noValidate autoComplete="off" style={{padding: "0 20px"}}>
                 <div>
-                <TextField
+                <InputOverRideOutline
                     id="outlined-multiline-static"
                     label="What dangers have your experienced with this app?"
                     multiline

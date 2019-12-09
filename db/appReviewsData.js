@@ -288,6 +288,4 @@ const appReviewsData =
 
 ];
 
-
-
 module.exports = appReviewsData;

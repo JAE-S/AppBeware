@@ -8,11 +8,9 @@
 
 .MuiInputBase-input {
     width: 100%!important;
+    margin: 5px 20px!important;
 }
-.makeStyles-input-269 {
-    width: 100%!important; 
-    color: #f7f7f7;
-}
+
 
 label + .MuiInput-formControl {
     background-color: #f7f7f7;
