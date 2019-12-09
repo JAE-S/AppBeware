@@ -2,6 +2,7 @@
 // =========================================================
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 // Import Material Styles
@@ -174,7 +175,7 @@ const useStyles = makeStyles(theme => ({
                <div className="modal-footer">
                 <Link to="/homePage" style={{textDecoration: "none"}}>
                   <Button onClick={handleReset} className="teal">
-                      Retrun to the homePage
+                      Return to the homePage
                   </Button>
                 </Link>
               </div>
@@ -208,3 +209,27 @@ const useStyles = makeStyles(theme => ({
       </div>
     );
   }
+
+// const mapStateToProps = state => ({
+//   // categories: state.categories.allCategories,
+//   // singleCategoryInfo: state.categories.singleCategoryInfo,
+//   // apps: state.apps.allListedApps,
+//   // trendingApps: state.apps.trendingApps,
+//   // appNames: state.apps.allAppNames,
+//   // appReviews: state.apps.appReviews,
+//   // shields: state.shields.allShields,
+//   // user: state.user.userInfo
+// })
+
+// export default connect(mapStateToProps, 
+//     { 
+//         // viewAllCategories, 
+//         // viewSingleCategory, 
+//         // viewSingleCategoryInfo,
+//         // viewAllListedApps, 
+//         // viewAppNames, 
+//         // viewAppReviews,
+//         // selectTrendingApps,
+//         // viewAllShields,
+//         // userInfo
+//     })(AddAppReview); 

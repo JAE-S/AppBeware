@@ -41,6 +41,12 @@
 // =========================================================
 
     class ShieldAlertsClass extends Component {
+
+        state = {
+            currentShieldSelection: "",
+            allShieldSelection: []
+        }
+
         // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllShields();
