@@ -13,7 +13,7 @@
 // =========================================================
     import "../../assets/styling/appStyle.css"
 
-   function ShieldAlertsFunction(props){
+   function CommentAlertsFunction(props){
 
         return (
             <form noValidate autoComplete="off" style={{padding: "0 20px"}}>
@@ -49,7 +49,7 @@
         )
     }
 
-// ShieldAlertsFunction
+// Comment Alert Class
 // =========================================================
 
     class ShieldAlertsClass extends Component {
@@ -64,7 +64,7 @@
         render() {
             return (
                 <>
-                    <ShieldAlertsFunction
+                    <CommentAlertsFunction
                       // TODO://////////////////
                     // input props for shield alerts go here
                     />
