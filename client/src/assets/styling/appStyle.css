@@ -161,6 +161,9 @@ margin: 0px!important;
     border-top: 1px solid rgb(202, 202, 202); 
     padding-top: 20px;
  }
+ .border-color {
+   border-color: #13BAC7!important;
+ }
 
  #customized-color-4 {
    background-image: url("../images/danger_rating_icons/danger_rating_4.png");

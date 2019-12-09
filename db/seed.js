@@ -86,6 +86,50 @@ module.exports = db => {
         profilePicture: "https://randomuser.me/api/portraits/women/84.jpg",
         isAdmin: true
     });
+          db.User.create({
+        name: 'Crystal Rogers',
+        email: 'crogers@gmail.com',
+        password: 'pink99',
+        phoneNumber: '919-111-2255',
+        profilePicture: "https://randomuser.me/api/portraits/women/80.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Mike Rochelle',
+        email: 'mrochelle@gmail.com',
+        password: 'dog99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/57.jpg",
+        isAdmin: true
+    });
+
+     db.User.create({
+        name: 'Earl Jones',
+        email: 'ejoness@gmail.com',
+        password: 'cat99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/8.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Samuel Floyd',
+        email: 'sfloyd@gmail.com',
+        password: 'chicken99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/men/14.jpg",
+        isAdmin: true
+    });
+
+      db.User.create({
+        name: 'Candy Green',
+        email: 'cgreen@gmail.com',
+        password: 'kitten99',
+        phoneNumber: '919-111-2222',
+        profilePicture: "https://randomuser.me/api/portraits/women/86.jpg",
+        isAdmin: true
+    });
 
     db.Shield.bulkCreate(shieldData).then(function () {
         return db.Category.bulkCreate(categoryData)
