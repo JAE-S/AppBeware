@@ -18,7 +18,7 @@
 // Import Redux Components
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
-import API from "../utils/API";
+    import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
@@ -95,13 +95,13 @@ import API from "../utils/API";
                 <main>
                     <HeaderContainer style={{backgroundColor: "#EAEAEA", borderBottom: "4px solid #F7C533"}}> 
                         <Wrapper align="center" style={{padding: 40}}> 
-                        <Grid container
-                            direction="row"
-                            justify="center"
-                            alignItems="center" >
-                                
+                            <Grid container
+                                direction="row"
+                                justify="center"
+                                alignItems="center" 
+                            >
                                 <Grid item xs={12}> 
-                                    <img alt={`${this.props.user.name}'s profile photo`} src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                                    <img alt={`${this.props.user.name}'s Profile`} src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 200, width: 200, borderRadius: "50%"}}/>
                                 </Grid>
                                 
                                 <Grid item xs={12} > 

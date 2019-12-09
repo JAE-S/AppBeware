@@ -16,25 +16,33 @@ const middleware = [thunk];
 // Necessary for hot reloading???
 
 export default function configureStore() {
-  const store = createStore(
-    createRootReducer(history),
-    initialState,
-    compose(
-      applyMiddleware(
-        routerMiddleware(history),
-        ...middleware
-      ),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  if (window.navigator.userAgent.includes('Chrome')) {
+    const store = createStore(
+      createRootReducer(history),
+      initialState,
+      compose(
+        applyMiddleware(
+          routerMiddleware(history),
+          ...middleware
+        ),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
     )
-  )
+    return store;
 
-  // // Hot reloading
-  // if (module.hot) {
-  //   // Enable Webpack hot module replacement for reducers
-  //   module.hot.accept('./reducers', () => {
-  //     store.replaceReducer(createRootReducer(history));
-  //   });
-  // }
-  return store
+  } else {
+    const store = createStore(
+      createRootReducer(history),
+      initialState,
+      compose(
+        applyMiddleware(
+          routerMiddleware(history),
+          ...middleware
+        ),
+      )
+    );
+    
+    return store;
+  }
 
 }
