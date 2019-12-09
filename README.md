@@ -38,7 +38,6 @@
 ## API'S
 
 * <b>App meta data API: </b> https://42matters.com/app-market-data
-* <b>Google sign in: </b> https://developers.google.com/identity/sign-in/web/sign-in
 
 ---
 ## Technologies
@@ -47,13 +46,10 @@
   * Adobe Photoshop
   * Adobe XD
   
-> <b>New Libraries:</b>
-  * Swift
-  * XCode
-
 > <b>Development Tools:</b>
-  * <b>Framework:</b> Materialize & React-Materialize CLI
+  * <b>Framework:</b> Material UI
   * React
+  * Redux
   * MySQL
   * Express 
   * Path 
@@ -83,8 +79,6 @@
   * <b>Ratings Guide:</b> https://www.esrb.org/ratings-guide/
   * <b>API access to Mobile Data:</b> https://42matters.com/app-market-data
   * <b>React Native:</b> https://github.com/facebook/react-native/tree/master/RNTester
-  * <b>Instant App: </b> https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle#check-permissions
-  * <b>Andriod Studio:</b> https://developer.android.com/studio?gclid=CjwKCAiAzanuBRAZEiwA5yf4ug5F1IEFNGP8Jsx7m7pwkpXX_7eCIhQFs3St4PywnibjCqxKMMMHNhoC1kwQAvD_BwE#downloads
 
 ---
 
