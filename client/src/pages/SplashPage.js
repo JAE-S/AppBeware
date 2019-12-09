@@ -1,30 +1,28 @@
 // Import React 
 // =========================================================
   import React from "react";
+// Import Material UI Styles
+// =========================================================
+  import { makeStyles } from '@material-ui/core/styles';
+// Import Material UI components 
+// =========================================================
+  import Avatar from '@material-ui/core/Avatar';
+  import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+  import { Paper, Grid, Button, Typography} from '@material-ui/core';
 // Components
 // =========================================================
    import Wrapper from "../components/Wrapper"
    import SignIn from "../components/SignIn"
    import SignUp from "../components/SignUp"
-    import Footer from "../components/Footer"
-  import SignInGoogle from "../components/SignInGoogle"
-  import googleSignIn from '../assets/images/googleSignIn.png';
+   import Footer from "../components/Footer"
    import Modal from "../components/Modals"
-// Import Material UI components 
-// =========================================================
-   import { makeStyles } from '@material-ui/core/styles';
-   import PropTypes from 'prop-types';
-   import clsx from 'clsx';
-   import { withStyles } from '@material-ui/core/styles';
-   import Avatar from '@material-ui/core/Avatar';
-   import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-   import { Paper, Grid, Button} from '@material-ui/core';
-   import Typography from '@material-ui/core/Typography';
 // Assets
 // =========================================================
-    import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
-    import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-    import API from "../utils/API";
+  import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+  // ******************** Future development ******************** //
+  // import GoogleImage from "../assets/images/btn_google_signin_light_normal_web@2x.png"
+  // import SignInGoogle from "../components/SignInGoogle"
+  // import googleSignIn from '../assets/images/googleSignIn.png';
 
 // Import Styles
 // =========================================================
@@ -32,35 +30,29 @@
 
 // Custom Styles 
 // =========================================================
-const useStyles = makeStyles(theme => ({
-      paper: {
-        padding: theme.spacing(4),
-        textAlign: 'center',
-        color: "grey",
-        minHeight: "70vh", 
-        // background: "grey",
-        margin: 8,
-        display: "flex", 
-        flexDirection: "column"
-      },
-      title: {
-          // borderBottom: "2px solid white", 
-          fontSize: "38px",
-          paddingBottom: 10,
-          justifyContent: "center", 
-          paddingTop: "60px"
-      },
-    typography: {
-        padding: theme.spacing(2),
-      },
-      Wrapper: {
+  const useStyles = makeStyles(theme => ({
+        paper: {
+          padding: theme.spacing(4),
+          textAlign: 'center',
+          color: "grey",
+          minHeight: "70vh", 
+          margin: 8,
+          display: "flex", 
+          flexDirection: "column"
+        },
+        title: {
+            fontSize: "38px",
+            paddingBottom: 10,
+            justifyContent: "center", 
+            paddingTop: "60px"
+        },
+        typography: {
+            padding: theme.spacing(2),
+          },
+  }));
 
-      }
-
-
-}));
-
-
+// Export SplashPage
+// =========================================================
 function SplashPage() {
   
   const classes = useStyles(); 
@@ -79,7 +71,7 @@ function SplashPage() {
                   <h1 className={classes.title}>AppBeware</h1>
                 </Grid>
               </Grid>
-              <h3 style={{ padding: 20 }} className={classes.about} className="splash">
+              <h3 style={{ padding: 20 }} className="splash">
                 AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
               </h3>
 
@@ -157,7 +149,6 @@ function SplashPage() {
     <Footer/>
     </div>
   )
-
 }
 
 export default SplashPage

@@ -53,14 +53,12 @@ class Media extends Component {
                       </Grid>
                       <Grid item xm={8}>
                         <div>
-                          {/* <Typography gutterBottom variant="body2"> */}
                            <h3 
                               onClick={() => this.viewApp(item.id)} 
                               style={{margin: 0, color: "#57585D", borderBottom: "1px solid silver"}}
                           >
                               {item.name}
                           </h3> 
-                          {/* </Typography> */}
                         </div>
                         <div>
                           <Typography 

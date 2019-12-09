@@ -1,35 +1,30 @@
-
 // Import React
 // =========================================================
     import React from "react"; 
 // Import Material Ui Styles
 // =========================================================
     import { makeStyles } from '@material-ui/core/styles';
-    import TextField from '@material-ui/core/TextField';
-    
- // Import Material Ui Components
+// Import Material Ui Components
 // =========================================================
-    import { Input, Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography } from '@material-ui/core';
+    import { TextField, Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography, Tooltip } from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
-    // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
     import EditIcon from '@material-ui/icons/Edit';
     import CloseIcon from '@material-ui/icons/Close';
     import DoneIcon from '@material-ui/icons/Done';
-
-    import "./style.css";
-
-    import API from "../../utils/API"
+// Import Style 
+// =========================================================
+  import "./style.css"
 
     const useStyles = makeStyles(theme => ({
         root: {
           width: '100%',
           '& > *': {
-           margin: theme.spacing(0),
-           alignItems: 'center'
+            margin: theme.spacing(0),
+            marginBottom: "10px",
+            alignItems: 'center'
+          },
         },
-       
-  },
         heading: {
           fontSize: theme.typography.pxToRem(15),
           flexBasis: '33.33%',
@@ -39,21 +34,19 @@
         secondaryHeading: {
           fontSize: theme.typography.pxToRem(15),
           color: theme.palette.text.secondary,
-          
         },
         margin: {
-            margin: theme.spacing(1),
-          },
-          detailsInput: {
-              backgroundColor: " #F7C533", 
-          },
+          margin: theme.spacing(1),
+        },
+        detailsInput: {
+          backgroundColor: " #F7C533", 
+        },
       textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(0),
-    // backgroundColor: " #F7C533", 
-    width: 700,
-  },
-      }));
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(0),
+        width: 700,
+      },
+    }));
 
       // const apiSwitch = apiCalls(call => {
 
@@ -66,72 +59,84 @@
         const handleChange = panel => (event, isExpanded) => {
           setExpanded(isExpanded ? panel : false);
         };
-
-              
-        const handleInputchange = event => {
-          const {name, value} = event.target;
-          this.setState({
-            [name]: value
-          })
-        }
-
+        
+        // const handleInputchange = event => {
+        //   const {name, value} = event.target;
+        //   this.setState({
+        //     [name]: value
+        //   })
+        // }
 
         return (
-          <div className={classes.root}   >
+          <div className={classes.root}>
             <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            
               <ExpansionPanelSummary
-                expandIcon={<EditIcon/>}
+                expandIcon={
+                  <Tooltip title="Edit" arrow>
+                    <EditIcon className="profile-text"/>
+                  </Tooltip>
+                }
                 aria-controls={props.ariaControls}
                 id={props.ariaControls}
-                style={{ backgroundColor: " #F7C533"}}
+                style={{ borderRadius: "none"}}
               >
-                <Typography className={classes.heading}>
-                    {props.title}
-                </Typography>
-                <Typography className={classes.heading}>
-                    {props.currentDetails}
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-             
-              <form className={classes.root} noValidate autoComplete="off">
-                <Grid container 
-                    direction="row"
-                    justify="space-evenly"
-                   alignItems="flex-end"
-                >
-                {/* <Grid item sx={4}  > 
-                  
-                   Update 
-                </Grid> */}
-                <Grid item sx={8} >
-             
-                <TextField id="filled-basic"  variant="filled"
-                className={classes.textField} 
-                        helperText="Edit your information"
-                        // className={classes.detailsInput}
-                        inputProps={props.inputProps} 
-                        id={props.title} 
-                        type="text"
-                        // label={props.title}
-                        style={{width: "400px!important"}}
+           
+
+                  <Typography className={classes.heading}>
+                     <h3 className="profile-text" style={{margin: 0 }}>
+                      {props.title}: 
+                    </h3>
+                  </Typography>
+               
+                  <Typography className={classes.heading}>
+                      {props.currentDetails}
+                  </Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+              
+                <form className={classes.root} noValidate autoComplete="off">
+                  <Grid container 
+                      direction="row"
+                      justify="center"
+                    alignItems="flex-end"
+                  >
+
+                    <Grid item sx={12} >
+                      <TextField
+                        id={props.title}
                         name={props.name}
                         onChange={props.onChange}
-                    />
-                </Grid> 
-                <Grid item sx={4}> 
-                    <a><CloseIcon  
-                        type="submit"
-                        style={{color: "#FC4A1A"}}
-                    /></a>
-            
-                    <button><DoneIcon 
-                        style={{color: "green"}}
-                        onClick={props.inputSubmit}
-                        // onClick={props.inputSubmit(Input)}
-                    /></button>
+                        inputProps={props.inputProps} 
+                        type="text" 
+                        variant="filled"
+                        helperText={props.description}
+                        // className={classes.detailsInput}
+                        className={classes.textField} 
+                        style={{width: "400px!important"}}
+                      />
+                    </Grid> 
+
+                    <Grid item sx={12}> 
+                      <button>
+                        <Tooltip title="Cancel" arrow>
+                          <CloseIcon 
+                            type="submit"
+                            style={{color: "#FC4A1A", paddingLeft: "10px", paddingRight: "10px", width: "2em"}}
+                          />
+                        </Tooltip>
+                      </button>
+                      <button>
+                        <Tooltip title="Save" arrow>
+                          <DoneIcon 
+                            style={{color: "green", paddingLeft: "10px", paddingRight: "10px", width: "2em"}}
+                            onClick={props.inputSubmit}
+                            // onClick={props.inputSubmit(Input)}
+                          />
+                        </Tooltip>
+                      </button>
                     </Grid>
-                    </Grid>
+                  </Grid>
                 </form>    
              
               </ExpansionPanelDetails>

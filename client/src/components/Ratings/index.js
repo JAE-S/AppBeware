@@ -72,7 +72,7 @@ function getLabelText(value) {
 
 // Export function -> CustomizedRatings (Choose rating)
 // =========================================================
-  export function CustomizedRatings(props) {
+  export default function CustomizedRatings(props) {
     const [value, setValue] = React.useState(1);
       const [hover, setHover] = React.useState(-1);
     return (
@@ -88,19 +88,24 @@ function getLabelText(value) {
           </Grid>
 
           <Grid align="center"justify="space-between"  item xs={6}> 
-          <button><StyledRating
+
+          <button>
+            <StyledRating
               name="customized-color"
-              value={1}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
+              value={props.value}
+              onChange={props.value}
               getLabelText={getLabelText}
               precision={1}
-              icon={<Brightness1Rounded fontSize="inherit"  style={{margin: 5}} />}
-              IconContainerComponent={IconContainer}
-             
-              
-            /></button>
+              icon={
+                <Brightness1Rounded 
+                  fontSize="inherit"  
+                  style={{margin: 5}} 
+                />
+              }
+              IconContainerComponent={IconContainer} 
+            />
+          </button>
+
           </Grid>
           <Grid item xs={3}> 
             <h4 align="center" style={{color: "#FC4A1A" }}>Severe Concern</h4>

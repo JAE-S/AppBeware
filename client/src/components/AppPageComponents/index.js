@@ -1,45 +1,34 @@
 // Import React
 // =========================================================
-import React from "react"; 
+    import React from "react"; 
 // Import Material UI components 
 // =========================================================
-    import { Grid, Typography, Button, Table, TableBody, TableRow, TableCell, LinearProgress }from '@material-ui/core/';
-// Import Material UI icons
-// =========================================================
-    import { Brightness1Rounded, AddAlert} from '@material-ui/icons/';
+    import { Grid, Typography, Button, Table, TableBody, TableRow, TableCell }from '@material-ui/core/';
 // Import Custom Components
 // =========================================================
     import HoverShieldInfo from "../HoverShieldInfo"  
-    // import Modal from "../../components/Modals"
-    // import AddAppReview from "./components/AddAppReview"
-    import {CustomizedRatings }from "../Ratings"
     import LinearProgressBar from "../Ratings/progess"
 // Import Media
 // =========================================================
     import PR_icon from "../../assets/images/shields/predator_risk.png";
-    import CB_icon from "../../assets/images/shields/cyberbullying.png";
-    import DB_icon from "../../assets/images/shields/dangerous_behavior.png";
-    import SC_icon from "../../assets/images/shields/sexual_content.png";
-    import VC_icon from "../../assets/images/shields/violent_content.png";
-    import Tony_Smith from "../../assets/images/test_profiles/Tony_Smith.png";
-    import Anya_Tyler from "../../assets/images/test_profiles/Anya_Tyler.png";
     
 // Custom Styles 
 // =========================================================
     import "../../assets/styling/appStyle.css"
-const data = [
+    
+    const data = [
 
-    { logoUrl: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
-      name: "Holla",
-      createdAt: '1 hours ago',
-      warnRatingAverage: 4,
-      badges: PR_icon,
-      link: "https://holla.world/", 
-      description: "HOLLA is a free, live video streaming app that randomly matches people in video chats across the globe. Think prank calling and party lines for the virtual age, and that pretty much sums up the HOLLA app.", 
+        { logoUrl: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
+        name: "Holla",
+        createdAt: '1 hours ago',
+        warnRatingAverage: 4,
+        badges: PR_icon,
+        link: "https://holla.world/", 
+        description: "HOLLA is a free, live video streaming app that randomly matches people in video chats across the globe. Think prank calling and party lines for the virtual age, and that pretty much sums up the HOLLA app.", 
 
-    },
-  
-  ];
+        },
+    
+    ];
 
 // Grid Layout
 // =========================================================

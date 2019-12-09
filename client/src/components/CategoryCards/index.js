@@ -6,7 +6,7 @@
     import { makeStyles } from '@material-ui/core/styles';
 // Import Material UI Components
 // =========================================================
-    import { Card, CardActions, CardContent, Button, Typography, Grid} from '@material-ui/core/';
+    import { Card, CardActions, CardContent, Grid} from '@material-ui/core/';
 
 // Styling
 // =========================================================
@@ -65,7 +65,7 @@
                       <span className="circle">
                         <span className="icon arrow"></span>
                       </span>
-                      <h4 ><span className="button-text">View Category</span></h4>
+                      <h4><span className="button-text">View Category</span></h4>
                     </button>
                   </div>
                 </CardActions>

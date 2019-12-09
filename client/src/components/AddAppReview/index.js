@@ -1,6 +1,7 @@
 // Import React & Node packages
 // =========================================================
 import React from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 // Import Material Styles
@@ -168,13 +169,15 @@ const useStyles = makeStyles(theme => ({
   
         <div>
           {activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
-              </Typography>
-              <Button onClick={handleReset} className={classes.button}>
-                Reset
-              </Button>
+            <div align="center">
+               <h3> Thank you for sharing you&apos;re concerns!</h3>
+               <div className="modal-footer">
+                <Link to="/homePage" style={{textDecoration: "none"}}>
+                  <Button onClick={handleReset} className="teal">
+                      Retrun to the homePage
+                  </Button>
+                </Link>
+              </div>
             </div>
           ) : (
             <div>
@@ -186,6 +189,7 @@ const useStyles = makeStyles(theme => ({
                   alignItems="center"
               >
               <Grid item>
+             
                 <Button disabled={activeStep === 0} onClick={handleBack} className="back">
                   Back
                 </Button>
