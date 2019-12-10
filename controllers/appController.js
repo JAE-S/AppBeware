@@ -141,6 +141,12 @@ module.exports = function (db) {
         });
       },
 
+      submitReview: function (req, res) {
+        db.AppReview.create(req.body).then(function(dbAppReview) {
+          res.json(dbAppReview);
+        })
+      },
+
       userInfo: function (req, res) {
         if (!req.isAuthenticated()){
           res.json({

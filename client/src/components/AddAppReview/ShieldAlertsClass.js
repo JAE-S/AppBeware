@@ -12,7 +12,9 @@ import HoverShieldInfo from "../HoverShieldInfo"
 // Redux Components 
 // =========================================================
 import { viewAllShields } from "../../Store/Actions/shieldActions";
+import { addShieldToApp, resetAddedShields } from "../../Store/Actions/reviewActions";
 import "./style.css"
+
 
 function ShieldAlertsFunction(props){
 
@@ -22,7 +24,7 @@ function ShieldAlertsFunction(props){
                 badgeInfo={props.info}
                 badgeName={
                     <button  
-                        onClick={props.handleClick}
+                        onClick={() => props.addSingleShield(props.title)}
                         value={props.title}
                     >
                         <img 
@@ -37,26 +39,56 @@ function ShieldAlertsFunction(props){
     )
 }
 
+
 // ShieldAlertsFunction
 // =========================================================
 
 class ShieldAlertsClass extends Component {
 
-    state = {
-        currentShieldSelection: "",
-        allShieldSelection: []
-    }
+    // constructor(props) {
+    //     super(props);
+    //     state = {
+
+    //     };
+    //   }
+    // state = {
+    //     currentShieldSelection: "",
+    //     allShieldSelection: []
+    // }
 
     // Grabbing all necessary data from Redux
-    componentDidMount() {
-        this.props.viewAllShields();
-    }
-    
-    // TODO://////////////////
-    // Function for set shield review
-    handleClick = (shield, event) => {
-        alert(shield)
-    }
+    // componentDidMount() {
+    //     this.props.viewAllShields();
+    //                 // this.props.resetAddedShields();
+    // }
+   
+    // generateArrayOfShields = (array, shield) => {
+    //     console.log("Inside generateArrayOfShields");
+    //     let tempShieldArray = array;
+    //     tempShieldArray.push(shield);
+    //     const duplicateShieldArray = tempShieldArray.map(item => item);
+    //     const noDuplicateShield = new Set(duplicateShieldArray);
+    //     const finalShieldArray = [...noDuplicateShield];
+    //     return finalShieldArray;
+    // };
+     
+        // TODO://////////////////
+        // Function for set shield review
+        // handleClick = (shield) => {
+        //     // alert(shield)
+        //     // let tempShieldArray = this.state.allShieldSelection;
+        //     // tempShieldArray.push(shield);
+        //     // console.log( this.generateArrayOfShields( this.props.addedShields, shield) );
+        //     this.props.addShieldToApp( this.generateArrayOfShields( this.props.addedShields, shield) );
+        //     this.props.addShieldToApp( shield );
+
+        //     // this.setState({
+        //     //     currentShieldSelection: shield,
+        //     //     allShieldSelection: this.generateArrayOfShields(this.state.allShieldSelection, shield)
+        //     // })
+        //     // console.log(this.state.currentShieldSelection);
+        //     // console.log(this.state.allShieldSelection);
+        // }
 
     render() {
 
@@ -76,7 +108,7 @@ class ShieldAlertsClass extends Component {
                     title={shield.name}
                     altTxt={shield.altText}
                     info={`${shield.name} - ${shield.info}`}
-                    handleClick={() => this.handleClick(shield.name)}
+                    addSingleShield={() => this.props.addSingleShield(shield.name)}
                 />
             ))}
 
@@ -96,6 +128,7 @@ const mapStateToProps = state => ({
 // apps: state.apps.allListedApps,
 // trendingApps: state.apps.trendingApps,
 // appNames: state.apps.allAppNames,
+addedShields: state.reviews.addedShields,
 shields: state.shields.allShields
 })
 
@@ -106,5 +139,7 @@ export default connect(mapStateToProps,
     // viewAllListedApps, 
     // viewAppNames, 
     // selectTrendingApps,
+    addShieldToApp,
+    resetAddedShields,
     viewAllShields 
 })(ShieldAlertsClass);

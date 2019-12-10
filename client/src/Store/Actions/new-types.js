@@ -11,7 +11,9 @@ export const VIEW_APP_REVIEWS = "VIEW_APP_REVIEWS";
 
 export const VIEW_ALL_SHIELDS = "VIEW_ALL_SHIELDS";
 
-
+export const ADD_SHIELD_TO_APP = "ADD_SHIELD_TO_APP";
+export const RESET_ADDED_SHIELDS = "RESET_ADDED_SHIELDS";
+export const REVIEW_SUBMIT = "REVIEW_SUBMIT";
 
 // Functions to add based on initial state.json
 export const NEW_USER = "NEW_USER";

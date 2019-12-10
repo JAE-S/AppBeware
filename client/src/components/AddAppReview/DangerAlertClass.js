@@ -19,16 +19,16 @@
         }
         // TODO://////////////////
         // Functin to set danger rating 
-        handleInput = (event) => {
-            alert(event.target.value);
-          }
+        // handleInput = (event) => {
+        //     alert(event.target.value);
+        //   }
 
         render() {
             return (
                 <>
                   {/* // TODO:////////////////// */}
                     <CustomizedRatings 
-                        value={this.handleInput}
+                        value={this.props.addDangerRating}
                     />
                      <p align="center">Please select a rating &#40;1 - 5 &#41; that reflects your concerns.</p>
                 </>
