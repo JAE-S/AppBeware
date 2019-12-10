@@ -1,11 +1,72 @@
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
+  console.log("Length: " + dbArray.length);
   const duplicateShieldArray = dbArray.map((item) => item.shieldId);
   const noDuplicateShield = new Set(duplicateShieldArray);
   const finalShieldArray = [...noDuplicateShield];
   return finalShieldArray;
 };
 
+const tempMakeArrayOfShields = (dbArray) => {
+  console.log("Inside makeArrayOfShields");
+  // console.log("Length: " + dbArray.length);
+  const duplicateShieldArray = dbArray[0].Shield_ID.map(item => item);
+  const noDuplicateShield = new Set(duplicateShieldArray);
+  const finalShieldArray = [...noDuplicateShield];
+  dbArray[0].Shield_ID = finalShieldArray;
+
+  const duplicateShieldNameArray = dbArray[0].Shield_Name.map(item => item);
+  const noDuplicateShieldName = new Set(duplicateShieldNameArray);
+  const finalShieldNameArray = [...noDuplicateShieldName];
+  dbArray[0].Shield_Name = finalShieldNameArray;
+
+  const duplicateShieldIconArray = dbArray[0].Shield_Icon.map(item => item);
+  const noDuplicateShieldIcon = new Set(duplicateShieldIconArray);
+  const finalShieldIconArray = [...noDuplicateShieldIcon];
+  dbArray[0].Shield_Icon = finalShieldIconArray;
+
+  return dbArray;
+};
+
+const createNewAppNameArray = dbArray => {
+  let smallerArray = [];
+  let tempName = "";
+
+  for (let i=0; i < dbArray.length; i++) {
+
+    if (i = 0) {
+      tempName = dbArray[i].label
+      console.log("Inside if statement");
+    }
+
+  
+    // let tempName = dbArray[0].label;
+
+    smallerArray.push({
+      label: dbArray[0].label,
+      id: dbArray[0].id,
+      Shield_ID: [],
+      Shield_Name: [],
+      Shield_Icon: []
+    })
+
+
+    for (let j=0; j < dbArray.length; j++) {
+      console.log("Right before for loop - " + i + " " + j);
+
+      // console.log("Inside for loop - iterator: " + j);
+      if (dbArray[j].label === tempName) {
+        console.log("Inside if statement");
+        smallerArray[0].Shield_ID.push(dbArray[j].Shield_ID);
+        smallerArray[0].Shield_Name.push(dbArray[j].Shield_Name);
+        smallerArray[0].Shield_Icon.push(dbArray[j].Shield_Icon);
+      }
+    }
+  }
+  return tempMakeArrayOfShields(smallerArray);
+
+  // return smallerArray;
+}
 
 
 module.exports = function (db) {
@@ -65,6 +126,17 @@ module.exports = function (db) {
         }).then(function(dbAppReviews) {
           res.json(dbAppReviews)
         });
+      },
+
+      testQuery: function (req, res) {
+        console.log("Inside Test Query")
+        db.sequelize.query("SELECT ListedApps.name AS label, AppShieldUsers.appId AS id, AppShieldUsers.shieldId AS Shield_ID, Shields.name AS Shield_Name, Shields.icon AS Shield_Icon FROM ListedApps JOIN AppShieldUsers ON ListedApps.id = AppShieldUsers.appId JOIN Shields ON AppShieldUsers.shieldId = Shields.id ORDER BY ListedApps.name, Shields.id ASC",  { type: db.sequelize.QueryTypes.SELECT})
+          .then(function(returnedData) {
+            console.log("Length: " + returnedData.length)
+            console.log(JSON.stringify(createNewAppNameArray(returnedData)), null, 4);
+            res.json(createNewAppNameArray(returnedData))
+          })
+        // res.end();
       },
 
       getSpecificShields: function (req, res) {
@@ -186,42 +258,6 @@ module.exports = function (db) {
       }
 
 
-    //   // Create a new example
-    //   createExample: function (req, res) {
-    //     db.Example.create(req.body).then(function (dbExample) {
-    //       res.json(dbExample);
-    //     });
-    //   },
-    //   // Delete an example by id
-    //   deleteExample: function (req, res) {
-    //     db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-    //       res.json(dbExample);
-    //     });
-    //   },
-    //   // Create new student entry
-    //   addNewStudent: function (req, res) {
-    //     db.Student.create(req.body).then(function (dbStudent) {
-    //       res.json(dbStudent);
-    //     });
-    //   },
-    //   // Create new parent entry
-    //   addNewParent: function (req, res) {
-    //     db.Parent.create(req.body).then(function (dbParent) {
-    //       res.json(dbParent);
-    //     });
-    //   },
-    //   // Create new teacher entry
-    //   addNewTeacher: function (req, res) {
-    //     db.Teacher.create(req.body).then(function (dbTeacher) {
-    //       res.json(dbTeacher);
-    //     });
-    //   },
-    //   // Create new approved pickup entry
-    //   addNewPickup: function (req, res) {
-    //     db.Approved.create(req.body).then(function (dbApproved) {
-    //       res.json(dbApproved);
-    //     });
-    //   }
   
     };
   };
