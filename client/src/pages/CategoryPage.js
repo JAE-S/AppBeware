@@ -2,6 +2,7 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux";
+    import {Redirect} from 'react-router-dom';
 // Import Redux Actions
 // =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
@@ -19,6 +20,7 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
+    import { userInfo } from '../Store/Actions/authentication';
 // Import styles
 // =========================================================
     import "../assets/styling/appStyle.css"
@@ -81,6 +83,8 @@
         }
 
         render(props) {
+            console.log(this.props.isloggedIn)
+            if(this.props.isloggedIn){
             return (
                 <>
                 <Nav/>
@@ -169,7 +173,10 @@
 
                 <Footer/>
                 </>
-            )
+            )}
+            else{
+                return <Redirect to='/' />
+            }
         }
     }
 
@@ -177,7 +184,8 @@
         singleCategory: state.categories.singleCategory,
         categories: state.categories.allCategories,
         singleCategoryInfo: state.categories.singleCategoryInfo,
-        appReviews: state.apps.appReviews
+        appReviews: state.apps.appReviews,
+        isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 
@@ -186,7 +194,8 @@
             viewSingleCategory, 
             viewSingleCategoryInfo, 
             viewSingleApp,
-            viewAppReviews
+            viewAppReviews,
+            userInfo
         }
     )(Categories); 
 

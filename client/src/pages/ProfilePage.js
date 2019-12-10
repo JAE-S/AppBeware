@@ -1,6 +1,7 @@
 // Import React
 // =========================================================
     import React, { Component } from "react"; 
+    import {Redirect} from 'react-router-dom';
     import { connect } from "react-redux"; 
 // Import Material Ui Components
 // =========================================================
@@ -19,6 +20,7 @@
 // =========================================================
     import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
     import API from "../utils/API";
+    import store from '../Store'
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
@@ -31,21 +33,8 @@
         }
         
         componentDidMount() {
-            console.log("mounted")
             this.props.userInfo();
         }
-
-        // getProfileInfo() {
-        //     API.userInfo()
-        //     .then(res => {
-        //         console.log(res)
-        //         this.setState({
-        //             email:res.data.userInfo.email,
-        //             name: res.data.userInfo.name,
-        //             phoneNumber: res.data.userInfo.phoneNumber
-        //         })
-        //     })
-        // }
         
   handleInputchange = event => {
     const {name, value} = event.target;
@@ -89,6 +78,8 @@
   }
         
     render() {
+        console.log(this.props.isloggedIn)
+        if (this.props.isloggedIn) {
         return (
             <>
                 <Nav/>
@@ -159,12 +150,16 @@
                 </main>
                 <Footer/>
             </>
-            )
+            )}
+            else {
+                return <Redirect to="/" />
+            }
         }
     }
 
     const mapStateToProps = state => ({
-        user: state.user.userInfo
+        user: state.user.userInfo,
+        isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 

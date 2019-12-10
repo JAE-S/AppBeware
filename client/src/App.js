@@ -1,7 +1,9 @@
 // Import React + Reoters + PropTypes
 // =========================================================
-import React from "react";
+import React, {Component} from "react";
 import { Route, Switch } from 'react-router'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom';
 
 // Import Components
 // =========================================================  
@@ -14,26 +16,40 @@ import Disclaimer from "./pages/Disclaimer"
 // Import CSS
 // =========================================================
 import "./assets/styling/appStyle.css"
+import { userInfo} from './Store/Actions/authentication';
 
 
 // App Routes
 // =========================================================
-  const App = () => {
-
-    // console.log(this.state)
-
-    return ( 
-        <>
-          <Switch>
-            <Route exact path="/" component={SplashPage} />
-            <Route  path="/homepage" component={Homepage} />
-            <Route exact path="/categoryPage" component={CategoryPage} />
-            <Route exact path="/appPage" component={AppPage} />
-            <Route  path="/profilePage" component={ProfilePage} />
-            <Route exact path="/disclaimer" component={Disclaimer} />
-            </Switch>
-        </>
-    )
+  class App extends Component {
+    
+    componentDidMount() {
+      console.log("mounted main")
+      this.props.userInfo();   
+  }
+    render(){
+        return ( 
+            <>
+              <Switch>
+                <Route exact path="/" component={SplashPage} />
+                <Route  path="/homepage" component={Homepage} />
+                <Route exact path="/categoryPage" component={CategoryPage} />
+                <Route exact path="/appPage" component={AppPage} />
+                <Route  path="/profilePage" component={ProfilePage} />
+                <Route exact path="/disclaimer" component={Disclaimer} />
+                </Switch>
+            </>
+        )
+    }
   }
 
-  export default App;
+  const mapStateToProps = state => ({
+    user: state.user.userInfo,
+    isloggedIn: state.user.isloggedIn
+})
+
+export default connect(mapStateToProps, 
+    {
+        userInfo
+    }
+)(App);
