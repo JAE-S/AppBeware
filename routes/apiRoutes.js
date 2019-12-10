@@ -28,6 +28,7 @@ module.exports = (passport, db) => {
    router.get('/get-categories', AppController.getCategories);
    router.get('/get-single-category-info/:id', AppController.getSingleCategoryInfo);
    router.get('/get-shields', AppController.getShields);
+   router.post('/submit-review', AppController.submitReview);
   //  router.post('/get-app-shields/:id', AppController.getAppShields);
 
 

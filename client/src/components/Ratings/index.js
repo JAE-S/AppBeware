@@ -30,7 +30,7 @@
     },
   })(Rating);
 
-  function onChange(evet, value) {
+  function onChange(event, value) {
    if (value === 1){
      console.log("true")
    }

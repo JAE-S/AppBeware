@@ -38,7 +38,13 @@
         },
       })(TextField);
 
-   function CommentAlertsFunction(props){
+      const testChange = (event) => {
+          console.log("Inside testChange");
+          console.log(event.target);
+      };
+
+//    function CommentAlertsFunction(props){
+    function CommentAlertsFunction(props) {
 
         return (
             <form noValidate autoComplete="off" style={{padding: "0 20px"}}>
@@ -51,6 +57,7 @@
                     placeholder="...share your experience here."
                     margin="normal"
                     variant="outlined"
+                    onChange={props.handleTextFieldChange}
                 />
             </div>
             <div align="center"> 
@@ -63,8 +70,12 @@
                                     icon={<AddAlert />} 
                                     checkedIcon={<AddAlert />} 
                                     value="checkedA" 
+                                    checked={props.checked}
+                                    onChange={props.handleAlertCheck}
                                 />
                             }
+                            // onChange={props.handleAlertCheck}
+
                             label="Set Alert"
                         />
                     </div>
@@ -90,8 +101,9 @@
             return (
                 <>
                     <CommentAlertsFunction
-                      // TODO://////////////////
-                    // input props for shield alerts go here
+                        handleTextFieldChange={this.props.handleTextFieldChange}
+                        handleAlertCheck={this.props.handleAlertCheck}
+                        checked={this.props.checked}
                     />
                 </>
             )

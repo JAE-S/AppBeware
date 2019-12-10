@@ -5,6 +5,15 @@
   import { connect } from "react-redux";
   import PropTypes from 'prop-types';
   import clsx from 'clsx';
+
+// Import Redux Components
+// =========================================================
+  import { viewSingleApp } from "../../Store/Actions/appActions";
+  import { userInfo } from '../../Store/Actions/authentication';
+  import { reviewSubmit } from '../../Store/Actions/reviewActions';
+
+  import API from "../../utils/API";
+
 // Import Material Styles
 // =========================================================
   import { makeStyles } from '@material-ui/core/styles';
@@ -70,24 +79,26 @@ const getStyles = () => {
     };
   };
 
-    function shieldAlerts(){
+    // function shieldAlerts(){
 
-        return (
-        <ShieldAlertsClass/>
-        )
-    }
-    function dangerRating(){
+    //     return (
+    //     <ShieldAlertsClass
+    //         addSingleShield = {this.addSingleShield}
+    //     />
+    //     )
+    // }
+    // function dangerRating(){
 
-        return (
-            <DangerAlertClass/>
-        )
-    }
+    //     return (
+    //         <DangerAlertClass/>
+    //     )
+    // }
 
-    function shareConcerns(){
-    return (
-      <CommentAlertClass/>
-    )
-    }
+    // function shareConcerns(){
+    //     return (
+    //         <CommentAlertClass/>
+    //     )
+    // }
 
 function QontoStepIcon(props) {
     const classes = useQontoStepIconStyles();
@@ -113,24 +124,79 @@ function QontoStepIcon(props) {
     return ['Select Shield Alerts', 'Select A Danger Alert', 'Share Your Concerns'];
   }
 
-  function getStepContent(stepIndex) {
-    switch (stepIndex) {
-        case 0:
-        return shieldAlerts();
-      case 1:
-        return dangerRating();
-      case 2:
-        return shareConcerns();
-      default:
-        return 'Select Shield Alerts';
-    }
-  }
+//   function getStepContent(stepIndex) {
+//     switch (stepIndex) {
+//         case 0:
+//         return this.shieldAlerts();
+//       case 1:
+//         return this.dangerRating();
+//       case 2:
+//         return this.shareConcerns();
+//       default:
+//         return 'Select Shield Alerts';
+//     }
+//   }
+  const generateArrayOfShields = (array, shield) => {
+    console.log("Inside generateArrayOfShields");
+    let tempShieldArray = array;
+    tempShieldArray.push(shield);
+    const duplicateShieldArray = tempShieldArray.map(item => item);
+    const noDuplicateShield = new Set(duplicateShieldArray);
+    const finalShieldArray = [...noDuplicateShield];
+    return finalShieldArray;
+};
 
   class AddAppReview extends  Component {
     state = {
         stepIndex: 0,
         visited: [],
+        currentShieldSelection: "",
+        allShieldSelection: [],
+        dangerRating: 0,
+        comments: "",
+        alertChecked: false
       }; 
+
+    shieldAlerts = () => {
+
+        return (
+            <ShieldAlertsClass
+                addSingleShield = {this.addSingleShield}
+            />
+        )
+    }
+
+    dangerRating = () => {
+
+        return (
+          <DangerAlertClass
+            addDangerRating = {this.addDangerRating}
+          />
+        )
+    }
+
+    shareConcerns = () => {
+        return (
+            <CommentAlertClass
+              handleTextFieldChange = {this.handleTextFieldChange}
+              handleAlertCheck = {this.handleAlertCheck}
+              checked = {this.state.alertChecked}
+            />
+        )
+    }
+
+    getStepContent = (stepIndex) => {
+        switch (stepIndex) {
+            case 0:
+            return this.shieldAlerts();
+          case 1:
+            return this.dangerRating();
+          case 2:
+            return this.shareConcerns();
+          default:
+            return 'Select Shield Alerts';
+        }
+      }
       
       componentWillMount() {
         const {stepIndex, visited} = this.state;
@@ -157,7 +223,25 @@ function QontoStepIcon(props) {
           this.setState({stepIndex: stepIndex - 1});
         }
       };
+
       handleFinish = () => {
+
+        const reviewToSubmit = {
+          'predatorRisk': (this.state.allShieldSelection.includes('Predator Risk') ? true : false),
+          'dangerousBehavior': (this.state.allShieldSelection.includes('Dangerous Behavior') ? true : false),
+          'cyberbullying': (this.state.allShieldSelection.includes('Cyberbullying') ? true : false),
+          'violentContent': (this.state.allShieldSelection.includes('Violent Content') ? true : false), 
+          'sexualContent': (this.state.allShieldSelection.includes('Sexual Content') ? true : false), 
+          'dangerRating': this.state.dangerRating, 
+          'comments': this.state.comments,
+          'alert': this.state.alertChecked,
+          'UserId': this.props.user.id, 
+          'ListedAppId': this.props.singleApp.id
+        }
+
+        this.props.reviewSubmit(reviewToSubmit);
+        API.submitReview(reviewToSubmit);
+
         return (
           <div align="center">
                <h3> Thank you for sharing you&apos;re concerns!</h3>
@@ -170,6 +254,41 @@ function QontoStepIcon(props) {
               </div>
             </div>
         )
+      }
+
+      addSingleShield = (shield) => {
+        console.log("Adding single shield: " + shield)
+        console.log(this.state.allShieldSelection);
+        this.setState({
+            currentShieldSelection: shield,
+            allShieldSelection: generateArrayOfShields(this.state.allShieldSelection, shield)
+        })
+      }
+
+      addDangerRating = (event) => {
+        console.log("Danger Rating: " + this.state.dangerRating);
+        this.setState({
+          dangerRating: event.target.value
+        })
+      }
+
+      handleTextFieldChange = (event) => {
+        this.setState({
+            comments: event.target.value
+        });
+        console.log(this.state.comments);
+      }
+
+      handleAlertCheck = () => {
+        if (this.state.alertChecked) {
+          this.setState({
+            alertChecked: false
+          })
+        } else {
+          this.setState({
+            alertChecked: true
+          })
+        }
       }
     
       render() {
@@ -211,7 +330,7 @@ function QontoStepIcon(props) {
           
             <div>
               <Typography className={styles.instructions}>
-                {getStepContent(stepIndex)}
+                {this.getStepContent(stepIndex)}
               </Typography>
               <Grid container 
                   className="modal-footer"
@@ -256,28 +375,31 @@ function QontoStepIcon(props) {
         );
       }
     }
-  export default AddAppReview;
       
-// const mapStateToProps = state => ({
-//   // categories: state.categories.allCategories,
-//   // singleCategoryInfo: state.categories.singleCategoryInfo,
-//   // apps: state.apps.allListedApps,
-//   // trendingApps: state.apps.trendingApps,
-//   // appNames: state.apps.allAppNames,
-//   // appReviews: state.apps.appReviews,
-//   // shields: state.shields.allShields,
-//   // user: state.user.userInfo
-// })
+const mapStateToProps = state => ({
+  // categories: state.categories.allCategories,
+  // singleCategoryInfo: state.categories.singleCategoryInfo,
+  // apps: state.apps.allListedApps,
+  // trendingApps: state.apps.trendingApps,
+  // appNames: state.apps.allAppNames,
+  // appReviews: state.apps.appReviews,
+  // shields: state.shields.allShields,
+  singleApp: state.apps.singleApp,
+  user: state.user.userInfo,
+  completeReview: state.reviews.completeReview
+})
 
-// export default connect(mapStateToProps, 
-//     { 
-//         // viewAllCategories, 
-//         // viewSingleCategory, 
-//         // viewSingleCategoryInfo,
-//         // viewAllListedApps, 
-//         // viewAppNames, 
-//         // viewAppReviews,
-//         // selectTrendingApps,
-//         // viewAllShields,
-//         // userInfo
-//     })(AddAppReview); 
+export default connect(mapStateToProps, 
+    { 
+        // viewAllCategories, 
+        // viewSingleCategory, 
+        // viewSingleCategoryInfo,
+        // viewAllListedApps, 
+        // viewAppNames, 
+        // viewAppReviews,
+        // selectTrendingApps,
+        // viewAllShields,
+        viewSingleApp,
+        userInfo,
+        reviewSubmit
+    })(AddAppReview); 

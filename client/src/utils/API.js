@@ -95,6 +95,10 @@ export default {
 
   updatePassword: function (update) {
     return axios.put('/api/userPassword', update)
+  },
+
+  submitReview: function (completeReview) {
+    return axios.post('api/submit-review', completeReview)
   }
 
 };
