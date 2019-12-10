@@ -78,7 +78,13 @@ class SearchAppAnnie extends React.Component {
       id: 123,
       value:  'Snapchat'
     }
-  
+    const shieldIcon = sampleData.map((data, idx) => {
+      console.log(data.Shield_Icon)
+      return ([
+          <p key={idx}>{data.Shield_Icon}</p>
+      ]);
+   });
+
     return (
       <div className="root" >
       <Wrapper style={{position: "relative", zIndex: 1000}}>
@@ -115,7 +121,8 @@ class SearchAppAnnie extends React.Component {
                   
                   sampleData.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
                   // map the return value and return a div
-                  .map((item, index) => (
+                  .map((item, shields, index) => {
+                    return (
                     <Grid container 
                       className="dropdown-item"
                       direction="row"
@@ -126,7 +133,7 @@ class SearchAppAnnie extends React.Component {
                     
                         key: item.label,
                         index,
-                        item
+                        item,
                       })}
                         style = {{
                           backgroundColor:
@@ -139,7 +146,89 @@ class SearchAppAnnie extends React.Component {
                       <h3>{item.label}</h3>
                     </Grid>
                     <Grid item xs={4}>
-                      <div style={{ color: "#F7F7F7", backgroundColor: "grey"}}> Temporary Placeholder for shield icons</div>
+                    {/* DROPDOWN SHIELD ICONS */}
+                      <div>
+
+                        {item.Shield_Icon[0] ? (
+                          <>
+                            <img 
+                              alt="shield" 
+                              key={item.label} 
+                              src={item.Shield_Icon[0]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                          </>
+                        ) : (
+                            <div style={{display: "none"}}/>
+                          )
+                        }
+                        {item.Shield_Icon[1] ? (
+                          <>
+                            <img 
+                              alt="shield" 
+                              key={item.label} 
+                              src={item.Shield_Icon[1]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                          </>
+                        ) : (
+                            <div style={{display: "none"}}/>
+                          )
+                        }
+                        {item.Shield_Icon[2] ? (
+                          <>
+                            <img 
+                              alt="shield" 
+                              key={item.label} 
+                              src={item.Shield_Icon[2]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                          </>
+                        ) : (
+                            <div style={{display: "none"}}/>
+                          )
+                        }
+                        {item.Shield_Icon[3] ? (
+                          <>
+                            <img 
+                              alt="shield" 
+                              key={item.label} 
+                              src={item.Shield_Icon[3]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                            </>
+                          ) : (
+                              <div style={{display: "none"}}/>
+                            )
+                        }
+                        {item.Shield_Icon[4] ? (
+                          <>
+                            <img 
+                              alt="shield" 
+                              key={item.label} 
+                              src={item.Shield_Icon[4]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                            </>
+                            ) : (
+                                <div style={{display: "none"}}/>
+                              )
+                        }
+                        {item.Shield_Icon[5] ? (
+                          <>
+                            <img 
+                              alt="shield"
+                              key={item.label} 
+                              src={item.Shield_Icon[5]} 
+                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
+                            /> 
+                          </>
+                        ) : (
+                            <div style={{display: "none"}}/>
+                          )
+                        }
+                    
+                      </div>
                     </Grid>
                     <Grid item xs={4}>
                       <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
@@ -152,7 +241,8 @@ class SearchAppAnnie extends React.Component {
                       </div>
                       </Grid>
                     </Grid>
-                  ))}
+                    )
+                  })}
               </div>
              ) : null} 
            </div>
