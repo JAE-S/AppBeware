@@ -142,6 +142,18 @@ module.exports = function (db) {
       },
 
       userInfo: function (req, res) {
+        if (!req.isAuthenticated()){
+          res.json({
+            userInfo:{
+              name:'',
+              email: '',
+              phone: '',
+              password: ''
+            },
+            isloggedin: false
+          })
+        }
+        else{
         db.User.findOne({
           where: {
             id: req.session.passport.user.id
@@ -154,6 +166,7 @@ module.exports = function (db) {
           }
           res.json(user)
         })
+        }
       },
 
       getTest: function (req, res) {

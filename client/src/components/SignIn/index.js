@@ -1,6 +1,7 @@
 // Import React 
 // =========================================================
   import React, {Component} from 'react';
+  import {Redirect} from 'react-router-dom';
   import API from '../../utils/API'
 // Import Material UI Styles
 // =========================================================
@@ -88,7 +89,11 @@
       })
       .then(res => {
         if(res.data.loggedIn){
-
+          console.log("worked")
+          window.location.pathname = '/homepage'
+        }
+        else{
+          console.log("failed")
         }
       })
     }
@@ -136,7 +141,7 @@
                   fullWidth
                   variant="contained"
                   className="teal"
-                  onClick={this.handleFormSubmit}
+                  onClick={this.handleFormSubmit.bind(this)}
                 >
                   Sign In
                 </Button>
