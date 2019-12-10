@@ -5,7 +5,7 @@ const sampleData =
         "App_ID" : 16,
 		"Shield_ID" : [2, 3, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Sexual Content"],
-		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
+		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png"]
 	},
 	{
 		"label" : "ASKfm",
@@ -19,7 +19,7 @@ const sampleData =
 		"App_ID" : 36,
 		"Shield_ID" : 1,
 		"Shield_Name" : "Predator Risk",
-		"Shield_Icon" : "https://imagizer.imageshack.com/img921/8898/PyRetH.png"
+		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png"]
 	},
 	{
 		"label" : "Badoo",
@@ -33,7 +33,7 @@ const sampleData =
 		"App_ID" : 17,
 		"Shield_ID" : 1,
 		"Shield_Name" : "Predator Risk",
-		"Shield_Icon" : "https://imagizer.imageshack.com/img921/8898/PyRetH.png"
+		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png"]
 	},
 	{
 		"label" : "Bigo Live",
