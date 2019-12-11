@@ -137,7 +137,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: false
-        }
+        },
+        siteUrl: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     });
     ListedApp.associate = function (models) {
         ListedApp.belongsTo(models.Category, {
