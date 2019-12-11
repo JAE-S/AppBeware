@@ -129,17 +129,12 @@
                         id="search-categories"
                         className="searchInput"
                         disableClearable
-                        // variant="outlined"
-                        // margin="normal"
-                        // placeholder={<p style={{ marginLeft: "20px"}}>Search By Category...</p>}
                         options={this.props.categories.map(option => option.name)}
-                        // getOptionLabel={this.props.categories.map(option => option.name)}
                         onChange={this.onTagsChange}
                         renderInput={params => (
                         <InputOverRideOutline
                             {...params}
                             label={<p style={{ marginLeft: "20px"}}>Search By Category...</p>}
-                            // margin="normal"
                             fullWidth
                             InputProps={{ ...params.InputProps, type: 'search' }}
                         />

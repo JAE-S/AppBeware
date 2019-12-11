@@ -2,20 +2,18 @@
 // =========================================================
     import React from 'react';
     import { connect } from "react-redux";
-    // import { push } from 'connected-react-router';
+    import { push } from 'connected-react-router';
     import Downshift from "downshift";
 // Import Redux Actions
 // =========================================================
     import {viewAllListedApps, viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
-    
-    // import sampleData from "./sampleData.js";
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
     // Import Material UI components
 // =========================================================
-    import {TextField, Input, Grid,} from '@material-ui/core';
+    import {TextField, Input, Grid, Button, Checkbox} from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     // import MenuItem from '@material-ui/core/MenuItem';
@@ -23,10 +21,13 @@
 // Custom Components
 // =========================================================
   import Wrapper from "../Wrapper"
+  import Modal from "../Modals"
+  import AdvancedSearchModal from "./AdvancedSearchModal"
   import { Shields, ViewApp } from "../../components/SearchResults";
 
 // Import CSS
 // =========================================================
+    import"../../assets/styling/appStyle.css"
     import "./style.css"
 
   const InputOverRideOutline = withStyles({
@@ -51,8 +52,18 @@
     },
   })(TextField);
 
+  const advancedSearchFunction = [
+    {
+      results: "No Matches Found",
+    },
+    {
+      results: "Advanced Search", 
+    },
+   
+  ]
 class SearchAppAnnie extends React.Component {
   
+
   // onChange = (selectedApp) => {
   //   // alert(`View ${selectedApp.label}`)
   //   this.props.viewSingleApp(selectedApp.id);
@@ -60,11 +71,11 @@ class SearchAppAnnie extends React.Component {
   //   this.props.history.push('/appPage');
   // }
 
-
   viewApp = (appId) => {
+    console.log("Inside viewApp on Search App Annie");
     this.props.viewSingleApp(appId);
     this.props.viewAppReviews(appId);
-    this.props.history.push('/appPage'); 
+    this.props.push('/appPage'); 
 }
 
   componentDidMount() {
@@ -87,6 +98,26 @@ class SearchAppAnnie extends React.Component {
       default:
         return changes
     }
+  }
+  
+  openModal() {
+    // alert("this modal should open")
+    return (
+        <Modal
+            modalTitle={
+                <div>
+                  Advanced Search
+                </div>
+            }
+            openModal={
+                <Button  className="teal login">
+                  Advanced Search
+                </Button>
+              }
+            modalBody={<AdvancedSearchModal/>}
+                  
+        />
+    )
   }
 
   render(props) {
@@ -128,122 +159,177 @@ class SearchAppAnnie extends React.Component {
                   {isOpen ? (
                     <div className="downshift-dropdown" >
                       {
-                        // filter the Apps and return items that match the inputValue
-                        // items
+                        ((this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase())).length) > 0 ) ?
 
-                        // TODO: Need to put this back to redux State.
-                        // this.props.appNames
-                        
-                        this.props.apps.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
-                        // map the return value and return a div
-                        .map((item, index) => {
-                          return (
-                          <Grid container 
-                            className="dropdown-item"
-                            direction="row"
-                            justify="space-between"
-                            alignItems="center"
-                          
-                            {...getItemProps({
-                          
-                              key: item.name,
-                              index,
-                              item,
-                            })}
-                              style = {{
-                                backgroundColor:
-                                highlightedIndex === index ? "lightgray" : "white",
-                                fontWeight: selectedItem === item ? "bold" : "normal",
-                                zIndex: 3
-                              }}
-                          >
-                          <Grid item xs={4}>
-                            <h3>{item.name}</h3>
-                          </Grid>
-                          <Grid item xs={4}>
-                          {/* DROPDOWN SHIELD ICONS */}
-                          <Grid 
-                              container 
-                              style={{width: "100%"}}
-                              direction="row"
-                              justify="flex-start"
-                              alignItems="center"
-                              spacing={2}
-                          >
-                            {item.badge1 ? (
-                                <Grid item xs={2}>
-                                        <Shields 
-                                            title={item.badge1Name}
-                                            image={item.badge1LogoUrl}
-                                        />
+                          this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
+                          // map the return value and return a div
+                          .map((item, index) => {
+
+                                return (
+                                <Grid container 
+                                  className="dropdown-item"
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                                  {...getItemProps({
+                                
+                                    key: item.name,
+                                    index,
+                                    item,
+                                  })}
+                                    style = {{
+                                      backgroundColor:
+                                      highlightedIndex === index ? "lightgray" : "white",
+                                      fontWeight: selectedItem === item ? "bold" : "normal",
+                                      zIndex: 3
+                                    }}
+                                >
+                                <Grid item xs={4}>
+                                  <h3>{item.name}</h3>
+                                </Grid>
+                                <Grid item xs={4}>
+                                {/* DROPDOWN SHIELD ICONS */}
+                                <Grid 
+                                    container 
+                                    style={{width: "100%"}}
+                                    direction="row"
+                                    justify="flex-start"
+                                    alignItems="center"
+                                    spacing={2}
+                                >
+                                  {item.badge1 ? (
+                                      <Grid item xs={2}>
+                                              <Shields 
+                                                  title={item.badge1Name}
+                                                  image={item.badge1LogoUrl}
+                                              />
+                                          </Grid>
+                                        
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge2 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge2Name}
+                                              image={item.badge2LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge3 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge3Name}
+                                              image={item.badge3LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge4 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge4Name}
+                                              image={item.badge4LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge5 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge5Name}
+                                              image={item.badge5LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                </Grid>
+                                </Grid>
+                                <Grid item xs={4}>
+                                  <ViewApp
+                                    viewApp={() => this.viewApp(item.id)}
+                                    appId={item.id}
+                                  />
+                                </Grid>
+                                </Grid>
+                                )
+                              }
+                              
+                              ) : (
+                                advancedSearchFunction.map((item, index) => {
+                                  return (
+                                    <Grid 
+                                      container 
+                                      className="dropdown-item"
+                                      direction="row"
+                                      justify="center"
+                                      alignItems="center"
+                                      
+                                      {...getItemProps({
+                                
+                                        key: item.name,
+                                        index,
+                                        item,
+                                      })}
+                                        style = {{
+                                          backgroundColor:
+                                          highlightedIndex === index ? "lightgray" : "white",
+                                          fontWeight: selectedItem === item ? "bold" : "normal",
+                                          zIndex: 3
+                                        }}
+                                    >
+                                    {item.results === "No Matches Found" ? (
+                                      <p align="center"
+                                      style={{textIndent: "0px!important"}}>
+                                        No Matches Found
+                                      </p>
+                                    ) : ( 
+                                          <Button 
+                                            onClick={() => this.openModal()} 
+                                            className="teal" 
+                                            align="center"
+                                          >
+                                            Advanced Search
+                                          </Button>
+                                    )}
+                                  
                                     </Grid>
-                                   
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge2 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge2Name}
-                                        image={item.badge2LogoUrl}
-                                    />
-                                </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge3 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge3Name}
-                                        image={item.badge3LogoUrl}
-                                    />
-                                </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge4 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge4Name}
-                                        image={item.badge4LogoUrl}
-                                    />
-                                </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge5 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge5Name}
-                                        image={item.badge5LogoUrl}
-                                    />
-                                </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                           </Grid>
-                          </Grid>
-                          <Grid item xs={4}>
-                            <ViewApp
-                              viewApp={this.viewApp}
-                              appId={item.id}
-                            />
-                          </Grid>
-                          </Grid>
-                          )
-                        })}
+                                  )
+                                  })
+                              )
+                        }
                     </div>
                   ) : null} 
                 </div>
               )}
             </Downshift>
+            
           </Grid> 
         </Grid> 
+{/* ------------- TEST ADVANCED SEARCH MODAL ------------- */}
+        {/* <Modal
+            modalTitle={
+                <div>
+                  Advanced Search
+                </div>
+            }
+            openModal={
+                <Button  className="teal login">
+                  Advanced Search
+                </Button>
+              }
+            modalBody={<AdvancedSearchModal/>}      
+        /> */}
       </Wrapper>
       </div>
     );
@@ -266,4 +352,7 @@ export default connect(mapStateToProps,
     viewSingleApp,
     viewAllShields,
     viewAppReviews,
+    push
   })(SearchAppAnnie); 
+
+

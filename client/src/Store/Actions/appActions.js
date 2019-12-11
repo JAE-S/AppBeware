@@ -21,6 +21,7 @@ export const viewAppNames = () => dispatch => {
 }
 
 export const viewSingleApp = (appId) => dispatch => {
+    console.log("Inside viewSingleApp - appActions.js");
     API.getSingleApp(appId)
         .then(singleApp => dispatch({
             type: VIEW_SINGLE_APP,
@@ -46,6 +47,7 @@ export const generateShieldsForApps = () => dispatch => {
 }
 
 export const viewAppReviews = (appId) => dispatch => {
+    console.log("Inside Store / appActions.js - about to do API call");
     API.getAppReviews(appId)
         .then(appReviews => dispatch({
             type: VIEW_APP_REVIEWS,
