@@ -193,7 +193,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                 </HeaderContainer>
                 {/* Average Danger Rating */}
                 <div className="headerBanner">
-                    <p align="center" style={{color: "rgb(255, 255, 255)", padding: "4px", margin: 0}}> 
+                    <p align="center" className="bannerText" style={{margin: 0}}> 
                         Average Danger Rating: {'placeholder'}
                     </p>
                 </div>
@@ -203,9 +203,11 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                         <Grid container spacing={4}>
                             {/* Danger ratings */}
                             <Grid item xs={12} sm={6}>
-                                <h3 align="center">
-                                    Danger Rating
-                                </h3>
+                            <div className="headerBanner ratingHeaderText">
+                                <h2 align="center" className="bannerText">
+                                    Danger Alerts
+                                </h2>
+                            </div>
                                 {dangerRating.map(danger => (
                                     <DangerRatings
                                         key={danger.name}
@@ -220,9 +222,11 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                             </Grid>
                             {/* Shield ratings */}
                             <Grid item xs={12} sm={6}>
-                                <h3 align="center" >
-                                    Shield Tracker
-                                </h3>
+                                <div className="headerBanner ratingHeaderText">
+                                    <h2 align="center" className="bannerText">
+                                        Shield Alerts
+                                    </h2>
+                                </div>
                                 {this.props.shields.map(shield => (
                                     <ShieldRatings
                                         key={shield.name}
@@ -241,14 +245,14 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                     <Wrapper> 
 
                     {/* Add App Review */}
-                    <Grid container spacing={0} style={{ display: "flex", alignItems: "center", borderBottom: "2px solid grey", height: "54px"}}>
+                    <Grid container spacing={0} style={{ display: "flex", alignItems: "center", borderBottom: "2px solid #13BAC7", height: "54px"}}>
                         <Grid item xs={10}>
                             <h2>Reviews:</h2>
                         </Grid>
                         <Grid align="right" item xs={2}>
                             <Modal
                                 modalTitle={<h3 style={{color: "#57585D", margin: 0}}> Create A Review For <a style={{color: "#13BAC7"}}>{this.props.singleApp.name}</a></h3>}
-                                openModal="Add Review"
+                                openModal={<Button>Add Review</Button>}
                                 modalBody={<AddAppReview/>}
                                 modalButton1="Submit"
                             />
@@ -263,7 +267,8 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                                 <img 
                                     alt={review.User.name} 
                                     style={{ justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} 
-                                    src={review.User.profilePicture}/>}
+                                    src={review.User.profilePicture}
+                                />}
                             usernameLeft={review.User.name} 
                             // TODO: Ultimately need to generate this data - next 2 fields
                             reviewCountLeft={3}
@@ -272,10 +277,26 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                             // TODO: Need to redo this so it's not hard-coded - badges
                             badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={ PR_icon }/>}
                             dangerRatingRight={<AppRatings ratingValue={review.dangerRating}/>}
-                            commentsRight={review.comments}
-                        />
+                            commentsRight={
+                                <div>
+                                    <Truncate
+                                        lines={!expanded && lines}
+                                        ellipsis={(
+                                            <span className="readMore" >... <a href='#' className="readMore" onClick={this.toggleLines}>{more}</a></span>
+                                        )}
+                                        onTruncate={this.handleTruncate}
+                                    >
+                                    <p align="left">{review.comments}</p>
+                                    </Truncate>
+                                    {!truncated && expanded && (
+                                        <span> <a className="readMore" href='#' onClick={this.toggleLines}>{less}</a></span>
+                                    )}
+                                </div>
+                            }
+                        /> 
+                    
 
-                    ))}
+                ))}
 
                         {/* <CommentGrid
                             // ---> Left Side

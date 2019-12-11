@@ -74,11 +74,11 @@
                     <HoverShieldInfo
                         badgeInfo={props.info}
                         badgeName={
-                            <img 
-                                alt={props.name} 
-                                src={props.ratingIcon}
-                                style={{ justifyContent: "center", Width: "40px", height: "40px"}} 
-                            />
+                                <img 
+                                    alt={props.name} 
+                                    src={props.ratingIcon}
+                                    style={{ justifyContent: "center", Width: "40px", height: "40px"}} 
+                                />
                         }
                     />
                 }
