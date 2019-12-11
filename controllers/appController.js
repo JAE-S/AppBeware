@@ -133,8 +133,9 @@ module.exports = function (db) {
         db.sequelize.query("SELECT ListedApps.name AS label, AppShieldUsers.appId AS id, AppShieldUsers.shieldId AS Shield_ID, Shields.name AS Shield_Name, Shields.icon AS Shield_Icon FROM ListedApps JOIN AppShieldUsers ON ListedApps.id = AppShieldUsers.appId JOIN Shields ON AppShieldUsers.shieldId = Shields.id ORDER BY ListedApps.name, Shields.id ASC",  { type: db.sequelize.QueryTypes.SELECT})
           .then(function(returnedData) {
             console.log("Length: " + returnedData.length)
-            console.log(JSON.stringify(createNewAppNameArray(returnedData)), null, 4);
-            res.json(createNewAppNameArray(returnedData))
+            // console.log(JSON.stringify(createNewAppNameArray(returnedData)), null, 4);
+            // res.json(createNewAppNameArray(returnedData))
+            res.json(returnedData)
           })
         // res.end();
       },
