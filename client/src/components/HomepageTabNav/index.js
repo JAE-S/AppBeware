@@ -4,7 +4,7 @@
   import PropTypes from 'prop-types';
 // Import Material UI Styles
 // =========================================================
-  import { makeStyles } from '@material-ui/core/styles';
+  import { makeStyles, withStyles } from '@material-ui/core/styles';
 // Import Material UI Components 
 // =========================================================
   import { Tabs, Box, Typography, Tab }from '@material-ui/core/';
@@ -63,8 +63,25 @@
     root: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.paper,
+      marginTop: "10px",
     },
+    navTitle: {
+      margin: "0px!important",
+      color: "#13BAC7",
+    }
   }));
+
+  const StyledTabs = withStyles(theme => ({
+    indicator: {
+      display: "flex",
+      justifyContent: "center",
+      backgroundColor: "transparent",
+      "& > div": {
+        width: "100%",
+        backgroundColor: "#13BAC7",
+      }
+    }
+  }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
 // Export Default function NavTabs
 // =========================================================
@@ -79,23 +96,21 @@
     return (
       <div className={classes.root}>
         <AppBar id="TabNavs" position="static">
-          <Tabs
+          <StyledTabs
             variant="fullWidth"
             value={value}
             onChange={handleChange}
             aria-label="nav tabs example"
           >
-            <LinkTab label="Trending" href="#trending" {...a11yProps(0)} />
-            <LinkTab label="Categories" href="#categories" {...a11yProps(1)} />
-          </Tabs>
+            <LinkTab label={<h3 className={classes.navTitle}>Trending</h3>} href="#trending" {...a11yProps(0)} />
+            <LinkTab label={<h3 className={classes.navTitle}>categories</h3>} href="#categories" {...a11yProps(1)} />
+          </StyledTabs>
         </AppBar>
         <TabPanel id="trending" value={value} index={0}>
           <TopTrendingApps />
         </TabPanel>
         <TabPanel id="categories" value={value} index={1} {...props}>
-          {/* <Grid container spacing={2}> */}
             {props.children}
-          {/* </Grid> */}
         </TabPanel>
       </div>
     );

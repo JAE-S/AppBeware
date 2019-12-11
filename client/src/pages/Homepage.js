@@ -71,7 +71,9 @@ class Homepage extends Component {
            <main>
             <HeaderContainer> 
                 <div className="headerBanner">
-                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> Check out our Alert system!</h1>
+                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
+                        Check out our Alert system!
+                    </h1>
                 </div>
                 <Wrapper> 
                     <Grid container 
@@ -112,9 +114,15 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper style={{zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+            <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
                 <HomepageTabNav >
-                    <Grid container spacing={2}>
+                    <Grid 
+                        container 
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                        spacing={2}
+                    >
 
                     {this.props.categories.map(cat => (
                             <CategoryCards

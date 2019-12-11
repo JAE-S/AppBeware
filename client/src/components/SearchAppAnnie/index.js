@@ -2,12 +2,14 @@
 // =========================================================
     import React from 'react';
     import { connect } from "react-redux";
-    import { push } from 'connected-react-router';
+    // import { push } from 'connected-react-router';
     import Downshift from "downshift";
 // Import Redux Actions
 // =========================================================
-    import { viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
-    import sampleData from "./sampleData.js";
+    import {viewAllListedApps, viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
+    import { viewAllShields } from "../../Store/Actions/shieldActions";
+    
+    // import sampleData from "./sampleData.js";
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -21,6 +23,8 @@
 // Custom Components
 // =========================================================
   import Wrapper from "../Wrapper"
+  import { Shields, ViewApp } from "../../components/SearchResults";
+
 // Import CSS
 // =========================================================
     import "./style.css"
@@ -48,14 +52,26 @@
   })(TextField);
 
 class SearchAppAnnie extends React.Component {
-  state = {};
+  
+  // onChange = (selectedApp) => {
+  //   // alert(`View ${selectedApp.label}`)
+  //   this.props.viewSingleApp(selectedApp.id);
+  //   this.props.viewAppReviews(selectedApp.id);
+  //   this.props.history.push('/appPage');
+  // }
 
-  onChange = (selectedApp) => {
-    // alert(`View ${selectedApp.label}`)
-    this.props.viewSingleApp(selectedApp.id);
-    this.props.viewAppReviews(selectedApp.id);
-    this.props.push('/appPage');
-  }
+
+  viewApp = (appId) => {
+    this.props.viewSingleApp(appId);
+    this.props.viewAppReviews(appId);
+    this.props.history.push('/appPage'); 
+}
+
+  componentDidMount() {
+    this.props.viewAllListedApps();
+    this.props.viewAllShields();
+    // this.mapShieldsData() 
+}
 
   stateReducer = (state, changes) => {
     // this prevents the menu from being closed when the user
@@ -73,181 +89,161 @@ class SearchAppAnnie extends React.Component {
     }
   }
 
-  render() {
+  render(props) {
     const item = {
       id: 123,
       value:  'Snapchat'
     }
-    const shieldIcon = sampleData.map((data, idx) => {
-      console.log(data.Shield_Icon)
-      return ([
-          <p key={idx}>{data.Shield_Icon}</p>
-      ]);
-   });
 
     return (
-      <div className="root" >
+      <div className="root">
       <Wrapper style={{position: "relative", zIndex: 1000}}>
-       <h2 align="center"> Search for an app or see what's trending! </h2>
-       
-      <Downshift 
-        stateReducer={this.stateReducer}
-        onChange={this.onChange} 
-        itemToString={items => (items ? items.label : '')}
-      >
-        {({
-          getInputProps,
-          getItemProps,
-          isOpen,
-          inputValue,
-          highlightedIndex,
-          selectedItem
-        }) => (
-          <div style={{position: "relative", zIndex: 1000}}>
-            <InputOverRideOutline 
-              className="searchInput" 
-              {...getInputProps({ placeholder: "Search for an App" })}  
-              style={{margin: 20}}
-            />
-            
-            {isOpen ? (
-              <div className="downshift-dropdown" >
-                {
-                   // filter the Apps and return items that match the inputValue
-                  // items
-
-                  // TODO: Need to put this back to redux State.
-                  // this.props.appNames
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={4}> 
+            <h2 align="center"> 
+              Search for an app or see what's trending! 
+            </h2>
+          </Grid>
+          <Grid item xs={12} sm={8}>
+            <Downshift 
+              stateReducer={this.stateReducer}
+              onChange={this.onChange} 
+              itemToString={items => (items ? items.label : '')}
+            >
+              {({
+                getInputProps,
+                getItemProps,
+                isOpen,
+                inputValue,
+                highlightedIndex,
+                selectedItem
+              }) => (
+                <div style={{position: "relative", zIndex: 1000}}>
+                  <InputOverRideOutline 
+                    className="searchInput" 
+                    {...getInputProps({ placeholder: "Holla" })}  
+                    style={{margin: 20}}
+                  />
                   
-                  sampleData.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
-                  // map the return value and return a div
-                  .map((item, shields, index) => {
-                    return (
-                    <Grid container 
-                      className="dropdown-item"
-                      direction="row"
-                      justify="space-between"
-                      alignItems="center"
-                    
-                      {...getItemProps({
-                    
-                        key: item.label,
-                        index,
-                        item,
-                      })}
-                        style = {{
-                          backgroundColor:
-                          highlightedIndex === index ? "lightgray" : "white",
-                          fontWeight: selectedItem === item ? "bold" : "normal",
-                          zIndex: 3
-                        }}
-                    >
-                    <Grid item xs={4}>
-                      <h3>{item.label}</h3>
-                    </Grid>
-                    <Grid item xs={4}>
-                    {/* DROPDOWN SHIELD ICONS */}
-                      <div>
+                  {isOpen ? (
+                    <div className="downshift-dropdown" >
+                      {
+                        // filter the Apps and return items that match the inputValue
+                        // items
 
-                        {item.Shield_Icon[0] ? (
-                          <>
-                            <img 
-                              alt="shield" 
-                              key={item.label} 
-                              src={item.Shield_Icon[0]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                          </>
-                        ) : (
-                            <div style={{display: "none"}}/>
-                          )
-                        }
-                        {item.Shield_Icon[1] ? (
-                          <>
-                            <img 
-                              alt="shield" 
-                              key={item.label} 
-                              src={item.Shield_Icon[1]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                          </>
-                        ) : (
-                            <div style={{display: "none"}}/>
-                          )
-                        }
-                        {item.Shield_Icon[2] ? (
-                          <>
-                            <img 
-                              alt="shield" 
-                              key={item.label} 
-                              src={item.Shield_Icon[2]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                          </>
-                        ) : (
-                            <div style={{display: "none"}}/>
-                          )
-                        }
-                        {item.Shield_Icon[3] ? (
-                          <>
-                            <img 
-                              alt="shield" 
-                              key={item.label} 
-                              src={item.Shield_Icon[3]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                            </>
-                          ) : (
-                              <div style={{display: "none"}}/>
-                            )
-                        }
-                        {item.Shield_Icon[4] ? (
-                          <>
-                            <img 
-                              alt="shield" 
-                              key={item.label} 
-                              src={item.Shield_Icon[4]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                            </>
+                        // TODO: Need to put this back to redux State.
+                        // this.props.appNames
+                        
+                        this.props.apps.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
+                        // map the return value and return a div
+                        .map((item, index) => {
+                          return (
+                          <Grid container 
+                            className="dropdown-item"
+                            direction="row"
+                            justify="space-between"
+                            alignItems="center"
+                          
+                            {...getItemProps({
+                          
+                              key: item.name,
+                              index,
+                              item,
+                            })}
+                              style = {{
+                                backgroundColor:
+                                highlightedIndex === index ? "lightgray" : "white",
+                                fontWeight: selectedItem === item ? "bold" : "normal",
+                                zIndex: 3
+                              }}
+                          >
+                          <Grid item xs={4}>
+                            <h3>{item.name}</h3>
+                          </Grid>
+                          <Grid item xs={4}>
+                          {/* DROPDOWN SHIELD ICONS */}
+                          <Grid 
+                              container 
+                              style={{width: "100%"}}
+                              direction="row"
+                              justify="flex-start"
+                              alignItems="center"
+                              spacing={2}
+                          >
+                            {item.badge1 ? (
+                                <Grid item xs={2}>
+                                        <Shields 
+                                            title={item.badge1Name}
+                                            image={item.badge1LogoUrl}
+                                        />
+                                    </Grid>
+                                   
                             ) : (
                                 <div style={{display: "none"}}/>
-                              )
-                        }
-                        {item.Shield_Icon[5] ? (
-                          <>
-                            <img 
-                              alt="shield"
-                              key={item.label} 
-                              src={item.Shield_Icon[5]} 
-                              style={{maxWidth: "40px", width: "100%", height: "auto"}}
-                            /> 
-                          </>
-                        ) : (
-                            <div style={{display: "none"}}/>
+                                )
+                            }
+                            {item.badge2 ? (
+                                <Grid item xs={2}>
+                                    <Shields 
+                                        title={item.badge2Name}
+                                        image={item.badge2LogoUrl}
+                                    />
+                                </Grid>
+                            ) : (
+                                <div style={{display: "none"}}/>
+                                )
+                            }
+                            {item.badge3 ? (
+                                <Grid item xs={2}>
+                                    <Shields 
+                                        title={item.badge3Name}
+                                        image={item.badge3LogoUrl}
+                                    />
+                                </Grid>
+                            ) : (
+                                <div style={{display: "none"}}/>
+                                )
+                            }
+                            {item.badge4 ? (
+                                <Grid item xs={2}>
+                                    <Shields 
+                                        title={item.badge4Name}
+                                        image={item.badge4LogoUrl}
+                                    />
+                                </Grid>
+                            ) : (
+                                <div style={{display: "none"}}/>
+                                )
+                            }
+                            {item.badge5 ? (
+                                <Grid item xs={2}>
+                                    <Shields 
+                                        title={item.badge5Name}
+                                        image={item.badge5LogoUrl}
+                                    />
+                                </Grid>
+                            ) : (
+                                <div style={{display: "none"}}/>
+                                )
+                            }
+                           </Grid>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <ViewApp
+                              viewApp={this.viewApp}
+                              appId={item.id}
+                            />
+                          </Grid>
+                          </Grid>
                           )
-                        }
-                    
-                      </div>
-                    </Grid>
-                    <Grid item xs={4}>
-                      <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
-                        <button className="learn-more" size="small">
-                          <span className="circle">
-                            <span className="icon arrow"></span>
-                          </span>
-                          <h4><span className="button-text">View App</span></h4>
-                        </button>
-                      </div>
-                      </Grid>
-                    </Grid>
-                    )
-                  })}
-              </div>
-             ) : null} 
-           </div>
-        )}
-      </Downshift>
+                        })}
+                    </div>
+                  ) : null} 
+                </div>
+              )}
+            </Downshift>
+          </Grid> 
+        </Grid> 
       </Wrapper>
       </div>
     );
@@ -255,17 +251,19 @@ class SearchAppAnnie extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  // singleCategory: state.categories.singleCategory,
+  apps: state.apps.allListedApps,
   singleApp: state.apps.singleApp,
   appNames: state.apps.allAppNames,
   shieldsForApps: state.apps.shieldsForApps,
-  appReviews: state.apps.appReviews
+  appReviews: state.apps.appReviews,
+  shields: state.shields.allShields,
 })
 
 export default connect(mapStateToProps, 
   { 
+    viewAllListedApps, 
     viewSingleApp,
-    viewAppNames,
-    generateShieldsForApps,
+    viewAllShields,
     viewAppReviews,
-    push
   })(SearchAppAnnie); 

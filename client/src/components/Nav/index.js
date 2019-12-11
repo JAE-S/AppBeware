@@ -26,7 +26,7 @@
 // =========================================================
   const useStyles = makeStyles(theme => ({
       nav: {
-      background: "#56585D"
+      background: "#56585D",
       },
       grow: {
           flexGrow: 1,
@@ -159,8 +159,17 @@
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>
           <Modal
-              modalTitle="What are the Shields?"
-              openModal="About The Shields"
+              modalTitle={
+                <div align="center">
+                  <h3 style={{margin: 0, borderBottom: "1px solid silver", paddingBottom: "10px"}}>How does the rating system work?</h3>
+                  <p style={{margin: 0, marginTop: "10px"}}>
+                  <small>
+                    AppBeware's rating system is based on 2 main categories: Danger Alerts and Shield Alerts.
+                  </small>
+                  </p>
+                </div>
+              }
+              openModal="About The Ratings"
               modalBody={<AboutTheShields/>}
               modalButton1="Close"
           />
@@ -212,7 +221,7 @@
 
     return (
       <div className={classes.grow}>
-        <AppBar className={classes.nav} position="static">
+        <AppBar className={classes.nav} position="fixed"style={{marginBottom: "64px"}}>
           <Toolbar>
             
             <Typography className={classes.title} variant="h6" noWrap>            

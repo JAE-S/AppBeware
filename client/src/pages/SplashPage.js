@@ -59,7 +59,7 @@ function SplashPage() {
 
   return (
     <div>
-    <Wrapper style={{ minHeight: "100vh", maxWidth: "1200px", display: "flex"}}>
+    <Wrapper style={{ minHeight: "calc(100vh - 64px)", maxWidth: "1200px", display: "flex"}}>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
