@@ -2,7 +2,7 @@
 // =========================================================
     import React from 'react';
     import { connect } from "react-redux";
-    // import { push } from 'connected-react-router';
+    import { push } from 'connected-react-router';
     import Downshift from "downshift";
 // Import Redux Actions
 // =========================================================
@@ -62,9 +62,10 @@ class SearchAppAnnie extends React.Component {
 
 
   viewApp = (appId) => {
+    console.log("Inside viewApp on Search App Annie");
     this.props.viewSingleApp(appId);
     this.props.viewAppReviews(appId);
-    this.props.history.push('/appPage'); 
+    this.props.push('/appPage'); 
 }
 
   componentDidMount() {
@@ -134,7 +135,7 @@ class SearchAppAnnie extends React.Component {
                         // TODO: Need to put this back to redux State.
                         // this.props.appNames
                         
-                        this.props.apps.filter(item => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
+                        this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
                         // map the return value and return a div
                         .map((item, index) => {
                           return (
@@ -230,7 +231,7 @@ class SearchAppAnnie extends React.Component {
                           </Grid>
                           <Grid item xs={4}>
                             <ViewApp
-                              viewApp={this.viewApp}
+                              viewApp={() => this.viewApp(item.id)}
                               appId={item.id}
                             />
                           </Grid>
@@ -266,4 +267,5 @@ export default connect(mapStateToProps,
     viewSingleApp,
     viewAllShields,
     viewAppReviews,
+    push
   })(SearchAppAnnie); 
