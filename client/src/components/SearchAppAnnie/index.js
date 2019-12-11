@@ -62,6 +62,7 @@ class SearchAppAnnie extends React.Component {
 
 
   viewApp = (appId) => {
+    console.log("Inside viewApp on Search App Annie");
     this.props.viewSingleApp(appId);
     this.props.viewAppReviews(appId);
     this.props.push('/appPage'); 
@@ -108,7 +109,7 @@ class SearchAppAnnie extends React.Component {
             <Downshift 
               stateReducer={this.stateReducer}
               onChange={this.onChange} 
-              itemToString={items => (items ? items.name : '')}
+              itemToString={items => (items ? items.label : '')}
             >
               {({
                 getInputProps,
@@ -128,110 +129,128 @@ class SearchAppAnnie extends React.Component {
                   {isOpen ? (
                     <div className="downshift-dropdown" >
                       {
+                        // filter the Apps and return items that match the inputValue
+                        // items
+
+                        // TODO: Need to put this back to redux State.
+                        // this.props.appNames
                         
-                        this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
-                        // map the return value and return a div
-                        .map((item, index) => {
-                          return (
-                          <Grid container 
-                            className="dropdown-item"
-                            direction="row"
-                            justify="space-between"
-                            alignItems="center"
-                          
-                            {...getItemProps({
-                          
-                              key: item.name,
-                              index,
-                              item,
-                            })}
-                              style = {{
-                                backgroundColor:
-                                highlightedIndex === index ? "lightgray" : "white",
-                                fontWeight: selectedItem === item ? "bold" : "normal",
-                                zIndex: 3
-                              }}
-                          >
-                          <Grid item xs={4}>
-                            <h3>{item.name}</h3>
-                          </Grid>
-                          <Grid item xs={4}>
-                          {/* DROPDOWN SHIELD ICONS */}
-                          <Grid 
-                              container 
-                              style={{width: "100%"}}
-                              direction="row"
-                              justify="flex-start"
-                              alignItems="center"
-                              spacing={2}
-                          >
-                            {item.badge1 ? (
-                                <Grid item xs={2}>
-                                        <Shields 
-                                            title={item.badge1Name}
-                                            image={item.badge1LogoUrl}
-                                        />
-                                    </Grid>
-                                   
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge2 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge2Name}
-                                        image={item.badge2LogoUrl}
-                                    />
+
+                        ((this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase())).length) > 0 ) ?
+
+                          this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
+                          // map the return value and return a div
+                          .map((item, index) => {
+
+
+
+
+
+                                return (
+                                <Grid container 
+                                  className="dropdown-item"
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="center"
+                                
+                                  {...getItemProps({
+                                
+                                    key: item.name,
+                                    index,
+                                    item,
+                                  })}
+                                    style = {{
+                                      backgroundColor:
+                                      highlightedIndex === index ? "lightgray" : "white",
+                                      fontWeight: selectedItem === item ? "bold" : "normal",
+                                      zIndex: 3
+                                    }}
+                                >
+                                <Grid item xs={4}>
+                                  <h3>{item.name}</h3>
                                 </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge3 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge3Name}
-                                        image={item.badge3LogoUrl}
-                                    />
+                                <Grid item xs={4}>
+                                {/* DROPDOWN SHIELD ICONS */}
+                                <Grid 
+                                    container 
+                                    style={{width: "100%"}}
+                                    direction="row"
+                                    justify="flex-start"
+                                    alignItems="center"
+                                    spacing={2}
+                                >
+                                  {item.badge1 ? (
+                                      <Grid item xs={2}>
+                                              <Shields 
+                                                  title={item.badge1Name}
+                                                  image={item.badge1LogoUrl}
+                                              />
+                                          </Grid>
+                                        
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge2 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge2Name}
+                                              image={item.badge2LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge3 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge3Name}
+                                              image={item.badge3LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge4 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge4Name}
+                                              image={item.badge4LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
+                                  {item.badge5 ? (
+                                      <Grid item xs={2}>
+                                          <Shields 
+                                              title={item.badge5Name}
+                                              image={item.badge5LogoUrl}
+                                          />
+                                      </Grid>
+                                  ) : (
+                                      <div style={{display: "none"}}/>
+                                      )
+                                  }
                                 </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge4 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge4Name}
-                                        image={item.badge4LogoUrl}
-                                    />
                                 </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
-                                )
-                            }
-                            {item.badge5 ? (
-                                <Grid item xs={2}>
-                                    <Shields 
-                                        title={item.badge5Name}
-                                        image={item.badge5LogoUrl}
-                                    />
+                                <Grid item xs={4}>
+                                  <ViewApp
+                                    viewApp={() => this.viewApp(item.id)}
+                                    appId={item.id}
+                                  />
                                 </Grid>
-                            ) : (
-                                <div style={{display: "none"}}/>
+                                </Grid>
                                 )
-                            }
-                           </Grid>
-                          </Grid>
-                          <Grid item xs={4}>
-                            <ViewApp
-                              viewApp={this.viewApp}
-                              appId={item.id}
-                            />
-                          </Grid>
-                          </Grid>
-                          )
-                        })}
+                              })
+                              
+                          : <div>hi</div>
+
+
+                        }
                     </div>
                   ) : null} 
                 </div>

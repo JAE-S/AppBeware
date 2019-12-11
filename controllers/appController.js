@@ -111,7 +111,7 @@ module.exports = function (db) {
 
       getAppReviews: function (req, res) {
         console.log("Inside getAppReviews - AppController")
-        db.AppReviews.findAll({
+        db.AppReview.findAll({
           where: {
             ListedAppId: req.params.id
           },

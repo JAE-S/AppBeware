@@ -92,7 +92,9 @@
                                 alignItems="center" 
                             >
                                 <Grid item xs={12}> 
-                                    <img alt={`${this.props.user.name}'s Profile`} src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                                    <img alt={`${this.props.user.name}'s Profile`} 
+                                    src={this.props.user.profilePicture}
+                                    style={{ height: 200, width: 200, borderRadius: "50%"}}/>
                                 </Grid>
                                 
                                 <Grid item xs={12} > 
