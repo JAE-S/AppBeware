@@ -26,10 +26,10 @@ import "./assets/styling/appStyle.css"
         <>
           <Switch>
             <Route exact path="/" component={SplashPage} />
-            <Route  path="/homepage" component={Homepage} />
+            <Route path="/homepage" component={Homepage} />
             <Route exact path="/categoryPage" component={CategoryPage} />
             <Route exact path="/appPage" component={AppPage} />
-            <Route  path="/profilePage" component={ProfilePage} />
+            <Route path="/profilePage" component={ProfilePage} />
             <Route exact path="/disclaimer" component={Disclaimer} />
             </Switch>
         </>

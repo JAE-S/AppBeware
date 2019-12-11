@@ -122,7 +122,16 @@ function QontoStepIcon(props) {
       case 2:
         return shareConcerns();
       default:
-        return 'Select Shield Alerts';
+        return ( <div align="center">
+        <h3> Thank you for sharing you&apos;re concerns!</h3>
+        <div className="modal-footer">
+            <Link to="/homePage" style={{textDecoration: "none"}}>
+            <Button className="teal">
+                Return to the homePage
+            </Button>
+            </Link>
+      </div>
+    </div>);
     }
   }
 
@@ -158,17 +167,23 @@ function QontoStepIcon(props) {
         }
       };
       handleFinish = () => {
+        const {stepIndex} = this.state;
+        this.setState({stepIndex: -1});
+        this.showComplete()
+      }
+
+      showComplete() {
         return (
           <div align="center">
-               <h3> Thank you for sharing you&apos;re concerns!</h3>
-               <div className="modal-footer">
-                    <Link to="/homePage" style={{textDecoration: "none"}}>
-                    <Button className="teal">
-                        Return to the homePage
-                    </Button>
-                    </Link>
-              </div>
+              <h3> Thank you for sharing you&apos;re concerns!</h3>
+              <div className="modal-footer">
+                  <Link to="/homePage" style={{textDecoration: "none"}}>
+                  <Button className="teal">
+                      Return to the homePage
+                  </Button>
+                  </Link>
             </div>
+          </div>
         )
       }
     
@@ -221,6 +236,8 @@ function QontoStepIcon(props) {
               >
               <Grid item>
               <div>
+              {stepIndex > -1 ? (
+                <>
                 <Button 
                     disabled={stepIndex === 0} 
                     onClick={this.handlePrev} 
@@ -234,18 +251,26 @@ function QontoStepIcon(props) {
                     variant="contained"
                     className="teal"
                     onClick={this.handleFinish}
+                    id="finshButton"
                   > 
                     Finish 
                   </Button>
+                  
                 ) : ( 
                   <Button
                     variant="contained"
                     className="teal"
+                    id="nextButton"
                     onClick={this.handleNext}
                   > 
                     Next 
                   </Button>
                 )}
+                </>
+                ) : 
+                  ( <> </>)
+                }
+
                </div>
                   </Grid>
               </Grid>
@@ -281,3 +306,14 @@ function QontoStepIcon(props) {
 //         // viewAllShields,
 //         // userInfo
 //     })(AddAppReview); 
+
+{/* <div align="center">
+<h3> Thank you for sharing you&apos;re concerns!</h3>
+<div className="modal-footer">
+     <Link to="/homePage" style={{textDecoration: "none"}}>
+     <Button className="teal">
+         Return to the homePage
+     </Button>
+     </Link>
+</div>
+</div> */}

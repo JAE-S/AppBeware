@@ -8,8 +8,14 @@
   }
   main {
     min-height: calc(100vh - 128px);
+    margin-top: 64px;
   }
 
+  .MuiDialogTitle-root {
+    padding-left: 0!important; 
+    padding-right: 0!important; 
+  }
+  
   body {
     margin: 0 auto; 
     min-height: 100vh;
@@ -327,3 +333,58 @@ button:hover .button-text {
 .MuiBadge-colorSecondary {
   background-color: #FC4A1A!important;
 }
+
+.searchBarBackground {
+  flex-grow: 1;
+  padding-top: 30px;
+  /* position: relative;  */
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-family:arial, helvetica, sans-serif;
+  padding: 10px 10px 10px 10px; 
+  text-decoration:none; 
+  display:inline-block;
+  text-shadow: -1px -1px 0 rgba(240, 240, 240, 0.3);
+  font-weight:bold; 
+  /* color: #57585D; */
+  /* color: #f7f7f7; */
+  background-color: #13BAC7; background-image: -webkit-gradient(linear, left top, left bottom, from(#13BAC7), to(#15D2E0));
+  background-image: -webkit-linear-gradient(top, #13BAC7, #15D2E0);
+  background-image: -moz-linear-gradient(top, #13BAC7, #15D2E0);
+  background-image: -ms-linear-gradient(top, #13BAC7, #15D2E0);
+  background-image: -o-linear-gradient(top, #13BAC7, #15D2E0);
+  background-image: linear-gradient(to bottom, #13BAC7, #15D2E0);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#13BAC7, endColorstr=#15D2E0);
+
+   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  width: 100%;
+  height: 120px; 
+  z-index: 1000;
+}
+
+.appIcon {
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px#888;
+  box-shadow: 0 0 5px #888;
+}
+
+.searchInput {
+  display: flex;
+  height: auto;
+  background-color:rgb(255, 255, 255);
+  border-radius: 14px;
+  padding: 10px 20px!important; 
+  width: 100%;
+}
+
+.MuiInput-formControl > label {
+  margin-left: 20px; 
+  margin: 0;
+}
+label + .MuiInput-formControl {
+  background-color: transparent!important; 
+}
+
+/* label + .MuiInputLabel-formControl {
+  margin-left: 20px;
+} */
