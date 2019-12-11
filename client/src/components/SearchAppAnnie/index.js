@@ -23,7 +23,7 @@
   import Wrapper from "../Wrapper"
   import Modal from "../Modals"
   import AdvancedSearchModal from "./AdvancedSearchModal"
-  import { Shields, ViewApp } from "../../components/SearchResults";
+  import { ShieldsHomepage, ViewApp } from "../../components/SearchResults";
 
 // Import CSS
 // =========================================================
@@ -184,10 +184,10 @@ class SearchAppAnnie extends React.Component {
                                       zIndex: 3
                                     }}
                                 >
-                                <Grid item xs={4}>
+                                <Grid item xs={3}>
                                   <h3>{item.name}</h3>
                                 </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={5}>
                                 {/* DROPDOWN SHIELD ICONS */}
                                 <Grid 
                                     container 
@@ -199,7 +199,7 @@ class SearchAppAnnie extends React.Component {
                                 >
                                   {item.badge1 ? (
                                       <Grid item xs={2}>
-                                              <Shields 
+                                              <ShieldsHomepage 
                                                   title={item.badge1Name}
                                                   image={item.badge1LogoUrl}
                                               />
@@ -211,7 +211,7 @@ class SearchAppAnnie extends React.Component {
                                   }
                                   {item.badge2 ? (
                                       <Grid item xs={2}>
-                                          <Shields 
+                                          <ShieldsHomepage 
                                               title={item.badge2Name}
                                               image={item.badge2LogoUrl}
                                           />
@@ -222,7 +222,7 @@ class SearchAppAnnie extends React.Component {
                                   }
                                   {item.badge3 ? (
                                       <Grid item xs={2}>
-                                          <Shields 
+                                          <ShieldsHomepage 
                                               title={item.badge3Name}
                                               image={item.badge3LogoUrl}
                                           />
@@ -233,7 +233,7 @@ class SearchAppAnnie extends React.Component {
                                   }
                                   {item.badge4 ? (
                                       <Grid item xs={2}>
-                                          <Shields 
+                                          <ShieldsHomepage 
                                               title={item.badge4Name}
                                               image={item.badge4LogoUrl}
                                           />
@@ -244,7 +244,7 @@ class SearchAppAnnie extends React.Component {
                                   }
                                   {item.badge5 ? (
                                       <Grid item xs={2}>
-                                          <Shields 
+                                          <ShieldsHomepage 
                                               title={item.badge5Name}
                                               image={item.badge5LogoUrl}
                                           />

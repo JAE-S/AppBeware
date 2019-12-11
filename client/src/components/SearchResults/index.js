@@ -31,6 +31,15 @@ export function Shields(props){
             />
     )
 }
+export function ShieldsHomepage(props){
+    return (
+              <img
+                alt={props.title}
+                src={props.image}
+                style={{ width: 36, height: 36}}
+            />
+    )
+}
 
 export function ViewApp(props){
     return (
