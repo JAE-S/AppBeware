@@ -62,38 +62,7 @@
           
         ) 
     }
-// Export HeaderContainer
-// =========================================================
-    export function HeaderContainer(props) {
-   
-        return (
-      
-            <div className="header"> 
-                <Grid container spacing={4}>
-        
-                    <Grid align="center" item xs={12} sm={3}>
-                        <img 
-                            alt={props.title}
-                            src={props.icon} 
-                            style={{ width: "100%", height: "auto", borderRadius: 16 }} />
-                    </Grid> 
-                    <Grid item xs={12}  sm={9}>
-                        <h1 style={{ borderBottom: "1px solid grey", marginRight: "20px"}}>
-                        {props.title}
-                        {/* {<AddAlert style={{ paddingLeft: 20}} />} */}
-                        </h1>
-                        <p>{props.description}</p>
-                        <Button href={props.link} target="_blank">
-                            <Typography variant="caption" color="textSecondary">
-                                View in app store
-                            </Typography>
-                        </Button>
-                    </Grid> 
-            
-                </Grid>
-            </div>
-       )
-    }
+
 // Export DangerRatings
 // =========================================================
     export function DangerRatings(props) {
