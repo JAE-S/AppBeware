@@ -30,6 +30,7 @@ module.exports = (passport, db) => {
    router.get('/get-shields', AppController.getShields);
    router.post('/submit-review', AppController.submitReview);
    router.get('/test-query', AppController.testQuery);
+   router.get('/42-search', AppController.getTempAppResults);
   //  router.post('/get-app-shields/:id', AppController.getAppShields);
 
 
