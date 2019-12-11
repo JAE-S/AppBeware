@@ -2,280 +2,280 @@ const sampleData =
 [
 	{
 		"label" : "9GAG",
-        "App_ID" : 16,
+        "id" : 16,
 		"Shield_ID" : [2, 3, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png"]
 	},
 	{
 		"label" : "ASKfm",
-		"App_ID" : 8,
+		"id" : 8,
 		"Shield_ID" : [2, 3, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Badoo",
-		"App_ID" : 36,
+		"id" : 36,
 		"Shield_ID" : 1,
 		"Shield_Name" : "Predator Risk",
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png"]
 	},
 	{
 		"label" : "Badoo",
-		"App_ID" : 36,
+		"id" : 36,
 		"Shield_ID" : [2, 4, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Bigo Live",
-		"App_ID" : 17,
+		"id" : 17,
 		"Shield_ID" : 1,
 		"Shield_Name" : "Predator Risk",
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png"]
 	},
 	{
 		"label" : "Bigo Live",
-		"App_ID" : 17,
+		"id" : 17,
 		"Shield_ID" : [2, 3, 4, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Blendr",
-		"App_ID" : 19,
+		"id" : 19,
 		"Shield_ID" : [1, 2, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Bumble",
-		"App_ID" : 5,
+		"id" : 5,
 		"Shield_ID" : [1, 3],
 		"Shield_Name" : ["Predator Risk", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Burnbook",
-		"App_ID" : 10,
+		"id" : 10,
 		"Shield_ID" : [1, 2, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Chatous",
-		"App_ID" : 14,
+		"id" : 14,
 		"Shield_ID" : [1, 2, 3, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Comvo",
-		"App_ID" : 15,
+		"id" : 15,
 		"Shield_ID" : [3, 4, 5],
 		"Shield_Name" : ["Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Discord",
-		"App_ID" : 24,
+		"id" : 24,
 		"Shield_ID" : [2, 3, 4],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Grindr",
-		"App_ID" : 37,
+		"id" : 37,
 		"Shield_ID" : [1, 3, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Holla",
-		"App_ID" : 4,
+		"id" : 4,
 		"Shield_ID" : [2, 3, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Hot or Not",
-		"App_ID" : 11,
+		"id" : 11,
 		"Shield_ID" : [3, 4, 5],
 		"Shield_Name" : ["Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Houseparty",
-		"App_ID" : 22,
+		"id" : 22,
 		"Shield_ID" : [1, 2, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"] 
 	},
 	{
 		"label" : "IMVU",
-		"App_ID" : 26,
+		"id" : 26,
 		"Shield_ID" : [2, 3, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Instagram",
-		"App_ID" : 13,
+		"id" : 13,
 		"Shield_ID" : [3],
 		"Shield_Name" : ["Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Kik",
-		"App_ID" : 2,
+		"id" : 2,
 		"Shield_ID" : [1, 2, 3, 4],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Line",
-		"App_ID" : 30,
+		"id" : 30,
 		"Shield_ID" : [1, 3, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Lipsi",
-		"App_ID" : 27,
+		"id" : 27,
 		"Shield_ID" : [2, 3, 4, 5],
 		"Shield_Name" : ["Dangerous Behavior", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "LiveME",
-		"App_ID" : 12,
+		"id" : 12,
 		"Shield_ID" : [1, 2, 3],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "MeetMe",
-		"App_ID" : 38,
+		"id" : 38,
 		"Shield_ID" : [1, 2, 3, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Periscope",
-		"App_ID" : 21,
+		"id" : 21,
 		"Shield_ID" : [1, 2, 3, 4],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Secret Calculator",
-		"App_ID" : 7,
+		"id" : 7,
 		"Shield_ID" : [2, 4],
 		"Shield_Name" : ["Dangerous Behavior", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Skout",
-		"App_ID" : 39,
+		"id" : 39,
 		"Shield_ID" : [1, 3, 4],
 		"Shield_Name" : ["Predator Risk", "Violent Content", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Snapchat",
-		"App_ID" : 1,
+		"id" : 1,
 		"Shield_ID" : [1, 3],
 		"Shield_Name" : ["Predator Risk", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Tellonym",
-		"App_ID" : 28,
+		"id" : 28,
 		"Shield_ID" : [1, 2, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "TikTok",
-		"App_ID" : 18,
+		"id" : 18,
 		"Shield_ID" : [1, 2, 3],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Tinder",
-		"App_ID" : 32,
+		"id" : 32,
 		"Shield_ID" : [1, 2, 3, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Tumblr",
-		"App_ID" : 35,
+		"id" : 35,
 		"Shield_ID" : [1, 2, 3],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Twitch",
-		"App_ID" : 23,
+		"id" : 23,
 		"Shield_ID" : [1, 3],
 		"Shield_Name" : ["Predator Risk", "Violent Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png"]
 	},
 	{
 		"label" : "Voxer",
-		"App_ID" : 33,
+		"id" : 33,
 		"Shield_ID" : [1, 2, 4],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "VSCO",
-		"App_ID" : 34,
+		"id" : 34,
 		"Shield_ID" : [1, 2, 3, 4],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "WhatsApp",
-		"App_ID" : 29,
+		"id" : 29,
 		"Shield_ID" : [3, 4, 5],
 		"Shield_Name" : ["Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "Whisper",
-		"App_ID" : 9,
+		"id" : 9,
 		"Shield_ID" : [1, 2, 3, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Violent Content", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "YouNow",
-		"App_ID" : 20,
+		"id" : 20,
 		"Shield_ID" : [4, 5],
 		"Shield_Name" : ["Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "YouTube",
-		"App_ID" : 31,
+		"id" : 31,
 		"Shield_ID" : [1, 4],
 		"Shield_Name" : ["Predator Risk", "Cyberbullying"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png"]
 	},
 	{
 		"label" : "Yubo",
-		"App_ID" : 3,
+		"id" : 3,
 		"Shield_ID" : [1, 3, 5],
 		"Shield_Name" : ["Predator Risk", "Violent Content", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img923/3872/QmCYSy.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]
 	},
 	{
 		"label" : "ZEPETO",
-		"App_ID" : 25,
+		"id" : 25,
 		"Shield_ID" : [1, 2, 4, 5],
 		"Shield_Name" : ["Predator Risk", "Dangerous Behavior", "Cyberbullying", "Sexual Content"],
 		"Shield_Icon" : ["https://imagizer.imageshack.com/img921/8898/PyRetH.png", "https://imagizer.imageshack.com/img922/4586/FJpyql.png", "https://imagizer.imageshack.com/img922/7184/zsAk82.png", "https://imagizer.imageshack.com/img921/1830/Jad3lH.png"]

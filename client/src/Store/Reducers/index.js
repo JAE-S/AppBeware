@@ -4,10 +4,11 @@
     import { connectRouter } from 'connected-react-router'
 // Import Reducers
 // =========================================================
-    import categoryReducer from "./categoryReducer"
-    import appReducer from "./appReducer"
-    import shieldReducer from "./shieldReducer"
-    import authReducer from './authReducer'
+    import categoryReducer from "./categoryReducer";
+    import appReducer from "./appReducer";
+    import shieldReducer from "./shieldReducer";
+    import authReducer from './authReducer';
+    import reviewReducer from './reviewReducer';
 
 // Combine Reducers 
 // =========================================================
@@ -16,7 +17,8 @@
         categories: categoryReducer,
         apps: appReducer,
         shields: shieldReducer,
-        user: authReducer
+        user: authReducer,
+        reviews: reviewReducer
     })
 
     export default createRootReducer

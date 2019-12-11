@@ -2,6 +2,7 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux";
+    import {Redirect} from 'react-router-dom';
 // Import Redux Actions
 // =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
@@ -11,7 +12,7 @@
     import { withStyles } from '@material-ui/core/styles';
 // Import Material Ui Components
 // =========================================================
-    import { Typography, Grid, Table, TableRow, TableBody, TableCell, TextField } from '@material-ui/core/';
+    import { Typography, Grid, Table, TableRow, TableBody, TableCell, TextField} from '@material-ui/core/';
     import Autocomplete from '@material-ui/lab/Autocomplete';
 // Import Components
 // =========================================================
@@ -19,6 +20,7 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
+    import { userInfo } from '../Store/Actions/authentication';
 // Import styles
 // =========================================================
     import "../assets/styling/appStyle.css"
@@ -81,6 +83,8 @@
         }
 
         render(props) {
+            console.log(this.props.isloggedIn)
+            if(this.props.isloggedIn){
             return (
                 <>
                 <Nav/>
@@ -168,8 +172,8 @@
                                         {app.badge1 ? (
                                             <Grid item xs={2}>
                                                 <Shields 
-                                                    title={app.name}
-                                                    image={app.logoUrl}
+                                                    title={app.badge1Name}
+                                                    image={app.badge1LogoUrl}
                                                 />
                                             </Grid>
                                     ) : (
@@ -179,8 +183,8 @@
                                     {app.badge2 ? (
                                         <Grid item xs={2}>
                                             <Shields 
-                                                title={app.name}
-                                                image={app.logoUrl}
+                                                title={app.badge2Name}
+                                                image={app.badge2LogoUrl}
                                             />
                                         </Grid>
                                     ) : (
@@ -190,8 +194,8 @@
                                     {app.badge3 ? (
                                         <Grid item xs={2}>
                                             <Shields 
-                                                title={app.name}
-                                                image={app.logoUrl}
+                                                title={app.badge3Name}
+                                                image={app.badge3LogoUrl}
                                             />
                                         </Grid>
                                     ) : (
@@ -201,8 +205,8 @@
                                     {app.badge4 ? (
                                         <Grid item xs={2}>
                                             <Shields 
-                                                title={app.name}
-                                                image={app.logoUrl}
+                                                title={app.badge4Name}
+                                                image={app.badge4LogoUrl}
                                             />
                                         </Grid>
                                     ) : (
@@ -212,8 +216,8 @@
                                     {app.badge5 ? (
                                         <Grid item xs={2}>
                                             <Shields 
-                                                title={app.name}
-                                                image={app.logoUrl}
+                                                title={app.badge5Name}
+                                                image={app.badge5LogoUrl}
                                             />
                                         </Grid>
                                     ) : (
@@ -240,7 +244,10 @@
 
                 <Footer/>
                 </>
-            )
+            )}
+            else{
+                return <Redirect to='/' />
+            }
         }
     }
 
@@ -248,7 +255,8 @@
         singleCategory: state.categories.singleCategory,
         categories: state.categories.allCategories,
         singleCategoryInfo: state.categories.singleCategoryInfo,
-        appReviews: state.apps.appReviews
+        appReviews: state.apps.appReviews,
+        isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 
@@ -257,7 +265,8 @@
             viewSingleCategory, 
             viewSingleCategoryInfo, 
             viewSingleApp,
-            viewAppReviews
+            viewAppReviews,
+            userInfo
         }
     )(Categories); 
 

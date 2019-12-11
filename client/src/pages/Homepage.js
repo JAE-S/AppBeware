@@ -2,6 +2,7 @@
 // =========================================================
     import React, { Component } from "react";  
     import { connect } from "react-redux";
+    import {Redirect} from 'react-router-dom';
     import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
@@ -63,6 +64,7 @@ class Homepage extends Component {
     }
 
     render() {
+        if(this.props.isloggedIn){
         return (
             <>
             <Nav/>
@@ -138,7 +140,10 @@ class Homepage extends Component {
             </main>
         <Footer/>
      </>
-    )
+    )}
+    else {
+        return <Redirect to ='/' />
+    }
     }
 }
 
@@ -150,7 +155,8 @@ const mapStateToProps = state => ({
     appNames: state.apps.allAppNames,
     appReviews: state.apps.appReviews,
     shields: state.shields.allShields,
-    user: state.user.userInfo
+    user: state.user.userInfo,
+    isloggedIn: state.user.isloggedIn
 })
 
 export default connect(mapStateToProps, 

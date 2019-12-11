@@ -93,6 +93,7 @@
 // Export Nav bar
 // =========================================================
   export default function Nav(props) {
+    console.log(props)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -119,7 +120,9 @@
 
     const handleSignOut = () => {
       API.signOut()
-      // .then(res => console.log(res))
+      .then(
+        window.location.pathname ='/'
+      )
       .catch(err => console.log(err))
     }
 
@@ -137,7 +140,7 @@
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       {/* // TODO:////////////////// */}
       {/* Add user name to nav bar */}
-        <h3>{props.userName}</h3> 
+        <h3>{props.name}</h3> 
         <img alt="Profile" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>

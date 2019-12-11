@@ -36,3 +36,4 @@ client/src/Store/OLD-index.js
 client/src/pages/SCOTT-AppPage.js
 client/src/pages/OLD--SCOTT-Homepage.js
 client/src/pages/SCOTT-Homepage.js
+client/src/components/AddAppReview/SCOTT-index.js

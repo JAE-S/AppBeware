@@ -1,0 +1,24 @@
+import API from "../../utils/API";
+import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS } from "./new-types";
+
+export const addShieldToApp = (newShield) => {
+
+    return {
+        type: ADD_SHIELD_TO_APP,
+        payload: newShield
+    }
+}
+
+export const reviewSubmit = (completeReview) => {
+    return {
+        type: REVIEW_SUBMIT,
+        payload: completeReview
+    }
+}
+
+export const resetAddedShields = () => {
+    return {
+        type: RESET_ADDED_SHIELDS,
+        payload: []
+    }
+}

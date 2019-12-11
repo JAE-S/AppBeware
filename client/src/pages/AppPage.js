@@ -2,7 +2,8 @@
 // =========================================================
 import React, { Component } from "react";  
 import { connect } from "react-redux";
-import { push } from 'connected-react-router'
+import { push } from 'connected-react-router';
+import {Redirect} from 'react-router-dom';
 
 // Import Material Ui Components
 // =========================================================
@@ -22,6 +23,7 @@ import { Grid } from '@material-ui/core';
 // =========================================================
     import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
+    import { userInfo } from '../Store/Actions/authentication';
 // import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
 // import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
 
@@ -84,6 +86,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
         }
 
         render() {
+            if(this.props.isloggedIn){
         return (
             <>
             <Nav/>
@@ -200,7 +203,10 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
             </main>
         <Footer/>
         </>
-        )
+        )}
+        else {
+            return <Redirect to = '/' />
+        }
         }
     }
 
@@ -211,7 +217,8 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
         // apps: state.apps.allListedApps,
         // trendingApps: state.apps.trendingApps,
         // appNames: state.apps.allAppNames,
-        shields: state.shields.allShields
+        shields: state.shields.allShields,
+        isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 
@@ -223,6 +230,8 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
             // selectTrendingApps,
             viewSingleApp,
             viewAppReviews,
-            viewAllShields 
+            viewAllShields,
+            userInfo
+
         }
     )(AppPage); 

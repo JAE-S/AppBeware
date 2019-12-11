@@ -173,10 +173,9 @@ class SearchAppAnnie extends React.Component {
                             {item.badge1 ? (
                                 <Grid item xs={2}>
                                         <Shields 
-                                            title={item.name}
-                                            image={item.logoUrl}
+                                            title={item.badge1Name}
+                                            image={item.badge1LogoUrl}
                                         />
-
                                     </Grid>
                                    
                             ) : (
@@ -186,8 +185,8 @@ class SearchAppAnnie extends React.Component {
                             {item.badge2 ? (
                                 <Grid item xs={2}>
                                     <Shields 
-                                        title={item.name}
-                                        image={item.logoUrl}
+                                        title={item.badge2Name}
+                                        image={item.badge2LogoUrl}
                                     />
                                 </Grid>
                             ) : (
@@ -197,8 +196,8 @@ class SearchAppAnnie extends React.Component {
                             {item.badge3 ? (
                                 <Grid item xs={2}>
                                     <Shields 
-                                        title={item.name}
-                                        image={item.logoUrl}
+                                        title={item.badge3Name}
+                                        image={item.badge3LogoUrl}
                                     />
                                 </Grid>
                             ) : (
@@ -208,8 +207,8 @@ class SearchAppAnnie extends React.Component {
                             {item.badge4 ? (
                                 <Grid item xs={2}>
                                     <Shields 
-                                        title={item.name}
-                                        image={item.logoUrl}
+                                        title={item.badge4Name}
+                                        image={item.badge4LogoUrl}
                                     />
                                 </Grid>
                             ) : (
@@ -219,8 +218,8 @@ class SearchAppAnnie extends React.Component {
                             {item.badge5 ? (
                                 <Grid item xs={2}>
                                     <Shields 
-                                        title={item.name}
-                                        image={item.logoUrl}
+                                        title={item.badge5Name}
+                                        image={item.badge5LogoUrl}
                                     />
                                 </Grid>
                             ) : (

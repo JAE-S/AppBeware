@@ -1,7 +1,8 @@
 import { USER_INFO, UPDATE_NAME, UPDATE_EMAIL, UPDATE_PHONE, UPDATE_PASSWORD, REGISTER_ACCOUNT } from "../Actions/new-types"
 
 const initialState = {
-    userInfo: []
+    userInfo: [],
+    isloggedIn: true
 }
 
 export default function(state=initialState, action) {
@@ -11,7 +12,8 @@ export default function(state=initialState, action) {
         case USER_INFO:
             return {
             ...state,
-            userInfo: action.payload.data.userInfo
+            userInfo: action.payload.data.userInfo,
+            isloggedIn: action.payload.data.isloggedin
         } 
 
         case UPDATE_NAME:
