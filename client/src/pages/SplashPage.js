@@ -16,6 +16,7 @@
    import SignUp from "../components/SignUp"
    import Footer from "../components/Footer"
    import Modal from "../components/Modals"
+   import Toasties from "../components/Toasties"
 // Assets
 // =========================================================
   import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -142,7 +143,8 @@ function SplashPage() {
             </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Placeholder for video.</Paper>
+          {/* <Paper className={classes.paper}>Placeholder for video.</Paper> */}
+            <Toasties/>
         </Grid>
       </Grid>
     </Wrapper>

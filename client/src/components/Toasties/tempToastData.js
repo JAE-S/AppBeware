@@ -1,0 +1,123 @@
+const ToastData = [
+    {
+        appId: 1, 
+        appName: "Holla",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 2, 
+        appName: "2",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 3, 
+        appName: "3",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 4, 
+        appName: "4",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 5, 
+        appName: "5",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 6, 
+        appName: "6",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 7, 
+        appName: "7",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 8, 
+        appName: "8",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 9, 
+        appName: "9",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 10, 
+        appName: "10",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 11, 
+        appName: "11",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 12, 
+        appName: "12",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 13, 
+        appName: "13",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 14, 
+        appName: "14",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 15, 
+        appName: "15",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 16, 
+        appName: "16",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 17, 
+        appName: "17",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 18, 
+        appName: "18",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 19, 
+        appName: "19",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+    {
+        appId: 20, 
+        appName: "20",
+        appIcon: "",
+        appHeadline: "This app is bad",
+    },
+]
+export default ToastData; 
