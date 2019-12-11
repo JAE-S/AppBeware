@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const ListedApp = sequelize.define('ListedApp', {
+    const TempAppListing = sequelize.define('TempAppListing', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -143,14 +143,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         },
     });
-    ListedApp.associate = function (models) {
-        ListedApp.belongsTo(models.Category, {
-            foreignKey: {
-            allowNull: true
-            }
-        });
-        ListedApp.hasMany(models.AppReview);
-    };
+    // ListedApp.associate = function (models) {
+    //     ListedApp.belongsTo(models.Category, {
+    //         foreignKey: {
+    //         allowNull: true
+    //         }
+    //     });
+    //     ListedApp.hasMany(models.AppReview);
+    // };
 
-    return ListedApp;
+    return TempAppListing;
   };
