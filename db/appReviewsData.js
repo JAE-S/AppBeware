@@ -26,7 +26,7 @@ const appReviewsData =
 'comments': 'Ive been following Kik Messenger for a while now and reporting on its lack of safety for kids. Kik Messenger is getting very popular with children under 10 years of age. I work with the police, here in Australia on Cyber Safety education and they, educators and cyber safety educators like myself are seeing increased incidents of children being sent porn by predators on this app. Police are reporting that Kik Messenger is the No1 problem app for predator behaviour',
 'alert': true,
 'UserId': '3', 
-'ListedAppId': '1' //kik
+'ListedAppId': '2' //kik
 },
 {
 'predatorRisk': false,
@@ -110,7 +110,7 @@ const appReviewsData =
 'comments': 'How can this be legal? This site gives children an open invitation to vent their anger, insults, bad language, hate.... Teasing, taunting, criticising, bullying... Popular kids use it as a platform to become more popular, unaware or perhaps well aware that their comments can hurt others. Children with a low self-esteem are likely to fall victim to bullying as the site allows anonymous posts. As a teacher and mother it is the worst social media site I have ever seen. Sign the numerous petitions on change.org to ban this site.',
 'alert': true,
 'UserId': '4', 
-'ListedAppId': '8'  //ask.fm
+'ListedAppId': '7'  //ask.fm
 },
 {
 'predatorRisk': false,
@@ -122,7 +122,7 @@ const appReviewsData =
 'comments': 'Should be renamed bully fm. Dont let your kids on it as sadly theyll either be subjected to horrible questions or could get caught up in sending them. I never had a ask fm but some of the questions Ive read that my friends got were vile they ranged from kill yourself to extremely sexual and vulgar questions . Keep your kids off ask fm as its hardly a nice place when its over run with bullying and linked to countless suicides.',
 'alert': true,
 'UserId': '9', 
-'ListedAppId': '8' //ask.fm
+'ListedAppId': '7' //ask.fm
 },
 {
 'predatorRisk': true,
@@ -134,7 +134,7 @@ const appReviewsData =
 'comments': 'Not for kids or teens! This app claims to be "The Safest Place on the Internet" and that you have "Complete absence of identity." It enables users to publish short messages superimposed over photographs or other images. Users are encouraged to disclose intimate details about their private and personal lives. Whisper claims that it does not store personally identifiable information. Even if you disable the geolocation, they can still determine your city, state and country. One of the options is to add your school, find a group or create a group. There is also a "Nearby" section where you can see posts from people who are close. Keep you child/teen safe and dont let them use this app. Children and Teens are not mature enough to use it. There are so many breaches these days, I dont think anything is really anonymous. This app has no socially redeeming value.',
 'alert': true,
 'UserId': '10', 
-'ListedAppId': '9'  //whisper
+'ListedAppId': '8'  //whisper
 },
 {
 'predatorRisk': false,
@@ -146,7 +146,7 @@ const appReviewsData =
 'comments': 'UNSAFE! Instagram = violence, sexual content/innuendos, foul language, product placement, drugs, alcohol, and WORSE OF ALL: UNSAFE AND UNEDUCATIONAL. My daughter came home from school asking if she could sign up for this site. I made an account for it and was DISGUSTED about the content. Please, stay away from this site, Webkinz Jr. is a great alternate, and for all you adults, Facebook is a better alternative.',
 'alert': true,
 'UserId': '11', 
-'ListedAppId': '13' //instagram
+'ListedAppId': '11' //instagram
 },
 {
 'predatorRisk': false,
@@ -158,7 +158,7 @@ const appReviewsData =
 'comments': 'not for Children. Parents please look at what your kids are doing. This app is a platform where kids can easily cyber bully and not be held accountable for it. There are images talking about suicide, cutting, sex, violence and things that are just plain crude. This is a common app used among kids younger than 13 because parents feel like it is safe. WRONG. FYI kids are lying about their age to access the app. I would rather have my child on Facebook. I use this as a photo sharing website. Tweens and younger are using it as a social media website. Foul language, bullying and talk of suicide/cutting had me making sure my child was not on this site anymore.',
 'alert': false,
 'UserId': '12', 
-'ListedAppId': '13'  //instagram
+'ListedAppId': '11'  //instagram
 },
 {
 'predatorRisk': false,
@@ -170,7 +170,7 @@ const appReviewsData =
 'comments': '"**Warning....this app contains Adult Video Content!** I allowed my daughter to put this on her iPod, not putting nearly as much time into looking it over as I should have. I thought it was just an innocent app where you can lip-synch and make music videos. She does not have access to the Internet on her iPod, so I figured it couldnt be that bad. About a week later I took a look at what she had done, and there were some music videos that had inappropriate language in them. After watching a lot of other videos that were on there by others, the majority of them were inappropriate and had suggestive language and dancing. On top of that, I realized that even without Internet access, anybody in the community could view her videos, and she could view theirs. There is a setting to set it up that only her friends could view her videos, but it still really bothered me.',
 'alert': true,
 'UserId': '2', 
-'ListedAppId': '18' //tik tok
+'ListedAppId': '15' //tik tok
 },
 {
 'predatorRisk': true,
@@ -182,7 +182,7 @@ const appReviewsData =
 'comments': 'Dangerous - My 12 year old has been using about a week and showed me some cool sports related videos he made...something prompted me tonight to look a, little closer. Found that others could view and request to follow (didnt even know it was a social app). TEN people messaged him asking for him to ""follow""... Obvious attempts to lure him to who knows what. These were professionals, without a doubt. Beware!',
 'alert': true,
 'UserId': '13', 
-'ListedAppId': '18' //tiktok
+'ListedAppId': '15' //tiktok
 },
 {
 'predatorRisk': false,
@@ -194,7 +194,7 @@ const appReviewsData =
 'comments': 'I dont know I cant say I love this website or that I hate it. The good thing is that it inspires children to be creative. Creativity is something all children need but CAN get better sources of it in other places. Alot of bad languge, sexual behavoir and other inoproproit things have popped up on youtube. One time, my four year old got on youtube all by herself. She clicked a random vidio becouse she saw Rudolph the red nosed deer becouse she likes him. It turned out to be a gory horor.She was scared out of her mind and ran to me. She showed me this clip.I banned her from the internet for a while. Although in this case youtube has been unsafe, my sister bought a sofywear that block inopproproit content. Youtube can either be terrible or great.',
 'alert': true,
 'UserId': '14', 
-'ListedAppId': '31' //youtube
+'ListedAppId': '28' //youtube
 },
 
 {
@@ -207,7 +207,7 @@ const appReviewsData =
 'comments': 'WAY too many wildcards on youtube, There is a smuttiness prevalent on youtube that ultimately has made it off-limits to my kids. Example: a friend forwarded a funny Christmas video showing costumed monks presenting the Hallelujah Chorus, silently using signs. As soon as it was finished, up come the suggested videos, one of which is entitled the 12 gays of Christmas. I didnt watch that one - maybe it was funny too - but I surely didnt care to explain to by children age 8, 6 and 3 what the title might mean. So even when Im in territory on youtube that seems kid safe, it seems somewhere on the page there something about (actual examples again) how to shoot up heroin or something about oral sex techniques.',
 'alert': true,
 'UserId': '4', 
-'ListedAppId': '31'  //youtube
+'ListedAppId': '28'  //youtube
 },
 {
 'predatorRisk': true,
@@ -219,7 +219,7 @@ const appReviewsData =
 'comments': 'Make it easy for stalkers and pedophiles Wow. My teenage just told me she met a boy on tinder. After looking into this I completely freaked out. This is UNBELIEVABLE! Location and photos of you all in one place. How frightening is that for a parent of a teenage daughter. This is a stalker and/or pedophiles dream app. Please warn your kids. Watch for this app on your devices. Do not let them download. Its one thing when you are an adult looking for love but it is not for any one under the age of 18.',
 'alert': false,
 'UserId': '7', 
-'ListedAppId': '32' //tinder
+'ListedAppId': '29' //tinder
 },
 {
 'predatorRisk': false,
@@ -231,7 +231,7 @@ const appReviewsData =
 'comments': 'Worried about Tumblr as a parent and teacher... I was shocked at how much filth was on Tumblr. Tumblr may say they prohibit obscene and pornographic material, but I witnessed multiple pages with terribly offensive material and soft porn. Sexually explicit language and pictures are prevalent. Teen girls are obsessed with this site and spend hours a day on it. I was terribly disappointed in the way young people are using this site. Users can also use their phones GPS function to find nearby users. Users are encouraged to meet each other in person. but kids have found their way around the restriction.',
 'alert': false,
 'UserId': '14', 
-'ListedAppId': '35'  //tumblr
+'ListedAppId': '32'  //tumblr
 },
 {
 'predatorRisk': false,
@@ -243,7 +243,7 @@ const appReviewsData =
 'comments': 'porn video clips posted by some individuals may find their way to being viewed by your children',
 'alert': true,
 'UserId': '14', 
-'ListedAppId': '35' //tumblr
+'ListedAppId': '32' //tumblr
 }
 
 ];
