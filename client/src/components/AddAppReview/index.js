@@ -20,7 +20,6 @@
 // Import Material UI components 
 // =========================================================
   import { Button, Grid, Typography, StepLabel, Step, Stepper, StepButton } from '@material-ui/core/';
-
 // Import Material UI icons
 // =========================================================
   import { Check } from '@material-ui/icons/';

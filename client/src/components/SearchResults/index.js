@@ -33,31 +33,30 @@ export function Shields(props){
 }
 export function ShieldsHomepage(props){
     return (
-              <img
-                alt={props.title}
-                src={props.image}
-                style={{ width: 36, height: 36}}
-            />
+        <img
+            alt={props.title}
+            src={props.image}
+            style={{ width: 36, height: 36}}
+        />
     )
 }
 
 export function ViewApp(props){
     return (
-        // <TableCell>
-            <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
-                <button 
-                    className="learn-more" 
-                    size="small"
-                    onClick={() => props.viewApp(props.appId)}
-                >
+        <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
+            <button 
+                className="learn-more" 
+                size="small"
+                onClick={() => props.viewApp(props.appId)}
+            >
                 <span className="circle">
                     <span className="icon arrow"></span>
                 </span>
-                <h4><span className="button-text">View App</span></h4>
-                </button>
-            </div>
-            
-        // </TableCell>
+                <h4>
+                    <span className="button-text">View App</span>
+                </h4>
+            </button>
+        </div>
     ) 
 }
 
@@ -77,7 +76,6 @@ export function TableHeader(props){
                 <TableCell> 
                     <h2 align="center">View App</h2>
                 </TableCell>
-
             </TableRow> 
         </TableHead> 
     )
