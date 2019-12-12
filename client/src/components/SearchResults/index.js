@@ -1,6 +1,12 @@
-import React from "react"; 
-import { TableCell, Button, TableHead, TableRow, Tooltip } from '@material-ui/core';
-import "../../assets/styling/appStyle.css"
+// Import React
+// =========================================================
+    import React from "react"; 
+// Import Material UI Components
+// =========================================================
+    import { Grid, TableCell, Button, TableHead, TableRow, Tooltip } from '@material-ui/core';
+// Import Styles
+// =========================================================   
+    import "../../assets/styling/appStyle.css"
 
 export function Image(props) {
     return (
@@ -44,6 +50,20 @@ export function ShieldsHomepage(props){
         </Tooltip>
     )
 }
+export function ShieldsTrendingApps(props){
+    return (
+        <Grid item xs={2}>
+            <Tooltip disableFocusListener title={props.title}>
+                <img
+                    alt={props.title}
+                    src={props.image}
+                    style={{ width: 36, height: 36}}
+                />
+            </Tooltip>
+        </Grid>
+    )
+}
+
 
 export function ViewApp(props){
     return (
