@@ -20,7 +20,7 @@
 // Import Redux Components
 // =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
 // Import Media
@@ -50,14 +50,8 @@ class Homepage extends Component {
         this.props.viewSingleApp(appId);
         this.props.viewAppReviews(appId);
         this.props.history.push('/appPage');
-        // this.props.history.push('/categoryPage');
     }
 
-    clickMe = () => {
-        console.log("Inside ClickMe")
-        console.log(process.env);
-        API.search42Ios();
-    }
 
     // Grabbing all necessary data from Redux
     componentDidMount() {
@@ -67,9 +61,8 @@ class Homepage extends Component {
         this.props.selectTrendingApps();
         this.props.viewAllShields();
         this.props.userInfo();
-        console.log("INITIAL API SEARCH: ");
-        console.log(API.search42Ios());
     }
+
 
     render() {
         if(this.props.isloggedIn){
@@ -117,10 +110,6 @@ class Homepage extends Component {
                 
                 </Wrapper>
             </HeaderContainer>
-            <Button
-                onClick = {this.clickMe}>
-                Click ME!!!
-            </Button>
 
             <SearchAppAnnie 
                 viewApp={this.viewApp}
@@ -166,6 +155,7 @@ const mapStateToProps = state => ({
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
     appReviews: state.apps.appReviews,
+    appTextSearchResults: state.apps.appTextSearchResults,
     shields: state.shields.allShields,
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn
@@ -179,6 +169,7 @@ export default connect(mapStateToProps,
         viewAllListedApps, 
         viewAppNames, 
         viewAppReviews,
+        search42Text,
         selectTrendingApps,
         viewAllShields,
         userInfo
