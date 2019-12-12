@@ -18,7 +18,7 @@ class Toasties extends Component {
     notify = () => {
       {
         ToastData.map((object) => {
-          if (object.appId < 6)
+          if (object.appId < 10  )
             toast(
                 <Grid 
                   className="toastieContainer"
@@ -36,7 +36,8 @@ class Toasties extends Component {
                     />
                   </Grid> 
                   <Grid item xs={10}> 
-                    <h3 style={{ color: "#0f8e98", letterSpacing: 1, padding: "4px", fontWeight: "800px"}}>{object.appHeadline}</h3>
+                    <h3 style={{ color: "#0f8e98", letterSpacing: 1, padding: "3px", fontWeight: "700px"}}>{object.appHeadline}</h3>
+                    <span style={{ color: "grey", fontWeight: "400px"}}>{object.source}</span>
                   </Grid> 
                 </Grid> 
             )
