@@ -68,11 +68,17 @@ const ToastData = [
     {
         appId: 10, 
         appName: "Zoosk",
-        appIcon: "https://assets.pcmag.com/media/images/542166-zoosk-logo.jpg?width=333&height=245",
+        appIcon: "https://assets.pcmag.com/media/images/542166-zoosk-logo.jpg",
         appHeadline: "During its latest operation, the sheriff's office said men connected with people they thought were 14-year-old boys and girls through  Zoosk.",
         source: "- 10 TV WBNS"
     },
-
+   {
+        appId: 11, 
+        appName: "Holla",
+        appIcon: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
+        appHeadline: "The apps makers admit its an addicting video chat app. It allows users to meet people all over the world in just seconds. Reviewers say they have been confronted with racial slurs, explicit content, and more. ",
+        source: "- Fox 4 News"
+    },
 
 
 
