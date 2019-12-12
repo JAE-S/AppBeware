@@ -1,4 +1,6 @@
 const axios = require('axios');
+const {parse, stringify} = require('flatted/cjs');
+require('dotenv').config();
 
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
@@ -134,10 +136,12 @@ module.exports = function (db) {
         console.log("Inside getTempAppResults for 42 Matters Text Search")
         // const queryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=" + req.params.query + "&access_token=" + process.env.APIKEY42;
         const tempQueryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=Facebook&access_token=" + process.env.APIKEY42;
-        return axios.get(tempQueryUrl)
-          .then(function(appOptions) {
-            console.log(JSON.stringify(appOptions));
-            res.json(JSON.stringify(appOptions));
+        axios.get(tempQueryUrl)
+          .then(function(response) {
+            const data = stringify(response);
+            console.log(data[0].trackCensoredName);
+            res.json(response);
+            // res.end();
           })
       },
 
