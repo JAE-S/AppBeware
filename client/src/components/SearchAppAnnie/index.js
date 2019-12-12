@@ -292,13 +292,14 @@ class SearchAppAnnie extends React.Component {
                                         No Matches Found
                                       </p>
                                     ) : ( 
-                                          <Button 
-                                            onClick={() => this.openModal()} 
-                                            className="teal" 
-                                            align="center"
-                                          >
-                                            Advanced Search
-                                          </Button>
+                                          // <Button 
+                                          //   onClick={() => this.openModal()} 
+                                          //   className="teal" 
+                                          //   align="center"
+                                          // >
+                                          //   Advanced Search
+                                          // </Button>
+                                          <div></div>
                                     )}
                                   
                                     </Grid>
@@ -315,7 +316,7 @@ class SearchAppAnnie extends React.Component {
           </Grid> 
         </Grid> 
 {/* ------------- TEST ADVANCED SEARCH MODAL ------------- */}
-        <Modal
+        {/* <Modal
             modalTitle={
                 <div>
                   Advanced Search
@@ -327,7 +328,7 @@ class SearchAppAnnie extends React.Component {
                 </Button>
               }
             modalBody={<AdvancedSearchModal/>}      
-        />
+        /> */}
       </Wrapper>
       </div>
     );
