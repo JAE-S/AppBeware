@@ -71,9 +71,9 @@ class Homepage extends Component {
            <main>
             <HeaderContainer> 
                 <div className="headerBanner">
-                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
-                        Check out our Alert system!
-                    </h1>
+                    <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
+                        Review and track potentially dangerous apps with our rating system:
+                    </h2>
                 </div>
                 <Wrapper> 
                     <Grid container 

@@ -40,17 +40,19 @@
                         <h6>Total Reviews: {props.reviewCountLeft}</h6>
                         <h6>{props.datePostedLeft}</h6> 
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                         <h4>Badge Alerts</h4> 
+                        <TableCell>
                         {props.badgesRight}
+                        </TableCell>
                         <h4>Danger Rating</h4> 
                         {props.dangerRatingRight}
-                    </TableCell>
-                    <TableCell>
+                    </TableCell> */}
+                    <TableCell align="left">
                 
                             <h4>Comments</h4> 
                             {props.commentsRight}
-                        <Button>
+                        <Button >
                             <Typography variant="caption" color="textSecondary">
                                 Helpful
                             </Typography>

@@ -184,7 +184,7 @@ module.exports = function (db) {
         let tempArray = [];
         db.ListedApp.findAll({}).then(function (dbListedApps) {
           for (i=0; i<3; i++) {
-            let randomIndex = Math.floor(Math.random() * dbListedApps.length + 1)
+            let randomIndex = Math.floor(Math.random() * dbListedApps.length - 1)
             console.log("Random number is : " + randomIndex);
             tempArray.push(dbListedApps[randomIndex])
           }
