@@ -18,7 +18,7 @@ class Toasties extends Component {
     notify = () => {
       {
         ToastData.map((object) => {
-          if (object.appId < 11  )
+          if (object.appId < 6  )
             toast(
                 <Grid 
                   className="toastieContainer"
