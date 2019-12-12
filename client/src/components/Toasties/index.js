@@ -15,6 +15,7 @@ import ToastData from "./tempToastData";
     import "../../assets/styling/appStyle.css"
 
 class Toasties extends Component {
+    data = ToastData
     notify = () => {
       {
         ToastData.map((object) => {

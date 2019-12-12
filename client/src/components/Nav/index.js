@@ -2,6 +2,7 @@
 // =========================================================
     import React from 'react'; 
     import { Link } from 'react-router-dom'
+    import { connect } from "react-redux"; 
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
@@ -20,7 +21,9 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
-    import {Alerts, Count, Notifications } from "../Alerts";
+    import {Alerts, Notifications } from "../Alerts";
+    import {userInfo} from '../../Store/Actions/authentication'
+    import {AlertsCall} from '../../Store/Actions/reviewActions'
 
 // Custom Styles
 // =========================================================
@@ -92,8 +95,7 @@
 
 // Export Nav bar
 // =========================================================
-  export default function Nav(props) {
-    console.log(props)
+  function Nav(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -103,6 +105,7 @@
 
     const handleProfileMenuOpen = event => {
       setAnchorEl(event.currentTarget);
+      props.AlertsCall()
     };
 
     const handleMobileMenuClose = () => {
@@ -128,6 +131,7 @@
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
+
       <Menu
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -140,7 +144,7 @@
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       {/* // TODO:////////////////// */}
       {/* Add user name to nav bar */}
-        <h3>{props.name}</h3> 
+        <h3>{props.user.name}</h3> 
         <img alt="Profile" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
@@ -152,7 +156,8 @@
           <Modal
               modalTitle="Alert Settings"
               openModal="Alert Settings"
-              modalBody={<Alerts/>}
+              modalBody={<Alerts
+              alerts= {props.alert}/>}
               modalButton1="Close"
           />
         
@@ -201,7 +206,9 @@
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-          <Badge badgeContent={<Count/>}>
+          <Badge 
+          // badgeContent={<Count/>}
+          >
               Alerts
           </Badge>
         </MenuItem>
@@ -222,7 +229,7 @@
     return (
       <div className={classes.grow}>
         <AppBar className={classes.nav} position="fixed"style={{marginBottom: "64px"}}>
-          <Toolbar>
+           <Toolbar>
             
             <Typography className={classes.title} variant="h6" noWrap>            
               <Link className={classes.title} style={{ textDecoration: 'none' }} to='/Homepage' >
@@ -232,8 +239,12 @@
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label={`show ${<Count/>} new notifications`} color="inherit">
-                <Badge badgeContent={<Count/>} color="secondary">
+              <IconButton 
+              // aria-label={`show ${<Count/>} new notifications`} 
+              color="inherit">
+                <Badge 
+                // badgeContent={<Count/>} 
+                color="secondary">
                   <Notifications showAlerts={<NotificationsIcon />}/>
                 </Badge>
               </IconButton>
@@ -266,3 +277,17 @@
       </div>
     );
   }
+
+  
+  const mapStateToProps = state => ({
+    user: state.user.userInfo,
+    isloggedIn: state.user.isloggedIn,
+    alert: state.reviews.alert
+})
+
+export default connect(mapStateToProps, 
+    {
+        userInfo,
+        AlertsCall
+    }
+)(Nav); 
