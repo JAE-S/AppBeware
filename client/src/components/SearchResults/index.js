@@ -1,5 +1,5 @@
 import React from "react"; 
-import { TableCell, Button, TableHead, TableRow } from '@material-ui/core';
+import { TableCell, Button, TableHead, TableRow, Tooltip } from '@material-ui/core';
 import "../../assets/styling/appStyle.css"
 
 export function Image(props) {
@@ -24,20 +24,24 @@ export function AppDetails(props){
 
 export function Shields(props){
     return (
+        <Tooltip disableFocusListener title={props.title}>
               <img
                 alt={props.title}
                 src={props.image}
-                style={{ width: 40, height: 40}}
+                style={{ width: 44, height: 44}}
             />
+        </Tooltip>
     )
 }
 export function ShieldsHomepage(props){
     return (
-        <img
-            alt={props.title}
-            src={props.image}
-            style={{ width: 36, height: 36}}
-        />
+        <Tooltip disableFocusListener title={props.title}>
+            <img
+                alt={props.title}
+                src={props.image}
+                style={{ width: 36, height: 36}}
+            />
+        </Tooltip>
     )
 }
 

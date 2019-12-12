@@ -21,6 +21,8 @@
     import Five from "../../assets/images/danger_rating_icons/danger_rating_5.png";
     import "./style.css"
 
+    import searchTestData from "./searchTestData";
+
     const InputOverRideOutline = withStyles({
         root: {
           '& label.Mui-focused': {
@@ -70,6 +72,10 @@
               checkedAndriod: false,
             };
         }; 
+
+        search42 = () => {
+            console.log("Inside search42");
+        }
 
         handleChange = name => event => {
             if (!this.state.checkedIos && !this.state.checkedAndriod || this.state.checkedAndriod && !this.state.checkedIos ){
@@ -139,7 +145,7 @@
                                     renderInput={params => (
                                         <InputOverRideOutline
                                             {...params}
-                                            label={<p style={{ padding: "20px"}}>Search By Category...</p>}
+                                            label={<p style={{ padding: "20px"}}>Search By App Name...</p>}
                                             fullWidth
                                             InputProps={{ ...params.InputProps, type: 'search' }}
                                         />
@@ -147,17 +153,34 @@
                                 />
                             {/* </div>  */}
                         </Grid>
+                        <Button
+                            onClick={this.search42}
+                        >Search</Button>
                         <Grid  style={{width: "100%"}} item> 
                             <Table>
                                 <TableBody>
-                                    <SearchResultsGrid
-                                        appName="snapchat"
-                                        viewApp={
-                                            <Button> 
-                                                View App
-                                            </Button> 
+                                    {/* <SearchResultsGrid> */}
+
+                                        {searchTestData.map(item => (
+                                            <TableRow> 
+
+                                                <TableCell  align="center"> 
+                                                    {item.trackCensoredName}
+                                                </TableCell>
+
+                                                <TableCell  align="center"> 
+                                                    <Button> 
+                                                        View App
+                                                    </Button> 
+                                                </TableCell>
+
+                                            </TableRow>
+                                        ))
                                         }
-                                    />
+
+
+
+                                    {/* </SearchResultsGrid> */}
                                 </TableBody>
                             </Table>
                         </Grid> 

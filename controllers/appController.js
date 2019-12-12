@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
   console.log("Length: " + dbArray.length);
@@ -126,6 +128,17 @@ module.exports = function (db) {
         }).then(function(dbAppReviews) {
           res.json(dbAppReviews)
         });
+      },
+
+      getTempAppResults: function (req, res) {
+        console.log("Inside getTempAppResults for 42 Matters Text Search")
+        // const queryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=" + req.params.query + "&access_token=" + process.env.APIKEY42;
+        const tempQueryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=Facebook&access_token=" + process.env.APIKEY42;
+        return axios.get(tempQueryUrl)
+          .then(function(appOptions) {
+            console.log(JSON.stringify(appOptions));
+            res.json(JSON.stringify(appOptions));
+          })
       },
 
       testQuery: function (req, res) {

@@ -386,9 +386,9 @@ border:1px solid #f3d86d; -webkit-border-radius: 3px; -moz-border-radius: 3px;bo
 }
 
 .appIcon {
-  -moz-box-shadow: 0 0 5px #888;
-  -webkit-box-shadow: 0 0 5px#888;
-  box-shadow: 0 0 5px #888;
+  -moz-box-shadow: -1px 1px 5px -1px #888;
+  -webkit-box-shadow: -1px 1px 5px -1px#888;
+  box-shadow: -1px 1px 5px -1px #888;
 }
 
 .searchInput {
@@ -421,6 +421,7 @@ label + .MuiInput-formControl {
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 
 /* toasties */
 .toastieContainer{
@@ -433,4 +434,15 @@ label + .MuiInput-formControl {
     font-style: normal;
     /* background-color: #f7f7f7; */
    
+=======
+.bannerText {
+  color: rgb(255, 255, 255); 
+  padding: 4px;
+}
+
+.ratingHeaderText {
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 14px;
+>>>>>>> ea994492ca38dc4f752df76743acb9f9ee7dc287
 }
