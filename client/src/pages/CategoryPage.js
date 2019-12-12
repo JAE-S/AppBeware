@@ -134,7 +134,7 @@
                         renderInput={params => (
                         <InputOverRideOutline
                             {...params}
-                            label={<p style={{ marginLeft: "20px"}}>Search By Category...</p>}
+                            label={<p style={{ margin: 0, marginLeft: "20px"}}>Search By Category...</p>}
                             fullWidth
                             InputProps={{ ...params.InputProps, type: 'search' }}
                         />

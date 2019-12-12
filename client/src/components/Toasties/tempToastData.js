@@ -1,4 +1,5 @@
 const ToastData = [
+
     {
         appId: 2, 
         appName: "Ask.fm",
@@ -13,7 +14,6 @@ const ToastData = [
         appHeadline: "Oregon mom accused of luring boy, 14, through Snapchat, having sex with him",
        source: "- Fox News"
     },
-
      {
         appId: 8, 
         appName: "Various Apps",
@@ -21,8 +21,6 @@ const ToastData = [
         appHeadline: "Florida sheriff warns parents about more apps following arrest of 23 suspected child predators",
         source: "- FOX 5 New York"
     },
-   
-   
     {
         appId: 1, 
         appName: "SnapChat",
@@ -31,28 +29,28 @@ const ToastData = [
         source: "- Fox News"
     },
     {
-        appId: 3, 
+        appId: 2, 
         appName: "TikToc",
         appIcon: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
         appHeadline: "Is China collecting children's data on TikTok? ",
         source: "- Bay News 9" 
     },
     {
-        appId: 4, 
+        appId: 3, 
         appName: "Tinder",
         appIcon: "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/d2/a8/77/d2a877fc-adf9-5db7-a831-f99fc56b2834/source/1024x1024bb.jpg",
         appHeadline: "Sexual predators using Tinder, dating apps to find victims, survivors and police warn",
         source: "- ABC News AU"
     },
     {
-        appId: 5, 
+        appId: 4, 
         appName: "YouTube",
         appIcon: "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/1d/8d/0d/1d8d0dc7-72d9-e50a-0a10-3df74386bc87/source/1024x1024bb.jpg",
         appHeadline: "Horrified mom discovers suicide instructions in video on YouTube and YouTube Kids",
         source: "- CBS News"
     },
     {
-        appId: 6, 
+        appId: 5, 
         appName: "Instagram",
         appIcon: "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/4c/38/7a/4c387abd-4c5d-49e3-6c1a-3e4974343ccd/source/1024x1024bb.jpg",
         appHeadline: "N.C. Police Investigate Instagram Photos of Naked Teen Girls",
@@ -79,12 +77,6 @@ const ToastData = [
         appHeadline: "The apps makers admit its an addicting video chat app. It allows users to meet people all over the world in just seconds. Reviewers say they have been confronted with racial slurs, explicit content, and more. ",
         source: "- Fox 4 News"
     },
-
-
-
-
-
-
 
 ]
 export default ToastData; 

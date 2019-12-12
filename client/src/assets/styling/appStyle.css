@@ -508,5 +508,15 @@ label + .MuiInput-formControl {
   width: 90%;
   margin: 0 auto;
   border-radius: 14px;
+}
 
+.smallProfilePhoto {
+  justify-content: center; 
+  max-width: 40px; 
+  width: 100%; 
+  height: auto;
+  border-radius: 50%; 
+  -moz-box-shadow: -1px 1px 5px -1px #888;
+  -webkit-box-shadow: -1px 1px 5px -1px#888;
+  box-shadow: -1px 1px 5px -1px #888;
 }
