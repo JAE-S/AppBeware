@@ -5,7 +5,7 @@
   import 'react-toastify/dist/ReactToastify.css';
 // Import Material Ui Components
 // =========================================================
-  import {Grid, Button, Checkbox} from '@material-ui/core';
+  import {Grid} from '@material-ui/core';
 // Import Temp data
 // =========================================================
 import ToastData from "./tempToastData";

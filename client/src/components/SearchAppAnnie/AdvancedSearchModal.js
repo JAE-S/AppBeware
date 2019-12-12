@@ -10,15 +10,10 @@
     import { withStyles } from '@material-ui/core/styles';
 // Import Material UI Components
 // =========================================================
-    import { FormControl, FormControlLabel, Checkbox, TextField, Table, TableBody, TableRow, TableCell, TableHead, Grid, Button } from '@material-ui/core/';
+    import { FormControl, FormControlLabel, Checkbox, TextField, Table, TableBody, TableRow, TableCell, Grid, Button } from '@material-ui/core/';
     import Autocomplete from '@material-ui/lab/Autocomplete';
 // Import Media
 // =========================================================
-    import One from "../../assets/images/danger_rating_icons/danger_rating_1.png";
-    import Two from "../../assets/images/danger_rating_icons/danger_rating_2.png";
-    import Three from "../../assets/images/danger_rating_icons/danger_rating_3.png";
-    import Four from "../../assets/images/danger_rating_icons/danger_rating_4.png";
-    import Five from "../../assets/images/danger_rating_icons/danger_rating_5.png";
     import "./style.css"
 
     import searchTestData from "./searchTestData";
@@ -77,23 +72,23 @@
             console.log("Inside search42");
         }
 
-        handleChange = name => event => {
-            if (!this.state.checkedIos && !this.state.checkedAndriod || this.state.checkedAndriod && !this.state.checkedIos ){
-                return (
-                    this.setState({ 
-                        checkedIos: true, 
-                        checkedAndriod: false 
-                    })
-                )
-             } else if (!this.state.checkedAndriod && !this.state.checkedAndriod || !this.state.checkedAndriod && this.state.checkedIos ){
-                return (
-                    this.setState({ 
-                        checkedIos: false, 
-                        checkedAndriod: true
-                    })
-                )
-             }
-        }
+        // handleChange = name => event => {
+        //     if (!this.state.checkedIos && !this.state.checkedAndriod || this.state.checkedAndriod && !this.state.checkedIos ){
+        //         return (
+        //             this.setState({ 
+        //                 checkedIos: true, 
+        //                 checkedAndriod: false 
+        //             })
+        //         )
+        //      } else if (!this.state.checkedAndriod && !this.state.checkedAndriod || !this.state.checkedAndriod && this.state.checkedIos ){
+        //         return (
+        //             this.setState({ 
+        //                 checkedIos: false, 
+        //                 checkedAndriod: true
+        //             })
+        //         )
+        //      }
+        // }
 
         render() {
             

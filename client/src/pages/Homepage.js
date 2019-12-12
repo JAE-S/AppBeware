@@ -3,7 +3,7 @@
     import React, { Component } from "react";  
     import { connect } from "react-redux";
     import {Redirect} from 'react-router-dom';
-    import { push } from 'connected-react-router'
+    // import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
     import { Grid, Button } from '@material-ui/core';   
@@ -23,19 +23,16 @@
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
-// Import Media
+// Import Media & API 
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+    import API from "../utils/API.js"
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
+    
 
-    import API from "../utils/API.js"
 class Homepage extends Component {
-
-    state = {
-     
-    }
 
     // Runs Redux to grab all of the categories necessary to render the homepage
     // COMPLETE
