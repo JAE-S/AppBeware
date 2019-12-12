@@ -6,14 +6,16 @@
     import Downshift from "downshift";
 // Import Redux Actions
 // =========================================================
-    import {viewAllListedApps, viewAppNames, viewSingleApp, generateShieldsForApps, viewAppReviews } from "../../Store/Actions/appActions";
+    import {viewAllListedApps, viewSingleApp,viewAppReviews } from "../../Store/Actions/appActions";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
+    // viewAppNames
+    // generateShieldsForApps
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
     // Import Material UI components
 // =========================================================
-    import {TextField, Input, Grid, Button, Checkbox} from '@material-ui/core';
+    import {TextField, Grid, Button} from '@material-ui/core';
 // Import Material UI Icons
 // =========================================================
     // import MenuItem from '@material-ui/core/MenuItem';
@@ -121,11 +123,7 @@ class SearchAppAnnie extends React.Component {
   }
 
   render(props) {
-    const item = {
-      id: 123,
-      value:  'Snapchat'
-    }
-
+ 
     return (
       <div className="root">
       <Wrapper style={{position: "relative", zIndex: 1000}}>
