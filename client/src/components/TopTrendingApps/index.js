@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { push } from 'connected-react-router';
-import Moment from 'react-moment';
-
-import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
-
-import { Grid, Card, Box, Typography } from '@material-ui/core/';
-import Skeleton from '@material-ui/lab/Skeleton';
-
-import "./style.css"
-
-// Import Media
+// Import React & Node packages
 // =========================================================
-
-import CB_icon from "../../assets/images/shields/cyberbullying.png";
-
+  import React, { Component } from 'react';
+  import { connect } from "react-redux";
+  import { push } from 'connected-react-router';
+  import Moment from 'react-moment';
+// Import Redux Actions
+// =========================================================
+  import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
+// Import Material UI Components
+// =========================================================
+  import { Grid, Card, Box, Typography } from '@material-ui/core/';
+  import Skeleton from '@material-ui/lab/Skeleton';
+// Import Components
+// =========================================================
+  import {  ShieldsTrendingApps } from "../../components/SearchResults";
+// Import Styles
+// =========================================================
+  import "./style.css"
 
 class Media extends Component {      
 
@@ -31,9 +33,9 @@ class Media extends Component {
 
         <Grid container wrap="nowrap">
           {this.props.trendingApps.map((item, index) => (
-
-            <Card style={{ maxWidth: "300px", width: "100%", margin: "5px", padding: "5px"}}>
-                <Box key={index} style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
+            
+            <Card key={index} style={{ maxWidth: "300px", width: "100%", margin: "5px", padding: "5px"}}>
+                <Box  style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
                   {item ? (
                     <Grid 
                         container 
@@ -81,17 +83,67 @@ class Media extends Component {
                       <Typography className="dangerRating" variant="body2" color="textSecondary">
                         {`${"Danger Rating: " + item.warnRatingAverage}`}
                       </Typography>
-                      <div>
-                        <img 
-                          alt={item.name}
-                          src={CB_icon}
-                          // TODO://////////////////
-                          // I have this hardcoded for now...new to update with actual data from table
-                          ////////////////////////////////////////
-                          // src={item.badges}
-                          style={{ width: 40, height: 40 }}
-                        />
-                      </div>
+                      <Grid container
+                      
+                      >
+
+                      {item.badge1 ? (
+                              <Grid item xs={2}>
+                                  <ShieldsTrendingApps 
+                                      title={item.badge1Name}
+                                      image={item.badge1LogoUrl}
+                                  />
+                              </Grid>
+                                
+                          ) : (
+                              <div style={{display: "none"}}/>
+                              )
+                          }
+                          {item.badge2 ? (
+                              <Grid item xs={2}>
+                                  <ShieldsTrendingApps
+                                      title={item.badge2Name}
+                                      image={item.badge2LogoUrl}
+                                  />
+                              </Grid>
+                          ) : (
+                              <div style={{display: "none"}}/>
+                              )
+                          }
+                          {item.badge3 ? (
+                              <Grid item xs={2}>
+                                  <ShieldsTrendingApps
+                                      title={item.badge3Name}
+                                      image={item.badge3LogoUrl}
+                                  />
+                              </Grid>
+                          ) : (
+                              <div style={{display: "none"}}/>
+                              )
+                          }
+                          {item.badge4 ? (
+                              <Grid item xs={2}>
+                                  <ShieldsTrendingApps
+                                      title={item.badge4Name}
+                                      image={item.badge4LogoUrl}
+                                  />
+                              </Grid>
+                          ) : (
+                              <div style={{display: "none"}}/>
+                              )
+                          }
+                          {item.badge5 ? (
+                              <Grid item xs={2}>
+                                  <ShieldsTrendingApps
+                                      title={item.badge5Name}
+                                      image={item.badge5LogoUrl}
+                                  />
+                              </Grid>
+                          ) : (
+                              <div style={{display: "none"}}/>
+                              )
+                          }
+                      </Grid>
                     </Box>
                   ) : (
                     <Box pt={0.5}>

@@ -46,33 +46,32 @@ const dangerRating = [
     {  name: "one",
     logoUrl: One,
     description: "Mild Concern", 
-    reviewCount: 1 
+    reviewCount: 5 
     },
     {  name: "two", 
     logoUrl: Two,
     description: "Moderate Concern", 
-    reviewCount: 3 
+    reviewCount: 6 
     },
     {  name: "three",
         logoUrl:Three,
         description: "High Concern", 
-        reviewCount: 2 
+        reviewCount: 10 
     },
     {  name: "four",
         logoUrl: Four,
         description: "Very High Concern", 
-        reviewCount: 3 
+        reviewCount: 5 
     },
     {  name: "five", 
         logoUrl: Five,
         description: "Severe Concern", 
-        reviewCount: 1
+        reviewCount: 3
     },
 ]
 
 // MIN = Minimum expected value
 // MAX = Maximium value = total number of reviews 
-const normalise = value => (value - 0) * 100 / (10 - 0);
 
 // AppPage Component
 // =========================================================
@@ -83,7 +82,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
      
             this.state = {
                 expanded: false,
-                truncated: false
+                truncated: false,
             };
      
             this.handleTruncate = this.handleTruncate.bind(this);
@@ -108,17 +107,44 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
 
         // Grabbing all necessary data from Redux
         componentDidMount() {
-        this.props.viewAllShields();
+            this.props.viewAllShields();
         }
 
+        getNormalise = (value) => {
+            // const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
+         return (value - 0) * 100 / (10 - 0)
+        }
+        getShieldValue = (value) => {
+            const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
+         return (value - 0) * 100 / (badgeTotal - 0)
+        }
+
+        getShieldIndex = (index) => {
+            if (index === 0 ){
+                return this.getShieldValue(this.props.singleApp.badge1Count)
+            } else if (index === 1 ) {
+              return this.getShieldValue(this.props.singleApp.badge2Count)
+            } else if (index === 2 ) {
+                return this.getShieldValue(this.props.singleApp.badge3Count)
+            } else if (index === 3 ) {
+                return this.getShieldValue(this.props.singleApp.badge4Count)
+            } else if (index === 4 ) {
+                return this.getShieldValue(this.props.singleApp.badge4Count)
+            }
+        }
+        
         render() {
             const {
                 children,
                 more,
                 less,
                 lines 
-            } = this.props;
-     
+            } = this.props; 
+            let getNormaliseBadges = (value) => {
+            const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
+                return (value - 0) * 100 / (badgeTotal - 0);
+            } 
+            
             const {
                 expanded,
                 truncated 
@@ -129,7 +155,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
             <Nav/>
             <main>
                 <HeaderContainer style={{backgroundColor: "#EAEAEA"}}> 
-                    <Wrapper align="center" style={{paddingTop: "10px", paddingBottom: "10px"}}> 
+                    <Wrapper align="center" style={{paddingTop: "40px", paddingBottom: "20px"}}> 
                             
                         <Grid container 
                             spacing={4}
@@ -165,7 +191,6 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                                         label="Set Alert"
                                     />
                                 </h1>
-
                                 <Truncate
                                     lines={!expanded && lines}
                                     ellipsis={(
@@ -194,7 +219,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                 {/* Average Danger Rating */}
                 <div className="headerBanner">
                     <p align="center" className="bannerText" style={{margin: 0}}> 
-                        Average Danger Rating: {'placeholder'}
+                        Average Danger Rating: {this.props.singleApp.warnRatingAverage}
                     </p>
                 </div>
                 <Wrapper>
@@ -215,8 +240,8 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                                         altTxt={danger.name}
                                         riskLevel={danger.name}
                                         info={danger.description}
-                                        ratingScale={normalise(danger.reviewCount)}
-                                        reviewCount={`${danger.reviewCount} Reviews`}
+                                        ratingScale={this.getNormalise(danger.reviewCount)}
+                                        reviewCount={`${danger.reviewCount} Alert(s)`}
                                     />
                                 ))}
                             </Grid>
@@ -227,15 +252,58 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                                         Shield Alerts
                                     </h2>
                                 </div>
-                                {this.props.shields.map(shield => (
+                                {this.props.shields.map((shield, index) => (
                                     <ShieldRatings
                                         key={shield.name}
                                         shieldIcon={shield.icon}
                                         title={shield.name}
                                         altTxt={shield.altText}
                                         info={`${shield.name} - ${shield.info}`}
-                                        ratingScale={normalise(4)}
-                                        reviewCount={"* # review *"}
+                                        ratingScale={this.getShieldIndex(index)}
+                                            
+                                        reviewCount={ 
+                                            <div> 
+                                            {index === 0 ? (
+                                                <div>
+                                                    {`${this.props.singleApp.badge1Count} Alert(s)`}
+                                                </div>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {index === 1 ? (
+                                                <div>
+                                                    {`${this.props.singleApp.badge2Count} Alert(s)`}
+                                                </div>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {index === 2 ? (
+                                                <div>
+                                                    {`${this.props.singleApp.badge3Count} Alert(s)`}
+                                                </div>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {index === 3 ? (
+                                                <div>
+                                                    {`${this.props.singleApp.badge4Count} Alert(s)`}
+                                                </div>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {index === 4 ? (
+                                                <div>
+                                                    {`${this.props.singleApp.badge5Count} Alert(s)`}                                                   
+                                                </div>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                        </div> }
                                     />
                                 ))}
                             </Grid>
@@ -266,12 +334,12 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                             imageLeft={
                                 <img 
                                     alt={review.User.name} 
-                                    style={{ justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} 
                                     src={review.User.profilePicture}
+                                    className="smallProfilePhoto"
                                 />}
                             usernameLeft={review.User.name} 
                             // TODO: Ultimately need to generate this data - next 2 fields
-                            reviewCountLeft={3}
+                            // reviewCountLeft={3}
                             datePostedLeft="Nov 18, 2019"
                             // ---> Right Side     
                             // TODO: Need to redo this so it's not hard-coded - badges
@@ -323,7 +391,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
     }
 
     AppPage.defaultProps = {
-        lines: 3,
+        lines: 1,
         more: 'Read more',
         less: 'Show less',
     };
