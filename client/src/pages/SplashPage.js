@@ -43,7 +43,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
           minHeight: "70vh", 
           margin: 8,
           display: "flex", 
-          flexDirection: "column"
+          flexDirection: "column", 
+          boxShadow: "none",
         },
         title: {
             fontSize: "38px",
@@ -81,9 +82,14 @@ function SplashPage() {
                 </Grid>
                 <Grid item xs={6} sm={6}>
                   <h1 className={classes.title}>AppBeware</h1>
+                 
                 </Grid>
               </Grid>
-              <h3 style={{ padding: 20 }} className="splash">
+                <div style={{borderBottom: "1px solid teal", borderTop: "1px solid teal" }}>
+                  <h2 style={{color: "#FC4A1A"}}>+6 Million Apps</h2>
+                  <h2 style={{color: "#FC4A1A"}}>The Danger is Real...</h2>
+                </div>
+              <h3 className="splash">
                 AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
               </h3>
 
@@ -158,7 +164,7 @@ function SplashPage() {
                   
             
           <Paper className={classes.paper}>
-            <h1 className={classes.header}>The Dangers are real</h1>
+            {/* <h1 className={classes.header}>The Dangers are real</h1> */}
            
             <Toasties />
             </Paper> 
