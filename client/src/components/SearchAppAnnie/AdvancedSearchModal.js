@@ -5,6 +5,10 @@
 // =========================================================
     import { connect } from "react-redux";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
+    import { search42Text, search42IosId } from "../../Store/Actions/appActions";
+
+    import API from "../../utils/API";
+
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -16,7 +20,6 @@
 // =========================================================
     import "./style.css"
 
-    import searchTestData from "./searchTestData";
 
     const InputOverRideOutline = withStyles({
         root: {
@@ -41,22 +44,6 @@
       })(TextField);
 
 
-    export function SearchResultsGrid(props) {
-        return (
-            <TableRow> 
-
-                <TableCell  align="center"> 
-                    {props.appName}
-                </TableCell>
-
-                <TableCell  align="center"> 
-                    {props.viewApp}
-                </TableCell>
-
-            </TableRow>
-        )
-    }
-
 // Export About the Shields function
 // =========================================================
     class AdvancedSearchModal extends Component {
@@ -65,11 +52,44 @@
             this.state = {
               checkedIos: false,
               checkedAndriod: false,
+              queryTerms: ""
             };
         }; 
 
-        search42 = () => {
+        handleTextFieldChange = (event) => {
+            this.setState({
+                queryTerms: event.target.value
+            });
+            console.log(this.state.queryTerms);
+        }
+
+        search42 = (queryTerm) => {
             console.log("Inside search42");
+            this.props.search42Text(queryTerm, "ios");
+        }
+
+        viewApp = (index) => {
+
+            // const tempAppToSubmit = {
+            //     'predatorRisk': (this.state.allShieldSelection.includes('Predator Risk') ? true : false),
+            //     'dangerousBehavior': (this.state.allShieldSelection.includes('Dangerous Behavior') ? true : false),
+            //     'cyberbullying': (this.state.allShieldSelection.includes('Cyberbullying') ? true : false),
+            //     'violentContent': (this.state.allShieldSelection.includes('Violent Content') ? true : false), 
+            //     'sexualContent': (this.state.allShieldSelection.includes('Sexual Content') ? true : false), 
+            //     'dangerRating': this.state.dangerRating, 
+            //     'comments': this.state.comments,
+            //     'alert': this.state.alertChecked,
+            //     'UserId': this.props.user.id, 
+            //     'ListedAppId': this.props.singleApp.id
+            // }
+      
+            // this.props.reviewSubmit(reviewToSubmit);
+            // API.submitReview(reviewToSubmit);
+
+
+            console.log("Trying to view this app: Index: " + index);
+            this.props.search42IosId(index);
+            API.addTempAppListing()
         }
 
         // handleChange = name => event => {
@@ -116,10 +136,10 @@
                          <FormControlLabel 
                            control={<Checkbox
                                 checked={this.state.checkedAndriod}
-                                onChange={this.handleChange('Andriod')}
-                                value="Andriod"
+                                onChange={this.handleChange('Android')}
+                                value="Android"
                                 inputProps={{
-                                'aria-label': 'Andriod',
+                                'aria-label': 'Android',
                                 }}
                             />}
                             label="Andriod"
@@ -143,28 +163,33 @@
                                             label={<p style={{ padding: "20px"}}>Search By App Name...</p>}
                                             fullWidth
                                             InputProps={{ ...params.InputProps, type: 'search' }}
+                                            onChange={this.handleTextFieldChange}
                                         />
                                     )}
                                 />
                             {/* </div>  */}
                         </Grid>
                         <Button
-                            onClick={this.search42}
+                            onClick={() => this.search42(this.state.queryTerms)}
                         >Search</Button>
                         <Grid  style={{width: "100%"}} item> 
                             <Table>
                                 <TableBody>
-                                    {/* <SearchResultsGrid> */}
 
-                                        {searchTestData.map(item => (
-                                            <TableRow> 
+                                        {this.props.appTextSearchResults.map(item => (
+                                            <TableRow
+                                                key={item.trackCensoredName}
+                                            
+                                            > 
 
                                                 <TableCell  align="center"> 
                                                     {item.trackCensoredName}
                                                 </TableCell>
 
                                                 <TableCell  align="center"> 
-                                                    <Button> 
+                                                    <Button
+                                                        onClick={() => this.viewApp(item.trackId)}
+                                                    > 
                                                         View App
                                                     </Button> 
                                                 </TableCell>
@@ -175,7 +200,6 @@
 
 
 
-                                    {/* </SearchResultsGrid> */}
                                 </TableBody>
                             </Table>
                         </Grid> 
@@ -187,14 +211,16 @@
         }
     }
 
-    export default AdvancedSearchModal; 
+    // export default AdvancedSearchModal; 
 
-// const mapStateToProps = state => ({
-//     // shields: state.shields.allShields
-// })
+const mapStateToProps = state => ({
+    appTextSearchResults: state.apps.appTextSearchResults,
+    iosAppIndividualSearchResult: state.apps.iosAppIndividualSearchResult
+})
 
-// export default connect(mapStateToProps, 
-//     { 
-        
-//     }
-// )(AdvancedSearchModal); 
+export default connect(mapStateToProps, 
+    { 
+        search42Text,
+        search42IosId
+    }
+)(AdvancedSearchModal); 

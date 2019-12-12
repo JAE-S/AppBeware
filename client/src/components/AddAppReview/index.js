@@ -78,27 +78,6 @@ const getStyles = () => {
     };
   };
 
-    // function shieldAlerts(){
-
-    //     return (
-    //     <ShieldAlertsClass
-    //         addSingleShield = {this.addSingleShield}
-    //     />
-    //     )
-    // }
-    // function dangerRating(){
-
-    //     return (
-    //         <DangerAlertClass/>
-    //     )
-    // }
-
-    // function shareConcerns(){
-    //     return (
-    //         <CommentAlertClass/>
-    //     )
-    // }
-
 function QontoStepIcon(props) {
     const classes = useQontoStepIconStyles();
     const { active, completed } = props;

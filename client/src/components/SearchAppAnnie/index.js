@@ -315,7 +315,7 @@ class SearchAppAnnie extends React.Component {
           </Grid> 
         </Grid> 
 {/* ------------- TEST ADVANCED SEARCH MODAL ------------- */}
-        {/* <Modal
+        <Modal
             modalTitle={
                 <div>
                   Advanced Search
@@ -327,7 +327,7 @@ class SearchAppAnnie extends React.Component {
                 </Button>
               }
             modalBody={<AdvancedSearchModal/>}      
-        /> */}
+        />
       </Wrapper>
       </div>
     );
