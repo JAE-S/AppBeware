@@ -11,7 +11,7 @@ module.exports = db => {
         email: 'admin@gmail.com',
         password: '1234',
         phoneNumber: '919-111-2222',
-        profilePicture: "https://randomuser.me/api/portraits/lego/6.jpg",
+        profilePicture: "https://randomuser.me/api/portraits/men/37.jpg",
         isAdmin: true
     }).then(function() {
       return db.User.create({
