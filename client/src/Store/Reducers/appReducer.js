@@ -1,4 +1,4 @@
-import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS, GENERATE_SHIELDS_FOR_APPS, VIEW_APP_REVIEWS } from "../Actions/new-types";
+import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS, GENERATE_SHIELDS_FOR_APPS, VIEW_APP_REVIEWS, SEARCH_42_TEXT, SEARCH_42_IOS_ID, ADD_TEMP_LISTING, VIEW_TEMP_SINGLE_APP } from "../Actions/new-types";
 
 const initialState = {
     allListedApps: [],
@@ -6,7 +6,9 @@ const initialState = {
     allAppNames: [],
     trendingApps: [],
     shieldsForApps: [],
-    appReviews: []
+    appReviews: [],
+    appTextSearchResults: [],
+    iosAppIndividualSearchResult: {}
 };
 
 export default function(state=initialState, action) {
@@ -47,6 +49,18 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 appReviews: action.payload.data
+            }
+
+        case SEARCH_42_TEXT:
+            return {
+                ...state,
+                appTextSearchResults: action.payload.data.results
+            }
+
+        case SEARCH_42_IOS_ID:
+            return {
+                ...state,
+                iosAppIndividualSearchResult: action.payload.data
             }
 
         default: 

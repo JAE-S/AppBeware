@@ -1,9 +1,15 @@
 import axios from "axios";
-const ios42SingleAppQuery = "https://data.42matters.com/api/v2.0/ios/apps/lookup.json?id=";
 
 export default {
-  search42Ios: function(queryId) {
-    return axios.get(ios42SingleAppQuery + queryId + "&access_token=" + process.env.APIKEY42);
+
+  // search42Ios: function(queryId) {
+  search42IosId: function(iosId) {
+      return axios.get('api/search-by-ios-id/' + iosId)
+  },
+
+  search42text: function(queryText, platform) {
+    console.log("Inside API.js - search42text");
+    return axios.get('api/new-search/' + queryText + "/" + platform)
   },
 
   // Return all listed apps
@@ -26,6 +32,10 @@ export default {
   getSingleApp: function(appId) {
     console.log("Inside get single app - API.js - using appId: " + appId);
     return axios.get('/api/get-single-app/' + appId);
+  },
+
+  addTempAppListing: function (tempAppData) {
+    return axios.post('/api/add-temp-app-listing', tempAppData)
   },
 
   generateShieldsForApps: function(appId) {

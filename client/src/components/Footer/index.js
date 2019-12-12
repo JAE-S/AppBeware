@@ -46,7 +46,7 @@ function Copyright() {
         Disclaimer
       </Link>
 
-      {' | Sign Out'}
+      {/* {' | Sign Out'} */}
     </Typography>
   )}
 

@@ -1,23 +1,21 @@
 // Import React + Reoters + PropTypes
 // =========================================================
-import React, {Component} from "react";
-import { Route, Switch } from 'react-router'
-import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom';
-
+  import React, {Component} from "react";
+  import { Route, Switch } from 'react-router'
+  import {connect} from 'react-redux'
+  // import {Redirect} from 'react-router-dom';
 // Import Components
 // =========================================================  
-import SplashPage from "./pages/SplashPage"
-import Homepage from "./pages/Homepage"
-import ProfilePage from "./pages/ProfilePage"
-import CategoryPage from "./pages/CategoryPage"
-import AppPage from "./pages/AppPage"
-import Disclaimer from "./pages/Disclaimer"
+  import SplashPage from "./pages/SplashPage"
+  import Homepage from "./pages/Homepage"
+  import ProfilePage from "./pages/ProfilePage"
+  import CategoryPage from "./pages/CategoryPage"
+  import AppPage from "./pages/AppPage"
+  import Disclaimer from "./pages/Disclaimer"
 // Import CSS
 // =========================================================
 import "./assets/styling/appStyle.css"
 import { userInfo} from './Store/Actions/authentication';
-import API from "./utils/API";
 import { AlertsCall } from './Store/Actions/reviewActions'
 
 

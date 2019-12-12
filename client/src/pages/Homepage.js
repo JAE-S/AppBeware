@@ -3,10 +3,10 @@
     import React, { Component } from "react";  
     import { connect } from "react-redux";
     import {Redirect} from 'react-router-dom';
-    import { push } from 'connected-react-router'
+    // import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
-    import { Grid } from '@material-ui/core';   
+    import { Grid, Button } from '@material-ui/core';   
 // Import Custom Components
 // =========================================================
     import SearchAppAnnie from "../components/SearchAppAnnie"
@@ -20,23 +20,20 @@
 // Import Redux Components
 // =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
+    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
     import { AlertsCall } from '../Store/Actions/reviewActions'
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
+    import API from "../utils/API.js"
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
-
+    
 
 class Homepage extends Component {
-
-    state = {
-     
-    }
 
     // Runs Redux to grab all of the categories necessary to render the homepage
     // COMPLETE
@@ -51,8 +48,8 @@ class Homepage extends Component {
         this.props.viewSingleApp(appId);
         this.props.viewAppReviews(appId);
         this.props.history.push('/appPage');
-        // this.props.history.push('/categoryPage');
     }
+
 
     // Grabbing all necessary data from Redux
     componentDidMount() {
@@ -65,6 +62,7 @@ class Homepage extends Component {
         this.props.AlertsCall();
     }
 
+
     render() {
         if(this.props.isloggedIn){
         return (
@@ -73,7 +71,9 @@ class Homepage extends Component {
            <main>
             <HeaderContainer> 
                 <div className="headerBanner">
-                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> Check out our Alert system!</h1>
+                    <h1 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
+                        Check out our Alert system!
+                    </h1>
                 </div>
                 <Wrapper> 
                     <Grid container 
@@ -114,9 +114,15 @@ class Homepage extends Component {
                 viewApp={this.viewApp}
             />
 
-            <Wrapper style={{zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+            <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
                 <HomepageTabNav >
-                    <Grid container spacing={2}>
+                    <Grid 
+                        container 
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                        spacing={2}
+                    >
 
                     {this.props.categories.map(cat => (
                             <CategoryCards
@@ -148,6 +154,7 @@ const mapStateToProps = state => ({
     trendingApps: state.apps.trendingApps,
     appNames: state.apps.allAppNames,
     appReviews: state.apps.appReviews,
+    appTextSearchResults: state.apps.appTextSearchResults,
     shields: state.shields.allShields,
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
@@ -162,6 +169,7 @@ export default connect(mapStateToProps,
         viewAllListedApps, 
         viewAppNames, 
         viewAppReviews,
+        search42Text,
         selectTrendingApps,
         viewAllShields,
         userInfo,

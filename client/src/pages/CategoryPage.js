@@ -12,14 +12,14 @@
     import { withStyles } from '@material-ui/core/styles';
 // Import Material Ui Components
 // =========================================================
-    import { Typography, Grid, Table, TableRow, TableBody, TextField } from '@material-ui/core/';
+    import { Typography, Grid, Table, TableRow, TableBody, TableCell, TextField} from '@material-ui/core/';
     import Autocomplete from '@material-ui/lab/Autocomplete';
 // Import Components
 // =========================================================
     import Nav from "../components/Nav"
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
-    import { Image, Shields, ViewApp, AppDetails} from "../components/SearchResults";
+    import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
     import { userInfo } from '../Store/Actions/authentication';
 // Import styles
 // =========================================================
@@ -88,62 +88,65 @@
                 <>
                 <Nav/>
                 <main>
-                    <Wrapper align="center" style={{paddingTop: 80}}> 
+                    <Wrapper align="center" style={{paddingTop: 40}}> 
                     
-                            <Grid container 
-                                spacing={4}
-                                direction="row"
-                                justify="center"
-                                alignItems="center"
-                            >
-                    
-                                <Grid align="center" item xs={12} sm={3}>
-                                <img 
-                                    style={{ width: "100%", height: "auto", borderRadius: 16 }}
-                                    src={this.props.singleCategoryInfo.imageUrl}
-                                    alt={this.props.singleCategoryInfo.name}    
-                                />
-                                </Grid> 
-                                <Grid item xs={12}  sm={9}>
-                                    <h1 style={{ borderBottom: "1px solid grey", marginRight: "20px"}}>
+                        <Grid container 
+                            spacing={4}
+                            direction="row"
+                            justify="center"
+                            alignItems="center"
+                            style={{marginBottom: 10}}
+                        >
+                
+                            <Grid align="center" item xs={12} sm={3}>
+                            <img 
+                                style={{ width: "100%", height: "auto", borderRadius: 16 }}
+                                className="appIcon"
+                                src={this.props.singleCategoryInfo.imageUrl}
+                                alt={this.props.singleCategoryInfo.name}    
+                            />
+                            </Grid> 
+                            <Grid item xs={12}  sm={9}>
+                                <h1 style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem"}}>
                                     {this.props.singleCategoryInfo.name}
-
-                                    </h1>
-                                    <Typography variant="caption" color="textSecondary">
+                                </h1>
+                                <p style={{fontSize: "1.1rem"}}>
                                     {this.props.singleCategoryInfo.description}
-                                    </Typography>
-                        
-                                </Grid> 
-                        
-                            </Grid>
+                                </p>
+                    
+                            </Grid> 
+                    
+                        </Grid>
                     </Wrapper>
 
-                <Wrapper> 
-                <div style={{ width:"100%" }}>
-                    <InputOverRideOutline
+               
+                <div className="searchBarBackground">
+                <Wrapper style={{paddingTop: "10px"}}> 
+                    <Autocomplete
+                    style={{ maxWidth: "1000px", width:"100%",  }}
                         freeSolo
                         id="search-categories"
+                        className="searchInput"
                         disableClearable
                         options={this.props.categories.map(option => option.name)}
-                        // getOptionLabel={this.props.categories.map(option => option.name)}
                         onChange={this.onTagsChange}
                         renderInput={params => (
-                        <TextField
+                        <InputOverRideOutline
                             {...params}
-                            label="Search By Category"
-                            margin="normal"
-                            variant="outlined"
+                            label={<p style={{ marginLeft: "20px"}}>Search By Category...</p>}
                             fullWidth
                             InputProps={{ ...params.InputProps, type: 'search' }}
                         />
                         )}
                     />
+                    </Wrapper>
                     </div>
-
-                    <Table> 
+                    <Wrapper> 
+                    <Table style={{marginTop: "20px"}}>
+                        <TableHeader/>
                         <TableBody>
                         {this.props.singleCategory.map((app, i) => (
-                            <TableRow key={i}>
+                            <TableRow key={i} style={{borderBottom: "1px solid #13BAC7"}}>
                                 <Image 
                                     title={app.name}
                                     image={app.logoUrl}
@@ -151,16 +154,78 @@
                                 <AppDetails
                                     title={app.name}
                                 />
-                                <Shields
-                                    title="placeholder for badges"
-                                    badgeAlerts="Placeholder for badges"
-                                    // image={app.logoUrl}
-                                />
-                                <ViewApp
-                                title="View App"
-                                viewApp={this.viewApp}
-                                appId={app.id}
-                                />
+                                <TableCell>
+                                    <Grid 
+                                        container 
+                                        style={{width: "100%"}}
+                                        direction="row"
+                                        justify="flex-start"
+                                        alignItems="center"
+                                        spacing={2}
+                                    >
+                                        {app.badge1 ? (
+                                            <Grid item xs={2}>
+                                                <Shields 
+                                                    title={app.badge1Name}
+                                                    image={app.badge1LogoUrl}
+                                                />
+                                            </Grid>
+                                    ) : (
+                                        <div style={{display: "none"}}/>
+                                        )
+                                    }
+                                    {app.badge2 ? (
+                                        <Grid item xs={2}>
+                                            <Shields 
+                                                title={app.badge2Name}
+                                                image={app.badge2LogoUrl}
+                                            />
+                                        </Grid>
+                                    ) : (
+                                        <div style={{display: "none"}}/>
+                                        )
+                                    }
+                                    {app.badge3 ? (
+                                        <Grid item xs={2}>
+                                            <Shields 
+                                                title={app.badge3Name}
+                                                image={app.badge3LogoUrl}
+                                            />
+                                        </Grid>
+                                    ) : (
+                                        <div style={{display: "none"}}/>
+                                        )
+                                    }
+                                    {app.badge4 ? (
+                                        <Grid item xs={2}>
+                                            <Shields 
+                                                title={app.badge4Name}
+                                                image={app.badge4LogoUrl}
+                                            />
+                                        </Grid>
+                                    ) : (
+                                        <div style={{display: "none"}}/>
+                                        )
+                                    }
+                                    {app.badge5 ? (
+                                        <Grid item xs={2}>
+                                            <Shields 
+                                                title={app.badge5Name}
+                                                image={app.badge5LogoUrl}
+                                            />
+                                        </Grid>
+                                    ) : (
+                                        <div style={{display: "none"}}/>
+                                        )
+                                    }
+                                    </Grid>
+                                </TableCell>
+                                <TableCell>
+                                    <ViewApp
+                                        viewApp={this.viewApp}
+                                        appId={app.id}
+                                    />
+                                </TableCell>
                                 
                             </TableRow>
                         ))}
@@ -168,6 +233,7 @@
                 </Table>
 
                 </Wrapper>
+
                 </main>
 
                 <Footer/>

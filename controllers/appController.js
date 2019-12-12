@@ -1,3 +1,7 @@
+const axios = require('axios');
+// const {parse, stringify} = require('flatted/cjs');
+require('dotenv').config();
+
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
   console.log("Length: " + dbArray.length);
@@ -111,7 +115,7 @@ module.exports = function (db) {
 
       getAppReviews: function (req, res) {
         console.log("Inside getAppReviews - AppController")
-        db.AppReviews.findAll({
+        db.AppReview.findAll({
           where: {
             ListedAppId: req.params.id
           },
@@ -128,13 +132,39 @@ module.exports = function (db) {
         });
       },
 
+      search42Text: function (req, res) {
+        // const queryUrl = `https://data.42matters.com/api/v2.0/${req.params.platform}/apps/search.json?q=${req.params.query}&access_token=${process.env.APIKEY42}`;
+        const queryTextUrl = `https://data.42matters.com/api/v2.0/ios/apps/search.json?q=${req.params.query}&access_token=${process.env.APIKEY42}`;
+        axios.get(queryTextUrl)
+          .then(function(response) {
+            res.json(response.data);
+          })
+      },
+
+      search42ByIdIos: function (req, res) {
+        const idQueryUrl = `https://data.42matters.com/api/v2.0/ios/apps/lookup.json?id=${req.params.id}&access_token=${process.env.APIKEY42}`;
+        axios.get(idQueryUrl)
+        .then(function(response) {
+          console.log("Inside display")
+          // console.log(response.data);
+          res.json(response.data);
+        });
+      },
+
+      addTempAppListing: function (req, res) {
+        db.TempAppListing.create(req.body).then(function(dbTempAppListing) {
+          res.json(dbTempAppListing);
+        })
+      },
+
       testQuery: function (req, res) {
         console.log("Inside Test Query")
         db.sequelize.query("SELECT ListedApps.name AS label, AppShieldUsers.appId AS id, AppShieldUsers.shieldId AS Shield_ID, Shields.name AS Shield_Name, Shields.icon AS Shield_Icon FROM ListedApps JOIN AppShieldUsers ON ListedApps.id = AppShieldUsers.appId JOIN Shields ON AppShieldUsers.shieldId = Shields.id ORDER BY ListedApps.name, Shields.id ASC",  { type: db.sequelize.QueryTypes.SELECT})
           .then(function(returnedData) {
             console.log("Length: " + returnedData.length)
-            console.log(JSON.stringify(createNewAppNameArray(returnedData)), null, 4);
-            res.json(createNewAppNameArray(returnedData))
+            // console.log(JSON.stringify(createNewAppNameArray(returnedData)), null, 4);
+            // res.json(createNewAppNameArray(returnedData))
+            res.json(returnedData)
           })
         // res.end();
       },

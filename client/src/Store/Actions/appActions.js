@@ -1,5 +1,5 @@
 import API from "../../utils/API";
-import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS, GENERATE_SHIELDS_FOR_APPS, VIEW_APP_REVIEWS } from "./new-types";
+import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS, GENERATE_SHIELDS_FOR_APPS, VIEW_APP_REVIEWS, SEARCH_42_TEXT, SEARCH_42_IOS_ID, ADD_TEMP_LISTING, VIEW_TEMP_SINGLE_APP } from "./new-types";
 import { push } from 'connected-react-router'
 
 export const viewAllListedApps = () => dispatch => {
@@ -21,6 +21,7 @@ export const viewAppNames = () => dispatch => {
 }
 
 export const viewSingleApp = (appId) => dispatch => {
+    console.log("Inside viewSingleApp - appActions.js");
     API.getSingleApp(appId)
         .then(singleApp => dispatch({
             type: VIEW_SINGLE_APP,
@@ -46,9 +47,37 @@ export const generateShieldsForApps = () => dispatch => {
 }
 
 export const viewAppReviews = (appId) => dispatch => {
+    console.log("Inside Store / appActions.js - about to do API call");
     API.getAppReviews(appId)
         .then(appReviews => dispatch({
             type: VIEW_APP_REVIEWS,
             payload: appReviews
         }))
 }
+
+export const search42Text = (queryText, platform) => dispatch => {
+    console.log("Inside Store / appActions - about to search 42 Text");
+    API.search42text(queryText, platform)
+        .then(appTextSearchResults => dispatch({
+            type: SEARCH_42_TEXT,
+            payload: appTextSearchResults
+        }))
+}
+
+export const search42IosId = (iosId) => dispatch => {
+    console.log("Inside Store / appActions - about to search by 42 ios ID");
+    API.search42IosId(iosId)
+        .then(iosAppIndividualSearchResult => dispatch({
+            type: SEARCH_42_IOS_ID,
+            payload: iosAppIndividualSearchResult
+        }))
+}
+
+export const addTempAppListing = (tempAppListing) => {
+    return {
+        type: ADD_TEMP_LISTING,
+        payload: tempAppListing
+    }
+}
+
+// export const viewTempSingleApp = VIEW_TEMP_SINGLE_APP

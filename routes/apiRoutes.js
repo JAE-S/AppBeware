@@ -31,16 +31,10 @@ module.exports = (passport, db) => {
    router.get('/get-shields', AppController.getShields);
    router.post('/submit-review', AppController.submitReview);
    router.get('/test-query', AppController.testQuery);
-  //  router.post('/get-app-shields/:id', AppController.getAppShields);
-
-
-  //  router.post('/examples', AppController.createExample);
-  //  router.delete('/examples/:id', AppController.deleteExample);
- 
-  //  router.post('/newStudent', AppController.addNewStudent);
-  //  router.post('/newParent', AppController.addNewParent);
-  //  router.post('/newTeacher', AppController.addNewTeacher);
-  //  router.post('/newPickup', AppController.addNewPickup);
+   router.get('/new-search/:query/:platform', AppController.search42Text);
+   router.get('/search-by-ios-id/:id', AppController.search42ByIdIos);
+   router.post('/add-temp-app-listing', AppController.addTempAppListing);
+  //  router.get('/get-temp-single-app')
 
   return router;
 

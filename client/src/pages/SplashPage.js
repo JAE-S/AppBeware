@@ -16,6 +16,11 @@
    import SignUp from "../components/SignUp"
    import Footer from "../components/Footer"
    import Modal from "../components/Modals"
+   import Toasties from "../components/Toasties"
+
+import { render } from 'react-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
 // Assets
 // =========================================================
   import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -38,14 +43,22 @@
           minHeight: "70vh", 
           margin: 8,
           display: "flex", 
-          flexDirection: "column"
+          flexDirection: "column", 
+          boxShadow: "none",
         },
         title: {
             fontSize: "38px",
-            paddingBottom: 10,
             justifyContent: "center", 
-            paddingTop: "60px"
+            // paddingTop: "60px"
+            margin: 0,
         },
+         header: {
+            fontSize: "16px",
+            paddingBottom: 5,
+            justifyContent: "center", 
+            paddingTop: "5px", 
+        },
+        
         typography: {
             padding: theme.spacing(2),
           },
@@ -59,23 +72,35 @@ function SplashPage() {
 
   return (
     <div>
-    <Wrapper style={{ minHeight: "100vh", maxWidth: "1200px", display: "flex"}}>
+    <Wrapper style={{ minHeight: "calc(100vh - 64px)", maxWidth: "1200px", display: "flex"}}>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
-              <Grid container spacing={8}>
-                <Grid item xs={6} sm={6}>
-                  <img alt="AppBeware herologo" src={ABLogo} style={{ width: "110%"}}/>
-                </Grid>
-                <Grid item xs={6} sm={6}>
-                  <h1 className={classes.title}>AppBeware</h1>
-                </Grid>
+            {/* <Paper className={classes.paper}> */}
+              <Grid 
+                container 
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={2}
+              >
+                {/* <Grid item xs={12}> */}
+                  <img alt="AppBeware herologo" src={ABLogo} style={{ width: "80%"}}/>
+                {/* </Grid> */}
+                {/* <Grid item xs={12}> */}
+                  <h1 align="center" className={classes.title}>AppBeware</h1>
+                 
+                {/* </Grid> */}
               </Grid>
-              <h3 style={{ padding: 20 }} className="splash">
+                <div className="headerBanner" style={{borderRadius: "4px"}}>
+                  <h2 align="center" style={{padding: "2px", color: "#f7f7f7"}}>
+                    +6 Million Apps. The Danger is Real...
+                  </h2>
+                </div>
+              <h3 className="splash">
                 AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
               </h3>
-
-              <Grid item md={12}>
+          <Grid container >
+              <Grid item xs={6}>
                 <Modal 
                   modalIcon={
                     <div>
@@ -96,7 +121,7 @@ function SplashPage() {
                   
                 />
               </Grid>
-              <Grid item md={12}>
+              <Grid item xs={6}>
                 
                 <Modal 
                  modalIcon={
@@ -117,6 +142,7 @@ function SplashPage() {
                  modalBody={<SignUp/>}
                   
                 />
+              </Grid>
               </Grid>
               {/* GOOGLE SIGN - FUTURE DEVELOPMENT */}
               {/* <Grid item md={12}> 
@@ -139,11 +165,13 @@ function SplashPage() {
                 />
                 </div>
               </Grid> */}
-            </Paper>
+            {/* </Paper> */}
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>Placeholder for video.</Paper>
-        </Grid>
+            
+          {/* <Paper className={classes.paper}> */}
+            {/* <h1 className={classes.header}>The Dangers are real</h1> */}
+           
+        <Toasties />
       </Grid>
     </Wrapper>
     <Footer/>

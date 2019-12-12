@@ -20,7 +20,6 @@
 // Import Material UI components 
 // =========================================================
   import { Button, Grid, Typography, StepLabel, Step, Stepper, StepButton } from '@material-ui/core/';
-
 // Import Material UI icons
 // =========================================================
   import { Check } from '@material-ui/icons/';
@@ -79,27 +78,6 @@ const getStyles = () => {
     };
   };
 
-    // function shieldAlerts(){
-
-    //     return (
-    //     <ShieldAlertsClass
-    //         addSingleShield = {this.addSingleShield}
-    //     />
-    //     )
-    // }
-    // function dangerRating(){
-
-    //     return (
-    //         <DangerAlertClass/>
-    //     )
-    // }
-
-    // function shareConcerns(){
-    //     return (
-    //         <CommentAlertClass/>
-    //     )
-    // }
-
 function QontoStepIcon(props) {
     const classes = useQontoStepIconStyles();
     const { active, completed } = props;
@@ -124,18 +102,6 @@ function QontoStepIcon(props) {
     return ['Select Shield Alerts', 'Select A Danger Alert', 'Share Your Concerns'];
   }
 
-//   function getStepContent(stepIndex) {
-//     switch (stepIndex) {
-//         case 0:
-//         return this.shieldAlerts();
-//       case 1:
-//         return this.dangerRating();
-//       case 2:
-//         return this.shareConcerns();
-//       default:
-//         return 'Select Shield Alerts';
-//     }
-//   }
   const generateArrayOfShields = (array, shield) => {
     console.log("Inside generateArrayOfShields");
     let tempShieldArray = array;
@@ -194,7 +160,18 @@ function QontoStepIcon(props) {
           case 2:
             return this.shareConcerns();
           default:
-            return 'Select Shield Alerts';
+          return (
+            <div align="center">
+                <h3> Thank you for sharing you&apos;re concerns!</h3>
+                <div className="modal-footer">
+                    <Link to="/homePage" style={{textDecoration: "none"}}>
+                    <Button className="teal">
+                        Return to the homePage
+                    </Button>
+                    </Link>
+              </div>
+            </div>
+          );
         }
       }
       
@@ -225,6 +202,8 @@ function QontoStepIcon(props) {
       };
 
       handleFinish = () => {
+        const {stepIndex} = this.state;
+        this.setState({stepIndex: -1});
 
         const reviewToSubmit = {
           'predatorRisk': (this.state.allShieldSelection.includes('Predator Risk') ? true : false),
@@ -241,19 +220,6 @@ function QontoStepIcon(props) {
 
         this.props.reviewSubmit(reviewToSubmit);
         API.submitReview(reviewToSubmit);
-
-        return (
-          <div align="center">
-               <h3> Thank you for sharing you&apos;re concerns!</h3>
-               <div className="modal-footer">
-                    <Link to="/homePage" style={{textDecoration: "none"}}>
-                    <Button className="teal">
-                        Return to the homePage
-                    </Button>
-                    </Link>
-              </div>
-            </div>
-        )
       }
 
       addSingleShield = (shield) => {
@@ -340,6 +306,8 @@ function QontoStepIcon(props) {
               >
               <Grid item>
               <div>
+              {stepIndex > -1 ? (
+                <>
                 <Button 
                     disabled={stepIndex === 0} 
                     onClick={this.handlePrev} 
@@ -353,18 +321,26 @@ function QontoStepIcon(props) {
                     variant="contained"
                     className="teal"
                     onClick={this.handleFinish}
+                    id="finshButton"
                   > 
                     Finish 
                   </Button>
+                  
                 ) : ( 
                   <Button
                     variant="contained"
                     className="teal"
+                    id="nextButton"
                     onClick={this.handleNext}
                   > 
                     Next 
                   </Button>
                 )}
+                </>
+                ) : 
+                  ( <> </>)
+                }
+
                </div>
                   </Grid>
               </Grid>
@@ -377,13 +353,6 @@ function QontoStepIcon(props) {
     }
       
 const mapStateToProps = state => ({
-  // categories: state.categories.allCategories,
-  // singleCategoryInfo: state.categories.singleCategoryInfo,
-  // apps: state.apps.allListedApps,
-  // trendingApps: state.apps.trendingApps,
-  // appNames: state.apps.allAppNames,
-  // appReviews: state.apps.appReviews,
-  // shields: state.shields.allShields,
   singleApp: state.apps.singleApp,
   user: state.user.userInfo,
   completeReview: state.reviews.completeReview
@@ -391,14 +360,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, 
     { 
-        // viewAllCategories, 
-        // viewSingleCategory, 
-        // viewSingleCategoryInfo,
-        // viewAllListedApps, 
-        // viewAppNames, 
-        // viewAppReviews,
-        // selectTrendingApps,
-        // viewAllShields,
         viewSingleApp,
         userInfo,
         reviewSubmit

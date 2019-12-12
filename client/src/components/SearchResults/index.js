@@ -1,5 +1,6 @@
 import React from "react"; 
-import { TableCell, Button } from '@material-ui/core';
+import { TableCell, Button, TableHead, TableRow, Tooltip } from '@material-ui/core';
+import "../../assets/styling/appStyle.css"
 
 export function Image(props) {
     return (
@@ -7,6 +8,7 @@ export function Image(props) {
             <img
                 alt={props.title}
                 src={props.image}
+                className="appIcon"
                 style={{ width: 80, height: 80, borderRadius: 16 }}
             />
         </TableCell>
@@ -22,28 +24,65 @@ export function AppDetails(props){
 
 export function Shields(props){
     return (
-        <TableCell>
-            {props.title}
-              {/* <img
+        <Tooltip disableFocusListener title={props.title}>
+              <img
                 alt={props.title}
-                src={props.badgeAlerts}
-                style={{ width: 80, height: 80, borderRadius: 16 }}
-            /> */}
-        </TableCell>
+                src={props.image}
+                style={{ width: 44, height: 44}}
+            />
+        </Tooltip>
+    )
+}
+export function ShieldsHomepage(props){
+    return (
+        <Tooltip disableFocusListener title={props.title}>
+            <img
+                alt={props.title}
+                src={props.image}
+                style={{ width: 36, height: 36}}
+            />
+        </Tooltip>
     )
 }
 
 export function ViewApp(props){
     return (
-        <TableCell>
-            <Button
+        <div align="right" id="container" style={{paddingTop: "10px", paddingRight: "20px"}}>
+            <button 
+                className="learn-more" 
+                size="small"
                 onClick={() => props.viewApp(props.appId)}
             >
-            {props.title}
-            </Button> 
-            
-        </TableCell>
+                <span className="circle">
+                    <span className="icon arrow"></span>
+                </span>
+                <h4>
+                    <span className="button-text">View App</span>
+                </h4>
+            </button>
+        </div>
     ) 
+}
+
+export function TableHeader(props){
+    return (
+        <TableHead style={{borderBottom: "2px solid #13BAC7"}}> 
+            <TableRow>
+                <TableCell> 
+                    <h2 align="center">App Icon</h2>
+                </TableCell>
+                <TableCell> 
+                    <h2 align="center">App Name</h2>
+                </TableCell>
+                <TableCell> 
+                    <h2 align="center">Shield Alerts</h2>
+                </TableCell>
+                <TableCell> 
+                    <h2 align="center">View App</h2>
+                </TableCell>
+            </TableRow> 
+        </TableHead> 
+    )
 }
 
 // export function AddToWatchList(props){
