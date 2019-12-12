@@ -427,7 +427,7 @@ label + .MuiInput-formControl {
     text-align: left;
     display: flex;
     align-items: center;
-    border-radius: 14px;
+    border-radius: 4px!important;
     margin: 0 auto;
     padding: 5px;
     font-family: sans-serif;
@@ -449,6 +449,7 @@ label + .MuiInput-formControl {
   }
 
   .toastieContainer:after {
+    border-radius: 4px!important;
     content: '';
     position: absolute;
     top: calc(-1 * var(--borderWidth));
@@ -485,7 +486,7 @@ label + .MuiInput-formControl {
   background: transparent!important;
 }
 .Toastify__toast-container {
-  max-width: 500px!important; 
+  max-width: 600px!important; 
   width: 100%!important;
 }
 .Toastify__toast {

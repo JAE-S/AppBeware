@@ -61,7 +61,7 @@ class Toasties extends Component {
             // closeOnClick={true}
             pauseOnHover={false}
             draggable={true} 
-            style={{ padding: "32px", zIndex: 1}}
+            style={{ paddingLeft: "60px", zIndex: 1}}
           />
         </Grid>
       );
