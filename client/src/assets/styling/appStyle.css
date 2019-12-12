@@ -421,6 +421,21 @@ label + .MuiInput-formControl {
   text-decoration: underline;
 }
 
+
+/* toasties */
+.toastieContainer{
+    text-align: left;
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    margin: 0 auto;
+    padding: 5px;
+    font-family: sans-serif;
+    font-style: normal;
+    background-color: #13BAC7;
+    
+}
+
 .bannerText {
   color: rgb(255, 255, 255); 
   padding: 4px;
@@ -430,4 +445,5 @@ label + .MuiInput-formControl {
   width: 90%;
   margin: 0 auto;
   border-radius: 14px;
+
 }

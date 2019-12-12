@@ -10,6 +10,10 @@
 // =========================================================
 import ToastData from "./tempToastData";
 
+// Import Styles
+// =========================================================
+    import "../../assets/styling/appStyle.css"
+
 class Toasties extends Component {
     notify = () => {
       {
@@ -17,7 +21,7 @@ class Toasties extends Component {
           
             toast(
                 <Grid 
-                  container 
+                  className="toastieContainer"
                   spacing={1}
                   direction="row"
                   justify="flex-start"
@@ -25,13 +29,11 @@ class Toasties extends Component {
                   key={object.appName}
                 > 
                   <Grid item xs={2}> 
-                  {/* ONLY FOR TESTING - use img tag below */}
-                    <div style={{backgroundColor: "grey", height: "40px", width: "40px", borderRadius: "8px"}}>{object.appIcon}</div>
-                    {/* <img 
-                      alt={item.appName}
+                    <img 
+                      alt={object.appName}
                       src={object.appIcon}
                       style={{height: "40px", width: "40px", borderRadius: "8px"}}
-                    /> */}
+                    />
                   </Grid> 
                   <Grid item xs={10}> 
                     <h4>{object.appHeadline}</h4>
@@ -54,9 +56,9 @@ class Toasties extends Component {
             transition={Zoom}
             newestOnTop
             rtl={false}
-            autoClose={9000}
+            autoClose={false}
             hideProgressBar={true}
-            closeOnClick={false}
+            closeOnClick={true}
             pauseOnHover={false}
             draggable={true} 
             style={{marginRight: "20px"}}
