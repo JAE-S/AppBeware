@@ -105,6 +105,7 @@
 
     const handleProfileMenuOpen = event => {
       setAnchorEl(event.currentTarget);
+      props.AlertsCall()
     };
 
     const handleMobileMenuClose = () => {
@@ -228,7 +229,7 @@
     return (
       <div className={classes.grow}>
         <AppBar className={classes.nav} position="fixed"style={{marginBottom: "64px"}}>
-          <Toolbar>
+           <Toolbar>
             
             <Typography className={classes.title} variant="h6" noWrap>            
               <Link className={classes.title} style={{ textDecoration: 'none' }} to='/Homepage' >
@@ -281,7 +282,7 @@
   const mapStateToProps = state => ({
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alerts
+    alert: state.reviews.alert
 })
 
 export default connect(mapStateToProps, 

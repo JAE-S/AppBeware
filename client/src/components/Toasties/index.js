@@ -15,32 +15,35 @@ import ToastData from "./tempToastData";
     import "../../assets/styling/appStyle.css"
 
 class Toasties extends Component {
+    data = ToastData
     notify = () => {
       {
-        ToastData.map((object) => {
-          if (object.appId < 6)
-            toast(
-                <Grid 
-                  className="toastieContainer"
-                  spacing={2}
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  key={object.appName}
-                > 
-                  <Grid align="center" item xs={2}> 
-                    <img 
-                      alt={object.appName}
-                      src={object.appIcon}
-                      className="toastieImage appIcon"
-                    />
-                  </Grid> 
-                  <Grid item xs={10}> 
-                    <h3 style={{ color: "#0f8e98", letterSpacing: 1, padding: "4px", fontWeight: "800px"}}>{object.appHeadline}</h3>
-                  </Grid> 
-                </Grid> 
-            )
-          }
+        ToastData.forEach((data, i) => console.log(data, i),
+        setTimeout(() =>{
+          console.log(this)
+          // if (object.appId < 6)
+          //   toast(
+          //       <Grid 
+          //         className="toastieContainer"
+          //         spacing={2}
+          //         direction="row"
+          //         justify="center"
+          //         alignItems="center"
+          //         key={object.appName}
+          //       > 
+          //         <Grid align="center" item xs={2}> 
+          //           <img 
+          //             alt={object.appName}
+          //             src={object.appIcon}
+          //             className="toastieImage appIcon"
+          //           />
+          //         </Grid> 
+          //         <Grid item xs={10}> 
+          //           <h3 style={{ color: "#0f8e98", letterSpacing: 1, padding: "4px", fontWeight: "800px"}}>{object.appHeadline}</h3>
+          //         </Grid> 
+          //       </Grid> 
+          //   )
+          }, (1) * 2000)
        )
       }
     }

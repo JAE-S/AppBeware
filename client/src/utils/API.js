@@ -113,6 +113,10 @@ export default {
 
   getAlerts: function () {
     return axios.get('/api/alerts')
+  },
+
+  changeAlert: function (update) {
+    return axios.put('/api/changer', update)
   }
 
 };

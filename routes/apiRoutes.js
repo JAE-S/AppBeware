@@ -17,6 +17,7 @@ module.exports = (passport, db) => {
   router.post('/user/confirm', AuthController.confirmAuth);
   router.get('/userInfo', AppController.userInfo)
   router.get('/alerts', AppController.getAlerts)
+  router.put('/changer/:id', AppController.changer)
 
    // App
    router.get('/listed-app', AppController.getListedApp);

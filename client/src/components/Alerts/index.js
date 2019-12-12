@@ -14,6 +14,7 @@
 
     import "../../assets/styling/appStyle.css"
     import { AlertsCall } from '../../Store/Actions/reviewActions'
+    import API from '../../utils/API'
     
     const RedSwitch = withStyles({
     switchBase: {
@@ -36,21 +37,25 @@
             console.log(props)
         
         const handleChange = name => event => {
-            setState({ ...state, [name]: event.target.checked });
+            API.changeAlert({
+                alert: event.target.checked
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         };
         return (
             <Table style={{ width: "100%"}}>
                 <TableBody>
-                    {/* {this.props.alert.map((app, index) => 
-                        <TableRow key={index} >
+                    {props.alerts.map((data) =>
+                        <TableRow key={data.id} >
                             <TableCell >
-                                <Tooltip title={`Click to view ${app.name}`} arrow>
-                                    <img alt={app.name} src={app.logoUrl} style={{ height: 60, width: 60, borderRadius: "6px", paddingRight: 4 }}/>
+                                <Tooltip title={`Click to view ${data.ListedApp.name}`} arrow>
+                                    <img alt={data.ListedApp.name} src={data.ListedApp.logoUrl} style={{ height: 60, width: 60, borderRadius: "6px", paddingRight: 4 }}/>
                                 </Tooltip>
                             </TableCell>
                             
                             <TableCell> 
-                                <h4>{app.name}</h4>
+                                <h4>{data.ListedApp.name}</h4>
                             </TableCell>
                             
                             <TableCell>
@@ -61,16 +66,16 @@
                                             <FormControlLabel
                                                 control={
                                                     <RedSwitch
-                                                    checked={state.checkedA}
-                                                    onChange={handleChange('checkedA')}
-                                                    value="checkedA"
+                                                    checked={data.alert}
+                                                    onChange={handleChange()}
+                                                    value={data.id}
                                                     />
                                                 }
                                             /> 
                                         </Grid>
                                         <Grid item>On</Grid>
                                         <Grid item>
-                                        <Tooltip title={`Remove ${app.name} from alerts`}>
+                                        <Tooltip title={`Remove ${data.ListedApp.name} from alerts`}>
                                             <CloseIcon  
                                                 type="submit"
                                                 className="closeIcon"
@@ -81,7 +86,7 @@
                                 </FormGroup>
                             </TableCell>
                         </TableRow>
-                    )}  */}
+                    )} 
                 </TableBody>
             </Table>
         )
