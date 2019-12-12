@@ -265,7 +265,7 @@ const dangerRating = [
                                             <div> 
                                             {index === 0 ? (
                                                 <div>
-                                                    {`${this.props.singleApp.badge1Count} Alert(s)`}
+                                                    {`${this.props.singleApp.badge1Count} Alerts`}
                                                 </div>
                                             ) : (
                                                 <div style={{display: "none"}}/>
@@ -273,7 +273,7 @@ const dangerRating = [
                                             }
                                             {index === 1 ? (
                                                 <div>
-                                                    {`${this.props.singleApp.badge2Count} Alert(s)`}
+                                                    {`${this.props.singleApp.badge2Count} Alerts`}
                                                 </div>
                                             ) : (
                                                 <div style={{display: "none"}}/>
@@ -281,7 +281,7 @@ const dangerRating = [
                                             }
                                             {index === 2 ? (
                                                 <div>
-                                                    {`${this.props.singleApp.badge3Count} Alert(s)`}
+                                                    {`${this.props.singleApp.badge3Count} Alerts`}
                                                 </div>
                                             ) : (
                                                 <div style={{display: "none"}}/>
@@ -289,7 +289,7 @@ const dangerRating = [
                                             }
                                             {index === 3 ? (
                                                 <div>
-                                                    {`${this.props.singleApp.badge4Count} Alert(s)`}
+                                                    {`${this.props.singleApp.badge4Count} Alerts`}
                                                 </div>
                                             ) : (
                                                 <div style={{display: "none"}}/>
@@ -297,7 +297,7 @@ const dangerRating = [
                                             }
                                             {index === 4 ? (
                                                 <div>
-                                                    {`${this.props.singleApp.badge5Count} Alert(s)`}                                                   
+                                                    {`${this.props.singleApp.badge5Count} Alerts`}                                                   
                                                 </div>
                                             ) : (
                                                 <div style={{display: "none"}}/>
@@ -339,12 +339,59 @@ const dangerRating = [
                                 />}
                             usernameLeft={review.User.name} 
                             // TODO: Ultimately need to generate this data - next 2 fields
-                            // reviewCountLeft={3}
+                            reviewCountLeft={3}
                             datePostedLeft="Nov 18, 2019"
                             // ---> Right Side     
                             // TODO: Need to redo this so it's not hard-coded - badges
-                            badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={ PR_icon }/>}
-                            dangerRatingRight={<AppRatings ratingValue={review.dangerRating}/>}
+                        //     badgesRight={
+                        //         <div> 
+                        //                     {review.User.predatorRisk ? (
+                        //                         <div>
+                        //                             <img alt={this.props.singleApp.badge1Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={this.props.singleApp.badge1LogoUrl} />
+                                                   
+                        //                         </div>
+                        //                     ) : (
+                        //                         <div style={{display: "none"}}/>
+                        //                         )
+                        //                     }
+                        //                     {review.User.dangerousBehavior ? (
+                        //                         <div>
+                        //                             <img alt={this.props.singleApp.badge2Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge2LogoUrl} />
+                                                  
+                        //                         </div>
+                        //                     ) : (
+                        //                         <div style={{display: "none"}}/>
+                        //                         )
+                        //                     }
+                        //                     {review.User.violentContent ? (
+                        //                         <div>
+                        //                             <img alt={this.props.singleApp.badge3Name} style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={review.User.badge3LogoUrl} />                                          
+                        //                         </div>
+                        //                     ) : (
+                        //                         <div style={{display: "none"}}/>
+                        //                         )
+                        //                     }
+                        //                     {review.User.cyberbullying ? (
+                        //                         <div>
+                        //                             <img alt={this.props.singleApp.badge4Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge4LogoUrl} />                                               
+                        //                         </div>
+                        //                     ) : (
+                        //                         <div style={{display: "none"}}/>
+                        //                         )
+                        //                     }
+                        //                     {review.User.sexualContent ? (
+                        //                         <div>
+                        //                             <img alt={this.props.singleApp.badge5Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge5LogoUrl} />                                                                                                 
+                        //                         </div>
+                        //                     ) : (
+                        //                         <div style={{display: "none"}}/>
+                        //                         )
+                        //                     }
+                        //                 </div> 
+                            
+                            
+                        // }
+                            // dangerRatingRight={<AppRatings ratingValue={review.dangerRating}/>}
                             commentsRight={
                                 <div>
                                     <Truncate
