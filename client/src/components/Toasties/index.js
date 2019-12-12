@@ -26,11 +26,9 @@ class Toasties extends Component {
                   direction="row"
                   justify="flex-start"
                   alignItems="center"
-                  
                   key={object.appName}
                 > 
                   <Grid item xs={2}> 
-                 
                     <img 
                       alt={object.appName}
                       src={object.appIcon}
