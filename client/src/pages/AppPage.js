@@ -280,13 +280,14 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
                             commentsRight={
                                 <div>
                                     <Truncate
+                            
                                         lines={!expanded && lines}
                                         ellipsis={(
                                             <span className="readMore" >... <a href='#' className="readMore" onClick={this.toggleLines}>{more}</a></span>
                                         )}
                                         onTruncate={this.handleTruncate}
                                     >
-                                    <p align="left">{review.comments}</p>
+                                    <p align="left"  trimWhitespace>{review.comments}</p>
                                     </Truncate>
                                     {!truncated && expanded && (
                                         <span> <a className="readMore" href='#' onClick={this.toggleLines}>{less}</a></span>
@@ -324,7 +325,7 @@ const normalise = value => (value - 0) * 100 / (10 - 0);
     AppPage.defaultProps = {
         lines: 3,
         more: 'Read more',
-        less: 'Show less'
+        less: 'Show less',
     };
      
     AppPage.propTypes = {

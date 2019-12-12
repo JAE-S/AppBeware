@@ -18,25 +18,25 @@ class Toasties extends Component {
     notify = () => {
       {
         ToastData.map((object) => {
-          
+          if (object.appId < 6)
             toast(
                 <Grid 
                   className="toastieContainer"
-                  spacing={1}
+                  spacing={2}
                   direction="row"
-                  justify="flex-start"
+                  justify="center"
                   alignItems="center"
                   key={object.appName}
                 > 
-                  <Grid item xs={2}> 
+                  <Grid align="center" item xs={2}> 
                     <img 
                       alt={object.appName}
                       src={object.appIcon}
-                      style={{height: "40px", width: "40px", borderRadius: "8px"}}
+                      className="toastieImage appIcon"
                     />
                   </Grid> 
                   <Grid item xs={10}> 
-                    <h4>{object.appHeadline}</h4>
+                    <h3 style={{ color: "#0f8e98", letterSpacing: 1, padding: "4px", fontWeight: "800px"}}>{object.appHeadline}</h3>
                   </Grid> 
                 </Grid> 
             )
@@ -51,19 +51,19 @@ class Toasties extends Component {
 
     render(){
       return (
-        <div>
+        <Grid container>
           <ToastContainer
             transition={Zoom}
             newestOnTop
             rtl={false}
             autoClose={false}
             hideProgressBar={true}
-            closeOnClick={true}
+            // closeOnClick={true}
             pauseOnHover={false}
             draggable={true} 
-            style={{marginRight: "20px"}}
+            style={{ padding: "32px", zIndex: 1}}
           />
-        </div>
+        </Grid>
       );
     }
   }
