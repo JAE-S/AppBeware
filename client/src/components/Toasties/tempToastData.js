@@ -17,7 +17,7 @@ const ToastData = [
      {
         appId: 8, 
         appName: "Various Apps",
-        appIcon: "https://images.foxtv.com/static.fox5ny.com/www.fox5ny.com/content/uploads/2019/09/764/432/operation-intercept-vii-apps_1569598980322.jpg_7678265_ver1.0_1280_720.jpg?ve=1&tl=1",
+        appIcon: "https://apicms.thestar.com.my/uploads/images/2019/08/07/199161.jpg",
         appHeadline: "Florida sheriff warns parents about more apps following arrest of 23 suspected child predators",
         source: "- FOX 5 New York"
     },
