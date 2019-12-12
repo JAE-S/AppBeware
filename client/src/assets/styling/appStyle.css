@@ -420,3 +420,17 @@ label + .MuiInput-formControl {
 .readMore:hover {
   text-decoration: underline;
 }
+
+
+/* toasties */
+.toastieContainer{
+    text-align: left;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    /* background-color: #f7f7f7; */
+   
+}

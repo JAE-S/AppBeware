@@ -17,6 +17,10 @@
    import Footer from "../components/Footer"
    import Modal from "../components/Modals"
    import Toasties from "../components/Toasties"
+
+import { render } from 'react-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
 // Assets
 // =========================================================
   import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -47,6 +51,13 @@
             justifyContent: "center", 
             paddingTop: "60px"
         },
+         header: {
+            fontSize: "16px",
+            paddingBottom: 5,
+            justifyContent: "center", 
+            paddingTop: "5px"
+        },
+        
         typography: {
             padding: theme.spacing(2),
           },
@@ -143,8 +154,16 @@ function SplashPage() {
             </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <Paper className={classes.paper}>Placeholder for video.</Paper> */}
-            <Toasties/>
+          
+                  
+            
+          <Paper className={classes.paper}>
+            <h1 className={classes.header}>The Dangers are real</h1>
+           
+            <Toasties />
+            </Paper> 
+           
+            
         </Grid>
       </Grid>
     </Wrapper>
