@@ -1,6 +1,7 @@
 // Import React
 // =========================================================
     import React from 'react';
+    import { connect } from "react-redux"; 
 // Import Material UI Styles
 // =========================================================
     import { withStyles  } from '@material-ui/core/styles';
@@ -12,34 +13,7 @@
     import CloseIcon from '@material-ui/icons/Close';    
 
     import "../../assets/styling/appStyle.css"
-// Import Media
-// =========================================================
-    import CB_icon from "../../assets/images/shields/cyberbullying.png";
-    import DB_icon from "../../assets/images/shields/dangerous_behavior.png";
-    import PR_icon from "../../assets/images/shields/predator_risk.png";
-
-    const data = [
-        { logoUrl: "https://images-na.ssl-images-amazon.com/images/I/61S7YvhOwVL.png",
-          name: "Burnbook",
-          warnRatingAverage: 2.63,
-          badges: CB_icon,
-          createdAt: '2 hours ago',
-        },
-        { logoUrl: "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/4a/60/3f/4a603f8b-56e2-eeb7-f25b-be00151e271b/source/1024x1024bb.jpg",
-          name: "Holla",
-          warnRatingAverage: 4.1,
-          badges: PR_icon,
-          createdAt: '1 hours ago',
-        },
-      
-        { logoUrl: "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/1b/5d/7a/1b5d7a8e-9c92-3d42-3118-97d3d6aa87e1/source/1024x1024bb.jpg",
-          name: "TikTok",
-          warnRatingAverage: 2.83,
-          badges: DB_icon,
-          createdAt: '8 hours ago',
-        }
-      
-      ];
+    import { AlertsCall } from '../../Store/Actions/reviewActions'
     
     const RedSwitch = withStyles({
     switchBase: {
@@ -55,10 +29,11 @@
     track: {},
     })(Switch);
       
-    export function Alerts() {
+    export function Alerts(props) {
         const [state, setState] = React.useState({
             checkedA: true,
         });
+            console.log(props)
         
         const handleChange = name => event => {
             setState({ ...state, [name]: event.target.checked });
@@ -66,7 +41,7 @@
         return (
             <Table style={{ width: "100%"}}>
                 <TableBody>
-                    {data.map((app, index) => 
+                    {/* {this.props.alert.map((app, index) => 
                         <TableRow key={index} >
                             <TableCell >
                                 <Tooltip title={`Click to view ${app.name}`} arrow>
@@ -106,15 +81,9 @@
                                 </FormGroup>
                             </TableCell>
                         </TableRow>
-                    )} 
+                    )}  */}
                 </TableBody>
             </Table>
-        )
-    }
-
-    export function Count() {
-        return (
-            <div>{data.length}</div>
         )
     }
     
@@ -142,16 +111,28 @@
             onClose={handleClose}
           >
           <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
-          
-          {data.map((app, index) => 
+{/*           
+          {this.props.alert.map((app, index) => 
             <MenuItem key={index} onClick={handleClose}>
                 <img alt={app.name} src={app.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.name}
             </MenuItem>
-            )}
+            )} */}
            
           </Menu>
         </div>
       );
     }
+
+    
+
+    const mapStateToProps = state => ({
+        alert: state.reviews.alerts
+    })
+
+    export default connect(mapStateToProps, 
+        {
+            AlertsCall
+        }
+    )(Alerts, Notifications); 
 
     

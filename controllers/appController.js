@@ -255,6 +255,21 @@ module.exports = function (db) {
         }).catch(function(error) {
           console.log(error)
         });
+      },
+
+      getAlerts: function (req, res) {
+        db.AppReview.findAll({
+          where: {
+            UserId: req.session.passport.user.id,
+            alert: true || 1 
+          },
+          include: {
+            model: db.ListedApp
+          }
+        }).then((alerts) => {
+          res.json(alerts)
+        })
+        .catch(err => console.log(err))
       }
 
 

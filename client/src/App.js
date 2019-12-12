@@ -17,6 +17,8 @@ import Disclaimer from "./pages/Disclaimer"
 // =========================================================
 import "./assets/styling/appStyle.css"
 import { userInfo} from './Store/Actions/authentication';
+import API from "./utils/API";
+import { AlertsCall } from './Store/Actions/reviewActions'
 
 
 // App Routes
@@ -25,7 +27,8 @@ import { userInfo} from './Store/Actions/authentication';
     
     componentDidMount() {
       console.log("mounted main")
-      this.props.userInfo();   
+      this.props.userInfo();
+      this.props.AlertsCall();
   }
     render(){
         return ( 
@@ -45,11 +48,13 @@ import { userInfo} from './Store/Actions/authentication';
 
   const mapStateToProps = state => ({
     user: state.user.userInfo,
-    isloggedIn: state.user.isloggedIn
+    isloggedIn: state.user.isloggedIn,
+    alert: state.reviews.alerts
 })
 
 export default connect(mapStateToProps, 
     {
-        userInfo
+        userInfo,
+        AlertsCall
     }
 )(App);

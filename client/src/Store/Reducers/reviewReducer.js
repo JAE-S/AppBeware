@@ -1,8 +1,9 @@
-import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS } from "../Actions/new-types";
+import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS, ALERT_CALLS } from "../Actions/new-types";
 
 const initialState = {
     addedShields: [],
-    completeReview: {}
+    completeReview: {},
+    alert: {}
 };
 
 export default function(state=initialState, action) {
@@ -33,6 +34,12 @@ export default function(state=initialState, action) {
             //     addedShields: initialState.addedShields
             // }
             return initialState
+
+        case ALERT_CALLS:
+            return {
+                ...state,
+                alert: action.payload.data
+            }
     
         default: 
             return state;

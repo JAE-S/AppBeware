@@ -99,6 +99,10 @@ export default {
 
   submitReview: function (completeReview) {
     return axios.post('api/submit-review', completeReview)
+  },
+
+  getAlerts: function () {
+    return axios.get('/api/alerts')
   }
 
 };
