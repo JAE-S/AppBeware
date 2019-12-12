@@ -6,7 +6,7 @@
     import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
-    import { Grid } from '@material-ui/core';   
+    import { Grid, Button } from '@material-ui/core';   
 // Import Custom Components
 // =========================================================
     import SearchAppAnnie from "../components/SearchAppAnnie"
@@ -30,7 +30,7 @@
 // =========================================================
     import "../assets/styling/appStyle.css"
 
-
+    import API from "../utils/API.js"
 class Homepage extends Component {
 
     state = {
@@ -53,6 +53,12 @@ class Homepage extends Component {
         // this.props.history.push('/categoryPage');
     }
 
+    clickMe = () => {
+        console.log("Inside ClickMe")
+        console.log(process.env);
+        API.search42Ios();
+    }
+
     // Grabbing all necessary data from Redux
     componentDidMount() {
         this.props.viewAllCategories();
@@ -61,6 +67,8 @@ class Homepage extends Component {
         this.props.selectTrendingApps();
         this.props.viewAllShields();
         this.props.userInfo();
+        console.log("INITIAL API SEARCH: ");
+        console.log(API.search42Ios());
     }
 
     render() {
@@ -109,6 +117,10 @@ class Homepage extends Component {
                 
                 </Wrapper>
             </HeaderContainer>
+            <Button
+                onClick = {this.clickMe}>
+                Click ME!!!
+            </Button>
 
             <SearchAppAnnie 
                 viewApp={this.viewApp}

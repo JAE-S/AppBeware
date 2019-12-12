@@ -1,9 +1,29 @@
 import axios from "axios";
-const ios42SingleAppQuery = "https://data.42matters.com/api/v2.0/ios/apps/lookup.json?id=";
+const ios42SingleAppQuery = "https://cors-anywhere.herokuapp.com/https://data.42matters.com/api/v2.0/ios/apps/lookup.json?id=";
+const queryId = 1125318983;
+require('dotenv').config();
 
 export default {
-  search42Ios: function(queryId) {
-    return axios.get(ios42SingleAppQuery + queryId + "&access_token=" + process.env.APIKEY42);
+
+  // search42Ios: function(queryId) {
+  search42Ios: function() {
+      // return axios.get(ios42SingleAppQuery + queryId + "&access_token=b4773a173799cba9f9d6b33a00864a6609180a7f")
+      return axios.get(ios42SingleAppQuery + queryId + "&access_token=" + process.env.REACT_APP_APIKEY42)
+      .then(function(response) {
+        console.log("Inside display")
+        console.log(response);
+      });
+  },
+
+  search42text: function() {
+    const tempQueryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=Facebook&access_token=" + process.env.APIKEY42;
+
+    // const queryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=" + req.params.query + "&access_token=" + process.env.APIKEY42;
+    return axios.get(tempQueryUrl)
+    .then(function(response) {
+      console.log(response);
+    })
+    // const tempQueryUrl = "https://data.42matters.com/api/v2.0/ios/apps/search.json?q=Facebook&access_token=" + process.env.APIKEY42;
   },
 
   // Return all listed apps
