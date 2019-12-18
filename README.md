@@ -64,10 +64,11 @@
 * <b>Planning:</b> Informed by the user stories, an Entity Relationship Digram was created to map out essential features of the site. The ERD  was then used as a blueprint for the low-fidelity wireframes.
 * <b>Demo:</b>
 <img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="center" title="AppBeware's Initial Wireframes" width="56%" height="auto">
+
+* <b>Graphic Icons:</b> When creating the icons we tried to use familiar shapes that users could easily identify with. The shield icon's primary shape resembles a stop sign with the inner shape constructed as a shield. These iconic shapes work together to visually represent our user story (make aware, become aware, stay aware).
     <img src="client/src/assets/Readme_assets/appbeware_icons.png" align="center"
      title="AppBeware Icons" width="100%" height="auto">
 
-<b>Graphic Icons:</b> When creating the icons we tried to use familiar shapes that users could easily identify with. The shield icon's primary shape resembles a stop sign with the inner shape constructed as a shield. These iconic shapes work together to visually represent our user story (make aware, become aware, stay aware).
      
 ---
 
@@ -86,11 +87,21 @@
   * <b>Framework:</b> Material UI
   * React
   * Redux
+  * Redux-thunk
+  * Connected-react-router
+  * History
+  * Clsx
+  * Downshift
+  * Toastify
+  * Proptypes
   * MySQL
-  * Express 
+  * Express
+  * Sequelize
   * Path 
   * Node 
   * if-env
+  * Moment
+  * Passport
   * Nodemon
   * Concurrently
   * Heroku (Heroku build)
@@ -125,18 +136,63 @@
 
          AppBeware
          ├── Client
-         │   ├── Public
+         │   ├── build
+         │   ├── node_modules
+         │   ├── public
          │   ├── src
+         │   │   ├── assets
+         |   │   │   ├── images
+         |   │   │   ├── Readme_assets
+         |   │   │   └── styling
          │   │   ├── components
+         |   │   │   ├── AboutTheShields
+         |   │   │   ├── AddAppReview
+         |   │   │   ├── Alerts
+         |   │   │   ├── AppPageComponents
+         |   │   │   ├── CategoryCards
+         |   │   │   ├── Footer
+         |   │   │   ├── HeaderContainer
+         |   │   │   ├── HomePageShieldLayout
+         |   │   │   ├── HomepageTabNav
+         |   │   │   ├── HoverShieldInfo
+         |   │   │   ├── Modals
+         |   │   │   ├── Nav
+         |   │   │   ├── Ratings
+         |   │   │   ├── SearchAppAnnie
+         |   │   │   ├── SearchResults
+         |   │   │   ├── SignIn
+         |   │   │   ├── SignUp
+         |   │   │   ├── Toasties
+         |   │   │   ├── TopTrendingApps
+         |   │   │   ├── UserDetailsPanel
+         |   │   │   └── Wrapper
          │   │   ├── pages
-         │   │   ├── App.css
+         |   │   │   ├── AppPage.js
+         |   │   │   ├── CategoryPage.js
+         |   │   │   ├── Disclaimer.js
+         |   │   │   ├── Homepage.js
+         |   │   │   ├── ProfilePage.js
+         |   │   │   └── SplashPage.js
+         │   │   ├── Store
+         |   │   │   ├── Actions
+         |   │   │   ├── Reducers
+         |   │   │   ├── history.js
+         |   │   │   ├── index.js
+         |   │   │   └── InitialState.json
+         │   │   ├── utils
          │   │   ├── App.js
          │   │   └── index.js
          │   ├── .gitignore
          │   ├── package.json
          │   └── Readme.md
+         ├── config
+         ├── controllers
+         ├── db
+         ├── middlewares
+         ├── models
+         ├── node_modules
+         ├── routes
          ├── .gitignore
-         ├── google-test.html
          ├── package.json
          ├── Readme.md 
          └── server.js
