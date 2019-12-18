@@ -18,7 +18,7 @@
 ---
 
 ## Table of Contents
-  * [Problem & Solotuion](#problem-&-solution)
+  * [Problem & Solotuion](#the-problem)
   * [User Story](#user-story)
   * [Design Process](#design-process)
   * [API'S](#API'S)
@@ -32,17 +32,13 @@
 ---
 
 ### The Problem:  
-   # With over 6 million + Apps There are very few timely, relevant, current and credible sources to determine if apps could be potentially dangerous. 
+ <b>With over 6 million + Apps There are very few timely, relevant, current and credible sources to determine if apps could be potentially dangerous.<b> 
    
-   Current Resources: 
-
-      1. Google Search: Returns thousands of results.  It's difficult to determine relevant or credible content.  ​
-
-      2. Curated Sites: Editorial content may be based on limited opinions and not real experiences.  May be rated on criteria that is not relevant to all parents.
-      
-      3. News: This information is usually available after an event occurs.  By this time, your child may have already been exposed.​
-      
-      4. Word of Mouth: This information is usually slow traveling, and may never reach the people who may find it useful.​
+ Current Resources: 
+   1. Google Search: Returns thousands of results. It's difficult to determine relevant or credible content.
+   2. Curated Sites: Editorial content may be based on limited opinions and not real experiences.  May be rated on criteria that is not relevant to all parents.
+   3. News: This information is usually available after an event occurs. By this time, your child may have already been exposed.
+   4. Word of Mouth: This information is usually slow traveling, and may never reach the people who may find it useful.
 
 ### The Solution:  
   * Create a platform for users to share their personal experiences with dangerous apps 
@@ -65,12 +61,24 @@
 ## Design Process
 
 <img src="client/src/assets/Readme_assets/appbeware_erd.png" align="left"
-     title="AppBeware Entity Relationship Diagram" width="30%" height="auto">
+     title="AppBeware's Entity Relationship Diagram" width="auto" height="326">
 
 <img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="right"
-     title="AppBeware Entity Relationship Diagram" width="70%" height="auto">
+     title="AppBeware's Initial Wireframes" width="auto" height="326">
 
 ---
+__
+
+<b>Planning:</b> Informed by the user stories, an Entity Relationship Digram was created to map out essential features of the site. The ERD  was then used as a blueprint for the low-fidelity wireframes.
+
+__
+    <img src="client/src/assets/Readme_assets/appbeware_icons.png" align="center"
+     title="AppBeware Icons" width="100%" height="auto">
+
+<b>Graphic Icons:</b> When creating the icons we tried to use familiar shapes that users could easily identify with. The shield icon's primary shape resembles a stop sign with the inner shape constructed as a shield. These iconic shapes work together to visually represent our user story (make aware, become aware, stay aware).
+     
+---
+
 ## API'S
 
 * <b>App meta data API: </b> https://42matters.com/app-market-data
