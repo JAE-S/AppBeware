@@ -61,10 +61,10 @@
 ## Design Process
 
 <img src="client/src/assets/Readme_assets/appbeware_erd.png" align="left"
-     title="AppBeware's Entity Relationship Diagram" width="auto" height="327">
+     title="AppBeware's Entity Relationship Diagram" width="auto" height="326">
 
-<img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="right"
-     title="AppBeware's Initial Wireframes" width="auto" height="327">
+<img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="left"
+     title="AppBeware's Initial Wireframes" width="auto" height="326">
 
 ---
 __
