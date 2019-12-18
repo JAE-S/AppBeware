@@ -62,6 +62,7 @@
 <img src="client/src/assets/Readme_assets/appbeware_erd.png" align="left" title="AppBeware's Entity Relationship Diagram" width="40%" height="auto">
 
 * <b>Planning:</b> Informed by the user stories, an Entity Relationship Digram was created to map out essential features of the site. The ERD  was then used as a blueprint for the low-fidelity wireframes.
+
 * <b>Demo:</b>
 <img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="center" title="AppBeware's Initial Wireframes" width="56%" height="auto">
 
