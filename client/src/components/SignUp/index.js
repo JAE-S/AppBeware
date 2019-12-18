@@ -63,7 +63,24 @@
           password: this.state.password,
           email: this.state.email,
         })
-        .then(res => console.log(res))
+        .then(
+             setTimeout(() => {
+            console.log(this)
+            API.signIn({
+            email: this.state.email,
+            password: this.state.password
+          })
+          .then(res => {
+            if(res.data.loggedIn){
+              console.log("worked")
+              window.location.pathname = '/homepage'
+            }
+            else{
+              console.log("failed")
+            }
+          })
+          .catch(err => console.log(err))}, 3000)
+        )
         .catch(err => console.log(err))
       }
     }
