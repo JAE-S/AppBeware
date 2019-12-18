@@ -18,6 +18,8 @@
 ---
 
 ## Table of Contents
+  * [Problem & Solotuion](#problem-&-solution)
+  * [User Story](#user-story)
   * [Design Process](#design-process)
   * [API'S](#API'S)
   * [Technologies](#technologies)
@@ -25,15 +27,49 @@
   * [Brainstorming Document](#brainstorming-document)
   * [Resource Links](#resource-links)
   * [File Architecture](#file-architecture)
-
   * [Click here to visit the site!](http://www.appbeware.com)
 
 ---
 
-## Design Process
-```
+### The Problem:  
+   # With over 6 million + Apps There are very few timely, relevant, current and credible sources to determine if apps could be potentially dangerous. 
+   
+   Current Resources: 
 
-```
+      1. Google Search: Returns thousands of results.  It's difficult to determine relevant or credible content.  ​
+
+      2. Curated Sites: Editorial content may be based on limited opinions and not real experiences.  May be rated on criteria that is not relevant to all parents.
+      
+      3. News: This information is usually available after an event occurs.  By this time, your child may have already been exposed.​
+      
+      4. Word of Mouth: This information is usually slow traveling, and may never reach the people who may find it useful.​
+
+### The Solution:  
+  * Create a platform for users to share their personal experiences with dangerous apps 
+  * Provide a standardized alert system  
+  * Primary alerts established based on the community​'s concerns
+  * Display trending apps
+  * Credibility through authentication
+
+---
+
+## User Story
+  1. As a user, I want to flag apps that I have found to be dangerous so that I can help other users make informed decisions about the dangers of apps for their children. // make aware​
+
+  2. As a user, I want an up-to-date, credible, reliable source to help traverse the app world so that I can determine if an app is dangerous for my child. // become aware​
+
+  3. As a user, I want to be able to get updates about apps that I am concerned about. // stay aware
+
+---
+
+## Design Process
+
+<img src="client/src/assets/Readme_assets/appbeware_erd.png" align="left"
+     title="AppBeware Entity Relationship Diagram" width="30%" height="auto">
+
+<img src="client/src/assets/Readme_assets/appbeware_wireframe.gif" align="right"
+     title="AppBeware Entity Relationship Diagram" width="70%" height="auto">
+
 ---
 ## API'S
 
