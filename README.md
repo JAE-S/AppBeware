@@ -5,15 +5,15 @@
      title="AppBeware" width="40%" height="auto">
 # Welcome to AppBeware!
 
-#### AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
+#### AppBeware is a crowdsourced platform that empowers the community to raise awareness about the potential dangers of apps.
 ---
 
 
-#### Collaborators: 
+#### Collaborators:
+* [Jessie Sholler](https://github.com/JAE-S) | Visual Designer & Front-End Developer 
+* [LaMana Donadelle](https://github.com/lamanaml) | Front-End Developer   
 * [Ethan Donahue](https://github.com/EthanD0922) | Backend Developer  
 * [Scott Moore](https://github.com/woodwindscott) | Backend Developer 
-* [Jessie Sholler](https://github.com/JAE-S) | Visual Designer & Front-End Developer 
-* [LaMana Donadelle](https://github.com/lamanaml) | Front-End Developer  
 
 ---
 
@@ -110,9 +110,15 @@
 ---
 
 ## Features And Functionality
-```
 
-```
+  * <b>Redux</b>
+    Early on, it became clear that we were running into a problem managing state through React.  Given the number of components and reaching into 4 generations from varying pages, we were faced with a choice.  Either manage state at the app.js level and engage in prop-drilling (passing props from component to component through multiple generations or find a way to manage state globally using a third-party tool.  After some research, Jessie discovered Redux as a way to create a global state that could be accessed by every page and component regardless of ancestry.
+
+    There was a steep learning curve, but once the team learned how to manage Redux actions and reducers as well as the appropriate file structure (capitalization was key in order to work with Heroku), managing state became much easier.  Pretty soon, managing clicks, API calls and generating data upon page loads would be routed through as many as five locations (utils/API.js, routes, controllers, Redux actions and reducers). Once complete, the global state would be updated and the appropriate rendering on the screen would be handled through React.
+
+    The most useful tool in troubleshooting Redux and managing all of the actions was through a Google Chrome extension, Redux DevTools.  This required some additional customization inside Store/index.js. The images below show the power of this extension and the ability for the programmer to see when actions are being called and the resulting changes in state.
+
+
 ---
 
 ## Brainstorming Document
