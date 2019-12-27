@@ -110,9 +110,10 @@
 ---
 
 ## Features And Functionality
-```
 
-```
+<img src="client/src/assets/Readme_assets/AppBeware_signin_gif.gif" align="center"
+     title="AppBeware" width="100%" height="auto">
+
 ---
 
 ## Brainstorming Document
