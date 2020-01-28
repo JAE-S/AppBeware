@@ -488,6 +488,7 @@ label + .MuiInput-formControl {
 .Toastify__toast-container {
   max-width: 600px!important; 
   width: 100%!important;
+  position:relative!important;
 }
 .Toastify__toast {
   box-shadow: none!important; 

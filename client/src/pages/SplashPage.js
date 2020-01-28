@@ -14,7 +14,7 @@
    import Wrapper from "../components/Wrapper"
    import SignIn from "../components/SignIn"
    import SignUp from "../components/SignUp"
-   import Footer from "../components/Footer"
+   import {SplashFooter} from "../components/Footer"
    import Modal from "../components/Modals"
    import Toasties from "../components/Toasties"
 
@@ -47,7 +47,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
           boxShadow: "none",
         },
         title: {
-            fontSize: "38px",
+            fontSize: "40px",
             justifyContent: "center", 
             // paddingTop: "60px"
             margin: 0,
@@ -72,10 +72,36 @@ function SplashPage() {
 
   return (
     <div>
-    <Wrapper style={{ minHeight: "calc(100vh - 64px)", maxWidth: "1200px", display: "flex"}}>
+       {/* <div style={{width: "100%"}}> */}
+      <h1 className="headerBanner" align="center" style={{fontSize: "40px", padding: "6px", marginBottom: "0px", marginTop: "0px"}}>AppBeware</h1>
+      {/* </div> */}
+
+    <Wrapper style={{ minHeight: "calc(100vh - 137px)", maxWidth: "1200px", display: "flex"}}>
+    
       <Grid container spacing={8}>
-        <Grid item xs={12} sm={6}>
-            {/* <Paper className={classes.paper}> */}
+     
+        <Grid item xs={12} sm={12}>
+      
+          <Grid 
+            container 
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Grid item sm={5} md={6}>
+              <img alt="AppBeware herologo" src={ABLogo} style={{ width: "80%", marginTop: "0px", marginRight: "auto", marginBottom: "0px", marginLeft: "auto", display: "flex"}}/>
+            </Grid>
+        
+            <Grid item xs={8} sm={7} md={6}>
+              <Toasties style={{ position: "relative!important"}} />
+            </Grid>
+
+          </Grid>
+ 
+          <Grid container>
+            <Grid item xs={12} sm={12} md={6}>
+              
               <Grid 
                 container 
                 direction="row"
@@ -83,24 +109,13 @@ function SplashPage() {
                 alignItems="center"
                 spacing={2}
               >
-                {/* <Grid item xs={12}> */}
-                  <img alt="AppBeware herologo" src={ABLogo} style={{ width: "80%"}}/>
-                {/* </Grid> */}
-                {/* <Grid item xs={12}> */}
-                  <h1 align="center" className={classes.title}>AppBeware</h1>
-                 
-                {/* </Grid> */}
-              </Grid>
-                <div className="headerBanner" style={{borderRadius: "4px"}}>
-                  <h2 align="center" style={{padding: "2px", color: "#f7f7f7"}}>
-                    +6 Million Apps. The Danger is Real...
-                  </h2>
-                </div>
-              <h3 className="splash">
-                AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
-              </h3>
-          <Grid container >
-              <Grid item xs={6}>
+                <h2 className="headerBanner" align="center" style={{borderRadius: "4px", marginBottom: "0px", paddingBottom: "4px", paddingTop: "2px", color: "#f7f7f7", width: "100%"}}>
+                  +6 Million Apps. The Danger is Real...
+                </h2>
+                <h3 className="splash" style={{margin: "0px"}}>
+                  AppBeware is a crowdsource platform that empowers the community to raise awareness about the potential dangers of apps.
+                </h3>
+
                 <Modal 
                   modalIcon={
                     <div>
@@ -118,12 +133,9 @@ function SplashPage() {
                   }
                   openModal={<Button  className="teal login" >Sign In</Button>}
                   modalBody={<SignIn/>}
-                  
                 />
-              </Grid>
-              <Grid item xs={6}>
-                
-                <Modal 
+
+              <Modal 
                  modalIcon={
                     <div>
                       <Avatar className={classes.avatar}>
@@ -142,7 +154,11 @@ function SplashPage() {
                  modalBody={<SignUp/>}
                   
                 />
+
               </Grid>
+
+              </Grid>
+
               </Grid>
               {/* GOOGLE SIGN - FUTURE DEVELOPMENT */}
               {/* <Grid item md={12}> 
@@ -167,14 +183,10 @@ function SplashPage() {
               </Grid> */}
             {/* </Paper> */}
         </Grid>
-            
-          {/* <Paper className={classes.paper}> */}
-            {/* <h1 className={classes.header}>The Dangers are real</h1> */}
-           
-        <Toasties />
       </Grid>
     </Wrapper>
-    <Footer/>
+    <SplashFooter/>
+
     </div>
   )
 }
