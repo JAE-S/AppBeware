@@ -71,7 +71,7 @@ module.exports = (passport, db) => {
       },
       updatePhone: (req, res) => {
         db.User.update({
-          phoneNumber: req.body.phone
+          phoneNumber: req.body.phoneNumber 
         }, {
           where: { id: req.params.id }
         }).then(result => {

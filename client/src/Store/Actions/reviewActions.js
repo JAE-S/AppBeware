@@ -1,5 +1,5 @@
 import API from "../../utils/API";
-import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS } from "./new-types";
+import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS, ALERT_CALLS} from "./new-types";
 
 export const addShieldToApp = (newShield) => {
 
@@ -21,4 +21,12 @@ export const resetAddedShields = () => {
         type: RESET_ADDED_SHIELDS,
         payload: []
     }
+}
+
+export const AlertsCall = () => dispatch => {
+    API.getAlerts()
+    .then(alertCalls => dispatch ({
+       type: ALERT_CALLS,
+        payload: alertCalls
+    }))
 }

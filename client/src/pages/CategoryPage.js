@@ -83,7 +83,6 @@
         }
 
         render(props) {
-            console.log(this.props.isloggedIn)
             if(this.props.isloggedIn){
             return (
                 <>
