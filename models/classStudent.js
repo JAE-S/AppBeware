@@ -5,20 +5,25 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true
       },
-      myClassId: {
+      classId: {
         allowNull: false,
         type: DataTypes.INTEGER,
 
       },
-      myStudentId: {
+      studentId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-      },
-      count: {
-        allowNull: false,
-        type: DataTypes.INTEGER
       }
+      // count: {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER
+      // }
     });
+
+    ClassStudent.associate = (models) => {
+      ClassStudent.belongsTo(models.Class, {  });
+      ClassStudent.belongsTo(models.Student, { });
+    };
 
     return ClassStudent;
   };
