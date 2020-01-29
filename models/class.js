@@ -25,13 +25,29 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     });
+    Class.associate = (models) => {
+      Class.hasMany(models.ClassStudent, {
+        // through: 'TempTable',
+        // as: 'student',
+        // foreignKey: 'classId',
+        // otherKey: 'studentId'
+      });
+    };
     // Class.associate = (models) => {
     //   Class.belongsToMany(models.Student, {
-    //     through: 'ClassStudents',
+    //     through: 'TempTable',
     //     as: 'student',
     //     foreignKey: 'classId',
     //     otherKey: 'studentId'
     //   });
     // };
+    Class.associate = (models) => {
+      Class.belongsToMany(models.Student, {
+        through: 'ClassStudents',
+        as: 'student',
+        foreignKey: 'classId',
+        otherKey: 'studentId'
+      });
+    };
     return Class;
   };
