@@ -150,6 +150,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
         ListedApp.hasMany(models.AppReview);
+        ListedApp.hasMany(models.UserAppNotification);
     };
 
     return ListedApp;

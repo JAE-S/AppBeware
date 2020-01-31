@@ -10,6 +10,7 @@ const classStudentData = require('./seedData/classStudentData');
 const productData = require('./seedData/productData');
 const departmentData = require('./seedData/departmentData');
 const productDepartmentData = require('./seedData/productDepartmentData');
+const userAppNotificationData = require('./seedData/userAppNotificationData');
 
 
 
@@ -147,6 +148,10 @@ module.exports = db => {
       return db.Department.bulkCreate(departmentData);
     }).then(function() {
       return db.ProductDepartment.bulkCreate(productDepartmentData);
+    }).then(function() {
+      console.log("Inside User App Notification");
+      console.log(userAppNotificationData);
+      return db.UserAppNotification.bulkCreate(userAppNotificationData);
     }).then(function() {
 
       // This section is just testing to see if the join table is working properly.
