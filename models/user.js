@@ -69,6 +69,7 @@ module.exports = function (sequelize, DataTypes) {
 
   User.associate = function (models) {
     User.hasMany(models.AppReview);
+    User.hasMany(models.UserAppNotification);
   };
   
   return User;
