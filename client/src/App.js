@@ -16,7 +16,7 @@
 // =========================================================
 import "./assets/styling/appStyle.css"
 import { userInfo} from './Store/Actions/authentication';
-import { AlertsCall } from './Store/Actions/reviewActions'
+import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "./Store/Actions/userActions";
 
 
 // App Routes
@@ -26,8 +26,10 @@ import { AlertsCall } from './Store/Actions/reviewActions'
     componentDidMount() {
       console.log("mounted main")
       this.props.userInfo();
-      this.props.AlertsCall();
-  }
+      this.props.viewAllUserAppNotifications();
+      this.props.viewActiveUserAppNotifications();
+    }
+    
     render(){
         return ( 
             <>
@@ -47,12 +49,14 @@ import { AlertsCall } from './Store/Actions/reviewActions'
   const mapStateToProps = state => ({
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alerts
+    allUserAppNotifications: state.notifications.allUserAppNotifications,
+    activeUserAppNotifications: state.notifications.activeUserAppNotifications
 })
 
 export default connect(mapStateToProps, 
     {
         userInfo,
-        AlertsCall
+        viewAllUserAppNotifications,
+        viewActiveUserAppNotifications
     }
 )(App);

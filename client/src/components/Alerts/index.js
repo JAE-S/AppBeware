@@ -12,8 +12,8 @@
 // =========================================================
     import CloseIcon from '@material-ui/icons/Close';    
 
+    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
     import "../../assets/styling/appStyle.css"
-    import { AlertsCall } from '../../Store/Actions/reviewActions'
     import API from '../../utils/API'
     
     const RedSwitch = withStyles({
@@ -34,15 +34,23 @@
         const [state, setState] = React.useState({
             checkedA: true,
         });
-            console.log(props)
         
+        console.log(props)
+        
+        // TODO: This will need to be updated with new Redux mapping
         const handleChange = name => event => {
+            console.log("Inside handleChange")
             API.changeAlert({
                 alert: event.target.checked
             })
             .then(res => console.log(res))
             .catch(err => console.log(err))
         };
+
+        const deleteAppNotification = () => {
+            console.log("Are you trying to delete me?");
+        }
+
         return (
             <Table style={{ width: "100%"}}>
                 <TableBody>
@@ -75,12 +83,13 @@
                                         </Grid>
                                         <Grid item>On</Grid>
                                         <Grid item>
-                                        <Tooltip title={`Remove ${data.ListedApp.name} from alerts`}>
-                                            <CloseIcon  
-                                                type="submit"
-                                                className="closeIcon"
-                                            />
-                                        </Tooltip>
+                                            <Tooltip title={`Remove ${data.ListedApp.name} from alerts`}>
+                                                <CloseIcon  
+                                                    type="submit"
+                                                    className="closeIcon"
+                                                    // onChange={deleteAppNotification()}
+                                                />
+                                            </Tooltip>
                                         </Grid>
                                     </Grid>
                                 </FormGroup>
@@ -93,15 +102,42 @@
     }
     
     export function Notifications(props) {
+
+    console.log(props)
+
+
       const [anchorEl, setAnchorEl] = React.useState(null);
     
       const handleClick = event => {
+        console.log(props.activeAlerts);
+        console.log(props.activeUserAppNotifications);
         setAnchorEl(event.currentTarget);
       };
     
       const handleClose = () => {
         setAnchorEl(null);
       };
+
+      const myMapArray = [
+        {
+            "id": 21,
+            "alert": 0,
+            "createdAt": "2020-02-02T22:09:11.000Z",
+            "updatedAt": "2020-02-02T22:09:11.000Z",
+            "ListedAppId": 25,
+            "UserId": 8
+            },
+            {
+            "id": 26,
+            "alert": 0,
+            "createdAt": "2020-02-02T22:09:11.000Z",
+            "updatedAt": "2020-02-02T22:09:11.000Z",
+            "ListedAppId": 33,
+            "UserId": 8
+        }
+      ];
+
+      console.log(myMapArray);
     
       return (
         <div>
@@ -115,13 +151,26 @@
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+
           <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
-{/*           
-          {this.props.alert.map((app, index) => 
-            <MenuItem key={index} onClick={handleClose}>
-                <img alt={app.name} src={app.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.name}
+
+            {/* {props.activeAlerts.map((app, index) =>  */}
+                <MenuItem key={1} onClick={handleClose}>
+                    <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {"My new app"}
+                </MenuItem>
+            {/* )} */}
+
+            {myMapArray.map((app, index) => 
+                    <MenuItem key={app.id} onClick={handleClose}>
+                <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.id}
             </MenuItem>
-            )} */}
+            )}
+
+           {/* {props.activeUserAppNotifications.rows.map((app, index) => 
+                <MenuItem key={index} onClick={handleClose}>
+                    <img alt={app.ListedApp.name} src={app.ListedApp.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.ListedApp.name}
+                </MenuItem>
+           )} */}
            
           </Menu>
         </div>
@@ -131,12 +180,15 @@
     
 
     const mapStateToProps = state => ({
-        alert: state.reviews.alerts
+        alert: state.reviews.alerts,
+        allUserAppNotifications: state.notifications.allUserAppNotifications,
+        activeUserAppNotifications: state.notifications.activeUserAppNotifications
     })
 
     export default connect(mapStateToProps, 
         {
-            AlertsCall
+            viewAllUserAppNotifications,
+            viewActiveUserAppNotifications
         }
     )(Alerts, Notifications); 
 

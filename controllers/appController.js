@@ -2,18 +2,6 @@ const axios = require('axios');
 // const {parse, stringify} = require('flatted/cjs');
 require('dotenv').config();
 
-const updateAlertStatus = (userId, appId, alertStatus) => {
-  console.log("You made it to the redirect!!");
-  return db.UserAppNotification.update({
-    alert: !alertStatus,
-    where: {
-      UserId: userId,
-      ListedAppId: appId
-    }
-  })
-  // res.end;
-};
-
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
   console.log("Length: " + dbArray.length);
@@ -318,7 +306,11 @@ module.exports = function (db) {
           where: {
             UserId: req.session.passport.user.id,
             alert: true
-          }
+          },
+          include: [
+            {model: db.User},
+            {model: db.ListedApp},
+          ]
         }).then((dbAlertCount) => {
           res.json(dbAlertCount)
         }).catch(err => console.log(err))
@@ -329,13 +321,6 @@ module.exports = function (db) {
         res.end;
       },
 
-      // STEP 1: Determine if record exists
-      // IF TRUE, change status of alert to opposite of current status
-      // IF FALSE, create the new record
-
-
-
-      // TODO: Update with user id and listed app id from req.params
       checkAlertStatus: function (req, res) {
         console.log("Inside checkAlertStatus");
         console.log(req.params);

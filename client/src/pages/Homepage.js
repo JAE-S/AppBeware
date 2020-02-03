@@ -23,7 +23,7 @@
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
-    import { AlertsCall } from '../Store/Actions/reviewActions';
+    // import { AlertsCall } from '../Store/Actions/reviewActions';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../Store/Actions/userActions";
 // Import Media
 // =========================================================
@@ -60,7 +60,7 @@ class Homepage extends Component {
         this.props.selectTrendingApps();
         this.props.viewAllShields();
         this.props.userInfo();
-        this.props.AlertsCall();
+        // this.props.AlertsCall();
         this.props.viewAllUserAppNotifications();
         this.props.viewActiveUserAppNotifications();
     }
@@ -162,8 +162,8 @@ const mapStateToProps = state => ({
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
     alert: state.reviews.alert,
-    allUserAppNotifications: state.notifications.viewAllUserAppNotifications,
-    activeUserAppNotifications: state.notifications.viewActiveUserAppNotifications
+    allUserAppNotifications: state.notifications.allUserAppNotifications,
+    activeUserAppNotifications: state.notifications.activeUserAppNotifications
 })
 
 export default connect(mapStateToProps, 
@@ -178,7 +178,7 @@ export default connect(mapStateToProps,
         selectTrendingApps,
         viewAllShields,
         userInfo,
-        AlertsCall,
+        // AlertsCall,
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications
     })(Homepage); 

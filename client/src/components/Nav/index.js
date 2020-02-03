@@ -23,7 +23,6 @@
     import AboutTheShields from "../AboutTheShields";
     import {Alerts, Notifications } from "../Alerts";
     import {userInfo} from '../../Store/Actions/authentication';
-    import {AlertsCall} from '../../Store/Actions/reviewActions';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
 
 // Custom Styles
@@ -106,7 +105,7 @@
 
     const handleProfileMenuOpen = event => {
       setAnchorEl(event.currentTarget);
-      props.AlertsCall()
+      props.viewActiveUserAppNotifications();
     };
 
     const handleMobileMenuClose = () => {
@@ -158,7 +157,7 @@
               modalTitle="Alert Settings"
               openModal="Alert Settings"
               modalBody={<Alerts
-              alerts= {props.alert}/>}
+              alerts= {props.allUserAppNotifications.rows}/>}
               modalButton1="Close"
           />
         
@@ -209,6 +208,7 @@
       <MenuItem onClick={handleMenuClose}>
           <Badge 
           // badgeContent={<Count/>}
+          badgeContent={props.activeUserAppNotifications.count}
           >
               Alerts
           </Badge>
@@ -242,11 +242,16 @@
             <div className={classes.sectionDesktop}>
               <IconButton 
               // aria-label={`show ${<Count/>} new notifications`} 
+              aria-label={`show ${props.activeUserAppNotifications.count} new notifications`} 
               color="inherit">
                 <Badge 
                 // badgeContent={<Count/>} 
+                badgeContent={props.activeUserAppNotifications.count} 
                 color="secondary">
-                  <Notifications showAlerts={<NotificationsIcon />}/>
+                  <Notifications 
+                    showAlerts={<NotificationsIcon />}
+                    activeAlerts={props.activeUserAppNotifications.rows}
+                    />
                 </Badge>
               </IconButton>
               <IconButton
@@ -283,15 +288,14 @@
   const mapStateToProps = state => ({
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alert,
-    allUserAppNotifications: state.notifications.viewAllUserAppNotifications,
-    activeUserAppNotifications: state.notifications.viewActiveUserAppNotifications
+    allUserAppNotifications: state.notifications.allUserAppNotifications,
+    activeUserAppNotifications: state.notifications.activeUserAppNotifications
 })
 
 export default connect(mapStateToProps, 
     {
         userInfo,
-        AlertsCall,
+        // AlertsCall,
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications
     }
