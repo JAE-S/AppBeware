@@ -14,7 +14,7 @@ export const viewAllUserAppNotifications = () => dispatch => {
 }
 
 export const viewActiveUserAppNotifications = () => dispatch => {
-    console.log("Inside viewActiveUserAppNotifications - userActions.js");
+    console.log("ACTIVE ONLY --- Inside viewActiveUserAppNotifications - userActions.js");
     // API.getAllUserAppNotifications(userId)
     API.getAlertCount()
         .then(activeUserAppNotifications => dispatch({

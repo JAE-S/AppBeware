@@ -2,7 +2,7 @@ import { VIEW_ALL_USER_APP_NOTIFICATIONS, VIEW_ACTIVE_USER_APP_NOTIFICATIONS } f
 
 const initialState = {
     allUserAppNotifications: [],
-    activeUserAppNotifications: [],
+    activeUserAppNotifications: {},
     // singleApp: {},
     // allAppNames: [],
     // trendingApps: [],
