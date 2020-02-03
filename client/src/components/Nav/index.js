@@ -22,8 +22,9 @@
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
     import {Alerts, Notifications } from "../Alerts";
-    import {userInfo} from '../../Store/Actions/authentication'
-    import {AlertsCall} from '../../Store/Actions/reviewActions'
+    import {userInfo} from '../../Store/Actions/authentication';
+    import {AlertsCall} from '../../Store/Actions/reviewActions';
+    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
 
 // Custom Styles
 // =========================================================
@@ -282,12 +283,16 @@
   const mapStateToProps = state => ({
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alert
+    alert: state.reviews.alert,
+    allUserAppNotifications: state.notifications.viewAllUserAppNotifications,
+    activeUserAppNotifications: state.notifications.viewActiveUserAppNotifications
 })
 
 export default connect(mapStateToProps, 
     {
         userInfo,
-        AlertsCall
+        AlertsCall,
+        viewAllUserAppNotifications,
+        viewActiveUserAppNotifications
     }
 )(Nav); 

@@ -15,9 +15,6 @@ module.exports = (passport, db) => {
   router.put('/userPassword/:id', ensureAuthenticated, AuthController.updatePassword);
   router.delete('/user/:id', ensureAuthenticated, AuthController.deleteUser);
   router.post('/user/confirm', AuthController.confirmAuth);
-  router.get('/userInfo', AppController.userInfo)
-  router.get('/alerts', AppController.getAlerts)
-  router.put('/changer/:id', AppController.changer)
 
    // App
    router.get('/listed-app', AppController.getListedApp);
@@ -35,6 +32,13 @@ module.exports = (passport, db) => {
    router.get('/new-search/:query/:platform', AppController.search42Text);
    router.get('/search-by-ios-id/:id', AppController.search42ByIdIos);
    router.post('/add-temp-app-listing', AppController.addTempAppListing);
+   router.get('/userInfo', AppController.userInfo);
+   router.get('/alerts', AppController.getAlerts);
+   router.get('/alert-count', AppController.getAlertCount);
+   router.get('/redirect', AppController.redirect);
+  //  router.get('/check-alert-status/:userId&:appId', AppController.checkAlertStatus)
+  router.put('/change-alert-status', AppController.changeAlertStatus);
+  router.put('/changer/:id', AppController.changer);
   //  router.get('/get-temp-single-app')
 
   return router;

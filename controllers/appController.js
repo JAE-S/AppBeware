@@ -2,6 +2,18 @@ const axios = require('axios');
 // const {parse, stringify} = require('flatted/cjs');
 require('dotenv').config();
 
+const updateAlertStatus = (userId, appId, alertStatus) => {
+  console.log("You made it to the redirect!!");
+  return db.UserAppNotification.update({
+    alert: !alertStatus,
+    where: {
+      UserId: userId,
+      ListedAppId: appId
+    }
+  })
+  // res.end;
+};
+
 const makeArrayOfShields = (dbArray) => {
   console.log("Inside makeArrayOfShields");
   console.log("Length: " + dbArray.length);
@@ -288,17 +300,90 @@ module.exports = function (db) {
       },
 
       getAlerts: function (req, res) {
-        db.AppReview.findAll({
+        db.UserAppNotification.findAndCountAll({
           where: {
             UserId: req.session.passport.user.id
           },
-          include: {
-            model: db.ListedApp
+          include: [
+            {model: db.User},
+            {model: db.ListedApp},
+          ]
+        }).then((dbAlerts) => {
+          res.json(dbAlerts)
+        }).catch(err => console.log(err))
+      },
+
+      getAlertCount: function (req, res) {
+        db.UserAppNotification.findAndCountAll({
+          where: {
+            UserId: req.session.passport.user.id,
+            alert: true
           }
-        }).then((alerts) => {
-          res.json(alerts)
+        }).then((dbAlertCount) => {
+          res.json(dbAlertCount)
+        }).catch(err => console.log(err))
+      },
+
+      redirect: function (req, res) {
+        console.log("You made it to the redirect!!");
+        res.end;
+      },
+
+      // STEP 1: Determine if record exists
+      // IF TRUE, change status of alert to opposite of current status
+      // IF FALSE, create the new record
+
+
+
+      // TODO: Update with user id and listed app id from req.params
+      checkAlertStatus: function (req, res) {
+        console.log("Inside checkAlertStatus");
+        console.log(req.params);
+        db.UserAppNotification.findAll({
+          where: {
+            UserId: req.params.userId,
+            ListedAppId: req.params.appId
+            }
+          }).then((dbCheckAlertStatus) => {
+            console.log("Length: " + dbCheckAlertStatus.length);
+            console.log(req.params);
+            if (dbCheckAlertStatus.length > 0) {
+              console.log("Testing new redirect method");
+              // updateAlertStatus(req.params.userId, req.params.appId, dbCheckAlertStatus[0].alert);
+              const updateNotificationRecord = {
+                userId: req.params.userId,
+                appId: req.params.appId,
+                alert: dbCheckAlertStatus[0].alert
+              };
+              return axios.put('/api/change-alert-status/', updateNotificationRecord)
+              .then(function() {
+                console.log("Updated!")
+              }).catch(err => console.log(err))
+
+              // return axios.put(`/api/change-alert-status/${req.params.userId}&${req.params.appId}&${dbCheckAlertStatus[0].alert}`)
+            } else {
+              console.log("HEY-OOOO, I found a record and here it is!!!");
+              res.redirect('/api/redirect');
+            }
+          })
+      },
+
+      changeAlertStatus: function (req, res) {
+        console.log("Inside changeAlertStatus");
+        console.log(req.body);
+        db.UserAppNotification.update({
+          values: {
+            alert: !req.body.alert
+          }
+        },
+        {
+          where: {
+            UserId: req.body.userId,
+            ListedAppId: req.body.appId
+          }
+        }).then((dbUpdatedRecord) => {
+          res.json(dbUpdatedRecord);
         })
-        .catch(err => console.log(err))
       },
 
       changer: function(req, res) {

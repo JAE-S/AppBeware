@@ -9,6 +9,7 @@
     import shieldReducer from "./shieldReducer";
     import authReducer from './authReducer';
     import reviewReducer from './reviewReducer';
+    import userReducer from './userReducer';
 
 // Combine Reducers 
 // =========================================================
@@ -18,7 +19,8 @@
         apps: appReducer,
         shields: shieldReducer,
         user: authReducer,
-        reviews: reviewReducer
+        reviews: reviewReducer,
+        notifications: userReducer
     })
 
     export default createRootReducer
