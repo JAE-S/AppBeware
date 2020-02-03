@@ -9,7 +9,7 @@ export default {
 
   search42text: function(queryText, platform) {
     console.log("Inside API.js - search42text");
-    return axios.get('api/new-search/' + queryText + "/" + platform)
+    return axios.get('api\new-search/' + queryText + "/" + platform)
   },
 
   // Return all listed apps
@@ -112,12 +112,22 @@ export default {
   },
 
   getAlerts: function () {
-    return axios.get('/api/alerts')
+    console.log("\n--------------------\nInside API - getAlerts - for all entries in Table \n--------------------")
+    return axios.get('/api/alerts') 
   },
 
-  changeAlert: function (update) {
-    return axios.put('/api/changer', update)
+  getAlertCount: function() {
+    console.log("\n--------------------\nInside API - getAlertCount - For Active Alerts \n--------------------")
+    return axios.get('/api/alert-count')
+  },
+
+  changeAlert: function (alertDetails) {
+    return axios.put('/api/change-alert-status', alertDetails)
   }
+
+  // changeAlert: function (update) {
+  //   return axios.put('/api/changer', update)
+  // }
 
 };
 

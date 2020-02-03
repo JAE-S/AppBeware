@@ -23,7 +23,8 @@
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
-    import { AlertsCall } from '../Store/Actions/reviewActions'
+    import { AlertsCall } from '../Store/Actions/reviewActions';
+    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../Store/Actions/userActions";
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -60,6 +61,8 @@ class Homepage extends Component {
         this.props.viewAllShields();
         this.props.userInfo();
         this.props.AlertsCall();
+        this.props.viewAllUserAppNotifications();
+        this.props.viewActiveUserAppNotifications();
     }
 
 
@@ -158,7 +161,9 @@ const mapStateToProps = state => ({
     shields: state.shields.allShields,
     user: state.user.userInfo,
     isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alert
+    alert: state.reviews.alert,
+    allUserAppNotifications: state.notifications.viewAllUserAppNotifications,
+    activeUserAppNotifications: state.notifications.viewActiveUserAppNotifications
 })
 
 export default connect(mapStateToProps, 
@@ -173,5 +178,7 @@ export default connect(mapStateToProps,
         selectTrendingApps,
         viewAllShields,
         userInfo,
-        AlertsCall
+        AlertsCall,
+        viewAllUserAppNotifications,
+        viewActiveUserAppNotifications
     })(Homepage); 
