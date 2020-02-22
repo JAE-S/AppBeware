@@ -321,6 +321,7 @@ module.exports = function (db) {
         res.end;
       },
 
+      // Not functional
       checkAlertStatus: function (req, res) {
         console.log("Inside checkAlertStatus");
         console.log(req.params);
@@ -357,9 +358,7 @@ module.exports = function (db) {
         console.log("Inside changeAlertStatus");
         console.log(req.body);
         db.UserAppNotification.update({
-          values: {
             alert: !req.body.alert
-          }
         },
         {
           where: {
@@ -368,6 +367,22 @@ module.exports = function (db) {
           }
         }).then((dbUpdatedRecord) => {
           res.json(dbUpdatedRecord);
+        })
+      },
+
+      updateAllAlertsForApp: function(req, res) {
+        console.log("Inside the function to update alerts across the board for all users\n______________");
+        console.log(req.params.id);
+        db.UserAppNotification.update({
+          alert: true
+        },
+        {
+          where: {
+            // UserId: req.body.userId,
+            ListedAppId: req.params.id
+          }
+        }).then((dbUpdatedRecords) => {
+          res.json(dbUpdatedRecords);
         })
       },
 
