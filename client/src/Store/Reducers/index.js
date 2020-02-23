@@ -4,13 +4,15 @@
     import { connectRouter } from 'connected-react-router'
 // Import Reducers
 // =========================================================
+    import { authentication } from './_userReducers/authentication.reducer';
+    import { users  } from './_userReducers/user.reducer';
     import categoryReducer from "./categoryReducer";
     import appReducer from "./appReducer";
     import shieldReducer from "./shieldReducer";
-    import authReducer from './authReducer';
     import reviewReducer from './reviewReducer';
     import userReducer from './userReducer';
-
+    import counter from './counter';
+    
 // Combine Reducers 
 // =========================================================
     const createRootReducer = (history) => combineReducers({
@@ -18,10 +20,13 @@
         categories: categoryReducer,
         apps: appReducer,
         shields: shieldReducer,
-        user: authReducer,
         reviews: reviewReducer,
-        notifications: userReducer
+        notifications: userReducer, 
+
+        counter,
+        authentication,
+        users,
     })
 
     export default createRootReducer
-
+ 

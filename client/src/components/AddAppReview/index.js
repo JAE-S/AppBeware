@@ -16,10 +16,10 @@
 
 // Import Material Styles
 // =========================================================
-  import { makeStyles } from '@material-ui/core/styles';
+  // import { makeStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
-  import { Button, Grid, Typography, StepLabel, Step, Stepper, StepButton } from '@material-ui/core/';
+  import { Button, Grid, Typography, StepLabel, Step, Stepper} from '@material-ui/core/';
 // Import Material UI icons
 // =========================================================
   import { Check } from '@material-ui/icons/';
@@ -202,7 +202,7 @@ function QontoStepIcon(props) {
       };
 
       handleFinish = () => {
-        const {stepIndex} = this.state;
+        // const {stepIndex} = this.state;
         this.setState({stepIndex: -1});
 
         const reviewToSubmit = {

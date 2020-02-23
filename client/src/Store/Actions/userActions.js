@@ -1,6 +1,5 @@
 import API from "../../utils/API";
 import { VIEW_ALL_USER_APP_NOTIFICATIONS, VIEW_ACTIVE_USER_APP_NOTIFICATIONS } from "./new-types";
-import { push } from 'connected-react-router'
 
 export const viewAllUserAppNotifications = () => dispatch => {
     console.log("Inside viewAllUserAppNotifications - userActions.js");

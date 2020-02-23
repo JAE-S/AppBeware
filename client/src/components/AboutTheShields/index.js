@@ -7,7 +7,7 @@
     import { viewAllShields } from "../../Store/Actions/shieldActions";
 // Import Material UI Components
 // =========================================================
-    import { Table, TableBody, TableRow, TableCell, TableHead, Grid } from '@material-ui/core/';
+    import { Table, TableBody, TableRow, TableCell, Grid } from '@material-ui/core/';
 // Import Media
 // =========================================================
     import One from "../../assets/images/danger_rating_icons/danger_rating_1.png";
@@ -25,10 +25,6 @@
         width: "100%",
         maxWidth: "40px",
         height: "auto"
-    }
-    const alertHeader = { 
-        width: "100%", 
-        color: "#f7f7f7!important",
     }
 
     export function InfoTable(props) {

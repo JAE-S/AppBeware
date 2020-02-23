@@ -1,17 +1,18 @@
 // Import React 
 // =========================================================
   import React, {Component} from 'react';
-  import {Redirect} from 'react-router-dom';
-  import API from '../../utils/API'
+  import { connect } from 'react-redux';
+  import { push } from 'connected-react-router'
+  import { userActions } from '../../Store/Actions/auth';
 // Import Material UI Styles
 // =========================================================
-  import { makeStyles, withStyles } from '@material-ui/core/styles';
+  import {  withStyles } from '@material-ui/core/styles';
 // Import Material UI components 
 // =========================================================
   import { Container, Button, CssBaseline, TextField, Grid } from '@material-ui/core/';
 // Import Material UI Icons
 // =========================================================
-  import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+  // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 // Import Components
 // =========================================================
   import Modal from "../Modals"
@@ -42,10 +43,6 @@
 // SignIn Class Component
 // =========================================================
   class signIn extends Component{
-    state = {
-      email: '',
-      password: ''
-    }
 
     makeStyles = theme => ({
       palette: {
@@ -74,36 +71,65 @@
       
     });
 
-    handleInputchange = event => {
-      const {name, value} = event.target;
+    constructor(props) {
+      super(props);
+      this.handleInputchange= this.handleInputchange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+  
+      this.state = {
+        email: '',
+        password: '',
+        userInfo: {},
+        submitted: false,
+      };
+    }
+  
+    updateUserState = () => {
       this.setState({
-        [name]: value
+        userInfo: {
+          email: this.state.email,
+          password: this.state.password
+        }
       })
     }
 
-    handleFormSubmit = event => {
-      event.preventDefault();
-      API.signIn({
-        email : this.state.email,
-        password: this.state.password
-      })
-      .then(res => {
-        if(res.data.loggedIn){
-          console.log("worked")
-          window.location.pathname = '/homepage'
+    handleInputchange(e) {
+      const { name, value } = e.target;
+      this.setState({ [name]: value });
+  }
+
+  handleSubmit(e) {
+      e.preventDefault();
+      console.log("Congrats. You pressed a button");
+
+      this.setState({ 
+        submitted: true,
+        userInfo: {
+          email: this.state.email,
+          password: this.state.password
         }
-        else{
-          console.log("failed")
+      },
+      () => {
+        console.log(this.state.userInfo);
+        if (this.state.userInfo.email && this.state.userInfo.password) {
+         
+            this.props.login(this.state.userInfo);
+
         }
-      })
-    }
+      });
+
+  }
 
     render(){
+
+      const { loggingIn } = this.props;
+      const { email, password, submitted } = this.state;
+
       return (
         <Container  maxWidth="xs">
           <CssBaseline />
           <div className={this.makeStyles.paper}>
-            <form className={this.makeStyles.form} noValidate>
+            <form className={this.makeStyles.form} onSubmit={this.handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12} >
                 <InputOverRideOutline
@@ -118,6 +144,10 @@
                   autoFocus
                   onChange={this.handleInputchange}
                 />
+                 {/* // TODO:////////////////// */}
+                  {submitted && !email &&
+                            <div>Email is required</div>
+                        }
                 </Grid>
                   <Grid item xs={12}>
                   <InputOverRideOutline
@@ -132,7 +162,10 @@
                       autoComplete="current-password"
                       onChange={this.handleInputchange}
                     />
-                    {/* </inputStyles> */}
+                    {/*  // TODO://////////////////  */}
+                     {submitted && !password &&
+                            <div>Password is required</div>
+                        }
                   </Grid>
                 </Grid>
                 
@@ -141,21 +174,22 @@
                   fullWidth
                   variant="contained"
                   className="teal"
-                  onClick={this.handleFormSubmit.bind(this)}
+                  onSubmit={this.handleLoginSubmit}
                 >
                   Sign In
                 </Button>
+                {loggingIn && "Loading..."} 
                 <Grid container justify="flex-end">
                   <Grid item>
                                 
                   <Modal 
-                        modalTitle="Create An Account"
-                        openModal={
-                          <p style={{cursor: "pointer"}}>
-                            Don't have an account? Sign Up
-                          </p>
-                        }
-                        modalBody={<SignUp/>}  
+                      modalTitle="Create An Account"
+                      openModal={
+                        <p style={{cursor: "pointer"}}>
+                          Don't have an account? Sign Up
+                        </p>
+                      }
+                      modalBody={<SignUp/>}  
                   />
               
                 </Grid>
@@ -167,5 +201,17 @@
       );
     }
   }
+  
+  function mapState(state) {
+    const { loggingIn } = state.authentication;
+    return { loggingIn };
+}
 
-  export default signIn
+const actionCreators = {
+    login: userActions.login,
+
+     // TODO://////////////////
+    // logout: userActions.logout
+};
+
+export default connect(mapState, actionCreators)(signIn);

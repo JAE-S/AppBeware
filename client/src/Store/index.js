@@ -2,13 +2,11 @@
 // =========================================================
 import { createStore, applyMiddleware, compose } from "redux";
 import { routerMiddleware } from 'connected-react-router'
-// connectRouter, 
 import thunk from "redux-thunk";
-import history from './history'
+import history from './_helpers/history.js'
 import createRootReducer from "./Reducers";
-import { viewAllCategories } from "./Actions/categoryActions";
 
-const enhancers = []
+// const enhancers = []
 const initialState = {};
 const middleware = [thunk];
 

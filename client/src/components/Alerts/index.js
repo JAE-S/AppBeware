@@ -1,20 +1,23 @@
 // Import React
 // =========================================================
-    import React from 'react';
-    import { connect } from "react-redux"; 
+    import React, { Component } from 'react';
+    import { connect, useSelector, useDispatch } from "react-redux"; 
+    import allActions from '../../Store/Actions'
 // Import Material UI Styles
 // =========================================================
     import { withStyles  } from '@material-ui/core/styles';
 // Import Material UI Components
 // =========================================================
-    import { Table, TableBody, TableRow, TableCell, Menu, Grid, MenuItem, Tooltip, FormGroup, FormControlLabel, Switch } from '@material-ui/core/';
+    import { Table, TableBody, TableRow, TableCell, Grid, Tooltip, FormGroup, FormControlLabel, Switch } from '@material-ui/core/';
 // Import Material UI Icons
 // =========================================================
     import CloseIcon from '@material-ui/icons/Close';    
-
+// Redux Imports
+// =========================================================
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
+// Styling Imports
+// =========================================================
     import "../../assets/styling/appStyle.css"
-    import API from '../../utils/API'
     
     const RedSwitch = withStyles({
     switchBase: {
@@ -29,142 +32,186 @@
     checked: {},
     track: {},
     })(Switch);
-      
-    export function Alerts(props) {
-        const [state, setState] = React.useState({
-            checkedA: true,
-        });
-        
-        console.log(props)
-        
-        // TODO: This will need to be updated with new Redux mapping
-        const handleChange = name => event => {
-            console.log("Inside handleChange")
-            API.changeAlert({
-                alert: event.target.checked
-            })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        };
 
-        const deleteAppNotification = () => {
-            console.log("Are you trying to delete me?");
-        }
-
+    {/* // TODO:////////////////// ---- Test counter for Redux */}
+    // export const Count = () => {
+    //     const counter = useSelector(state => state.counter)
+    //     const dispatch = useDispatch()
+    //     return (
+    //         <>
+    //             <div>
+    //                 {counter}
+                    
+    //                 {counter >= 1 ? ( 
+    //                     <button onClick={() => dispatch(allActions.counterActions.increment())}>Increase</button>
+    //                 ) : (
+    //                     <button onClick={() => dispatch(allActions.counterActions.decrement())}>Decrease</button>
+    //                 )}
+    //             </div>
+            
+    //         </>
+    //     )
+    // }
+    export const Count = () => {
         return (
-            <Table style={{ width: "100%"}}>
-                <TableBody>
-                    {props.alerts.map((data) =>
-                        <TableRow key={data.id} >
-                            <TableCell >
-                                <Tooltip title={`Click to view ${data.ListedApp.name}`} arrow>
-                                    <img alt={data.ListedApp.name} src={data.ListedApp.logoUrl} style={{ height: 60, width: 60, borderRadius: "6px", paddingRight: 4 }}/>
-                                </Tooltip>
-                            </TableCell>
-                            
-                            <TableCell> 
-                                <h4>{data.ListedApp.name}</h4>
-                            </TableCell>
-                            
-                            <TableCell>
-                                <FormGroup>
-                                    <Grid component="label" container  direction="row" justify="space-evenly" alignItems="center" spacing={1}>
-                                        <Grid item>Off</Grid>
-                                        <Grid item>
-                                            <FormControlLabel
-                                                control={
-                                                    <RedSwitch
-                                                    checked={data.alert}
-                                                    onChange={handleChange()}
-                                                    value={data.id}
-                                                    />
-                                                }
-                                            /> 
-                                        </Grid>
-                                        <Grid item>On</Grid>
-                                        <Grid item>
-                                            <Tooltip title={`Remove ${data.ListedApp.name} from alerts`}>
-                                                <CloseIcon  
-                                                    type="submit"
-                                                    className="closeIcon"
-                                                    // onChange={deleteAppNotification()}
-                                                />
-                                            </Tooltip>
-                                        </Grid>
-                                    </Grid>
-                                </FormGroup>
-                            </TableCell>
-                        </TableRow>
-                    )} 
-                </TableBody>
-            </Table>
+            <div>4</div>
         )
     }
+
     
-    export function Notifications(props) {
+class Alerts extends Component {
+   
+    constructor(props) {
+        super(props);
+            this.state = {
+                isChecked: false,
+            }
+    }; 
+    componentDidMount() {
+        // this.props.viewActiveUserAppNotifications();
+    }   
 
-    console.log(props)
+    handleChange = name => event => {
+        this.setState = ({ [name]: event.target.checked });
+    };
+
+    handleClick = name => (event) => {
+        this.setState = ({ [name]: event.target.checked });
+    //  console.log({this.props.activeUserAppNotifications})
+    }
+
+    deleteAppNotification = () => {
+        console.log("Are you trying to delete me?");
+    }
+
+    render() {
+
+        return (
+            <>
+                <Table style={{ width: "100%"}}>
+                    <TableBody>
+                    {this.props.alerts.map((data) =>
+                            <TableRow key={data.id} >
+                                <TableCell >
+                                    <Tooltip title={`Click to view ${data.ListedApp.name}`}>
+                                        <img alt={data.ListedApp.name} src={data.ListedApp.logoUrl} style={{ height: 60, width: 60, borderRadius: "6px", paddingRight: 4 }}/>
+                                    </Tooltip>
+                                </TableCell>
+                                
+                                <TableCell> 
+                                    <h4>{data.ListedApp.name}</h4>
+                                </TableCell>
+                                
+                                <TableCell>
+                                    <FormGroup>
+                                        <Grid component="label" container  direction="row" justify="space-evenly" alignItems="center" spacing={1}>
+                                            <Grid 
+                                                item
+                                            >
+                                                <p value={data.alert} className="off" onClick={this.handleClick}>  Off </p> 
+
+                                            </Grid>
+                                            <Grid item>
+                                                <FormControlLabel
+                                                    control={
+                                                        <RedSwitch
+                                                            onChange={this.handleChange('isChecked')}
+                                                        />
+                                                    }
+                                                /> 
+                                            </Grid>
+                                            <Grid 
+                                                item                                      
+                                            >
+                                                <p value={data.alert} className="on" onClick={this.handleClick}> On</p>                                                     
+                                            </Grid>
+
+                                            <Grid item>
+                                                <Tooltip title={`Remove ${data.ListedApp.name} from alerts`}>
+                                                    <CloseIcon  
+                                                        type="submit"
+                                                        className="closeIcon"
+                                                      
+                                                    />
+                                                </Tooltip>
+                                            </Grid>
+                                        </Grid>
+                                    </FormGroup>
+                                </TableCell>
+                            </TableRow>
+                        )} 
+                    </TableBody>
+                </Table>
+            </>
+        )
+    }
+}
+
+ {/* // TODO:////////////////// */}
+// export function Notifications(props) {
+
+//     console.log(props)
 
 
-      const [anchorEl, setAnchorEl] = React.useState(null);
+//       const [anchorEl, setAnchorEl] = React.useState(null);
     
-      const handleClick = event => {
-        console.log(props.activeAlerts);
-        console.log(props.activeUserAppNotifications);
-        setAnchorEl(event.currentTarget);
-      };
+//       const handleClick = event => {
+//         console.log(props.activeAlerts);
+//         console.log(props.activeUserAppNotifications);
+//         setAnchorEl(event.currentTarget);
+//       };
     
-      const handleClose = () => {
-        setAnchorEl(null);
-      };
+//       const handleClose = () => {
+//         setAnchorEl(null);
+//       };
 
-      const myMapArray = [
-        {
-            "id": 21,
-            "alert": 0,
-            "createdAt": "2020-02-02T22:09:11.000Z",
-            "updatedAt": "2020-02-02T22:09:11.000Z",
-            "ListedAppId": 25,
-            "UserId": 8
-            },
-            {
-            "id": 26,
-            "alert": 0,
-            "createdAt": "2020-02-02T22:09:11.000Z",
-            "updatedAt": "2020-02-02T22:09:11.000Z",
-            "ListedAppId": 33,
-            "UserId": 8
-        }
-      ];
+//       const myMapArray = [
+//         {
+//             "id": 21,
+//             "alert": 0,
+//             "createdAt": "2020-02-02T22:09:11.000Z",
+//             "updatedAt": "2020-02-02T22:09:11.000Z",
+//             "ListedAppId": 25,
+//             "UserId": 8
+//             },
+//             {
+//             "id": 26,
+//             "alert": 0,
+//             "createdAt": "2020-02-02T22:09:11.000Z",
+//             "updatedAt": "2020-02-02T22:09:11.000Z",
+//             "ListedAppId": 33,
+//             "UserId": 8
+//         }
+//       ];
 
-      console.log(myMapArray);
+//       console.log(myMapArray);
     
-      return (
-        <div>
-          <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-           {props.showAlerts}
-          </div>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
+//       return (
+//         <div>
+//           <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+//            {props.showAlerts}
+//           </div>
+//           <Menu
+//             id="simple-menu"
+//             anchorEl={anchorEl}
+//             keepMounted
+//             open={Boolean(anchorEl)}
+//             onClose={handleClose}
+//           >
 
-          <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
+//           <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
 
             {/* {props.activeAlerts.map((app, index) =>  */}
-                <MenuItem key={1} onClick={handleClose}>
+                {/* <MenuItem key={1} onClick={handleClose}>
                     <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {"My new app"}
-                </MenuItem>
+                </MenuItem> */}
             {/* )} */}
 
-            {myMapArray.map((app, index) => 
+            {/* {myMapArray.map((app, index) => 
                     <MenuItem key={app.id} onClick={handleClose}>
                 <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.id}
             </MenuItem>
-            )}
+            )} */}
 
            {/* {props.activeUserAppNotifications.rows.map((app, index) => 
                 <MenuItem key={index} onClick={handleClose}>
@@ -172,24 +219,25 @@
                 </MenuItem>
            )} */}
            
-          </Menu>
+          {/* </Menu>
         </div>
       );
-    }
-
+    } */}
     
-
     const mapStateToProps = state => ({
         alert: state.reviews.alerts,
         allUserAppNotifications: state.notifications.allUserAppNotifications,
         activeUserAppNotifications: state.notifications.activeUserAppNotifications
     })
 
-    export default connect(mapStateToProps, 
+    export default connect(mapStateToProps,
+
         {
             viewAllUserAppNotifications,
             viewActiveUserAppNotifications
         }
-    )(Alerts, Notifications); 
+
+    )(Alerts, Count); 
+
 
     

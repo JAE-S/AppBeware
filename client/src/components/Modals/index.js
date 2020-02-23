@@ -30,8 +30,6 @@
       }
     }, [open]);
 
-
-
     return (
       <div>
         <div onClick={handleClickOpen('paper')}>{props.openModal}</div>
@@ -55,6 +53,10 @@
             >
               {props.modalBody}
             </DialogContentText>
+          </DialogContent>
+          <DialogContent dividers={scroll === 'paper'}>
+              {props.modalBody2}
+            
           </DialogContent>
          
         </Dialog>

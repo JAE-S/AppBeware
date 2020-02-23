@@ -16,18 +16,14 @@ import ToastData from "./tempToastData";
     import "../../assets/styling/mediaScreens.css"
 
 class Toasties extends Component {
-    data = ToastData
     notify = () => {
       {
         ToastData.map((object) => {
           if (object.appId < 5 )
             toast(
-                <Grid 
+              <>
+                <Grid
                   className="toastieContainer"
-                  spacing={2}
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
                   key={object.appName}
                 > 
                   <Grid align="center" item xs={2}> 
@@ -42,6 +38,7 @@ class Toasties extends Component {
                     <span style={{ color: "grey", fontWeight: "400px"}}>{object.source}</span>
                   </Grid> 
                 </Grid> 
+                </>
             )
           }
        )
@@ -54,11 +51,12 @@ class Toasties extends Component {
 
     render(){
       return (
-        <Grid container class="mainToastieContainer">
+        <Grid container className="mainToastieContainer">
           <ToastContainer
             transition={Zoom}
             newestOnTop
             rtl={false}
+            // closeButton={false}
             autoClose={false}
             hideProgressBar={true}
             // closeOnClick={true}

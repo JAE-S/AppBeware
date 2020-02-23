@@ -2,11 +2,10 @@
 // =========================================================
     import React, { Component } from "react";  
     import { connect } from "react-redux";
-    import {Redirect} from 'react-router-dom';
-    // import { push } from 'connected-react-router'
+    import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
-    import { Grid, Button } from '@material-ui/core';   
+    import { Grid } from '@material-ui/core';   
 // Import Custom Components
 // =========================================================
     import SearchAppAnnie from "../components/SearchAppAnnie"
@@ -22,18 +21,17 @@
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
-    import { userInfo } from '../Store/Actions/authentication';
+    import { userActions } from '../Store/Actions/auth';
     // import { AlertsCall } from '../Store/Actions/reviewActions';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../Store/Actions/userActions";
 // Import Media
 // =========================================================
     import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
-    import API from "../utils/API.js"
+    // import API from "../utils/API.js"
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
     
-
 class Homepage extends Component {
 
     // Runs Redux to grab all of the categories necessary to render the homepage
@@ -59,7 +57,6 @@ class Homepage extends Component {
         this.props.viewAllListedApps();
         this.props.selectTrendingApps();
         this.props.viewAllShields();
-        this.props.userInfo();
         // this.props.AlertsCall();
         this.props.viewAllUserAppNotifications();
         this.props.viewActiveUserAppNotifications();
@@ -67,86 +64,82 @@ class Homepage extends Component {
 
 
     render() {
-        if(this.props.isloggedIn){
+
         return (
-            <>
-            <Nav/>
-           <main>
-            <HeaderContainer> 
-                <div className="headerBanner">
-                    <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
-                        Review and track potentially dangerous apps with our rating system:
-                    </h2>
-                </div>
-                <Wrapper> 
-                    <Grid container 
-                        direction="row" 
-                        justify="center" 
-                        alignItems="center"
-                        spacing={1}
-                    >
-                    <Grid item xs={12}>
-
-                    {/* color: "#57585D" */}
-                    </Grid>
-                        <Grid item xs={12} sm={3}>
-                        <div>
-                            <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
+            <div>
+                <Nav/>
+                <main>
+                    <HeaderContainer> 
+                        <div className="headerBanner">
+                            <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
+                                Review and track potentially dangerous apps with our rating system:
+                            </h2>
                         </div>
-                        </Grid>
-                        
-                        <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
+                        <Wrapper> 
+                            <Grid container 
+                                direction="row" 
+                                justify="center" 
+                                alignItems="center"
+                                spacing={1}
+                            >
+                            <Grid item xs={12}>
 
-                                {this.props.shields.map(shield => (
-                                    <ShieldLayout 
-                                        key={shield.id}
-                                        shieldIcon={shield.icon}
-                                        altTxt={shield.altText}
-                                        title={shield.name}
-                                        info={shield.info}
+                            </Grid>
+                                <Grid item xs={12} sm={3}>
+                                <div>
+                                    <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
+                                </div>
+                                </Grid>
+                                
+                                <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
+
+                                        {this.props.shields.map(shield => (
+                                            <ShieldLayout 
+                                                key={shield.id}
+                                                shieldIcon={shield.icon}
+                                                altTxt={shield.altText}
+                                                title={shield.name}
+                                                info={shield.info}
+                                            />
+                                        ))}
+                                
+                                </Grid>
+                            </Grid>
+                        
+                        </Wrapper>
+                    </HeaderContainer>
+
+                    <SearchAppAnnie 
+                        viewApp={this.viewApp}
+                    />
+
+                    <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+                        <HomepageTabNav >
+                            <Grid 
+                                container 
+                                direction="row"
+                                justify="center"
+                                alignItems="center"
+                                spacing={2}
+                            >
+
+                            {this.props.categories.map(cat => (
+                                    <CategoryCards
+                                        key={cat.id}
+                                        title={cat.name}
+                                        catId={cat.id}
+                                        imageUrl={cat.imageUrl}
+                                        viewCategory={this.viewCategory}
                                     />
                                 ))}
-                        
-                        </Grid>
-                    </Grid>
-                
-                </Wrapper>
-            </HeaderContainer>
 
-            <SearchAppAnnie 
-                viewApp={this.viewApp}
-            />
-
-            <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
-                <HomepageTabNav >
-                    <Grid 
-                        container 
-                        direction="row"
-                        justify="center"
-                        alignItems="center"
-                        spacing={2}
-                    >
-
-                    {this.props.categories.map(cat => (
-                            <CategoryCards
-                                key={cat.id}
-                                title={cat.name}
-                                catId={cat.id}
-                                imageUrl={cat.imageUrl}
-                                viewCategory={this.viewCategory}
-                            />
-                        ))}
-
-                    </Grid>
-                </HomepageTabNav>
-            </Wrapper>
-            </main>
-        <Footer/>
-     </>
-    )}
-    else {
-        return <Redirect to ='/' />
-    }
+                            </Grid>
+                        </HomepageTabNav>
+                    </Wrapper>
+                </main>
+                <Footer/>
+            </div>
+        )
     }
 }
 
@@ -159,14 +152,15 @@ const mapStateToProps = state => ({
     appReviews: state.apps.appReviews,
     appTextSearchResults: state.apps.appTextSearchResults,
     shields: state.shields.allShields,
-    user: state.user.userInfo,
-    isloggedIn: state.user.isloggedIn,
+    userInfo: state.authentication.userInfo,
+    // isloggedIn: state.user.isloggedIn,
     alert: state.reviews.alert,
     allUserAppNotifications: state.notifications.allUserAppNotifications,
-    activeUserAppNotifications: state.notifications.activeUserAppNotifications
+    activeUserAppNotifications: state.notifications.activeUserAppNotifications, 
 })
 
-export default connect(mapStateToProps, 
+export default connect(mapStateToProps,
+    
     { 
         viewAllCategories, 
         viewSingleCategory, 
@@ -177,8 +171,7 @@ export default connect(mapStateToProps,
         search42Text,
         selectTrendingApps,
         viewAllShields,
-        userInfo,
-        // AlertsCall,
         viewAllUserAppNotifications,
-        viewActiveUserAppNotifications
+        viewActiveUserAppNotifications, 
+        userActions
     })(Homepage); 

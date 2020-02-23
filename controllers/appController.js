@@ -43,7 +43,6 @@ const createNewAppNameArray = dbArray => {
       console.log("Inside if statement");
     }
 
-  
     // let tempName = dbArray[0].label;
 
     smallerArray.push({
