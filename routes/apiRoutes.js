@@ -38,6 +38,7 @@ module.exports = (passport, db) => {
    router.get('/redirect', AppController.redirect);
   //  router.get('/check-alert-status/:userId&:appId', AppController.checkAlertStatus)
   router.put('/change-alert-status', AppController.changeAlertStatus);
+  router.put('/update-alerts-per-app/:id', AppController.updateAllAlertsForApp);
   router.put('/changer/:id', AppController.changer);
   //  router.get('/get-temp-single-app')
 
