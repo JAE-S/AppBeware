@@ -171,7 +171,7 @@ export default connect(mapStateToProps,
         search42Text,
         selectTrendingApps,
         viewAllShields,
+        
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications, 
-        userActions
     })(Homepage); 

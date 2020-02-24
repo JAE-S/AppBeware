@@ -24,7 +24,7 @@
     import Alerts, { Count } from "../Alerts";
     // import {Alerts, Notifications, Count } from "../Alerts";
 
-    import {userInfo} from '../../Store/Actions/authentication';
+    import { userActions } from '../../Store/Actions/auth';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
 
 // Custom Styles
@@ -98,6 +98,7 @@
 // Export Nav bar
 // =========================================================
   function Nav(props) {
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -290,6 +291,7 @@
 
   
   const mapStateToProps = state => ({
+    userInfo: state.authentication.userInfo,
     // user: state.user.userInfo,
     // isloggedIn: state.user.isloggedIn,
     allUserAppNotifications: state.notifications.allUserAppNotifications,
@@ -298,8 +300,9 @@
 
 export default connect(mapStateToProps, 
     {
-        userInfo,
+        // userInfo,
         // AlertsCall,
+        userActions,
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications
     }

@@ -190,14 +190,14 @@ const dangerRating = [
                                 <Truncate
                                     lines={!expanded && lines}
                                     ellipsis={(
-                                        <span className="readMore" >... <a href='#' className="readMore" onClick={this.toggleLines}>{more}</a></span>
+                                        <span className="readMore" >... <a href='#readMore' className="readMore" onClick={this.toggleLines}>{more}</a></span>
                                     )}
                                     onTruncate={this.handleTruncate}
                                 >
                                     <p align="left">{this.props.singleApp.description}</p>
                                 </Truncate>
                                 {!truncated && expanded && (
-                                    <span> <a  className="readMore" href='#' onClick={this.toggleLines}>{less}</a></span>
+                                    <span> <a  className="readMore" href='#readMore' onClick={this.toggleLines}>{less}</a></span>
                                 )}
 
                                 <Grid align="right" item xs={12} style={{paddingTop: "10px"}}>
@@ -323,10 +323,11 @@ const dangerRating = [
                         </Grid>
                     </Grid>
                     {/* Comments */}    
-                    {this.props.appReviews.map(review => (
+                    {this.props.appReviews.map((review, i) => (
 
                         <CommentGrid
                             // ---> Left Side
+                            key={i}
                             imageLeft={
                                 <img 
                                     alt={review.User.name} 
@@ -398,7 +399,7 @@ const dangerRating = [
                                         )}
                                         onTruncate={this.handleTruncate}
                                     >
-                                    <p align="left"  trimWhitespace>{review.comments}</p>
+                                    <p align="left"  trimwhitespace="true">{review.comments}</p>
                                     </Truncate>
                                     {!truncated && expanded && (
                                         <span> <a className="readMore" href='#' onClick={this.toggleLines}>{less}</a></span>
