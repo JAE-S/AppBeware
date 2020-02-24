@@ -1,14 +1,16 @@
 import { userConstants } from '../../_constants/userConstants';
 
 export function users(state = {}, action) {
+  console.log("insde user.reducer")
   switch (action.type) {
-    case userConstants.GETALL_REQUEST:
+    case userConstants.GET_FULL_USER_INFO_REQUEST:
       return {
         loading: true
       };
-    case userConstants.GETALL_SUCCESS:
+    case userConstants.GET_FULL_USER_INFO_SUCCESS:
       return {
-        items: action.users
+        ...state,
+        items: action.payload.data,
       };
     // case userConstants.GETALL_FAILURE:
     //   return { 

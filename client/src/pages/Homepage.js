@@ -1,6 +1,6 @@
 // Import React and Redux
 // =========================================================
-    import React, { Component } from "react";  
+    import React, { Component, useSelector } from "react";  
     import { connect } from "react-redux";
     import { push } from 'connected-react-router'
 // Import Material Ui Components
@@ -32,9 +32,13 @@
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
+
      
 class Homepage extends Component {
 
+    constructor(props) {
+        super(props);
+      }
     // Runs Redux to grab all of the categories necessary to render the homepage
     // COMPLETE
     viewCategory = (catId) => {
@@ -61,13 +65,12 @@ class Homepage extends Component {
         // this.props.AlertsCall();
         this.props.viewAllUserAppNotifications();
         this.props.viewActiveUserAppNotifications();
+        // this.props.newGetFullUserInfo();
         this.props.newGetFullUserInfo();
-        // this.props.getFullUserInfo();
     }
 
-
     render() {
-
+       
         return (
             <div>
                 <Nav/>
@@ -77,6 +80,8 @@ class Homepage extends Component {
                             <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
                                 Review and track potentially dangerous apps with our rating system:
                             </h2>
+                            {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <div align="center" > Hello <em>{this.props.users.items.userInfo.name}</em> </div>) }
+
                         </div>
                         <Wrapper> 
                             <Grid container 
@@ -155,7 +160,8 @@ const mapStateToProps = state => ({
     appReviews: state.apps.appReviews,
     appTextSearchResults: state.apps.appTextSearchResults,
     shields: state.shields.allShields,
-    userInfo: state.authentication.userInfo,
+    userInfo: state.authentication,
+    users: state.users, 
     // isloggedIn: state.user.isloggedIn,
     alert: state.reviews.alert,
     allUserAppNotifications: state.notifications.allUserAppNotifications,
@@ -181,6 +187,7 @@ export default connect(mapStateToProps,
         search42Text,
         selectTrendingApps,
         viewAllShields,
+        
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications, 
         newGetFullUserInfo

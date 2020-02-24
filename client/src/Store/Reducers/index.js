@@ -5,7 +5,7 @@
 // Import Reducers
 // =========================================================
     import { authentication } from './_userReducers/authentication.reducer';
-    import { users  } from './_userReducers/user.reducer';
+    import { users } from './_userReducers/user.reducer';
     import categoryReducer from "./categoryReducer";
     import appReducer from "./appReducer";
     import shieldReducer from "./shieldReducer";
