@@ -1,6 +1,6 @@
 // Import React
 // =========================================================
-    import React from 'react'; 
+    import React, {useSelector} from 'react'; 
     import { Link } from 'react-router-dom'
     import { connect } from "react-redux"; 
 // Import Material UI Styles
@@ -94,7 +94,7 @@
           },
       },
   }));
-
+  
 // Export Nav bar
 // =========================================================
   function Nav(props) {
