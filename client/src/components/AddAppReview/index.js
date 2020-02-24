@@ -9,10 +9,12 @@
 // Import Redux Components
 // =========================================================
   import { viewSingleApp } from "../../Store/Actions/appActions";
-  import { userInfo } from '../../Store/Actions/authentication';
+  // import { userInfo } from '../../Store/Actions/authentication';
   import { reviewSubmit } from '../../Store/Actions/reviewActions';
 
   import API from "../../utils/API";
+
+  import { userActions } from '../../Store/Actions/auth';
 
 // Import Material Styles
 // =========================================================
@@ -354,13 +356,14 @@ function QontoStepIcon(props) {
       
 const mapStateToProps = state => ({
   singleApp: state.apps.singleApp,
-  user: state.user.userInfo,
+  userInfo: state.authentication.userInfo,
   completeReview: state.reviews.completeReview
 })
 
 export default connect(mapStateToProps, 
     { 
         viewSingleApp,
-        userInfo,
-        reviewSubmit
+        reviewSubmit,
+        userActions
     })(AddAppReview); 
+ 

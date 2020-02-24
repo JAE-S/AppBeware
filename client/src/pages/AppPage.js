@@ -25,7 +25,6 @@
 // =========================================================
     import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
-    import { userInfo } from '../Store/Actions/authentication';
     import { userActions } from '../Store/Actions/auth';
 // import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
 // import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
@@ -133,7 +132,7 @@ const dangerRating = [
         
         render() {
             const {
-                children,
+                // children,
                 more,
                 less,
                 lines 
@@ -438,7 +437,7 @@ const dangerRating = [
     };
      
     AppPage.propTypes = {
-        children: PropTypes.node.isRequired,
+        // children: PropTypes.node.isRequired,
         lines: PropTypes.number,
         less: PropTypes.string,
         more: PropTypes.string
@@ -452,7 +451,7 @@ const dangerRating = [
         // trendingApps: state.apps.trendingApps,
         // appNames: state.apps.allAppNames,
         shields: state.shields.allShields,
-        isloggedIn: state.authentication.isloggedIn
+        // isloggedIn: state.authentication.isloggedIn
 
     })
 
@@ -466,7 +465,7 @@ const dangerRating = [
             viewSingleApp,
             viewAppReviews,
             viewAllShields,
-            userInfo,
+            // userInfo,
             userActions
 
         }
