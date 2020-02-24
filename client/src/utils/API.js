@@ -85,7 +85,7 @@ export default {
 
   userInfo: function() {
     return axios.get('/api/userInfo')
-  },
+  }, 
 
   register: function(registration) {
     return axios.post('/api/register', registration)

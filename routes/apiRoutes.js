@@ -9,6 +9,7 @@ module.exports = (passport, db) => {
   router.post('/register', AuthController.register);
   router.post('/login', AuthController.login);
   router.get('/logout', AuthController.logout);
+  router.get('/userInfo', ensureAuthenticated, AuthController.userInfo);
   router.put('/userName/:id', ensureAuthenticated, AuthController.updateName);
   router.put('/userEmail/:id', ensureAuthenticated, AuthController.updateEmail);
   router.put('/userPhone/:id', ensureAuthenticated, AuthController.updatePhone);
@@ -32,7 +33,7 @@ module.exports = (passport, db) => {
    router.get('/new-search/:query/:platform', AppController.search42Text);
    router.get('/search-by-ios-id/:id', AppController.search42ByIdIos);
    router.post('/add-temp-app-listing', AppController.addTempAppListing);
-   router.get('/userInfo', AppController.userInfo);
+  //  router.get('/userInfo', AppController.userInfo);
    router.get('/alerts', AppController.getAlerts);
   //  router.get('/alert-count', AppController.getAlertCount);
    router.get('/redirect', AppController.redirect);
