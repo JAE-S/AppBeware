@@ -2,8 +2,6 @@
 // =========================================================
   import React, {Component} from "react";
   import { Route, Switch } from 'react-router'
-  import {connect} from 'react-redux'
-  // import {Redirect} from 'react-router-dom';
 // Import Components
 // =========================================================  
   import SplashPage from "./pages/SplashPage"
@@ -14,21 +12,11 @@
   import Disclaimer from "./pages/Disclaimer"
 // Import CSS
 // =========================================================
-import "./assets/styling/appStyle.css"
-import { userInfo} from './Store/Actions/authentication';
-import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "./Store/Actions/userActions";
-
+  import "./assets/styling/appStyle.css"
 
 // App Routes
 // =========================================================
   class App extends Component {
-    
-    componentDidMount() {
-      console.log("mounted main")
-      this.props.userInfo();
-      this.props.viewAllUserAppNotifications();
-      this.props.viewActiveUserAppNotifications();
-    }
     
     render(){
         return ( 
@@ -40,23 +28,10 @@ import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "./S
                 <Route exact path="/appPage" component={AppPage} />
                 <Route  path="/profilePage" component={ProfilePage} />
                 <Route exact path="/disclaimer" component={Disclaimer} />
-                </Switch>
+              </Switch>
             </>
         )
     }
   }
 
-  const mapStateToProps = state => ({
-    user: state.user.userInfo,
-    isloggedIn: state.user.isloggedIn,
-    allUserAppNotifications: state.notifications.allUserAppNotifications,
-    activeUserAppNotifications: state.notifications.activeUserAppNotifications
-})
-
-export default connect(mapStateToProps, 
-    {
-        userInfo,
-        viewAllUserAppNotifications,
-        viewActiveUserAppNotifications
-    }
-)(App);
+  export default App; 

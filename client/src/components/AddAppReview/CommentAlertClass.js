@@ -38,10 +38,10 @@
         },
       })(TextField);
 
-      const testChange = (event) => {
-          console.log("Inside testChange");
-          console.log(event.target);
-      };
+    //   const testChange = (event) => {
+    //       console.log("Inside testChange");
+    //       console.log(event.target);
+    //   };
 
 //    function CommentAlertsFunction(props){
     function CommentAlertsFunction(props) {

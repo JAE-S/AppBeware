@@ -12,7 +12,7 @@
     import { withStyles } from '@material-ui/core/styles';
 // Import Material Ui Components
 // =========================================================
-    import { Typography, Grid, Table, TableRow, TableBody, TableCell, TextField} from '@material-ui/core/';
+    import { Grid, Table, TableRow, TableBody, TableCell, TextField} from '@material-ui/core/';
     import Autocomplete from '@material-ui/lab/Autocomplete';
 // Import Components
 // =========================================================

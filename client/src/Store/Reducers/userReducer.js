@@ -28,8 +28,6 @@ export default function(state=initialState, action) {
                 activeUserAppNotifications: action.payload.data
             }
 
-
-
         default: 
             return state;
     }

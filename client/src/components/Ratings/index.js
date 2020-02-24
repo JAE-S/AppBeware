@@ -30,11 +30,11 @@
     },
   })(Rating);
 
-  function onChange(event, value) {
-   if (value === 1){
-     console.log("true")
-   }
-}
+//   function onChange(event, value) {
+//    if (value === 1){
+//      console.log("true")
+//    }
+// }
 
   const labels = {
       1: '1+',
@@ -43,14 +43,14 @@
       4: '4+',
       5: '5+',
     };
-    const useStyles = makeStyles(theme => ({
-      root: {
-        flexGrow: 1,
-      },
-      margin: {
-        margin: theme.spacing(1),
-      },
-    }));
+    // const useStyles = makeStyles(theme => ({
+    //   root: {
+    //     flexGrow: 1,
+    //   },
+    //   margin: {
+    //     margin: theme.spacing(1),
+    //   },
+    // }));
     
 
   function IconContainer(props) {
@@ -73,8 +73,8 @@ function getLabelText(value) {
 // Export function -> CustomizedRatings (Choose rating)
 // =========================================================
   export default function CustomizedRatings(props) {
-    const [value, setValue] = React.useState(1);
-      const [hover, setHover] = React.useState(-1);
+    // const [value, setValue] = React.useState(1);
+      // const [hover, setHover] = React.useState(-1);
     return (
       <div>
         <Grid container

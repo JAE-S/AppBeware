@@ -2,7 +2,6 @@
 // =========================================================
     import React, { Component } from "react";  
     import { connect } from "react-redux";
-    import { push } from 'connected-react-router';
     import {Redirect} from 'react-router-dom';
     import Truncate from 'react-truncate';
     import PropTypes from 'prop-types';
@@ -18,24 +17,23 @@
     import Nav from "../components/Nav"
     import Footer from "../components/Footer"
     import Modal from "../components/Modals"
-    // import AddAppReview from "../components/AddAppReview"
-    import AddAppReview from "../components/AddAppReview/index"
+    import AddAppReview from "../components/AddAppReview"
     import HeaderContainer from "../components/HeaderContainer"
-    import { AppRatings }from "../components/Ratings"
+    // import { AppRatings }from "../components/Ratings"
     import {CommentGrid, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
-    // import HeaderContainer from 
-    // Import Redux Components
+// Import Redux Components
 // =========================================================
     import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userInfo } from '../Store/Actions/authentication';
+    import { userActions } from '../Store/Actions/auth';
 // import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
 // import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
 
 // Import Styles
 // =========================================================
 import "../assets/styling/appStyle.css"
-import PR_icon from "../assets/images/shields/predator_risk.png";
+// import PR_icon from "../assets/images/shields/predator_risk.png";
 import One from "../assets/images/danger_rating_icons/danger_rating_1.png";
 import Two from "../assets/images/danger_rating_icons/danger_rating_2.png";
 import Three from "../assets/images/danger_rating_icons/danger_rating_3.png";
@@ -149,7 +147,6 @@ const dangerRating = [
                 expanded,
                 truncated 
             } = this.state;
-            if(this.props.isloggedIn){
         return (
             <>
             <Nav/>
@@ -430,12 +427,9 @@ const dangerRating = [
             </main>
         <Footer/>
         </>
-        )}
-        else {
-            return <Redirect to = '/' />
-        }
-        }
+        )
     }
+}
 
     AppPage.defaultProps = {
         lines: 1,
@@ -458,7 +452,8 @@ const dangerRating = [
         // trendingApps: state.apps.trendingApps,
         // appNames: state.apps.allAppNames,
         shields: state.shields.allShields,
-        isloggedIn: state.user.isloggedIn
+        isloggedIn: state.authentication.isloggedIn
+
     })
 
     export default connect(mapStateToProps, 
@@ -471,7 +466,8 @@ const dangerRating = [
             viewSingleApp,
             viewAppReviews,
             viewAllShields,
-            userInfo
+            userInfo,
+            userActions
 
         }
     )(AppPage); 

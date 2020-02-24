@@ -12,7 +12,7 @@
 // Import Material UI Icons
 // =========================================================
     import Dashboard from '@material-ui/icons/Dashboard';
-    import NotificationsIcon from '@material-ui/icons/Notifications';
+    // import NotificationsIcon from '@material-ui/icons/Notifications';
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
 // =========================================================
@@ -21,7 +21,9 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
-    import {Alerts, Notifications } from "../Alerts";
+    import Alerts, { Count } from "../Alerts";
+    // import {Alerts, Notifications, Count } from "../Alerts";
+
     import {userInfo} from '../../Store/Actions/authentication';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
 
@@ -144,7 +146,7 @@
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       {/* // TODO:////////////////// */}
       {/* Add user name to nav bar */}
-        <h3>{props.user.name}</h3> 
+        {/* <h3>{props.user.name}</h3>  */}
         <img alt="Profile" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
@@ -156,7 +158,7 @@
           <Modal
               modalTitle="Alert Settings"
               openModal="Alert Settings"
-              modalBody={<Alerts
+              modalBody2={<Alerts
               alerts= {props.allUserAppNotifications.rows}/>}
               modalButton1="Close"
           />
@@ -200,15 +202,17 @@
         <h3>Jane Doe</h3> 
         <div style={{ backgroundColor: "grey", height: 36, width: 36, borderRadius: "50%" }}/>
       </MenuItem>
+      {/* Profile Link */}
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profilePage" style={{ textDecoration: 'none' }}>
         Profile
         </Link>
       </MenuItem>
+      {/* Bage Count */}
       <MenuItem onClick={handleMenuClose}>
           <Badge 
-          // badgeContent={<Count/>}
-          badgeContent={props.activeUserAppNotifications.count}
+          badgeContent={<Count/>}
+          // badgeContent={props.activeUserAppNotifications.count}
           >
               Alerts
           </Badge>
@@ -241,17 +245,17 @@
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton 
-              // aria-label={`show ${<Count/>} new notifications`} 
-              aria-label={`show ${props.activeUserAppNotifications.count} new notifications`} 
+              aria-label={`show ${<Count/>} new notifications`} 
+              // aria-label={`show ${props.activeUserAppNotifications.count} new notifications`} 
               color="inherit">
                 <Badge 
-                // badgeContent={<Count/>} 
-                badgeContent={props.activeUserAppNotifications.count} 
+                badgeContent={<Count/>} 
+                // badgeContent={props.activeUserAppNotifications.count} 
                 color="secondary">
-                  <Notifications 
+                  {/* <Notifications 
                     showAlerts={<NotificationsIcon />}
                     activeAlerts={props.activeUserAppNotifications.rows}
-                    />
+                    /> */}
                 </Badge>
               </IconButton>
               <IconButton
@@ -286,8 +290,8 @@
 
   
   const mapStateToProps = state => ({
-    user: state.user.userInfo,
-    isloggedIn: state.user.isloggedIn,
+    // user: state.user.userInfo,
+    // isloggedIn: state.user.isloggedIn,
     allUserAppNotifications: state.notifications.allUserAppNotifications,
     activeUserAppNotifications: state.notifications.activeUserAppNotifications
 })

@@ -8,7 +8,7 @@
 // =========================================================
   import Avatar from '@material-ui/core/Avatar';
   import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-  import { Paper, Grid, Button, Typography} from '@material-ui/core';
+  import { Grid, Button, Typography} from '@material-ui/core';
 // Components
 // =========================================================
    import Wrapper from "../components/Wrapper"
@@ -18,9 +18,7 @@
    import Modal from "../components/Modals"
    import Toasties from "../components/Toasties"
 
-import { render } from 'react-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css'; 
+  import 'react-toastify/dist/ReactToastify.min.css'; 
 // Assets
 // =========================================================
   import ABLogo from "../assets/images/AppBeware_icon_shadow.png"
@@ -72,9 +70,7 @@ function SplashPage() {
 
   return (
     <div>
-       {/* <div style={{width: "100%"}}> */}
       <h1 className="headerBanner" align="center" style={{fontSize: "40px", padding: "6px", marginBottom: "0px", marginTop: "0px"}}>AppBeware</h1>
-      {/* </div> */}
 
     <Wrapper style={{ minHeight: "calc(100vh - 137px)", maxWidth: "1200px", display: "flex"}}>
     

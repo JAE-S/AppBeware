@@ -18,9 +18,8 @@
     import "../assets/styling/appStyle.css"
 // Import Redux Components
 // =========================================================
-    import { userInfo, updateEmail, updateName, updatePassword, updatePhone } from '../Store/Actions/authentication';
+    import { userInfo } from '../Store/Actions/authentication';
     import API from "../utils/API";
-    import store from '../Store'
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {

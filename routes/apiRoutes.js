@@ -34,7 +34,7 @@ module.exports = (passport, db) => {
    router.post('/add-temp-app-listing', AppController.addTempAppListing);
    router.get('/userInfo', AppController.userInfo);
    router.get('/alerts', AppController.getAlerts);
-   router.get('/alert-count', AppController.getAlertCount);
+  //  router.get('/alert-count', AppController.getAlertCount);
    router.get('/redirect', AppController.redirect);
   //  router.get('/check-alert-status/:userId&:appId', AppController.checkAlertStatus)
   router.put('/change-alert-status', AppController.changeAlertStatus);
