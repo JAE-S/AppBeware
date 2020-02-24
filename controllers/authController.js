@@ -1,5 +1,6 @@
 module.exports = (passport, db) => {
     return {
+
       register: (req, res) => {
         if (!req.body.email || !req.body.password) {
           return res.json({ message: 'Email and Password required!' });
@@ -21,6 +22,7 @@ module.exports = (passport, db) => {
           res.status(403).json({ error: 'Email already exists!' });
         });
       },
+
       login: (req, res, next) => {
         passport.authenticate('local', (err, user) => {
           if (err) {
@@ -38,6 +40,7 @@ module.exports = (passport, db) => {
           }
         })(req, res, next);
       },
+
       logout: (req, res, next) => {
         console.log("anything1")
         req.logout();
@@ -49,6 +52,7 @@ module.exports = (passport, db) => {
           res.redirect('/');
         });
       },
+
       updateName: (req, res) => {
         // console.log('req.body:', req.body);
         db.User.update({
@@ -60,6 +64,7 @@ module.exports = (passport, db) => {
           res.json(result);
         });
       },
+
       updateEmail: (req, res) => {
         db.User.update({
           email: req.body.email
@@ -69,6 +74,7 @@ module.exports = (passport, db) => {
           res.json(result)
         })
       },
+
       updatePhone: (req, res) => {
         db.User.update({
           phoneNumber: req.body.phoneNumber 
@@ -78,6 +84,7 @@ module.exports = (passport, db) => {
           res.json(result)
         })
       },
+
       updatePassword: (req, res) => {
         db.User.update({
           password: req.body.password
@@ -87,6 +94,35 @@ module.exports = (passport, db) => {
           res.json(result)
         })
       },
+
+      userInfo: function (req, res) {
+        if (!req.isAuthenticated()){
+          res.json({
+            userInfo:{
+              name:'',
+              email: '',
+              phone: '',
+              password: ''
+            },
+            isloggedin: false
+          })
+        }
+        else{
+        db.User.findOne({
+          where: {
+            id: req.session.passport.user.id
+          }
+        })
+        .then(() => {
+          const user= {
+            userInfo: req.session.passport.user,
+            isloggedin: req.isAuthenticated()
+          }
+          res.json(user)
+        })
+        }
+      },
+      
       confirmAuth: (req, res) => {
         const email = req.body.email;
         const pwd = req.body.password;
@@ -103,6 +139,7 @@ module.exports = (passport, db) => {
           return res.json(true);
         });
       },
+
       deleteUser: (req, res) => {
         db.User.destroy({
           where: { id: req.params.id }
