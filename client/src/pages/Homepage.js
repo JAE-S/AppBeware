@@ -22,6 +22,7 @@
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
     import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userActions } from '../Store/Actions/auth';
+    import { newGetFullUserInfo } from '../Store/Actions/auth';
     // import { AlertsCall } from '../Store/Actions/reviewActions';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../Store/Actions/userActions";
 // Import Media
@@ -31,7 +32,7 @@
 // Import Styles
 // =========================================================
     import "../assets/styling/appStyle.css"
-    
+     
 class Homepage extends Component {
 
     // Runs Redux to grab all of the categories necessary to render the homepage
@@ -60,6 +61,8 @@ class Homepage extends Component {
         // this.props.AlertsCall();
         this.props.viewAllUserAppNotifications();
         this.props.viewActiveUserAppNotifications();
+        this.props.newGetFullUserInfo();
+        // this.props.getFullUserInfo();
     }
 
 
@@ -159,7 +162,14 @@ const mapStateToProps = state => ({
     activeUserAppNotifications: state.notifications.activeUserAppNotifications, 
 })
 
-export default connect(mapStateToProps,
+const actionCreators = {
+    login: userActions.login,
+    getFullUserInfo: userActions.getFullUserInfo
+     // TODO://////////////////
+    // logout: userActions.logout
+};
+
+export default connect(mapStateToProps, 
     
     { 
         viewAllCategories, 
@@ -174,4 +184,10 @@ export default connect(mapStateToProps,
         
         viewAllUserAppNotifications,
         viewActiveUserAppNotifications, 
+<<<<<<< HEAD
     })(Homepage); 
+=======
+        newGetFullUserInfo
+    }
+    )(Homepage); 
+>>>>>>> fd0a2264f70f38658fed15575b381e9e8b154dfd

@@ -248,6 +248,7 @@ module.exports = function (db) {
         })
       },
 
+      // Testing move to authcontroller
       userInfo: function (req, res) {
         if (!req.isAuthenticated()){
           res.json({
