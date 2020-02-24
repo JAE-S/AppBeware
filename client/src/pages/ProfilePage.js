@@ -18,7 +18,9 @@
     import "../assets/styling/appStyle.css"
 // Import Redux Components
 // =========================================================
-    import { userInfo } from '../Store/Actions/authentication';
+    // import { userInfo } from '../Store/Actions/authentication';
+    import { userActions } from '../Store/Actions/auth';
+
     import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
@@ -77,8 +79,8 @@
   }
         
     render() {
-        console.log(this.props.isloggedIn)
-        if (this.props.isloggedIn) {
+        // console.log(this.props.isloggedIn)
+        // if (this.props.isloggedIn) {
         return (
             <>
                 <Nav/>
@@ -152,19 +154,19 @@
                 <Footer/>
             </>
             )}
-            else {
-                return <Redirect to="/" />
-            }
-        }
+            // else {
+            //     return <Redirect to="/" />
+            // }
+        // }
     }
 
     const mapStateToProps = state => ({
-        user: state.user.userInfo,
-        isloggedIn: state.user.isloggedIn
+        userInfo: state.authentication.userInfo, 
+        // isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 
         {
-            userInfo
+            userActions
         }
     )(Profile); 

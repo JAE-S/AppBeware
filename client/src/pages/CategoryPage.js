@@ -20,7 +20,8 @@
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
-    import { userInfo } from '../Store/Actions/authentication';
+    import { userActions } from '../Store/Actions/auth';
+
 // Import styles
 // =========================================================
     import "../assets/styling/appStyle.css"
@@ -250,7 +251,8 @@
         categories: state.categories.allCategories,
         singleCategoryInfo: state.categories.singleCategoryInfo,
         appReviews: state.apps.appReviews,
-        isloggedIn: state.user.isloggedIn
+        userInfo: state.authentication.userInfo,
+        // isloggedIn: state.user.isloggedIn
     })
 
     export default connect(mapStateToProps, 
@@ -260,7 +262,7 @@
             viewSingleCategoryInfo, 
             viewSingleApp,
             viewAppReviews,
-            userInfo
+            userActions       
         }
     )(Categories); 
 
