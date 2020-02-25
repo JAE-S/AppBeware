@@ -84,14 +84,14 @@
                                 alignItems="center" 
                             >
                                 <Grid item xs={12}> 
-                                {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <img alt={`${this.props.users.items.userInfo.name}'s Profile`} 
-                                    src={this.props.users.items.userInfo.profilePicture}
+                                {!this.props.userInfo ? (<p align="center" >Loading...</p>) : ( <img alt={`${this.props.userInfo.name}'s Profile`} 
+                                    src={this.props.userInfo.profilePicture}
                                     style={{ height: 200, width: 200, borderRadius: "50%"}}/> )
                                 }
                                 </Grid>
                                 
                                 <Grid item xs={12} > 
-                                    {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <div align="center" >  <h3>Welcome back {this.props.users.items.userInfo.name}</h3></div>) }
+                                    {!this.props.userInfo ? (<p align="center" >Loading...</p>) : ( <div align="center" >  <h3>Welcome back {this.props.userInfo.name}</h3></div>) }
                                 </Grid>
 
                             </Grid> 
@@ -102,7 +102,7 @@
                         <UserDetailsPanel
                             ariaControls="UserName"
                             title="Username"
-                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.name) }
+                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.name) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'name'}
@@ -123,7 +123,7 @@
                         <UserDetailsPanel
                             ariaControls="email"
                             title="Email"
-                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.email) }
+                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.email) }
                             edit={" "}
                             inputSubmit = {this.handleFormSubmit}
                             name={'email'}
@@ -133,7 +133,7 @@
                         <UserDetailsPanel
                             ariaControls="phone"
                             title="Phone Number"
-                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.phoneNumber) }
+                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.phoneNumber) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'phone'}
@@ -148,17 +148,20 @@
             )}
     }
 
-    function mapStateToProps(state) {
-        const { users, 
-                authentication,  
-            } = state;
-        const { user } = authentication;
-        return { user, users};
-    }
-    const actionCreators = {
-        getFullUserInfo: userActions.getFullUserInfo
+const mapStateToProps = (state) => ({
 
-    };
+    userInfo: state.authentication.userInfo
 
-    export default connect(mapStateToProps, actionCreators
-    )(Profile); 
+        // const { users, 
+        //         authentication,  
+        //     } = state;
+        // const { user } = authentication;
+        // return { user, users};
+})
+
+const actionCreators = {
+    getFullUserInfo: userActions.getFullUserInfo
+
+};
+
+export default connect(mapStateToProps, actionCreators)(Profile); 

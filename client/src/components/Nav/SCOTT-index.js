@@ -1,6 +1,6 @@
 // Import React
 // =========================================================
-    import React, {useSelector} from 'react'; 
+    import React from 'react'; 
     import { Link } from 'react-router-dom'
     import { connect } from "react-redux"; 
 // Import Material UI Styles
@@ -24,9 +24,8 @@
     import Alerts, { Count } from "../Alerts";
     // import {Alerts, Notifications, Count } from "../Alerts";
 
-    import { userActions } from '../../Store/Actions/auth';
-    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
-    import { alertActions } from "../../Store/Actions/alertActions";
+    import {userInfo} from '../../Store/Actions/authentication';
+    import { userAlertActions } from "../../Store/Actions/userActions";
 
 // Custom Styles
 // =========================================================
@@ -95,11 +94,10 @@
           },
       },
   }));
-  
+
 // Export Nav bar
 // =========================================================
   function Nav(props) {
-
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -160,8 +158,8 @@
           <Modal
               modalTitle="Alert Settings"
               openModal="Alert Settings"
-              // modalBody2={<Alerts
-              // alerts= {props.allUserAppNotifications.count}/>}
+              modalBody2={<Alerts
+              alerts= {props.allUserAppNotifications.rows}/>}
               modalButton1="Close"
           />
         
@@ -292,23 +290,22 @@
 
   
   const mapStateToProps = state => ({
-    userInfo: state.authentication.userInfo,
     // user: state.user.userInfo,
     // isloggedIn: state.user.isloggedIn,
-    // allUserAppNotifications: state.alerts.allUserAppNotifications,
-    // activeUserAppNotifications: state.alerts.activeUserAppNotifications
-})
+    allUserAppNotifications: state.notifications.allUserAppNotifications,
+    activeUserAppNotifications: state.notifications.activeUserAppNotifications
+  })
 
-const actionCreators = {
-  viewAllUserAppNotifications: alertActions.viewAllUserAppNotifications,
-  viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
-};
+  const actionCreators = {
+    viewAllUserAppNotifications: userAlertActions.viewAllUserAppNotifications,
+    viewActiveUserAppNotifications: userAlertActions.viewActiveUserAppNotifications
+  };
 
 export default connect(mapStateToProps, actionCreators
-  // {
-      // userInfo,
-      // AlertsCall,
-      // viewAllUserAppNotifications,
-      // viewActiveUserAppNotifications
-  // }
+    // {
+        // userInfo,
+        // AlertsCall,
+        // viewAllUserAppNotifications,
+        // viewActiveUserAppNotifications
+    // }
 )(Nav); 

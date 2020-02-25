@@ -6,11 +6,8 @@
   import Moment from 'react-moment';
 // Import Redux Actions
 // =========================================================
-  import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
-  // import { appActions } from '../../Store/Actions/app.actions';
   import { appActions } from "../../Store/Actions/appActions";
-
-  // Import Material UI Components
+// Import Material UI Components
 // =========================================================
   import { Grid, Card, Box, Typography } from '@material-ui/core/';
   import Skeleton from '@material-ui/lab/Skeleton';
@@ -21,11 +18,7 @@
 // =========================================================
   import "./style.css"
 
-class Media extends Component {     
-  
-  componentDidMount = () => {
-    this.props.selectTrendingApps(); 
-  }
+class Media extends Component {      
 
   viewApp = (appId) => {
     this.props.viewSingleApp(appId);
@@ -39,9 +32,7 @@ class Media extends Component {
       <Box overflow="hidden">
 
         <Grid container wrap="nowrap">
-        {!this.props.trendingApps ? (<p align="center" >Loading...</p>) : 
-
-          this.props.trendingApps.map((item, index) => (
+          {this.props.trendingApps.map((item, index) => (
             
             <Card key={index} style={{ maxWidth: "300px", width: "100%", margin: "5px", padding: "5px"}}>
                 <Box  style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
@@ -171,29 +162,24 @@ class Media extends Component {
   }
 }
 
-  function mapStateToProps(state) {
-    const { 
-            trendingApps, 
-            singleApp, 
-            shieldsForApps, 
-            appReviews,   
-        } = state;
-    return { 
-            trendingApps, 
-            singleApp, 
-            shieldsForApps, 
-            appReviews, 
-            };
-  }
 
-  const actionCreators = {
-    selectTrendingApps: appActions.selectTrendingApps,
-    viewSingleApp: appActions.viewSingleApp,
-    viewAppReviews: appActions.viewAppReviews,
-    push
-  }
+const mapStateToProps = state => ({
+  trendingApps: state.apps.trendingApps,
+  singleApp: state.apps.singleApp,
+  appReviews: state.apps.appReviews
+})
 
-  export default connect(mapStateToProps, actionCreators
-
-    )(Media); 
-  
+const actionCreators = {
+  selectTrendingApps: appActions.selectTrendingApps,
+  viewSingleApp: appActions.viewSingleApp,
+  viewAppReviews: appActions.viewAppReviews,
+  push
+}
+export default connect(mapStateToProps, actionCreators
+  // { 
+  //     selectTrendingApps,
+  //     viewSingleApp,
+  //     viewAppReviews,
+  //     push
+  // }
+  )(Media); 

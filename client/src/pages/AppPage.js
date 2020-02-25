@@ -21,13 +21,12 @@
     import HeaderContainer from "../components/HeaderContainer"
     // import { AppRatings }from "../components/Ratings"
     import {CommentGrid, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
+    
 // Import Redux Components
 // =========================================================
-    import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
-    import { viewAllShields } from "../Store/Actions/shieldActions";
-    import { userActions } from '../Store/Actions/auth';
-// import { viewAllCategories, viewSingleCategory } from "../Store/Actions/categoryActions";
-// import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews } from "../Store/Actions/appActions";
+import { appActions } from "../Store/Actions/appActions";
+import { shieldActions } from "../Store/Actions/shieldActions";
+
 
 // Import Styles
 // =========================================================
@@ -248,7 +247,7 @@ const dangerRating = [
                                         Shield Alerts
                                     </h2>
                                 </div>
-                                {this.props.shields.map((shield, index) => (
+                                {this.props.allShields.map((shield, index) => (
                                     <ShieldRatings
                                         key={shield.name}
                                         shieldIcon={shield.icon}
@@ -451,23 +450,17 @@ const dangerRating = [
         // apps: state.apps.allListedApps,
         // trendingApps: state.apps.trendingApps,
         // appNames: state.apps.allAppNames,
-        shields: state.shields.allShields,
+        allShields: state.shields.allShields,
         // isloggedIn: state.authentication.isloggedIn
 
     })
 
-    export default connect(mapStateToProps, 
-        { 
-            // viewAllCategories, 
-            // viewSingleCategory, 
-            // viewAllListedApps, 
-            // viewAppNames, 
-            // selectTrendingApps,
-            viewSingleApp,
-            viewAppReviews,
-            viewAllShields,
-            // userInfo,
-            userActions
+    const actionCreators = {
+        viewSingleApp: appActions.viewSingleApp,
+        viewAppReviews: appActions.viewAppReviews,
+        viewAllShields: shieldActions.viewAllShields
+        // userInfo,
+        // userActions
+    }
 
-        }
-    )(AppPage); 
+    export default connect(mapStateToProps, actionCreators)(AppPage); 

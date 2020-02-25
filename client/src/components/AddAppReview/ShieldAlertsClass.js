@@ -11,8 +11,8 @@ import { Grid } from '@material-ui/core/';
 import HoverShieldInfo from "../HoverShieldInfo"
 // Redux Components 
 // =========================================================
-import { viewAllShields } from "../../Store/Actions/shieldActions";
-import { addShieldToApp, resetAddedShields } from "../../Store/Actions/reviewActions";
+import { shieldActions } from "../../Store/Actions/shieldActions";
+import { reviewActions } from "../../Store/Actions/reviewActions";
 import "./style.css"
 
 
@@ -132,14 +132,23 @@ addedShields: state.reviews.addedShields,
 shields: state.shields.allShields
 })
 
-export default connect(mapStateToProps, 
-{ 
+const actionCreators = {
+
+    addShieldToApp: reviewActions.addShieldToApp,
+    resetAddedShields: reviewActions.resetAddedShields,
+
+    viewAllShields: shieldActions.viewAllShields
+}
+
+export default connect(mapStateToProps, actionCreators
+// { 
     // viewAllCategories, 
     // viewSingleCategory, 
     // viewAllListedApps, 
     // viewAppNames, 
     // selectTrendingApps,
-    addShieldToApp,
-    resetAddedShields,
-    viewAllShields 
-})(ShieldAlertsClass);
+    // addShieldToApp,
+    // resetAddedShields,
+    // viewAllShields 
+// }
+)(ShieldAlertsClass);

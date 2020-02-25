@@ -14,9 +14,7 @@
     import CloseIcon from '@material-ui/icons/Close';    
 // Redux Imports
 // =========================================================
-    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
-    import { alertActions } from "../../Store/Actions/alertActions";
-
+    import { userAlertActions } from "../../Store/Actions/userActions";
 // Styling Imports
 // =========================================================
     import "../../assets/styling/appStyle.css"
@@ -54,7 +52,6 @@
     //         </>
     //     )
     // }
-    
     export const Count = () => {
         return (
             <div>4</div>
@@ -229,13 +226,13 @@ class Alerts extends Component {
     
     const mapStateToProps = state => ({
         alert: state.reviews.alerts,
-        allUserAppNotifications: state.alerts.allUserAppNotifications,
-        activeUserAppNotifications: state.alerts.activeUserAppNotifications
+        allUserAppNotifications: state.notifications.allUserAppNotifications,
+        activeUserAppNotifications: state.notifications.activeUserAppNotifications
     })
 
     const actionCreators = {
-        viewAllUserAppNotifications: alertActions.viewAllUserAppNotifications,
-        viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
+        viewAllUserAppNotifications: userAlertActions.viewAllUserAppNotifications,
+        viewActiveUserAppNotifications: userAlertActions.viewActiveUserAppNotifications
       };
 
     export default connect(mapStateToProps, actionCreators
@@ -247,3 +244,5 @@ class Alerts extends Component {
 
     )(Alerts, Count); 
 
+
+    

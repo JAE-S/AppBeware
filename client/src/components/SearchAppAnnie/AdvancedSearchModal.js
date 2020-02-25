@@ -5,7 +5,7 @@
 // =========================================================
     import { connect } from "react-redux";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
-    import { search42Text, search42IosId } from "../../Store/Actions/appActions";
+    import { appActions } from "../../Store/Actions/appActions";
 
     import API from "../../utils/API";
 
@@ -218,9 +218,14 @@ const mapStateToProps = state => ({
     iosAppIndividualSearchResult: state.apps.iosAppIndividualSearchResult
 })
 
-export default connect(mapStateToProps, 
-    { 
-        search42Text,
-        search42IosId
-    }
+const actionCreators = {
+    search42Text: appActions.search42Text,
+    search42IosId: appActions.search42IosId
+}
+
+export default connect(mapStateToProps, actionCreators
+    // { 
+    //     search42Text,
+    //     search42IosId
+    // }
 )(AdvancedSearchModal); 

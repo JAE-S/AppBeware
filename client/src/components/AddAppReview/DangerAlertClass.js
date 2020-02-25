@@ -6,7 +6,7 @@
 // Import Components
 // =========================================================
     import CustomizedRatings from "../Ratings"
-    import { viewAllShields } from "../../Store/Actions/shieldActions";
+    import { shieldActions } from "../../Store/Actions/shieldActions";
 
 // ShieldAlertsFunction
 // =========================================================
@@ -46,15 +46,18 @@ const mapStateToProps = state => ({
     shields: state.shields.allShields
     })
     
-    export default connect(mapStateToProps, 
-        { 
+const actionCreators = {
+    viewAllShields: shieldActions.viewAllShields
+}
+    export default connect(mapStateToProps, actionCreators
+        // { 
             // viewAllCategories, 
             // viewSingleCategory, 
             // viewAllListedApps, 
             // viewAppNames, 
             // selectTrendingApps,
-            viewAllShields 
-        }
+        //     viewAllShields 
+        // }
     )(ShieldAlertsClass);
 
 
