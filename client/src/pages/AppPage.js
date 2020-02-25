@@ -2,9 +2,6 @@
 // =========================================================
     import React, { Component } from "react";  
     import { connect } from "react-redux";
-    import {Redirect} from 'react-router-dom';
-    import Truncate from 'react-truncate';
-    import PropTypes from 'prop-types';
 // Import Material Ui Components
 // =========================================================
     import { Grid, Typography, Button, FormControlLabel, Checkbox } from '@material-ui/core';   
@@ -19,52 +16,52 @@
     import Modal from "../components/Modals"
     import AddAppReview from "../components/AddAppReview"
     import HeaderContainer from "../components/HeaderContainer"
-    // import { AppRatings }from "../components/Ratings"
+    import ReadMore from "../components/TurnicateText"
     import {CommentGrid, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
-    
 // Import Redux Components
 // =========================================================
-import { appActions } from "../Store/Actions/appActions";
-import { shieldActions } from "../Store/Actions/shieldActions";
-
-
+    import { appActions } from "../Store/Actions/appActions";
+    import { shieldActions } from "../Store/Actions/shieldActions";
+// Import media
+// =========================================================
+    // TODO: Add images to the database 
+    import One from "../assets/images/danger_rating_icons/danger_rating_1.png";
+    import Two from "../assets/images/danger_rating_icons/danger_rating_2.png";
+    import Three from "../assets/images/danger_rating_icons/danger_rating_3.png";
+    import Four from "../assets/images/danger_rating_icons/danger_rating_4.png";
+    import Five from "../assets/images/danger_rating_icons/danger_rating_5.png";
 // Import Styles
 // =========================================================
-import "../assets/styling/appStyle.css"
-// import PR_icon from "../assets/images/shields/predator_risk.png";
-import One from "../assets/images/danger_rating_icons/danger_rating_1.png";
-import Two from "../assets/images/danger_rating_icons/danger_rating_2.png";
-import Three from "../assets/images/danger_rating_icons/danger_rating_3.png";
-import Four from "../assets/images/danger_rating_icons/danger_rating_4.png";
-import Five from "../assets/images/danger_rating_icons/danger_rating_5.png";
+    import "../assets/styling/appStyle.css"
 
-const dangerRating = [ 
-    {  name: "one",
-    logoUrl: One,
-    description: "Mild Concern", 
-    reviewCount: 5 
-    },
-    {  name: "two", 
-    logoUrl: Two,
-    description: "Moderate Concern", 
-    reviewCount: 6 
-    },
-    {  name: "three",
-        logoUrl:Three,
-        description: "High Concern", 
-        reviewCount: 10 
-    },
-    {  name: "four",
-        logoUrl: Four,
-        description: "Very High Concern", 
+
+    const dangerRating = [ 
+        {  name: "one",
+        logoUrl: One,
+        description: "Mild Concern", 
         reviewCount: 5 
-    },
-    {  name: "five", 
-        logoUrl: Five,
-        description: "Severe Concern", 
-        reviewCount: 3
-    },
-]
+        },
+        {  name: "two", 
+        logoUrl: Two,
+        description: "Moderate Concern", 
+        reviewCount: 6 
+        },
+        {  name: "three",
+            logoUrl:Three,
+            description: "High Concern", 
+            reviewCount: 10 
+        },
+        {  name: "four",
+            logoUrl: Four,
+            description: "Very High Concern", 
+            reviewCount: 5 
+        },
+        {  name: "five", 
+            logoUrl: Five,
+            description: "Severe Concern", 
+            reviewCount: 3
+        },
+    ]
 
 // MIN = Minimum expected value
 // MAX = Maximium value = total number of reviews 
@@ -73,104 +70,61 @@ const dangerRating = [
 // =========================================================
     class AppPage extends Component {
 
-        constructor(...args) {
-            super(...args);
-     
-            this.state = {
-                expanded: false,
-                truncated: false,
-            };
-     
-            this.handleTruncate = this.handleTruncate.bind(this);
-            this.toggleLines = this.toggleLines.bind(this);
-        }
-     
-        handleTruncate(truncated) {
-            if (this.state.truncated !== truncated) {
-                this.setState({
-                    truncated
-                });
-            }
-        }
-     
-        toggleLines(event) {
-            event.preventDefault();
-     
-            this.setState({
-                expanded: !this.state.expanded
-            });
-        }
-
         // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllShields();
         }
 
         getNormalise = (value) => {
+        // TODO: 
             // const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
          return (value - 0) * 100 / (10 - 0)
         }
-        getShieldValue = (value) => {
+   
+        getShieldValue = (index) => {
             const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
-         return (value - 0) * 100 / (badgeTotal - 0)
-        }
-
-        getShieldIndex = (index) => {
+            
             if (index === 0 ){
-                return this.getShieldValue(this.props.singleApp.badge1Count)
+                return  (this.props.singleApp.badge1Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 1 ) {
-              return this.getShieldValue(this.props.singleApp.badge2Count)
+              return (this.props.singleApp.badge2Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 2 ) {
-                return this.getShieldValue(this.props.singleApp.badge3Count)
+                return (this.props.singleApp.badge3Count  - 0) * 100 / (badgeTotal - 0)
             } else if (index === 3 ) {
-                return this.getShieldValue(this.props.singleApp.badge4Count)
+                return (this.props.singleApp.badge4Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 4 ) {
-                return this.getShieldValue(this.props.singleApp.badge4Count)
+                return (this.props.singleApp.badge5Count - 0) * 100 / (badgeTotal - 0)
             }
         }
         
         render() {
-            const {
-                // children,
-                more,
-                less,
-                lines 
-            } = this.props; 
-            let getNormaliseBadges = (value) => {
-            const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
-                return (value - 0) * 100 / (badgeTotal - 0);
-            } 
-            
-            const {
-                expanded,
-                truncated 
-            } = this.state;
+       
         return (
             <>
-            <Nav/>
-            <main>
-                <HeaderContainer style={{backgroundColor: "#EAEAEA"}}> 
-                    <Wrapper align="center" style={{paddingTop: "40px", paddingBottom: "20px"}}> 
-                            
-                        <Grid container 
-                            spacing={4}
-                            direction="row"
-                            justify="flex-start"
-                            alignItems="center"
-                        >
-                            <Grid align="center" item xs={12} sm={3}>
-                                <img 
-                                    style={{ width: "100%", height: "auto", borderRadius: 16 }}
-                                    className="appIcon"
-                                    src={this.props.singleApp.logoUrl}
-                                    alt={this.props.singleApp.name}   
-                                />
-                            </Grid> 
-                            <Grid align="left" item xs={12}  sm={9}>
-                                <h1  align="left" style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem"}}>
-                                    
-                                    {this.props.singleApp.name}
-                                    
+                <Nav/>
+                <main>
+                    <HeaderContainer style={{backgroundColor: "#EAEAEA"}}> 
+                        <Wrapper align="center" style={{paddingTop: "40px", paddingBottom: "20px"}}> 
+                                
+                            <Grid container 
+                                spacing={4}
+                                direction="row"
+                                justify="flex-start"
+                                alignItems="center"
+                            >
+                                <Grid align="center" item xs={12} sm={3}>
+                                    <img 
+                                        style={{ width: "100%", height: "auto", borderRadius: 16 }}
+                                        className="appIcon"
+                                        src={this.props.singleApp.logoUrl}
+                                        alt={this.props.singleApp.name}   
+                                    />
+                                </Grid> 
+                                <Grid align="left" item xs={12}  sm={9}>
+                                    <div  align="left" style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem", marginBottom: "20px"}}>
+                                        
+                                        {this.props.singleApp.name} 
+                                   
                                     <FormControlLabel  
                                         style={{color: "inherit", textShadow: "inherit", margin: "0px!important", paddingLeft: "10px"}}
                                         align="right"
@@ -185,19 +139,11 @@ const dangerRating = [
                                         }
                                         label="Set Alert"
                                     />
-                                </h1>
-                                <Truncate
-                                    lines={!expanded && lines}
-                                    ellipsis={(
-                                        <span className="readMore" >... <a href='#readMore' className="readMore" onClick={this.toggleLines}>{more}</a></span>
-                                    )}
-                                    onTruncate={this.handleTruncate}
-                                >
-                                    <p align="left">{this.props.singleApp.description}</p>
-                                </Truncate>
-                                {!truncated && expanded && (
-                                    <span> <a  className="readMore" href='#readMore' onClick={this.toggleLines}>{less}</a></span>
-                                )}
+                                </div>
+                                
+                                <ReadMore>
+                                    {this.props.singleApp.description}
+                                </ReadMore>
 
                                 <Grid align="right" item xs={12} style={{paddingTop: "10px"}}>
                                     <Button href={this.props.singleApp.siteUrl}  target="_blank">
@@ -236,7 +182,7 @@ const dangerRating = [
                                         riskLevel={danger.name}
                                         info={danger.description}
                                         ratingScale={this.getNormalise(danger.reviewCount)}
-                                        reviewCount={`${danger.reviewCount} Alert(s)`}
+                                        reviewCount={`${danger.reviewCount} Alerts`}
                                     />
                                 ))}
                             </Grid>
@@ -254,7 +200,7 @@ const dangerRating = [
                                         title={shield.name}
                                         altTxt={shield.altText}
                                         info={`${shield.name} - ${shield.info}`}
-                                        ratingScale={this.getShieldIndex(index)}
+                                        ratingScale={this.getShieldValue(index)}
                                             
                                         reviewCount={ 
                                             <div> 
@@ -337,90 +283,16 @@ const dangerRating = [
                             // TODO: Ultimately need to generate this data - next 2 fields
                             reviewCountLeft={3}
                             datePostedLeft="Nov 18, 2019"
-                            // ---> Right Side     
-                            // TODO: Need to redo this so it's not hard-coded - badges
-                        //     badgesRight={
-                        //         <div> 
-                        //                     {review.User.predatorRisk ? (
-                        //                         <div>
-                        //                             <img alt={this.props.singleApp.badge1Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={this.props.singleApp.badge1LogoUrl} />
-                                                   
-                        //                         </div>
-                        //                     ) : (
-                        //                         <div style={{display: "none"}}/>
-                        //                         )
-                        //                     }
-                        //                     {review.User.dangerousBehavior ? (
-                        //                         <div>
-                        //                             <img alt={this.props.singleApp.badge2Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge2LogoUrl} />
-                                                  
-                        //                         </div>
-                        //                     ) : (
-                        //                         <div style={{display: "none"}}/>
-                        //                         )
-                        //                     }
-                        //                     {review.User.violentContent ? (
-                        //                         <div>
-                        //                             <img alt={this.props.singleApp.badge3Name} style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={review.User.badge3LogoUrl} />                                          
-                        //                         </div>
-                        //                     ) : (
-                        //                         <div style={{display: "none"}}/>
-                        //                         )
-                        //                     }
-                        //                     {review.User.cyberbullying ? (
-                        //                         <div>
-                        //                             <img alt={this.props.singleApp.badge4Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge4LogoUrl} />                                               
-                        //                         </div>
-                        //                     ) : (
-                        //                         <div style={{display: "none"}}/>
-                        //                         )
-                        //                     }
-                        //                     {review.User.sexualContent ? (
-                        //                         <div>
-                        //                             <img alt={this.props.singleApp.badge5Name} style={{ maxWidth: "5px", width: "100%", height: "auto"}} src={review.User.badge5LogoUrl} />                                                                                                 
-                        //                         </div>
-                        //                     ) : (
-                        //                         <div style={{display: "none"}}/>
-                        //                         )
-                        //                     }
-                        //                 </div> 
-                            
-                            
-                        // }
-                            // dangerRatingRight={<AppRatings ratingValue={review.dangerRating}/>}
+                          
                             commentsRight={
-                                <div>
-                                    <Truncate
-                            
-                                        lines={!expanded && lines}
-                                        ellipsis={(
-                                            <span className="readMore" >... <a href='#' className="readMore" onClick={this.toggleLines}>{more}</a></span>
-                                        )}
-                                        onTruncate={this.handleTruncate}
-                                    >
-                                    <p align="left"  trimwhitespace="true">{review.comments}</p>
-                                    </Truncate>
-                                    {!truncated && expanded && (
-                                        <span> <a className="readMore" href='#' onClick={this.toggleLines}>{less}</a></span>
-                                    )}
-                                </div>
+                                <ReadMore> 
+                                    <p align="left"  trimwhitespace="true">
+                                        {review.comments}
+                                    </p> 
+                                </ReadMore>
                             }
                         /> 
-                    
-
                 ))}
-
-                        {/* <CommentGrid
-                            // ---> Left Side
-                            imageLeft={<img alt={test_profiles[0].username} style={{  justifyContent: "center", maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].image}/>}
-                            usernameLeft={test_profiles[0].username} 
-                            reviewCountLeft={test_profiles[0].reviewCount} 
-                            datePostedLeft={test_profiles[0].datePosted} 
-                            // ---> Right Side     
-                            badgesRight={<img alt="Predator Risk" style={{ maxWidth: "40px", width: "100%", height: "auto"}} src={test_profiles[0].badges}/>}
-                            dangerRatingRight={<AppRatings ratingValue={test_profiles[0].dangerRating}/>}
-                            commentsRight={test_profiles[0].comments}
-                        /> */}
             
                 </Wrapper>
             </main>
@@ -429,19 +301,6 @@ const dangerRating = [
         )
     }
 }
-
-    AppPage.defaultProps = {
-        lines: 1,
-        more: 'Read more',
-        less: 'Show less',
-    };
-     
-    AppPage.propTypes = {
-        // children: PropTypes.node.isRequired,
-        lines: PropTypes.number,
-        less: PropTypes.string,
-        more: PropTypes.string
-    };
 
     const mapStateToProps = state => ({
         singleApp: state.apps.singleApp,

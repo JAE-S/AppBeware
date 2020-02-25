@@ -1,7 +1,6 @@
 // Import React
 // =========================================================
     import React, { Component } from "react"; 
-    // import {Redirect} from 'react-router-dom';
     import { connect } from "react-redux"; 
 // Import Material Ui Components
 // =========================================================
@@ -18,10 +17,8 @@
     import "../assets/styling/appStyle.css"
 // Import Redux Components
 // =========================================================
-    // import { userInfo } from '../Store/Actions/authentication';
     import { userActions } from '../Store/Actions/auth';
 
-    import API from "../utils/API";
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
@@ -152,11 +149,6 @@ const mapStateToProps = (state) => ({
 
     userInfo: state.authentication.userInfo
 
-        // const { users, 
-        //         authentication,  
-        //     } = state;
-        // const { user } = authentication;
-        // return { user, users};
 })
 
 const actionCreators = {
