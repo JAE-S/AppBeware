@@ -1,33 +1,63 @@
-import API from "../../utils/API";
-import { VIEW_ALL_CATEGORIES, VIEW_SINGLE_CATEGORY, VIEW_SINGLE_CATEGORY_INFO } from "./new-types";
+import { categoryConstants } from '../_constants/categoryConstants';
+import  categoryService  from '../_services/categoryService';
+// import  history  from '../_helpers/history';
 
-export const viewAllCategories = () => dispatch => {
+export const categoryActions = {
+    viewAllCategories,
+    viewSingleCategory,
+    viewSingleCategoryInfo
+}
 
-    API.getCategories()
-        .then(allCategories => dispatch({
-            type: VIEW_ALL_CATEGORIES,
-            payload: allCategories
-        }))
-        .catch(err => console.log(err));
+function viewAllCategories () {
+    
+    return dispatch => {
+        dispatch(request());
+
+        categoryService.viewAllCategories()
+        .then(
+            data => dispatch(success(data)),
+            error => dispatch(failure(error.toString()))
+        );
+    };
+    
+    function request(data) { return { type: categoryConstants.VIEW_ALL_CATEGORIES_REQUEST, payload: data } }
+    function success(data) { return { type: categoryConstants.VIEW_ALL_CATEGORIES_SUCCESS, payload: data } }
+    function failure(error) { return { type: categoryConstants.VIEW_ALL_CATEGORIES_FAILURE, error } }
     
 }
 
-export const viewSingleCategory = (catId) => dispatch => {
-    API.filterCategory(catId)
-        .then(singleCategory => dispatch({
-            type: VIEW_SINGLE_CATEGORY,
-            payload: singleCategory
-        }))
-        .catch(err => console.log(err));
+function viewSingleCategory (catId) {
 
-} 
+    return dispatch => {
+        dispatch(request());
 
-export const viewSingleCategoryInfo = (catId) => dispatch => {
-    API.getCategoryInfo(catId)
-        .then(singleCategoryInfo => dispatch({
-            type: VIEW_SINGLE_CATEGORY_INFO,
-            payload: singleCategoryInfo
-        }))
-        .catch(err => console.log(err));
+        categoryService.viewSingleCategory(catId)
+        .then(
+            data => dispatch(success(data)),
+            error => dispatch(failure(error.toString()))
+        );
+    };
+    
+    function request(data) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_REQUEST, payload: data } }
+    function success(data) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_SUCCESS, payload: data } }
+    function failure(error) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_FAILURE, error } }
+    
 }
 
+function viewSingleCategoryInfo (catId) {
+
+    return dispatch => {
+        dispatch(request());
+
+        categoryService.viewSingleCategoryInfo(catId)
+        .then(
+            data => dispatch(success(data)),
+            error => dispatch(failure(error.toString()))
+        );
+    };
+    
+    function request(data) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_INFO_REQUEST, payload: data } }
+    function success(data) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_INFO_SUCCESS, payload: data } }
+    function failure(error) { return { type: categoryConstants.VIEW_SINGLE_CATEGORY_INFO_FAILURE, error } }
+    
+}

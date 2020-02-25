@@ -4,7 +4,7 @@
 // Import Redux Components
 // =========================================================
     import { connect } from "react-redux";
-    import { viewAllShields } from "../../Store/Actions/shieldActions";
+    import { shieldActions } from "../../Store/Actions/shieldActions";
 // Import Material UI Components
 // =========================================================
     import { Table, TableBody, TableRow, TableCell, Grid } from '@material-ui/core/';
@@ -145,8 +145,11 @@ const mapStateToProps = state => ({
     shields: state.shields.allShields
 })
 
-export default connect(mapStateToProps, 
-    { 
-        viewAllShields 
-    }
+const actionCreators = {
+    viewAllShields: shieldActions.viewAllShields
+}
+export default connect(mapStateToProps, actionCreators
+    // { 
+    //     viewAllShields 
+    // }
 )(AboutTheShields); 

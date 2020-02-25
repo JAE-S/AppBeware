@@ -8,9 +8,9 @@
 
 // Import Redux Components
 // =========================================================
-  import { viewSingleApp } from "../../Store/Actions/appActions";
+  import { appActions } from "../../Store/Actions/appActions";
   // import { userInfo } from '../../Store/Actions/authentication';
-  import { reviewSubmit } from '../../Store/Actions/reviewActions';
+  import { reviewActions } from '../../Store/Actions/reviewActions';
 
   import API from "../../utils/API";
 
@@ -360,10 +360,16 @@ const mapStateToProps = state => ({
   completeReview: state.reviews.completeReview
 })
 
-export default connect(mapStateToProps, 
-    { 
-        viewSingleApp,
-        reviewSubmit,
-        userActions
-    })(AddAppReview); 
+const actionCreators = {
+  viewSingleApp: appActions.viewSingleApp,
+  reviewSubmit: reviewActions.reviewSubmit
+}
+
+export default connect(mapStateToProps, actionCreators
+    // { 
+        // viewSingleApp,
+        // reviewSubmit,
+        // userActions
+    // }
+    )(AddAppReview); 
  

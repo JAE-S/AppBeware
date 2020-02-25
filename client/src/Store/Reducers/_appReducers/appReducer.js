@@ -1,6 +1,5 @@
-import { VIEW_ALL_APPS, VIEW_SINGLE_APP, VIEW_APP_NAMES, SELECT_TRENDING_APPS, GENERATE_SHIELDS_FOR_APPS, VIEW_APP_REVIEWS, SEARCH_42_TEXT, SEARCH_42_IOS_ID } from "../Actions/new-types";
+import { appConstants } from "../../_constants/appConstants"
 
-import { appConstants } from "../_constants/appConstants"
 const initialState = {
     allListedApps: [],
     singleApp: {},
@@ -12,53 +11,53 @@ const initialState = {
     // iosAppIndividualSearchResult: {}
 };
 
-export function appFiltering(state=initialState, action) {
+export default function (state=initialState, action) {
 
     switch(action.type) {
 
-        case appConstants.VIEW_ALL_APPS:
+        case appConstants.VIEW_ALL_APPS_SUCCESS:
             return {
                 ...state,
                 allListedApps: action.payload.data
             }
 
-        case appConstants.VIEW_APP_NAMES:
+        case appConstants.VIEW_APP_NAMES_SUCCESS:
             return {
                 ...state,
                 allAppNames: action.payload.data
             }
 
-        case appConstants.SELECT_TRENDING_APPS:
+        case appConstants.SELECT_TRENDING_APPS_SUCCESS:
             return {
                 ...state,
                 trendingApps: action.payload.data
             }
 
-        case appConstants.VIEW_SINGLE_APP:
+        case appConstants.VIEW_SINGLE_APP_SUCCESS:
             return {
                 ...state,
                 singleApp: action.payload.data[0]
             }
 
-        case appConstants.GENERATE_SHIELDS_FOR_APPS:
+        case appConstants.GENERATE_SHIELDS_FOR_APPS_SUCCESS:
             return {
                 ...state,
                 shieldsForApps: action.payload.data
             }
 
-        case appConstants.VIEW_APP_REVIEWS:
+        case appConstants.VIEW_APP_REVIEWS_SUCCESS:
             return {
                 ...state,
                 appReviews: action.payload.data
             }
 
-        // case SEARCH_42_TEXT:
+        // case appConstants.SEARCH_42_TEXT_SUCCESS:
         //     return {
         //         ...state,
         //         appTextSearchResults: action.payload.data.results
         //     }
 
-        // case SEARCH_42_IOS_ID:
+        // case appConstants.SEARCH_42_IOS_ID_SUCCESS:
         //     return {
         //         ...state,
         //         iosAppIndividualSearchResult: action.payload.data

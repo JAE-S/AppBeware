@@ -5,8 +5,8 @@
     import {Redirect} from 'react-router-dom';
 // Import Redux Actions
 // =========================================================
-import { categoryActions } from "../Store/Actions/categoryActions";
-import { appActions } from "../Store/Actions/appActions";
+    import { categoryActions } from "../Store/Actions/categoryActions";
+    import { appActions } from "../Store/Actions/appActions";
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -21,8 +21,6 @@ import { appActions } from "../Store/Actions/appActions";
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
     import { userActions } from '../Store/Actions/auth';
-    // import { appActions } from '../Store/Actions/app.actions';
-
 
 // Import styles
 // =========================================================
@@ -86,7 +84,7 @@ import { appActions } from "../Store/Actions/appActions";
         }
 
         render(props) {
-            // if(this.props.isloggedIn){
+            if(this.props.isloggedIn){
             return (
                 <>
                 <Nav/>
@@ -131,7 +129,7 @@ import { appActions } from "../Store/Actions/appActions";
                         id="search-categories"
                         className="searchInput"
                         disableClearable
-                        options={this.props.allCategories.map(option => option.name)}
+                        options={this.props.categories.map(option => option.name)}
                         onChange={this.onTagsChange}
                         renderInput={params => (
                         <InputOverRideOutline
@@ -148,8 +146,7 @@ import { appActions } from "../Store/Actions/appActions";
                     <Table style={{marginTop: "20px"}}>
                         <TableHeader/>
                         <TableBody>
-                        {!this.props.singleCategory ? (<p align="center" >Loading...</p>) : 
-                         this.props.singleCategory.map((app, i) => (
+                        {this.props.singleCategory.map((app, i) => (
                             <TableRow key={i} style={{borderBottom: "1px solid #13BAC7"}}>
                                 <Image 
                                     title={app.name}
@@ -232,9 +229,7 @@ import { appActions } from "../Store/Actions/appActions";
                                 </TableCell>
                                 
                             </TableRow>
-                        )
-                        )
-                        }
+                        ))}
                         </TableBody>
                 </Table>
 
@@ -244,54 +239,39 @@ import { appActions } from "../Store/Actions/appActions";
 
                 <Footer/>
                 </>
-            )
-        // }
-            // else{
-            //     return <Redirect to='/' />
-            // }
+            )}
+            else{
+                return <Redirect to='/' />
+            }
         }
     }
 
     const mapStateToProps = state => ({
         singleCategory: state.categories.singleCategory,
-        allCategories: state.categories.allCategories,
+        categories: state.categories.allCategories,
         singleCategoryInfo: state.categories.singleCategoryInfo,
         appReviews: state.apps.appReviews,
         userInfo: state.authentication.userInfo,
-        isloggedIn: state.authentication.isloggedIn
+        // isloggedIn: state.user.isloggedIn
     })
-    // function mapStateToProps(state) {
-    //     const { users, 
-    //             authentication,  
-    //             allCategories,
-    //             singleCategory,
-    //             singleCategoryInfo,
-    //             shields,
-    //         } = state;
-    //     const { user } = authentication;
-    //     return { user, 
-    //             users, 
-    //             allCategories,
-    //             singleCategory,
-    //             singleCategoryInfo,
-    //             shields };
-    // }
+
     const actionCreators = {
         viewAllCategories: categoryActions.viewAllCategories,
         viewSingleCategory: categoryActions.viewSingleCategory,
         viewSingleCategoryInfo: categoryActions.viewSingleCategoryInfo,
         viewSingleApp: appActions.viewSingleApp,
-        viewAppReviews: appActions.viewAppReviews,
-        // getFullUserInfo: userActions.getFullUserInfo,
-        // getCategoriesHome: appActions.getCategories,
-        // getCategoryInfo: appActions.getCategoryInfo,
-        // shieldsInfo: appActions.getShields,
-        // viewSingleCategory: appActions.getCategoryInfo, 
-        filterCategory: appActions.filterCategory,
-    };
-    
-    export default connect(mapStateToProps, actionCreators)(Categories); 
-    
+        viewAppReviews: appActions.viewAppReviews
+    }
 
+    export default connect(mapStateToProps, actionCreators
+        // { 
+            // viewAllCategories, 
+            // viewSingleCategory, 
+            // viewSingleCategoryInfo, 
+            // viewSingleApp,
+            // viewAppReviews,
+            // userActions       
+        // }
+    )(Categories); 
 
     

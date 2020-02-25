@@ -1,17 +1,26 @@
 import { userConstants } from '../../_constants/userConstants';
 
-export function users(state = {}, action) {
+const initialState = {
+  userInfo: {}
+};
+
+export default function(state=initialState, action) {
+
   console.log("insde user.reducer")
+
   switch (action.type) {
+
     case userConstants.GET_FULL_USER_INFO_REQUEST:
       return {
         loading: true
       };
+
     case userConstants.GET_FULL_USER_INFO_SUCCESS:
       return {
         ...state,
-        items: action.payload.data,
+        userInfo: action.payload.data.userInfo,
       };
+
     // case userConstants.GETALL_FAILURE:
     //   return { 
     //     error: action.error
