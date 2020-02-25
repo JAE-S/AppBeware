@@ -2,11 +2,10 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux";
-    import {Redirect} from 'react-router-dom';
 // Import Redux Actions
 // =========================================================
-import { categoryActions } from "../Store/Actions/categoryActions";
-import { appActions } from "../Store/Actions/appActions";
+    import { categoryActions } from "../Store/Actions/categoryActions";
+    import { appActions } from "../Store/Actions/appActions";
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -20,9 +19,6 @@ import { appActions } from "../Store/Actions/appActions";
     import Wrapper from "../components/Wrapper"
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
-    import { userActions } from '../Store/Actions/auth';
-    // import { appActions } from '../Store/Actions/app.actions';
-
 
 // Import styles
 // =========================================================
@@ -82,11 +78,9 @@ import { appActions } from "../Store/Actions/appActions";
         viewCategory = (catId) => {
             this.props.viewSingleCategory(catId)
             this.props.viewSingleCategoryInfo(catId)
-            // this.props.history.push('/categoryPage');
         }
 
         render(props) {
-            // if(this.props.isloggedIn){
             return (
                 <>
                 <Nav/>
@@ -245,10 +239,6 @@ import { appActions } from "../Store/Actions/appActions";
                 <Footer/>
                 </>
             )
-        // }
-            // else{
-            //     return <Redirect to='/' />
-            // }
         }
     }
 
@@ -258,24 +248,9 @@ import { appActions } from "../Store/Actions/appActions";
         singleCategoryInfo: state.categories.singleCategoryInfo,
         appReviews: state.apps.appReviews,
         userInfo: state.authentication.userInfo,
-        isloggedIn: state.authentication.isloggedIn
+        // isloggedIn: state.authentication.isloggedIn
     })
-    // function mapStateToProps(state) {
-    //     const { users, 
-    //             authentication,  
-    //             allCategories,
-    //             singleCategory,
-    //             singleCategoryInfo,
-    //             shields,
-    //         } = state;
-    //     const { user } = authentication;
-    //     return { user, 
-    //             users, 
-    //             allCategories,
-    //             singleCategory,
-    //             singleCategoryInfo,
-    //             shields };
-    // }
+   
     const actionCreators = {
         viewAllCategories: categoryActions.viewAllCategories,
         viewSingleCategory: categoryActions.viewSingleCategory,

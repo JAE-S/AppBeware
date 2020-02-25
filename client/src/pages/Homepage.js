@@ -41,15 +41,11 @@
      
 class Homepage extends Component {
 
-    constructor(props) {
-        super(props);
-      }
     // Runs Redux to grab all of the categories necessary to render the homepage
     // COMPLETE
     viewCategory = (catId) => {
         this.props.viewSingleCategory(catId)
         this.props.viewSingleCategoryInfo(catId)
-        // this.props.getCategoryInfo(catId)
         this.props.history.push('/categoryPage');
 
     }
@@ -73,10 +69,12 @@ class Homepage extends Component {
 
 
         this.props.viewAllCategories();
-        this.props.viewAppNames();
-        this.props.viewAllListedApps();
-        this.props.selectTrendingApps();
         this.props.viewAllShields();
+        this.props.getFullUserInfo();
+
+        // this.props.viewAppNames();
+        // this.props.viewAllListedApps();
+        // this.props.selectTrendingApps();
 
 
 
@@ -84,25 +82,14 @@ class Homepage extends Component {
         // END OF WORKING FUNCTIONS
         // **********************************************
 
-
-        // this.props.getCategoriesHome();
-        // this.props.shieldsInfo();
-
-
         // TODO: PUT THESE BACK IN ----
         // this.props.viewAllUserAppNotifications();
         // this.props.viewActiveUserAppNotifications();
        
-
-        // this.props.filterCategory();
-        this.props.getFullUserInfo();
     }
 
     render() {
-       
-        console.log(this.props.allCategories);
 
-        
         return (
             <div>
                 <Nav/>
@@ -135,7 +122,6 @@ class Homepage extends Component {
                               
                                 {!this.props.allShields ? (<p align="center" >Loading...</p>) : 
 
-                                        // this.props.shields.items.data.map(shield => (
                                         this.props.allShields.map(shield => (
 
                                             <ShieldLayout 
@@ -181,7 +167,6 @@ class Homepage extends Component {
 
                                 ))}
                              
-
                             </Grid>
                         </HomepageTabNav>
                     </Wrapper>
@@ -196,35 +181,19 @@ class Homepage extends Component {
 const mapStateToProps = (state) => ({
 
     allCategories: state.categories.allCategories,
-    singleCategoryInfo: state.categories.singleCategoryInfo,
-    allListedApps: state.apps.allListedApps,
-    trendingApps: state.apps.trendingApps,
-    allAppNames: state.apps.allAppNames,
-    appReviews: state.apps.appReviews,
-    appTextSearchResults: state.apps.appTextSearchResults,
     allShields: state.shields.allShields,
     userInfo: state.authentication.userInfo,
-    isLoggedIn: state.authentication.isLoggedIn,
-    // isloggedIn: state.user.isloggedIn,
-    // alert: state.reviews.alert,
-    allUserAppNotifications: state.alerts.allUserAppNotifications,
-    activeUserAppNotifications: state.alerts.activeUserAppNotifications, 
 
-    // const { users, 
-    //         authentication,  
-    //         allCategories,
-    //         singleCategory,
-    //         singleCategoryInfo,
-    //         shields,
-    //     } = state;
-    // const { user } = authentication;
-    // return { user, 
-    //         users, 
-    //         allCategories,
-    //         singleCategory,
-    //         singleCategoryInfo,
-    //         shields };
-    // 
+    // singleCategoryInfo: state.categories.singleCategoryInfo,
+    // allListedApps: state.apps.allListedApps,
+    // trendingApps: state.apps.trendingApps,
+    // allAppNames: state.apps.allAppNames,
+    // appReviews: state.apps.appReviews,
+    // appTextSearchResults: state.apps.appTextSearchResults,
+
+    // isLoggedIn: state.authentication.isLoggedIn,
+    // allUserAppNotifications: state.alerts.allUserAppNotifications,
+    // activeUserAppNotifications: state.alerts.activeUserAppNotifications, 
 });
 
 
@@ -241,12 +210,12 @@ const actionCreators = {
     // filterCategory: appActions.filterCategory,
     // ________________________________
 
-    viewAllListedApps: appActions.viewAllListedApps,
-    viewAppNames: appActions.viewAppNames,
+    // viewAllListedApps: appActions.viewAllListedApps,
+    // viewAppNames: appActions.viewAppNames,
+ 
+    // search42Text: appActions.search42Text,
+    // selectTrendingApps: appActions.selectTrendingApps,
     viewAppReviews: appActions.viewAppReviews,
-    search42Text: appActions.search42Text,
-    selectTrendingApps: appActions.selectTrendingApps,
-
     viewAllCategories: categoryActions.viewAllCategories,
     viewSingleCategory: categoryActions.viewSingleCategory,
     viewSingleCategoryInfo: categoryActions.viewSingleCategoryInfo,

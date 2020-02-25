@@ -110,22 +110,20 @@ const dangerRating = [
             // const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
          return (value - 0) * 100 / (10 - 0)
         }
-        getShieldValue = (value) => {
+   
+        getShieldValue = (index) => {
             const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
-         return (value - 0) * 100 / (badgeTotal - 0)
-        }
-
-        getShieldIndex = (index) => {
+            
             if (index === 0 ){
-                return this.getShieldValue(this.props.singleApp.badge1Count)
+                return  (this.props.singleApp.badge1Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 1 ) {
-              return this.getShieldValue(this.props.singleApp.badge2Count)
+              return (this.props.singleApp.badge2Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 2 ) {
-                return this.getShieldValue(this.props.singleApp.badge3Count)
+                return (this.props.singleApp.badge3Count  - 0) * 100 / (badgeTotal - 0)
             } else if (index === 3 ) {
-                return this.getShieldValue(this.props.singleApp.badge4Count)
+                return (this.props.singleApp.badge4Count - 0) * 100 / (badgeTotal - 0)
             } else if (index === 4 ) {
-                return this.getShieldValue(this.props.singleApp.badge4Count)
+                return (this.props.singleApp.badge5Count - 0) * 100 / (badgeTotal - 0)
             }
         }
         
@@ -145,6 +143,8 @@ const dangerRating = [
                 expanded,
                 truncated 
             } = this.state;
+            const badgeTotal = this.props.singleApp.badge1Count + this.props.singleApp.badge2Count + this.props.singleApp.badge3Count + this.props.singleApp.badge4Count + this.props.singleApp.badge5Count
+
         return (
             <>
             <Nav/>
@@ -236,7 +236,7 @@ const dangerRating = [
                                         riskLevel={danger.name}
                                         info={danger.description}
                                         ratingScale={this.getNormalise(danger.reviewCount)}
-                                        reviewCount={`${danger.reviewCount} Alert(s)`}
+                                        reviewCount={`${danger.reviewCount} Alerts`}
                                     />
                                 ))}
                             </Grid>
@@ -254,7 +254,7 @@ const dangerRating = [
                                         title={shield.name}
                                         altTxt={shield.altText}
                                         info={`${shield.name} - ${shield.info}`}
-                                        ratingScale={this.getShieldIndex(index)}
+                                        ratingScale={this.getShieldValue(index)}
                                             
                                         reviewCount={ 
                                             <div> 
