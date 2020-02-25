@@ -34,8 +34,8 @@ export const userActions = {
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user, payload: userInfo } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user, payload: userInfo } }
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, payload: user} }
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, payload: user } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
   }
 

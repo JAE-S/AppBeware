@@ -8,7 +8,7 @@ export const userAlertActions = {
 
 function viewAllUserAppNotifications() {
     function anon (dispatch) {
-        console.log("Inside viewAllUserAppNotifications - userActions.js");
+        // console.log("Inside viewAllUserAppNotifications - userActions.js");
         // API.getAllUserAppNotifications(userId)
         API.getAlerts()
             .then(allUserAppNotifications => dispatch({
@@ -21,7 +21,7 @@ function viewAllUserAppNotifications() {
 
 function viewActiveUserAppNotifications () {
     function anon (dispatch) {
-        console.log("ACTIVE ONLY --- Inside viewActiveUserAppNotifications - userActions.js");
+        // console.log("ACTIVE ONLY --- Inside viewActiveUserAppNotifications - userActions.js");
         // API.getAllUserAppNotifications(userId)
         API.getAlertCount()
             .then(activeUserAppNotifications => dispatch({

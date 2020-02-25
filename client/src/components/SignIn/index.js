@@ -78,8 +78,6 @@
       this.handleSubmit = this.handleSubmit.bind(this);
   
       this.state = {
-        email: '',
-        password: '',
         userInfo: {},
         submitted: false,
       };
@@ -101,7 +99,6 @@
 
   handleSubmit(e) {
       e.preventDefault();
-      console.log("Congrats. You pressed a button");
 
       this.setState({ 
         submitted: true,
@@ -111,7 +108,7 @@
         }
       },
       () => {
-        console.log(this.state.userInfo);
+        // console.log(this.state.userInfo);
         if (this.state.userInfo.email && this.state.userInfo.password) {
          
             this.props.login(this.state.userInfo);

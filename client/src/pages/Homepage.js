@@ -18,9 +18,6 @@
     import Footer from "../components/Footer";
 // Import Redux Components
 // =========================================================
-    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
-
     import { categoryActions } from "../Store/Actions/categoryActions";
     import { appActions } from "../Store/Actions/appActions";
     import { shieldActions } from "../Store/Actions/shieldActions";
@@ -47,11 +44,11 @@ class Homepage extends Component {
         this.props.viewSingleCategory(catId)
         this.props.viewSingleCategoryInfo(catId)
         this.props.history.push('/categoryPage');
-
+    console.log(this.props.loggedIn)
     }
 
     viewApp = (appId) => {
-        console.log("Clicking View App");
+        // console.log("Clicking View App");
         this.props.viewSingleApp(appId);
         this.props.getFullUserInfo(appId);
         this.props.viewAppReviews(appId);
@@ -71,13 +68,13 @@ class Homepage extends Component {
         this.props.viewAllCategories();
         this.props.viewAllShields();
         this.props.getFullUserInfo();
-
+        // this.props.login();
         // this.props.viewAppNames();
         // this.props.viewAllListedApps();
         // this.props.selectTrendingApps();
+//   console.log(this.props.authentication)
 
-
-
+        
         // **********************************************
         // END OF WORKING FUNCTIONS
         // **********************************************
@@ -89,9 +86,11 @@ class Homepage extends Component {
     }
 
     render() {
-
+//   console.log(this.state.props.authentication)
         return (
             <div>
+                {/* {!this.props.isloggedIn ? (<p align="center" >Loading...</p>) :  */}
+                {/* (<> */}
                 <Nav/>
                 <main>
                     <HeaderContainer> 
@@ -170,6 +169,9 @@ class Homepage extends Component {
                     </Wrapper>
                 </main>
                 <Footer/> 
+                {/* </>
+                )
+            } */}
             </div>
         )
     }
@@ -181,7 +183,7 @@ const mapStateToProps = (state) => ({
     allCategories: state.categories.allCategories,
     allShields: state.shields.allShields,
     userInfo: state.authentication.userInfo,
-
+    loggedIn: state.authentication.loggedIn
     // singleCategoryInfo: state.categories.singleCategoryInfo,
     // allListedApps: state.apps.allListedApps,
     // trendingApps: state.apps.trendingApps,
@@ -189,7 +191,7 @@ const mapStateToProps = (state) => ({
     // appReviews: state.apps.appReviews,
     // appTextSearchResults: state.apps.appTextSearchResults,
 
-    // isLoggedIn: state.authentication.isLoggedIn,
+    // isLoggedIn: state.authentication
     // allUserAppNotifications: state.alerts.allUserAppNotifications,
     // activeUserAppNotifications: state.alerts.activeUserAppNotifications, 
 });

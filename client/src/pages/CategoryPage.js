@@ -61,7 +61,7 @@
 
         AddToWatchList = event => { 
             event.preventDefault(); 
-            console.log("add this app to watch list")
+            // console.log("add this app to watch list")
         }
 
         viewApp = (appId) => {

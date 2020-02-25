@@ -75,7 +75,6 @@
                                 />
                             }
                             // onChange={props.handleAlertCheck}
-
                             label="Set Alert"
                         />
                     </div>

@@ -60,11 +60,11 @@
             this.setState({
                 queryTerms: event.target.value
             });
-            console.log(this.state.queryTerms);
+            // console.log(this.state.queryTerms);
         }
 
         search42 = (queryTerm) => {
-            console.log("Inside search42");
+            // console.log("Inside search42");
             this.props.search42Text(queryTerm, "ios");
         }
 
@@ -87,7 +87,7 @@
             // API.submitReview(reviewToSubmit);
 
 
-            console.log("Trying to view this app: Index: " + index);
+            // console.log("Trying to view this app: Index: " + index);
             this.props.search42IosId(index);
             API.addTempAppListing()
         }

@@ -105,7 +105,7 @@ function QontoStepIcon(props) {
   }
 
   const generateArrayOfShields = (array, shield) => {
-    console.log("Inside generateArrayOfShields");
+    // console.log("Inside generateArrayOfShields");
     let tempShieldArray = array;
     tempShieldArray.push(shield);
     const duplicateShieldArray = tempShieldArray.map(item => item);
@@ -225,8 +225,8 @@ function QontoStepIcon(props) {
       }
 
       addSingleShield = (shield) => {
-        console.log("Adding single shield: " + shield)
-        console.log(this.state.allShieldSelection);
+        // console.log("Adding single shield: " + shield)
+        // console.log(this.state.allShieldSelection);
         this.setState({
             currentShieldSelection: shield,
             allShieldSelection: generateArrayOfShields(this.state.allShieldSelection, shield)
@@ -234,7 +234,7 @@ function QontoStepIcon(props) {
       }
 
       addDangerRating = (event) => {
-        console.log("Danger Rating: " + this.state.dangerRating);
+        // console.log("Danger Rating: " + this.state.dangerRating);
         this.setState({
           dangerRating: event.target.value
         })
@@ -244,7 +244,7 @@ function QontoStepIcon(props) {
         this.setState({
             comments: event.target.value
         });
-        console.log(this.state.comments);
+        // console.log(this.state.comments);
       }
 
       handleAlertCheck = () => {
