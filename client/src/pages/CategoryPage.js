@@ -5,8 +5,8 @@
     import {Redirect} from 'react-router-dom';
 // Import Redux Actions
 // =========================================================
-    import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
-    import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
+    // import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
+    // import { viewSingleApp, viewAppReviews } from "../Store/Actions/appActions";
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -21,6 +21,8 @@
     import Footer from "../components/Footer"
     import { Image, Shields, ViewApp, AppDetails, TableHeader} from "../components/SearchResults";
     import { userActions } from '../Store/Actions/auth';
+    import { appActions } from '../Store/Actions/app.actions';
+
 
 // Import styles
 // =========================================================
@@ -82,9 +84,15 @@
             this.props.viewSingleCategoryInfo(catId)
             // this.props.history.push('/categoryPage');
         }
+        componentDidMount = () => {
+            this.props.getCategoriesHome();
+            this.props.filterCategory();
+            this.props.viewSingleCategory();
+            this.props.filterCategory(); 
+        }
 
         render(props) {
-            if(this.props.isloggedIn){
+            // if(this.props.isloggedIn){
             return (
                 <>
                 <Nav/>
@@ -100,19 +108,19 @@
                         >
                 
                             <Grid align="center" item xs={12} sm={3}>
-                            <img 
+                            {/* <img 
                                 style={{ width: "100%", height: "auto", borderRadius: 16 }}
                                 className="appIcon"
-                                src={this.props.singleCategoryInfo.imageUrl}
+                                src={this.props.allCategories.items.data.imageUrl}
                                 alt={this.props.singleCategoryInfo.name}    
-                            />
+                            /> */}
                             </Grid> 
                             <Grid item xs={12}  sm={9}>
                                 <h1 style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem"}}>
-                                    {this.props.singleCategoryInfo.name}
+                                    {/* {this.props.singleCategoryInfo.name} */}
                                 </h1>
                                 <p style={{fontSize: "1.1rem"}}>
-                                    {this.props.singleCategoryInfo.description}
+                                    {/* {this.props.singleCategoryInfo.description} */}
                                 </p>
                     
                             </Grid> 
@@ -129,7 +137,7 @@
                         id="search-categories"
                         className="searchInput"
                         disableClearable
-                        options={this.props.categories.map(option => option.name)}
+                        // options={this.props.categories.map(option => option.name)}
                         onChange={this.onTagsChange}
                         renderInput={params => (
                         <InputOverRideOutline
@@ -146,7 +154,8 @@
                     <Table style={{marginTop: "20px"}}>
                         <TableHeader/>
                         <TableBody>
-                        {this.props.singleCategory.map((app, i) => (
+                        {!this.props.singleCategory.items ? (<p align="center" >Loading...</p>) : 
+                         this.props.singleCategory.items.data.map((app, i) => (
                             <TableRow key={i} style={{borderBottom: "1px solid #13BAC7"}}>
                                 <Image 
                                     title={app.name}
@@ -239,31 +248,61 @@
 
                 <Footer/>
                 </>
-            )}
-            else{
-                return <Redirect to='/' />
-            }
+            )
+        // }
+            // else{
+            //     return <Redirect to='/' />
+            // }
         }
     }
 
-    const mapStateToProps = state => ({
-        singleCategory: state.categories.singleCategory,
-        categories: state.categories.allCategories,
-        singleCategoryInfo: state.categories.singleCategoryInfo,
-        appReviews: state.apps.appReviews,
-        userInfo: state.authentication.userInfo,
-        // isloggedIn: state.user.isloggedIn
-    })
+    // const mapStateToProps = state => ({
+    //     singleCategory: state.categories.singleCategory,
+    //     categories: state.categories.allCategories,
+    //     singleCategoryInfo: state.categories.singleCategoryInfo,
+    //     appReviews: state.apps.appReviews,
+    //     userInfo: state.authentication.userInfo,
+    //     // isloggedIn: state.user.isloggedIn
+    // })
+    function mapStateToProps(state) {
+        const { users, 
+                authentication,  
+                allCategories,
+                singleCategory,
+                singleCategoryInfo,
+                shields,
+            } = state;
+        const { user } = authentication;
+        return { user, 
+                users, 
+                allCategories,
+                singleCategory,
+                singleCategoryInfo,
+                shields };
+    }
+    const mapDispactToProps = {
+        getFullUserInfo: userActions.getFullUserInfo,
+        getCategoriesHome: appActions.getCategories,
+        getCategoryInfo: appActions.getCategoryInfo,
+        shieldsInfo: appActions.getShields,
+        viewSingleCategory: appActions.getCategoryInfo, 
+        filterCategory: appActions.filterCategory,
+    };
+    
+    export default connect(mapStateToProps, mapDispactToProps
+        
+        )(Categories); 
+    
 
-    export default connect(mapStateToProps, 
-        { 
-            viewAllCategories, 
-            viewSingleCategory, 
-            viewSingleCategoryInfo, 
-            viewSingleApp,
-            viewAppReviews,
-            userActions       
-        }
-    )(Categories); 
+    // export default connect(mapStateToProps, 
+    //     { 
+    //         viewAllCategories, 
+    //         viewSingleCategory, 
+    //         viewSingleCategoryInfo, 
+    //         viewSingleApp,
+    //         viewAppReviews,
+    //         userActions       
+    //     }
+    // )(Categories); 
 
     

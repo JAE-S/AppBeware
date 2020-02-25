@@ -3,14 +3,14 @@ import axios from "axios";
 export default {
 
   // search42Ios: function(queryId) {
-  search42IosId: function(iosId) {
-      return axios.get('api/search-by-ios-id/' + iosId)
-  },
+  // search42IosId: function(iosId) {
+  //     return axios.get('api/search-by-ios-id/' + iosId)
+  // },
 
-  search42text: function(queryText, platform) {
-    console.log("Inside API.js - search42text");
-    return axios.get('api\new-search/' + queryText + "/" + platform)
-  },
+  // search42text: function(queryText, platform) {
+  //   console.log("Inside API.js - search42text");
+  //   return axios.get('api\new-search/' + queryText + "/" + platform)
+  // },
 
   // Return all listed apps
   getListedApps: function() {
@@ -48,34 +48,34 @@ export default {
     return axios.get('api/get-app-reviews/' + appId);
   },
 
-  getCategories: function() {
-    return axios.get('/api/get-categories');
-  },
+  // getCategories: function() {
+  //   return axios.get('/api/get-categories');
+  // },
 
-  getCategoryInfo: function(catId) {
-    console.log("Inside get single category info - API.js - using catId: " + catId);
-    return axios.get('api/get-single-category-info/' + catId);
-  },
+  // getCategoryInfo: function(catId) {
+  //   console.log("Inside get single category info - API.js - using catId: " + catId);
+  //   return axios.get('api/get-single-category-info/' + catId);
+  // },
 
   getShields: function() {
     return axios.get('/api/get-shields');
   },
 
-  signIn: function(userInfo) {
-    console.log("getting Info " + userInfo.email + userInfo.password)
-    return axios.post('/api/login', userInfo)
-  },
+  // signIn: function(userInfo) {
+  //   console.log("getting Info " + userInfo.email + userInfo.password)
+  //   return axios.post('/api/login', userInfo)
+  // },
 
-  signOut: function() {
-    console.log("Signing Out ")
-    return axios.get('/api/logout')
-    .then(res => console.log(res))
-  },
+  // signOut: function() {
+  //   console.log("Signing Out ")
+  //   return axios.get('/api/logout')
+  //   .then(res => console.log(res))
+  // },
 
-  googleSignIn: function (userInfo) {
-    console.log("Logging in under google " + userInfo)
-    return axios.post('/api/googleLogin')
-  },
+  // googleSignIn: function (userInfo) {
+  //   console.log("Logging in under google " + userInfo)
+  //   return axios.post('/api/googleLogin')
+  // },
 
   filterCategory: function (catId) {
     console.log("Inside filter Category - API.js");
@@ -83,9 +83,9 @@ export default {
     return axios.get('/api/filter-category/' + catId)
   },
 
-  userInfo: function() {
-    return axios.get('/api/userInfo')
-  }, 
+  // userInfo: function() {
+  //   return axios.get('/api/userInfo')
+  // }, 
 
   register: function(registration) {
     return axios.post('/api/register', registration)

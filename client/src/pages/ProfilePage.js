@@ -25,62 +25,53 @@
 // Export Default Profile Page Function
 // =========================================================
     class Profile extends Component {
-
-        state = {
-            name: '',
-            password: '',
-            email: '', 
-            phone: ''
-        }
         
         componentDidMount() {
-            this.props.userInfo();
+            this.props.getFullUserInfo();
         }
         
-  handleInputchange = event => {
-    const {name, value} = event.target;
-    this.setState({
-      [name]: value
-    })
-  }
+        handleInputchange = event => {
+            const {name, value} = event.target;
+            this.setState({
+            [name]: value
+            })
+        }
 
-  handleFormSubmit = event => {
-      console.log("Inside Handle Form Submit");
-      event.preventDefault();
-      if(this.state.name){
-          API.updateName({
-              name: this.state.name
-          })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
-      }
-      if(this.state.phone){
-          API.updatePhone({
-              phoneNumber: this.state.phone
-          })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
-      }
-      if(this.state.email){
-          API.updateEmail({
-              email: this.state.email
-          })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
-      }
-      if(this.state.password){
-          API.updatePassword({
-              password: this.state.password
-          })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
-      }
+//   handleFormSubmit = event => {
+//       console.log("Inside Handle Form Submit");
+//       event.preventDefault();
+//       if(this.state.name){
+//           API.updateName({
+//               name: this.state.name
+//           })
+//           .then(res => console.log(res))
+//           .catch(err => console.log(err))
+//       }
+//       if(this.state.phone){
+//           API.updatePhone({
+//               phoneNumber: this.state.phone
+//           })
+//           .then(res => console.log(res))
+//           .catch(err => console.log(err))
+//       }
+//       if(this.state.email){
+//           API.updateEmail({
+//               email: this.state.email
+//           })
+//           .then(res => console.log(res))
+//           .catch(err => console.log(err))
+//       }
+//       if(this.state.password){
+//           API.updatePassword({
+//               password: this.state.password
+//           })
+//           .then(res => console.log(res))
+//           .catch(err => console.log(err))
+//       }
       
-  }
+//   }
         
     render() {
-        // console.log(this.props.isloggedIn)
-        // if (this.props.isloggedIn) {
         return (
             <>
                 <Nav/>
@@ -93,13 +84,14 @@
                                 alignItems="center" 
                             >
                                 <Grid item xs={12}> 
-                                    <img alt={`${this.props.user.name}'s Profile`} 
-                                    src={this.props.user.profilePicture}
-                                    style={{ height: 200, width: 200, borderRadius: "50%"}}/>
+                                {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <img alt={`${this.props.users.items.userInfo.name}'s Profile`} 
+                                    src={this.props.users.items.userInfo.profilePicture}
+                                    style={{ height: 200, width: 200, borderRadius: "50%"}}/> )
+                                }
                                 </Grid>
                                 
                                 <Grid item xs={12} > 
-                                    <h3>Name: {this.props.user.name}</h3>
+                                    {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <div align="center" >  <h3>Welcome back {this.props.users.items.userInfo.name}</h3></div>) }
                                 </Grid>
 
                             </Grid> 
@@ -110,7 +102,7 @@
                         <UserDetailsPanel
                             ariaControls="UserName"
                             title="Username"
-                            currentDetails={this.props.user.name}
+                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.name) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'name'}
@@ -121,7 +113,7 @@
                         <UserDetailsPanel 
                             ariaControls="password"
                             title="Password"
-                            currentDetails={'******'}
+                            currentDetails={'********'}
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'password'}
@@ -131,7 +123,7 @@
                         <UserDetailsPanel
                             ariaControls="email"
                             title="Email"
-                            currentDetails={this.props.user.email}
+                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.email) }
                             edit={" "}
                             inputSubmit = {this.handleFormSubmit}
                             name={'email'}
@@ -141,7 +133,7 @@
                         <UserDetailsPanel
                             ariaControls="phone"
                             title="Phone Number"
-                            currentDetails={this.props.user.phoneNumber}
+                            currentDetails={!this.props.users.items ? (<p align="center" >Loading...</p>) : (this.props.users.items.userInfo.phoneNumber) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'phone'}
@@ -154,19 +146,19 @@
                 <Footer/>
             </>
             )}
-            // else {
-            //     return <Redirect to="/" />
-            // }
-        // }
     }
 
-    const mapStateToProps = state => ({
-        userInfo: state.authentication.userInfo, 
-        // isloggedIn: state.user.isloggedIn
-    })
+    function mapStateToProps(state) {
+        const { users, 
+                authentication,  
+            } = state;
+        const { user } = authentication;
+        return { user, users};
+    }
+    const actionCreators = {
+        getFullUserInfo: userActions.getFullUserInfo
 
-    export default connect(mapStateToProps, 
-        {
-            userActions
-        }
+    };
+
+    export default connect(mapStateToProps, actionCreators
     )(Profile); 
