@@ -98,9 +98,7 @@ class Homepage extends Component {
                         <div className="headerBanner">
                             <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
                                 Review and track potentially dangerous apps with our rating system:
-                            </h2>
-                            {!this.props.userInfo ? (<p align="center" >Loading...</p>) : ( <div align="center" > Hello <em>{this.props.userInfo.name}</em> </div>) }
-                          
+                            </h2>                          
                         </div>
                         <Wrapper> 
                             <Grid container 
@@ -140,7 +138,7 @@ class Homepage extends Component {
                         
                         </Wrapper>
                     </HeaderContainer>
-
+                    {/* TODO: Fix App Annie Search functionality */}
                     {/* <SearchAppAnnie 
                         viewApp={this.viewApp}
                     /> */}

@@ -2,8 +2,6 @@
 // =========================================================
     import React, { Component } from "react";  
     import { connect } from "react-redux";
-    import Truncate from 'react-truncate';
-    import PropTypes from 'prop-types';
 // Import Material Ui Components
 // =========================================================
     import { Grid, Typography, Button, FormControlLabel, Checkbox } from '@material-ui/core';   
@@ -19,7 +17,6 @@
     import AddAppReview from "../components/AddAppReview"
     import HeaderContainer from "../components/HeaderContainer"
     import ReadMore from "../components/TurnicateText"
-    // import { AppRatings }from "../components/Ratings"
     import {CommentGrid, DangerRatings, ShieldRatings} from "../components/AppPageComponents"
 // Import Redux Components
 // =========================================================
