@@ -7,7 +7,8 @@
 // Import Redux Actions
 // =========================================================
   import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
-// Import Material UI Components
+  import { appActions } from '../../Store/Actions/app.actions';
+  // Import Material UI Components
 // =========================================================
   import { Grid, Card, Box, Typography } from '@material-ui/core/';
   import Skeleton from '@material-ui/lab/Skeleton';
@@ -18,7 +19,11 @@
 // =========================================================
   import "./style.css"
 
-class Media extends Component {      
+class Media extends Component {     
+  
+  componentDidMount = () => {
+    this.props.selectTrendingApps(); 
+  }
 
   viewApp = (appId) => {
     this.props.viewSingleApp(appId);
@@ -32,7 +37,9 @@ class Media extends Component {
       <Box overflow="hidden">
 
         <Grid container wrap="nowrap">
-          {this.props.trendingApps.map((item, index) => (
+        {!this.props.trendingApps.items ? (<p align="center" >Loading...</p>) : 
+
+          this.props.trendingApps.items.data.map((item, index) => (
             
             <Card key={index} style={{ maxWidth: "300px", width: "100%", margin: "5px", padding: "5px"}}>
                 <Box  style={{ margin: "0px!important"}}  marginRight={0.5} my={5}>
@@ -162,16 +169,24 @@ class Media extends Component {
   }
 }
 
-
-const mapStateToProps = state => ({
-  trendingApps: state.apps.trendingApps,
-  singleApp: state.apps.singleApp,
-  appReviews: state.apps.appReviews
-})
-
-export default connect(mapStateToProps, { 
-      selectTrendingApps,
-      viewSingleApp,
-      viewAppReviews,
-      push
-  })(Media); 
+  function mapStateToProps(state) {
+    const { 
+            trendingApps, 
+            singleApp, 
+            shieldsForApps, 
+            appReviews,   
+        } = state;
+    return { 
+            trendingApps, 
+            singleApp, 
+            shieldsForApps, 
+            appReviews, 
+            };
+  }
+  const mapDispactToProps = {
+    selectTrendingApps: appActions.selectTrendingApps, 
+  };
+  
+  export default connect(mapStateToProps, mapDispactToProps
+    
+    )(Media); 

@@ -8,8 +8,8 @@
 // =========================================================
     import {viewAllListedApps, viewSingleApp,viewAppReviews } from "../../Store/Actions/appActions";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
-    // viewAppNames
-    // generateShieldsForApps
+    import { userActions } from '../../Store/Actions/auth';
+    import { appActions } from '../../Store/Actions/app.actions';
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -81,9 +81,10 @@ class SearchAppAnnie extends React.Component {
 }
 
   componentDidMount() {
-    this.props.viewAllListedApps();
-    this.props.viewAllShields();
+    // this.props.viewAllListedApps();
+    // this.props.viewAllShields();
     // this.mapShieldsData() 
+    this.props.getListedApps();
 }
 
   stateReducer = (state, changes) => {
@@ -335,23 +336,47 @@ class SearchAppAnnie extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  // singleCategory: state.categories.singleCategory,
-  apps: state.apps.allListedApps,
-  singleApp: state.apps.singleApp,
-  appNames: state.apps.allAppNames,
-  shieldsForApps: state.apps.shieldsForApps,
-  appReviews: state.apps.appReviews,
-  shields: state.shields.allShields,
-})
+function mapStateToProps(state) {
+  const { 
+          allListedApps, 
+          allAppNames, 
+          singleApp, 
+          shieldsForApps,
+      } = state;
+  return { 
+          allListedApps, 
+          allAppNames, 
+          singleApp, 
+          shieldsForApps, 
+          };
+}
+const mapDispactToProps = {
+  getListedApps: appActions.allListedApps,
 
-export default connect(mapStateToProps, 
-  { 
-    viewAllListedApps, 
-    viewSingleApp,
-    viewAllShields,
-    viewAppReviews,
-    push
-  })(SearchAppAnnie); 
+};
+
+export default connect(mapStateToProps, mapDispactToProps
+  
+  )(SearchAppAnnie); 
+
+
+// const mapStateToProps = state => ({
+//   // singleCategory: state.categories.singleCategory,
+//   apps: state.apps.allListedApps,
+//   singleApp: state.apps.singleApp,
+//   appNames: state.apps.allAppNames,
+//   shieldsForApps: state.apps.shieldsForApps,
+//   appReviews: state.apps.appReviews,
+//   shields: state.shields.allShields,
+// })
+
+// export default connect(mapStateToProps, 
+//   { 
+//     viewAllListedApps, 
+//     viewSingleApp,
+//     viewAllShields,
+//     viewAppReviews,
+//     push
+//   })(SearchAppAnnie); 
 
 

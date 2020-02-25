@@ -6,9 +6,9 @@
 // =========================================================
     import { authentication } from './_userReducers/authentication.reducer';
     import { users } from './_userReducers/user.reducer';
-    import categoryReducer from "./categoryReducer";
-    import appReducer from "./appReducer";
-    import shieldReducer from "./shieldReducer";
+    import { allCategories, singleCategory, singleCategoryInfo } from "./_appReducers/category.reducer";
+    import {allListedApps, allAppNames, trendingApps, singleApp, shieldsForApps, appReviews } from "./_appReducers/app.reducer"
+    import { shields } from "./_appReducers/shield.reducer";
     import reviewReducer from './reviewReducer';
     import userReducer from './userReducer';
     import counter from './counter';
@@ -17,11 +17,22 @@
 // =========================================================
     const createRootReducer = (history) => combineReducers({
         router: connectRouter(history),
-        categories: categoryReducer,
-        apps: appReducer,
-        shields: shieldReducer,
+    
         reviews: reviewReducer,
         notifications: userReducer, 
+
+        allCategories,
+        singleCategory,
+        singleCategoryInfo,
+
+        allListedApps, 
+        allAppNames, 
+        trendingApps, 
+        singleApp, 
+        shieldsForApps, 
+        appReviews, 
+        
+        shields,
 
         counter,
         authentication,

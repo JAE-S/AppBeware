@@ -20,9 +20,8 @@
 // =========================================================
     import { viewAllCategories, viewSingleCategory, viewSingleCategoryInfo } from "../Store/Actions/categoryActions";
     import { viewAllListedApps, viewAppNames, viewSingleApp, selectTrendingApps, viewAppReviews, search42Text } from "../Store/Actions/appActions";
-    import { viewAllShields } from "../Store/Actions/shieldActions";
     import { userActions } from '../Store/Actions/auth';
-    import { newGetFullUserInfo } from '../Store/Actions/auth';
+    import { appActions } from '../Store/Actions/app.actions';
     // import { AlertsCall } from '../Store/Actions/reviewActions';
     import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../Store/Actions/userActions";
 // Import Media
@@ -43,30 +42,36 @@ class Homepage extends Component {
     // COMPLETE
     viewCategory = (catId) => {
         this.props.viewSingleCategory(catId)
-        this.props.viewSingleCategoryInfo(catId)
+        this.props.getCategoryInfo(catId)
         this.props.history.push('/categoryPage');
+
     }
 
     viewApp = (appId) => {
         console.log("Clicking View App");
-        this.props.viewSingleApp(appId);
+        // this.props.viewSingleApp(appId);
+        this.props.getFullUserInfo(appId);
         this.props.viewAppReviews(appId);
         this.props.history.push('/appPage');
     }
-
+    
 
     // Grabbing all necessary data from Redux
+
     componentDidMount() {
-        this.props.viewAllCategories();
-        this.props.viewAppNames();
-        this.props.viewAllListedApps();
-        this.props.selectTrendingApps();
-        this.props.viewAllShields();
-        // this.props.AlertsCall();
-        this.props.viewAllUserAppNotifications();
-        this.props.viewActiveUserAppNotifications();
-        // this.props.newGetFullUserInfo();
-        this.props.newGetFullUserInfo();
+        // this.props.viewAllCategories();
+        // this.props.viewAppNames();
+        // this.props.viewAllListedApps();
+        // this.props.selectTrendingApps();
+        // this.props.viewAllShields();
+        // // this.props.AlertsCall();
+        // this.props.viewAllUserAppNotifications();
+        // this.props.viewActiveUserAppNotifications();
+       
+        this.props.getCategoriesHome();
+        this.props.shieldsInfo();
+        this.props.filterCategory();
+        this.props.getFullUserInfo();
     }
 
     render() {
@@ -81,7 +86,7 @@ class Homepage extends Component {
                                 Review and track potentially dangerous apps with our rating system:
                             </h2>
                             {!this.props.users.items ? (<p align="center" >Loading...</p>) : ( <div align="center" > Hello <em>{this.props.users.items.userInfo.name}</em> </div>) }
-
+                          
                         </div>
                         <Wrapper> 
                             <Grid container 
@@ -100,8 +105,9 @@ class Homepage extends Component {
                                 </Grid>
                                 
                                 <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
+                                {!this.props.shields.items ? (<p align="center" >Loading...</p>) : 
 
-                                        {this.props.shields.map(shield => (
+                                        this.props.shields.items.data.map(shield => (
                                             <ShieldLayout 
                                                 key={shield.id}
                                                 shieldIcon={shield.icon}
@@ -111,15 +117,16 @@ class Homepage extends Component {
                                             />
                                         ))}
                                 
+                                
                                 </Grid>
                             </Grid>
                         
                         </Wrapper>
                     </HeaderContainer>
 
-                    <SearchAppAnnie 
+                    {/* <SearchAppAnnie 
                         viewApp={this.viewApp}
-                    />
+                    /> */}
 
                     <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
                         <HomepageTabNav >
@@ -130,16 +137,19 @@ class Homepage extends Component {
                                 alignItems="center"
                                 spacing={2}
                             >
+                            {!this.props.allCategories.items ? (<p align="center" >Loading...</p>) : 
 
-                            {this.props.categories.map(cat => (
+                            this.props.allCategories.items.data.map(cat => (
                                     <CategoryCards
                                         key={cat.id}
                                         title={cat.name}
                                         catId={cat.id}
                                         imageUrl={cat.imageUrl}
                                         viewCategory={this.viewCategory}
-                                    />
+                                    /> 
+
                                 ))}
+                             
 
                             </Grid>
                         </HomepageTabNav>
@@ -151,45 +161,65 @@ class Homepage extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    categories: state.categories.allCategories,
-    singleCategoryInfo: state.categories.singleCategoryInfo,
-    apps: state.apps.allListedApps,
-    trendingApps: state.apps.trendingApps,
-    appNames: state.apps.allAppNames,
-    appReviews: state.apps.appReviews,
-    appTextSearchResults: state.apps.appTextSearchResults,
-    shields: state.shields.allShields,
-    userInfo: state.authentication,
-    users: state.users, 
-    // isloggedIn: state.user.isloggedIn,
-    alert: state.reviews.alert,
-    allUserAppNotifications: state.notifications.allUserAppNotifications,
-    activeUserAppNotifications: state.notifications.activeUserAppNotifications, 
-})
-
+// const mapStateToProps = state => ({
+//     categories: state.categories.allCategories,
+//     singleCategoryInfo: state.categories.singleCategoryInfo,
+//     apps: state.apps.allListedApps,
+//     trendingApps: state.apps.trendingApps,
+//     appNames: state.apps.allAppNames,
+//     appReviews: state.apps.appReviews,
+//     appTextSearchResults: state.apps.appTextSearchResults,
+//     shields: state.shields.allShields,
+//     // userInfo: state.authentication,
+//     users: state.users, 
+//     // isloggedIn: state.user.isloggedIn,
+//     alert: state.reviews.alert,
+//     allUserAppNotifications: state.notifications.allUserAppNotifications,
+//     activeUserAppNotifications: state.notifications.activeUserAppNotifications, 
+// })
+function mapState(state) {
+    const { users, 
+            authentication,  
+            allCategories,
+            singleCategory,
+            singleCategoryInfo,
+            shields,
+        } = state;
+    const { user } = authentication;
+    return { user, 
+            users, 
+            allCategories,
+            singleCategory,
+            singleCategoryInfo,
+            shields };
+}
 const actionCreators = {
-    login: userActions.login,
-    getFullUserInfo: userActions.getFullUserInfo
+    // login: userActions.login,
+    getFullUserInfo: userActions.getFullUserInfo,
+    getCategoriesHome: appActions.getCategories,
+    getCategoryInfo: appActions.getCategoryInfo,
+    shieldsInfo: appActions.getShields,
+    viewSingleCategory: appActions.getCategoryInfo, 
+    filterCategory: appActions.filterCategory,
      // TODO://////////////////
     // logout: userActions.logout
 };
 
-export default connect(mapStateToProps, 
+export default connect(mapState, actionCreators
     
-    { 
-        viewAllCategories, 
-        viewSingleCategory, 
-        viewSingleCategoryInfo,
-        viewAllListedApps, 
-        viewAppNames, 
-        viewAppReviews,
-        search42Text,
-        selectTrendingApps,
-        viewAllShields,
+    // { 
+    //     viewAllCategories, 
+    //     viewSingleCategory, 
+    //     viewSingleCategoryInfo,
+    //     viewAllListedApps, 
+    //     viewAppNames, 
+    //     viewAppReviews,
+    //     search42Text,
+    //     selectTrendingApps,
+    //     viewAllShields,
         
-        viewAllUserAppNotifications,
-        viewActiveUserAppNotifications, 
-        newGetFullUserInfo
-    }
+    //     viewAllUserAppNotifications,
+    //     viewActiveUserAppNotifications, 
+    //     newGetFullUserInfo
+    // }
     )(Homepage); 
