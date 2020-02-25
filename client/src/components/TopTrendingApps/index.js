@@ -6,11 +6,9 @@
   import Moment from 'react-moment';
 // Import Redux Actions
 // =========================================================
-  import { viewSingleApp, selectTrendingApps, viewAppReviews } from "../../Store/Actions/appActions";
-  // import { appActions } from '../../Store/Actions/app.actions';
   import { appActions } from "../../Store/Actions/appActions";
 
-  // Import Material UI Components
+// Import Material UI Components
 // =========================================================
   import { Grid, Card, Box, Typography } from '@material-ui/core/';
   import Skeleton from '@material-ui/lab/Skeleton';
@@ -171,29 +169,16 @@ class Media extends Component {
   }
 }
 
-  function mapStateToProps(state) {
-    const { 
-            trendingApps, 
-            singleApp, 
-            shieldsForApps, 
-            appReviews,   
-        } = state;
-    return { 
-            trendingApps, 
-            singleApp, 
-            shieldsForApps, 
-            appReviews, 
-            };
-  }
+const mapStateToProps = state => ({
+  trendingApps: state.apps.trendingApps,
+  singleApp: state.apps.singleApp,
+  appReviews: state.apps.appReviews
+})
 
-  const actionCreators = {
-    selectTrendingApps: appActions.selectTrendingApps,
-    viewSingleApp: appActions.viewSingleApp,
-    viewAppReviews: appActions.viewAppReviews,
-    push
-  }
-
-  export default connect(mapStateToProps, actionCreators
-
-    )(Media); 
-  
+const actionCreators = {
+  selectTrendingApps: appActions.selectTrendingApps,
+  viewSingleApp: appActions.viewSingleApp,
+  viewAppReviews: appActions.viewAppReviews,
+  push
+}
+export default connect(mapStateToProps, actionCreators)(Media); 
