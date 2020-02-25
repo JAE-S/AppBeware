@@ -65,18 +65,18 @@
         })
         .then(
              setTimeout(() => {
-            console.log(this)
+            // console.log(this)
             API.signIn({
             email: this.state.email,
             password: this.state.password
           })
           .then(res => {
             if(res.data.loggedIn){
-              console.log("worked")
+              // console.log("worked")
               window.location.pathname = '/homepage'
             }
             else{
-              console.log("failed")
+              // console.log("failed")
             }
           })
           .catch(err => console.log(err))}, 3000)

@@ -1,9 +1,9 @@
 import { userConstants } from '../../_constants/userConstants';
 
-let userInfo = JSON.parse(localStorage.getItem('user'));
+let userInfo = JSON.parse(localStorage.getItem('users'));
 
   const initialState = userInfo ? { loggedIn: true, userInfo } : {};
-  export function authentication(state = initialState, action) {
+  export default function (state = initialState, action) {
 
   switch (action.type) {
 
@@ -15,16 +15,15 @@ let userInfo = JSON.parse(localStorage.getItem('user'));
       // console.log("Inside reducer");
       // console.log(action.payload);
       return {
-        ...state,
+        loggingIn: true,
         userInfo: action.payload,
-        isloggedIn: true
       };
 
     case userConstants.LOGIN_SUCCESS:
       console.log(action.payload);
       return {
-        userInfo: action.payload,
-        isloggedIn: true
+        loggedIn: true,
+        userInfo: action.payload.data,
       };
 
     case userConstants.LOGIN_FAILURE:

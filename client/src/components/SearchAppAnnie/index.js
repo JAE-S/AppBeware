@@ -74,7 +74,7 @@ class SearchAppAnnie extends React.Component {
   // }
 
   viewApp = (appId) => {
-    console.log("Inside viewApp on Search App Annie");
+    // console.log("Inside viewApp on Search App Annie");
     this.props.viewSingleApp(appId);
     this.props.viewAppReviews(appId);
     this.props.push('/appPage'); 

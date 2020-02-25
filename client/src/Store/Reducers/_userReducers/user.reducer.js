@@ -20,7 +20,7 @@ export default function(state=initialState, action) {
         ...state,
         userInfo: action.payload.data.userInfo,
       };
-
+ 
     // case userConstants.GETALL_FAILURE:
     //   return { 
     //     error: action.error

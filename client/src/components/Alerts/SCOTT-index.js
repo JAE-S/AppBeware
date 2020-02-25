@@ -81,7 +81,7 @@ class Alerts extends Component {
     }
 
     deleteAppNotification = () => {
-        console.log("Are you trying to delete me?");
+        // console.log("Are you trying to delete me?");
     }
 
     render() {
