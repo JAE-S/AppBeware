@@ -178,15 +178,48 @@ module.exports = function (db) {
         });
       },
 
+      // selectTrendingApps: function (req, res) {
+
+      //   function randomNumberGenerator() {
+
+      //   }
+      //   console.log("Inside appController");
+      //   let tempArray = [];
+      //   db.ListedApp.findAll({}).then(function (dbListedApps) {
+      //     let randomNumberArray = [];
+      //     for (i=0; i<3; i++) {
+      //       let randomIndex = Math.floor(Math.random() * dbListedApps.length - 1)
+      //       console.log("Random number is : " + randomIndex);
+      //       randomNumberArray.push(randomIndex)
+      //       tempArray.push(dbListedApps[randomIndex])
+      //     }
+      //     res.json(tempArray);
+      //   });
+      // },
+
       selectTrendingApps: function (req, res) {
-        console.log("Inside appController");
+        
+        function randomNumberGenerator(dbListedApps) {
+          return Math.floor(Math.random() * dbListedApps.length)
+        }
+
         let tempArray = [];
         db.ListedApp.findAll({}).then(function (dbListedApps) {
+          let randomNumberArray = [];
           for (i=0; i<3; i++) {
-            let randomIndex = Math.floor(Math.random() * dbListedApps.length - 1)
-            console.log("Random number is : " + randomIndex);
-            tempArray.push(dbListedApps[randomIndex])
+            let randomIndex = randomNumberGenerator(dbListedApps)
+
+            if (randomNumberArray.indexOf(randomIndex) === -1) {
+              randomNumberArray.push(randomIndex)
+              tempArray.push(dbListedApps[randomIndex])
+            } else {
+              let secondChance = randomNumberGenerator(dbListedApps);
+              randomNumberArray.push(secondChance);
+              tempArray.push(dbListedApps[secondChance])
+            }
           }
+          console.log("Random Number Array:\n----------------------");
+          console.log(randomNumberArray);
           res.json(tempArray);
         });
       },

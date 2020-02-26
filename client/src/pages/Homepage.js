@@ -61,6 +61,9 @@ class Homepage extends Component {
         this.props.viewAllCategories();
         this.props.viewAllShields();
         this.props.getFullUserInfo();
+        this.props.viewAppNames();
+        this.props.viewAllUserAppNotifications();
+        this.props.viewActiveUserAppNotifications();
         // this.props.login();
         // this.props.viewAppNames();
         // this.props.viewAllListedApps();
@@ -70,10 +73,6 @@ class Homepage extends Component {
         // **********************************************
         // END OF WORKING FUNCTIONS
         // **********************************************
-
-        // TODO: PUT THESE BACK IN ----
-        // this.props.viewAllUserAppNotifications();
-        // this.props.viewActiveUserAppNotifications();
        
     }
 
@@ -130,9 +129,9 @@ class Homepage extends Component {
                             </Wrapper>
                         </HeaderContainer>
                         {/* TODO: Fix App Annie Search functionality */}
-                        {/* <SearchAppAnnie 
+                        <SearchAppAnnie 
                             viewApp={this.viewApp}
-                        /> */}
+                        />
 
                         <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
                             <HomepageTabNav >
@@ -174,7 +173,8 @@ const mapStateToProps = (state) => ({
 
     allCategories: state.categories.allCategories,
     allShields: state.shields.allShields,
-    loggedIn: state.authentication.loggedIn
+    loggedIn: state.authentication.loggedIn,
+    allAppNames: state.apps.allAppNames
     // singleCategoryInfo: state.categories.singleCategoryInfo,
     // allListedApps: state.apps.allListedApps,
     // trendingApps: state.apps.trendingApps,
@@ -207,6 +207,7 @@ const actionCreators = {
     // search42Text: appActions.search42Text,
     // selectTrendingApps: appActions.selectTrendingApps,
     viewAppReviews: appActions.viewAppReviews,
+    viewAppNames: appActions.viewAppNames,
     viewAllCategories: categoryActions.viewAllCategories,
     viewSingleCategory: categoryActions.viewSingleCategory,
     viewSingleCategoryInfo: categoryActions.viewSingleCategoryInfo,

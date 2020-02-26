@@ -1,45 +1,39 @@
-import { ADD_SHIELD_TO_APP, REVIEW_SUBMIT, RESET_ADDED_SHIELDS, ALERT_CALLS } from "../Actions/new-types";
+import { reviewConstants } from '../_constants/reviewConstants';
 
 const initialState = {
-    addedShields: [],
-    completeReview: {},
-    alert: {}
+    // addedShields: [],
+    completeReview: {}
+    // alert: {}
 };
 
 export default function(state=initialState, action) {
 
     switch(action.type) {
 
-        case ADD_SHIELD_TO_APP:
-            // return {
-            //     ...state,
-            //     addedShields: action.payload.data
-            // }
+        // case reviewConstants.ADD_SHIELD_TO_APP_SUCCESS:
+        //     // return {
+        //     //     ...state,
+        //     //     addedShields: action.payload.data
+        //     // }
 
-            return { 
-                ...state,
-                addedShields: action.payload
-                // addedShields: state.addedShields.concat(action.payload)
-            }
+        //     return { 
+        //         ...state,
+        //         addedShields: action.payload
+        //         // addedShields: state.addedShields.concat(action.payload)
+        //     }
 
-        case REVIEW_SUBMIT:
+        case reviewConstants.REVIEW_SUBMIT_SUCCESS:
             return {
                 ...state,
-                completeReview: action.payload
+                completeReview: action.payload.data
             }
 
-        case RESET_ADDED_SHIELDS:
-            // return {
-            //     ...state,
-            //     addedShields: initialState.addedShields
-            // }
-            return initialState
-
-        case ALERT_CALLS:
-            return {
-                ...state,
-                alert: action.payload.data
-            }
+        // case reviewConstants.RESET_ADDED_SHIELDS_SUCCESS:
+        //     // return {
+        //     //     ...state,
+        //     //     addedShields: initialState.addedShields
+        //     // }
+        //     return initialState
     
         default: 
             return state;

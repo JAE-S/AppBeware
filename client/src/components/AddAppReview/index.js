@@ -188,6 +188,10 @@ function QontoStepIcon(props) {
           this.setState({visited: visited.concat(stepIndex)});
         }
       }
+
+      componentDidUpdate() {
+        this.props.viewAppReviews(this.props.singleApp.id)
+      }
     
       handleNext = () => {
         const {stepIndex} = this.state;
@@ -216,12 +220,12 @@ function QontoStepIcon(props) {
           'dangerRating': this.state.dangerRating, 
           'comments': this.state.comments,
           'alert': this.state.alertChecked,
-          'UserId': this.props.user.id, 
+          'UserId': this.props.userInfo.id, 
           'ListedAppId': this.props.singleApp.id
-        }
+        } 
 
         this.props.reviewSubmit(reviewToSubmit);
-        API.submitReview(reviewToSubmit);
+
       }
 
       addSingleShield = (shield) => {
@@ -356,20 +360,16 @@ function QontoStepIcon(props) {
       
 const mapStateToProps = state => ({
   singleApp: state.apps.singleApp,
-  userInfo: state.authentication.userInfo,
+  // userInfo: state.authentication.userInfo,
+  userInfo: state.users.userInfo,
   completeReview: state.reviews.completeReview
 })
 
 const actionCreators = {
   viewSingleApp: appActions.viewSingleApp,
-  reviewSubmit: reviewActions.reviewSubmit
+  reviewSubmit: reviewActions.reviewSubmit,
+  viewAppReviews: appActions.viewAppReviews,
 }
 
-export default connect(mapStateToProps, actionCreators
-    // { 
-        // viewSingleApp,
-        // reviewSubmit,
-        // userActions
-    // }
-    )(AddAppReview); 
+export default connect(mapStateToProps, actionCreators)(AddAppReview); 
  
