@@ -9,7 +9,7 @@
     import {viewAllListedApps, viewSingleApp,viewAppReviews } from "../../Store/Actions/appActions";
     import { viewAllShields } from "../../Store/Actions/shieldActions";
     import { userActions } from '../../Store/Actions/auth';
-    import { appActions } from '../../Store/Actions/app.actions';
+    import { appActions } from '../../Store/Actions/appActions';
 // Import Material UI Styles
 // =========================================================
     import { withStyles } from '@material-ui/core/styles';
@@ -77,14 +77,14 @@ class SearchAppAnnie extends React.Component {
     // console.log("Inside viewApp on Search App Annie");
     this.props.viewSingleApp(appId);
     this.props.viewAppReviews(appId);
-    this.props.push('/appPage'); 
 }
 
   componentDidMount() {
     // this.props.viewAllListedApps();
     // this.props.viewAllShields();
     // this.mapShieldsData() 
-    this.props.getListedApps();
+    this.props.viewAllListedApps();
+    this.props.viewAppNames();
 }
 
   stateReducer = (state, changes) => {
@@ -158,9 +158,9 @@ class SearchAppAnnie extends React.Component {
                   {isOpen ? (
                     <div className="downshift-dropdown" >
                       {
-                        ((this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase())).length) > 0 ) ?
+                        ((this.props.allListedApps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase())).length) > 0 ) ?
 
-                          this.props.apps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
+                          this.props.allListedApps.filter(item => !inputValue || item.name.toLowerCase().includes(inputValue.toLowerCase()))
                           // map the return value and return a div
                           .map((item, index) => {
 
@@ -336,28 +336,36 @@ class SearchAppAnnie extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { 
-          allListedApps, 
-          allAppNames, 
-          singleApp, 
-          shieldsForApps,
-      } = state;
-  return { 
-          allListedApps, 
-          allAppNames, 
-          singleApp, 
-          shieldsForApps, 
-          };
-}
-const mapDispactToProps = {
-  getListedApps: appActions.allListedApps,
+const mapStateToProps = (state) => ({
+
+  allListedApps: state.apps.allListedApps,
+  allAppNames: state.apps.allAppNames,
+  singleApp: state.apps.singleApp,
+  shieldsForApps: state.apps.shieldsForApps
+
+  // const { 
+  //         allListedApps, 
+  //         allAppNames, 
+  //         singleApp, 
+  //         shieldsForApps,
+  //     } = state;
+  // return { 
+  //         allListedApps, 
+  //         allAppNames, 
+  //         singleApp, 
+  //         shieldsForApps, 
+  //         };
+});
+
+const actionCreators = {
+  viewAllListedApps: appActions.viewAllListedApps,
+  viewAppNames: appActions.viewAppNames,
+  viewSingleApp: appActions.viewSingleApp,
+  viewAppReviews: appActions.viewAppReviews
 
 };
 
-export default connect(mapStateToProps, mapDispactToProps
-  
-  )(SearchAppAnnie); 
+export default connect(mapStateToProps, actionCreators)(SearchAppAnnie); 
 
 
 // const mapStateToProps = state => ({

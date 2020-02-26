@@ -12,13 +12,13 @@ export default function(state=initialState, action) {
         case alertConstants.VIEW_ALL_USER_APP_NOTIFICATIONS_SUCCESS:
             return {
                 ...state,
-                allUserAppNotifications: action.payload
+                allUserAppNotifications: action.payload.data
             }
 
         case alertConstants.VIEW_ACTIVE_USER_APP_NOTIFICATIONS_SUCCESS:
             return {
                 ...state,
-                activeUserAppNotifications: action.payload
+                activeUserAppNotifications: action.payload.data
             }
 
         default: 

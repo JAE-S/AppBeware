@@ -111,23 +111,8 @@
 
 // Export the functions for add a review 
 // =========================================================
-const mapStateToProps = state => ({
-    // categories: state.categories.allCategories,
-    // apps: state.apps.allListedApps,
-    // trendingApps: state.apps.trendingApps,
-    // appNames: state.apps.allAppNames,
-    // shields: state.shields.allShields
-    })
+const mapStateToProps = state => ({ })
     
-    export default connect(mapStateToProps, 
-        { 
-            // viewAllCategories, 
-            // viewSingleCategory, 
-            // viewAllListedApps, 
-            // viewAppNames, 
-            // selectTrendingApps,
-            // viewAllShields 
-        }
-    )(ShieldAlertsClass);
+    export default connect(mapStateToProps)(ShieldAlertsClass);
 
 
