@@ -2,19 +2,17 @@
 // =========================================================
     import React, { Component } from 'react';
     import { connect, useSelector, useDispatch } from "react-redux"; 
-    import allActions from '../../Store/Actions'
 // Import Material UI Styles
 // =========================================================
     import { withStyles  } from '@material-ui/core/styles';
 // Import Material UI Components
 // =========================================================
-    import { Table, TableBody, TableRow, TableCell, Grid, Tooltip, FormGroup, FormControlLabel, Switch } from '@material-ui/core/';
+    import { Table, TableBody, TableRow, TableCell, Grid, Tooltip, FormGroup, FormControlLabel, Switch, Menu, MenuItem } from '@material-ui/core/';
 // Import Material UI Icons
 // =========================================================
     import CloseIcon from '@material-ui/icons/Close';    
 // Redux Imports
 // =========================================================
-    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
     import { alertActions } from "../../Store/Actions/alertActions";
 
 // Styling Imports
@@ -55,11 +53,11 @@
     //     )
     // }
     
-    export const Count = () => {
-        return (
-            <div>4</div>
-        )
-    }
+    // export const Count = () => {
+    //     return (
+    //         <div>4</div>
+    //     )
+    // }
 
     
 class Alerts extends Component {
@@ -71,7 +69,8 @@ class Alerts extends Component {
             }
     }; 
     componentDidMount() {
-        // this.props.viewActiveUserAppNotifications();
+        this.props.viewAllUserAppNotifications();
+        this.props.viewActiveUserAppNotifications();
     }   
 
     handleChange = name => event => {
@@ -93,7 +92,8 @@ class Alerts extends Component {
             <>
                 <Table style={{ width: "100%"}}>
                     <TableBody>
-                    {this.props.alerts.map((data) =>
+                    {!this.props.allUserAppNotifications.rows ? (<p align="center" >Loading...</p>) : 
+                        this.props.allUserAppNotifications.rows.map((data) =>
                             <TableRow key={data.id} >
                                 <TableCell >
                                     <Tooltip title={`Click to view ${data.ListedApp.name}`}>
@@ -143,6 +143,7 @@ class Alerts extends Component {
                                 </TableCell>
                             </TableRow>
                         )} 
+                        
                     </TableBody>
                 </Table>
             </>
@@ -151,81 +152,71 @@ class Alerts extends Component {
 }
 
  {/* // TODO:////////////////// */}
-// export function Notifications(props) {
+export function Notifications(props) {
 
-//     console.log(props)
+    console.log(props)
 
 
-//       const [anchorEl, setAnchorEl] = React.useState(null);
+      const [anchorEl, setAnchorEl] = React.useState(null);
     
-//       const handleClick = event => {
-//         console.log(props.activeAlerts);
-//         console.log(props.activeUserAppNotifications);
-//         setAnchorEl(event.currentTarget);
-//       };
+      const handleClick = event => {
+        console.log(props.activeAlerts);
+        console.log(props.activeUserAppNotifications);
+        setAnchorEl(event.currentTarget);
+      };
     
-//       const handleClose = () => {
-//         setAnchorEl(null);
-//       };
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
 
-//       const myMapArray = [
-//         {
-//             "id": 21,
-//             "alert": 0,
-//             "createdAt": "2020-02-02T22:09:11.000Z",
-//             "updatedAt": "2020-02-02T22:09:11.000Z",
-//             "ListedAppId": 25,
-//             "UserId": 8
-//             },
-//             {
-//             "id": 26,
-//             "alert": 0,
-//             "createdAt": "2020-02-02T22:09:11.000Z",
-//             "updatedAt": "2020-02-02T22:09:11.000Z",
-//             "ListedAppId": 33,
-//             "UserId": 8
-//         }
-//       ];
+      const myMapArray = [
+        {
+            "id": 21,
+            "alert": 0,
+            "createdAt": "2020-02-02T22:09:11.000Z",
+            "updatedAt": "2020-02-02T22:09:11.000Z",
+            "ListedAppId": 25,
+            "UserId": 8
+            },
+            {
+            "id": 26,
+            "alert": 0,
+            "createdAt": "2020-02-02T22:09:11.000Z",
+            "updatedAt": "2020-02-02T22:09:11.000Z",
+            "ListedAppId": 33,
+            "UserId": 8
+        }
+      ];
 
-//       console.log(myMapArray);
+      console.log(myMapArray);
     
-//       return (
-//         <div>
-//           <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-//            {props.showAlerts}
-//           </div>
-//           <Menu
-//             id="simple-menu"
-//             anchorEl={anchorEl}
-//             keepMounted
-//             open={Boolean(anchorEl)}
-//             onClose={handleClose}
-//           >
+      return (
+        <div>
+          <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+           {props.showAlerts}
+          </div>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
 
-//           <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
+          <MenuItem disabled><h5>Recently Updated</h5></MenuItem>
 
-            {/* {props.activeAlerts.map((app, index) =>  */}
-                {/* <MenuItem key={1} onClick={handleClose}>
-                    <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {"My new app"}
-                </MenuItem> */}
-            {/* )} */}
-
-            {/* {myMapArray.map((app, index) => 
-                    <MenuItem key={app.id} onClick={handleClose}>
-                <img alt={"My new app"} src={"https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/07/cd/52/07cd5247-a9a9-dce3-d788-776f3e53ee43/source/1024x1024bb.jpg"} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.id}
-            </MenuItem>
-            )} */}
-
-           {/* {props.activeUserAppNotifications.rows.map((app, index) => 
+{/*           
+            {!this.props.viewActiveUserAppNotifications.rows ? (<p align="center" >Loading...</p>) : 
+            this.props.viewActiveUserAppNotifications.rows.map((app, index) => 
                 <MenuItem key={index} onClick={handleClose}>
                     <img alt={app.ListedApp.name} src={app.ListedApp.logoUrl} style={{ height: 20, width: 20, borderRadius: "6px", paddingRight: 4 }}/> {app.ListedApp.name}
                 </MenuItem>
-           )} */}
+           )}  */}
            
-          {/* </Menu>
+          </Menu>
         </div>
       );
-    } */}
+    }
     
     const mapStateToProps = state => ({
         alert: state.reviews.alerts,
@@ -238,12 +229,5 @@ class Alerts extends Component {
         viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
       };
 
-    export default connect(mapStateToProps, actionCreators
-
-        // {
-        //     viewAllUserAppNotifications,
-        //     viewActiveUserAppNotifications
-        // }
-
-    )(Alerts, Count); 
+    export default connect(mapStateToProps, actionCreators)(Alerts); 
 
