@@ -1,8 +1,8 @@
 import { userConstants } from '../../_constants/userConstants';
 
-let userInfo = JSON.parse(localStorage.getItem('users'));
+let user = JSON.parse(localStorage.getItem('users'));
 
-  const initialState = userInfo ? { loggedIn: true, userInfo } : {};
+  const initialState = user ? { loggedIn: true, user } : {};
   export default function (state = initialState, action) {
 
   switch (action.type) {
@@ -16,14 +16,14 @@ let userInfo = JSON.parse(localStorage.getItem('users'));
       // console.log(action.payload);
       return {
         loggingIn: true,
-        userInfo: action.payload,
+        user: action.payload,
       };
 
     case userConstants.LOGIN_SUCCESS:
       console.log(action.payload);
       return {
         loggedIn: true,
-        userInfo: action.payload.data,
+        user: action.payload.data,
       };
 
     case userConstants.LOGIN_FAILURE:

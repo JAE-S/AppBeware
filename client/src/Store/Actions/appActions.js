@@ -1,6 +1,6 @@
 import { appConstants } from '../_constants/appConstants';
 import  appService  from '../_services/appService';
-// import  history  from '../_helpers/history';
+import  history  from '../_helpers/history';
 // import { push } from 'connected-react-router'
 
 export const appActions = {
@@ -63,6 +63,7 @@ function viewSingleApp (appId) {
         appService.viewSingleApp(appId)
         .then(
             data => dispatch(success(data)),
+            history.push('/appPage'),
             error => dispatch(failure(error.toString())),
 
         );

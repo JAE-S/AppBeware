@@ -3,8 +3,6 @@
     import React, { Component } from "react";  
     import { connect } from "react-redux";
     import {Redirect} from 'react-router-dom';
-
-    import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';   
@@ -24,9 +22,7 @@
     import { appActions } from "../Store/Actions/appActions";
     import { shieldActions } from "../Store/Actions/shieldActions";
     import { alertActions } from "../Store/Actions/alertActions";
-
     import { userActions } from '../Store/Actions/auth';
-    // import { appActions } from '../Store/Actions/app.actions';
 
 // Import Media
 // =========================================================
@@ -44,8 +40,6 @@ class Homepage extends Component {
     viewCategory = (catId) => {
         this.props.viewSingleCategory(catId)
         this.props.viewSingleCategoryInfo(catId)
-        this.props.history.push('/categoryPage');
-    console.log(this.props.loggedIn)
     }
 
     viewApp = (appId) => {
@@ -53,12 +47,10 @@ class Homepage extends Component {
         this.props.viewSingleApp(appId);
         this.props.getFullUserInfo(appId);
         this.props.viewAppReviews(appId);
-        this.props.history.push('/appPage');
     }
     
 
     // Grabbing all necessary data from Redux
-
     componentDidMount() {
 
         // **********************************************
@@ -73,7 +65,6 @@ class Homepage extends Component {
         // this.props.viewAppNames();
         // this.props.viewAllListedApps();
         // this.props.selectTrendingApps();
-//   console.log(this.props.authentication)
 
         
         // **********************************************
@@ -183,7 +174,6 @@ const mapStateToProps = (state) => ({
 
     allCategories: state.categories.allCategories,
     allShields: state.shields.allShields,
-    userInfo: state.authentication.userInfo,
     loggedIn: state.authentication.loggedIn
     // singleCategoryInfo: state.categories.singleCategoryInfo,
     // allListedApps: state.apps.allListedApps,

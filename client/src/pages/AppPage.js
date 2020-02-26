@@ -22,6 +22,7 @@
 // Import Redux Components
 // =========================================================
     import { appActions } from "../Store/Actions/appActions";
+    import { userActions } from '../Store/Actions/auth';
     import { shieldActions } from "../Store/Actions/shieldActions";
 // Import media
 // =========================================================
@@ -74,6 +75,7 @@
         // Grabbing all necessary data from Redux
         componentDidMount() {
             this.props.viewAllShields();
+            this.props.getFullUserInfo();
         }
 
         getNormalise = (value) => {
@@ -263,7 +265,7 @@
                             </Grid>
                             <Grid align="right" item xs={2}>
                                 <Modal
-                                    modalTitle={<h3 style={{color: "#57585D", margin: 0}}> Create A Review For <a style={{color: "#13BAC7"}}>{this.props.singleApp.name}</a></h3>}
+                                    modalTitle={<h3 style={{color: "#57585D", margin: 0}}> Create A Review For <span style={{color: "#13BAC7"}}>{this.props.singleApp.name}</span></h3>}
                                     openModal={<Button>Add Review</Button>}
                                     modalBody={<AddAppReview/>}
                                     modalButton1="Submit"
@@ -315,20 +317,20 @@
         singleApp: state.apps.singleApp,
         appReviews: state.apps.appReviews,
         allShields: state.shields.allShields,
+        userInfo: state.authentication.userInfo,
         loggedIn: state.authentication.loggedIn
 
         // categories: state.categories.allCategories,
         // apps: state.apps.allListedApps,
         // trendingApps: state.apps.trendingApps,
         // appNames: state.apps.allAppNames,
-        // isloggedIn: state.authentication.isloggedIn
-
     })
 
     const actionCreators = {
         viewSingleApp: appActions.viewSingleApp,
         viewAppReviews: appActions.viewAppReviews,
-        viewAllShields: shieldActions.viewAllShields
+        viewAllShields: shieldActions.viewAllShields,
+        getFullUserInfo: userActions.getFullUserInfo,
     }
 
     export default connect(mapStateToProps, actionCreators)(AppPage); 
