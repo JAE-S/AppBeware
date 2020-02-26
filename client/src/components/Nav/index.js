@@ -2,7 +2,6 @@
 // =========================================================
     import React, {useSelector} from 'react'; 
     import { Link } from 'react-router-dom'
-    import { connect } from "react-redux"; 
 // Import Material UI Styles
 // =========================================================
     import { fade, makeStyles } from '@material-ui/core/styles';
@@ -12,7 +11,7 @@
 // Import Material UI Icons
 // =========================================================
     import Dashboard from '@material-ui/icons/Dashboard';
-    // import NotificationsIcon from '@material-ui/icons/Notifications';
+    import NotificationsIcon from '@material-ui/icons/Notifications';
     import MoreIcon from '@material-ui/icons/MoreVert';
 // Components
 // =========================================================
@@ -21,12 +20,12 @@
 // =========================================================
     import Modal from "../Modals";
     import AboutTheShields from "../AboutTheShields";
-    import Alerts, { Count } from "../Alerts";
+    import Alerts, {Notifications} from "../Alerts";
     // import {Alerts, Notifications, Count } from "../Alerts";
 
-    import { userActions } from '../../Store/Actions/auth';
-    import { viewAllUserAppNotifications, viewActiveUserAppNotifications } from "../../Store/Actions/userActions";
-    import { alertActions } from "../../Store/Actions/alertActions";
+    import UserDetails from "./temp.details"
+    import ActiveNotifications from "./temp.count"
+    // import { alertActions } from "../../Store/Actions/alertActions";
 
 // Custom Styles
 // =========================================================
@@ -95,10 +94,12 @@
           },
       },
   }));
+
+
   
 // Export Nav bar
 // =========================================================
-  function Nav(props) {
+function Nav() {
 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -109,7 +110,6 @@
 
     const handleProfileMenuOpen = event => {
       setAnchorEl(event.currentTarget);
-      props.viewActiveUserAppNotifications();
     };
 
     const handleMobileMenuClose = () => {
@@ -146,10 +146,7 @@
         onClose={handleMenuClose}
       >
       <MenuItem onClick={handleMenuClose} style={{ borderBottom: "1px solid grey", paddingBottom: "10px", marginLeft: "10px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-      {/* // TODO:////////////////// */}
-      {/* Add user name to nav bar */}
-        {/* <h3>{props.user.name}</h3>  */}
-        <img alt="Profile" src="https://imagizer.imageshack.com/img921/9782/SQwL53.png" style={{ height: 36, width: 36, borderRadius: "50%"}}/>
+      <UserDetails/>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Link to="/profilePage" style={{ textDecoration: 'none', color: 'black' }}>
@@ -160,7 +157,7 @@
           <Modal
               modalTitle="Alert Settings"
               openModal="Alert Settings"
-              // modalBody2={<Alerts
+              modalBody2={<Alerts/>}
               // alerts= {props.allUserAppNotifications.count}/>}
               modalButton1="Close"
           />
@@ -213,7 +210,7 @@
       {/* Bage Count */}
       <MenuItem onClick={handleMenuClose}>
           <Badge 
-          badgeContent={<Count/>}
+          // badgeContent={<Count/>}
           // badgeContent={props.activeUserAppNotifications.count}
           >
               Alerts
@@ -247,17 +244,17 @@
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton 
-              aria-label={`show ${<Count/>} new notifications`} 
+              aria-label={`show ${<ActiveNotifications/>} new notifications`} 
               // aria-label={`show ${props.activeUserAppNotifications.count} new notifications`} 
               color="inherit">
+                {/* <ActiveNotifications/> */}
                 <Badge 
-                badgeContent={<Count/>} 
-                // badgeContent={props.activeUserAppNotifications.count} 
+                badgeContent={<ActiveNotifications/>} 
                 color="secondary">
-                  {/* <Notifications 
+                  <Notifications 
                     showAlerts={<NotificationsIcon />}
-                    activeAlerts={props.activeUserAppNotifications.rows}
-                    /> */}
+                    // activeAlerts={<ActiveNotifications/>}
+                    />
                 </Badge>
               </IconButton>
               <IconButton
@@ -289,26 +286,27 @@
       </div>
     );
   }
+  export default Nav; 
 
   
-  const mapStateToProps = state => ({
-    userInfo: state.authentication.userInfo,
-    // user: state.user.userInfo,
-    // isloggedIn: state.user.isloggedIn,
-    // allUserAppNotifications: state.alerts.allUserAppNotifications,
-    // activeUserAppNotifications: state.alerts.activeUserAppNotifications
-})
+//   const mapStateToProps = state => ({
+//     // userInfo: state.user.userInfo,
+//     // user: state.user.userInfo,
+//     // isloggedIn: state.user.isloggedIn,
+//     // allUserAppNotifications: state.alerts.allUserAppNotifications,
+//     // activeUserAppNotifications: state.alerts.activeUserAppNotifications
+// })
 
-const actionCreators = {
-  viewAllUserAppNotifications: alertActions.viewAllUserAppNotifications,
-  viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
-};
+// const actionCreators = {
+//   viewAllUserAppNotifications: alertActions.viewAllUserAppNotifications,
+//   viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
+// };
 
-export default connect(mapStateToProps, actionCreators
-  // {
-      // userInfo,
-      // AlertsCall,
-      // viewAllUserAppNotifications,
-      // viewActiveUserAppNotifications
-  // }
-)(Nav); 
+// export default connect(mapStateToProps, actionCreators
+//   // {
+//       // userInfo,
+//       // AlertsCall,
+//       // viewAllUserAppNotifications,
+//       // viewActiveUserAppNotifications
+//   // }
+// )(Nav); 

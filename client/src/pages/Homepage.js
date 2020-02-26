@@ -21,7 +21,6 @@
     import { categoryActions } from "../Store/Actions/categoryActions";
     import { appActions } from "../Store/Actions/appActions";
     import { shieldActions } from "../Store/Actions/shieldActions";
-    import { alertActions } from "../Store/Actions/alertActions";
     import { userActions } from '../Store/Actions/auth';
 
 // Import Media
@@ -43,12 +42,10 @@ class Homepage extends Component {
     }
 
     viewApp = (appId) => {
-        // console.log("Clicking View App");
         this.props.viewSingleApp(appId);
         this.props.getFullUserInfo(appId);
         this.props.viewAppReviews(appId);
     }
-    
 
     // Grabbing all necessary data from Redux
     componentDidMount() {
@@ -57,23 +54,10 @@ class Homepage extends Component {
         // THESE FUNCTIONS DO WORK
         // **********************************************
 
-
         this.props.viewAllCategories();
         this.props.viewAllShields();
         this.props.getFullUserInfo();
         this.props.viewAppNames();
-        this.props.viewAllUserAppNotifications();
-        this.props.viewActiveUserAppNotifications();
-        // this.props.login();
-        // this.props.viewAppNames();
-        // this.props.viewAllListedApps();
-        // this.props.selectTrendingApps();
-
-        
-        // **********************************************
-        // END OF WORKING FUNCTIONS
-        // **********************************************
-       
     }
 
     render() {
@@ -122,13 +106,12 @@ class Homepage extends Component {
                                             ))
                                             }
                                     
-                                    
                                     </Grid>
                                 </Grid>
                             
                             </Wrapper>
                         </HeaderContainer>
-                        {/* TODO: Fix App Annie Search functionality */}
+        
                         <SearchAppAnnie 
                             viewApp={this.viewApp}
                         />
@@ -175,37 +158,13 @@ const mapStateToProps = (state) => ({
     allShields: state.shields.allShields,
     loggedIn: state.authentication.loggedIn,
     allAppNames: state.apps.allAppNames
-    // singleCategoryInfo: state.categories.singleCategoryInfo,
-    // allListedApps: state.apps.allListedApps,
-    // trendingApps: state.apps.trendingApps,
-    // allAppNames: state.apps.allAppNames,
-    // appReviews: state.apps.appReviews,
-    // appTextSearchResults: state.apps.appTextSearchResults,
-
-    // isLoggedIn: state.authentication
-    // allUserAppNotifications: state.alerts.allUserAppNotifications,
-    // activeUserAppNotifications: state.alerts.activeUserAppNotifications, 
 });
 
 
 
 const actionCreators = {
-    // login: userActions.login,
     getFullUserInfo: userActions.getFullUserInfo,
 
-    // TODO: MAYBE DELETE???
-    // getCategoriesHome: appActions.getCategories,
-    // getCategoryInfo: appActions.getCategoryInfo,
-    // shieldsInfo: appActions.getShields,
-    // viewSingleCategory: appActions.getCategoryInfo, 
-    // filterCategory: appActions.filterCategory,
-    // ________________________________
-
-    // viewAllListedApps: appActions.viewAllListedApps,
-    // viewAppNames: appActions.viewAppNames,
- 
-    // search42Text: appActions.search42Text,
-    // selectTrendingApps: appActions.selectTrendingApps,
     viewAppReviews: appActions.viewAppReviews,
     viewAppNames: appActions.viewAppNames,
     viewAllCategories: categoryActions.viewAllCategories,
@@ -214,8 +173,6 @@ const actionCreators = {
 
     viewAllShields: shieldActions.viewAllShields,
 
-    viewAllUserAppNotifications: alertActions.viewAllUserAppNotifications,
-    viewActiveUserAppNotifications: alertActions.viewActiveUserAppNotifications
      // TODO://////////////////
     // logout: userActions.logout
 };
