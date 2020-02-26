@@ -1,7 +1,9 @@
 // Import React and Redux
 // =========================================================
-    import React, { Component, useSelector } from "react";  
+    import React, { Component } from "react";  
     import { connect } from "react-redux";
+    import {Redirect} from 'react-router-dom';
+
     import { push } from 'connected-react-router'
 // Import Material Ui Components
 // =========================================================
@@ -22,7 +24,6 @@
     import { appActions } from "../Store/Actions/appActions";
     import { shieldActions } from "../Store/Actions/shieldActions";
     import { alertActions } from "../Store/Actions/alertActions";
-
 
     import { userActions } from '../Store/Actions/auth';
     // import { appActions } from '../Store/Actions/app.actions';
@@ -86,92 +87,92 @@ class Homepage extends Component {
     }
 
     render() {
-//   console.log(this.state.props.authentication)
+
         return (
             <div>
-                {/* {!this.props.isloggedIn ? (<p align="center" >Loading...</p>) :  */}
-                {/* (<> */}
-                <Nav/>
-                <main>
-                    <HeaderContainer> 
-                        <div className="headerBanner">
-                            <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
-                                Review and track potentially dangerous apps with our rating system:
-                            </h2>                          
-                        </div>
-                        <Wrapper> 
-                            <Grid container 
-                                direction="row" 
-                                justify="center" 
-                                alignItems="center"
-                                spacing={1}
-                            >
-                            <Grid item xs={12}>
+                {this.props.loggedIn ? ( 
+                <> 
+                    <Nav/>
+                    <main>
+                        <HeaderContainer> 
+                            <div className="headerBanner">
+                                <h2 align="center" style={{color: "rgb(255, 255, 255)", borderBottom: "1px solid #13BAC7", margin: 0, padding: "16px"}}> 
+                                    Review and track potentially dangerous apps with our rating system:
+                                </h2>                          
+                            </div>
+                            <Wrapper> 
+                                <Grid container 
+                                    direction="row" 
+                                    justify="center" 
+                                    alignItems="center"
+                                    spacing={1}
+                                >
+                                <Grid item xs={12}>
 
-                            </Grid>
-                                <Grid item xs={12} sm={3}>
-                                <div>
-                                    <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
-                                </div>
                                 </Grid>
+                                    <Grid item xs={12} sm={3}>
+                                    <div>
+                                        <img alt="AppBeware herologo" src={ABLogo} style={{ width: "100%", padding: 0}}/>
+                                    </div>
+                                    </Grid>
+                                    
+                                    <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
                                 
-                                <Grid item xs={12} sm={9} style={{  color: "#57585D", display: "flex", flexFlow: "rowWrap", padding: 10,  justifyContent: "space-between"}}>
-                              
-                                {!this.props.allShields ? (<p align="center" >Loading...</p>) : 
+                                    {!this.props.allShields ? (<p align="center" >Loading...</p>) : 
 
-                                        this.props.allShields.map(shield => (
+                                            this.props.allShields.map(shield => (
 
-                                            <ShieldLayout 
-                                                key={shield.id}
-                                                shieldIcon={shield.icon}
-                                                altTxt={shield.altText}
-                                                title={shield.name}
-                                                info={shield.info}
-                                            />
-                                        ))
-                                        }
-                                
+                                                <ShieldLayout 
+                                                    key={shield.id}
+                                                    shieldIcon={shield.icon}
+                                                    altTxt={shield.altText}
+                                                    title={shield.name}
+                                                    info={shield.info}
+                                                />
+                                            ))
+                                            }
+                                    
+                                    
+                                    </Grid>
+                                </Grid>
+                            
+                            </Wrapper>
+                        </HeaderContainer>
+                        {/* TODO: Fix App Annie Search functionality */}
+                        {/* <SearchAppAnnie 
+                            viewApp={this.viewApp}
+                        /> */}
+
+                        <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
+                            <HomepageTabNav >
+                                <Grid 
+                                    container 
+                                    direction="row"
+                                    justify="center"
+                                    alignItems="center"
+                                    spacing={2}
+                                >
+                                {!this.props.allCategories ? (<p align="center" >Loading...</p>) : 
+
+                                this.props.allCategories.map(cat => (
+                                        <CategoryCards
+                                            key={cat.id}
+                                            title={cat.name}
+                                            catId={cat.id}
+                                            imageUrl={cat.imageUrl}
+                                            viewCategory={this.viewCategory}
+                                        /> 
+
+                                    ))}
                                 
                                 </Grid>
-                            </Grid>
-                        
+                            </HomepageTabNav>
                         </Wrapper>
-                    </HeaderContainer>
-                    {/* TODO: Fix App Annie Search functionality */}
-                    {/* <SearchAppAnnie 
-                        viewApp={this.viewApp}
-                    /> */}
-
-                    <Wrapper style={{ maxWidth: "1040px", zIndex: "1", position: "static" , top: "calc(100vh - 348px)", left: 0, right: 0, margin: "auto"}}>
-                        <HomepageTabNav >
-                            <Grid 
-                                container 
-                                direction="row"
-                                justify="center"
-                                alignItems="center"
-                                spacing={2}
-                            >
-                            {!this.props.allCategories ? (<p align="center" >Loading...</p>) : 
-
-                            this.props.allCategories.map(cat => (
-                                    <CategoryCards
-                                        key={cat.id}
-                                        title={cat.name}
-                                        catId={cat.id}
-                                        imageUrl={cat.imageUrl}
-                                        viewCategory={this.viewCategory}
-                                    /> 
-
-                                ))}
-                             
-                            </Grid>
-                        </HomepageTabNav>
-                    </Wrapper>
-                </main>
-                <Footer/> 
-                {/* </>
-                )
-            } */}
+                    </main>
+                    <Footer/> 
+                 </>
+                ) : ( <Redirect to='/' /> )
+            } 
             </div>
         )
     }

@@ -2,6 +2,7 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux";
+    import {Redirect} from 'react-router-dom'
 // Import Redux Actions
 // =========================================================
     import { categoryActions } from "../Store/Actions/categoryActions";
@@ -82,162 +83,164 @@
 
         render(props) {
             return (
-                <>
-                <Nav/>
-                <main>
-                    <Wrapper align="center" style={{paddingTop: 40}}> 
-                    
-                        <Grid container 
-                            spacing={4}
-                            direction="row"
-                            justify="center"
-                            alignItems="center"
-                            style={{marginBottom: 10}}
-                        >
-                
-                            <Grid align="center" item xs={12} sm={3}>
-                            <img 
-                                style={{ width: "100%", height: "auto", borderRadius: 16 }}
-                                className="appIcon"
-                                src={this.props.singleCategoryInfo.imageUrl}
-                                alt={this.props.singleCategoryInfo.name}    
-                            />
-                            </Grid> 
-                            <Grid item xs={12}  sm={9}>
-                                <h1 style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem"}}>
-                                    {this.props.singleCategoryInfo.name}
-                                </h1>
-                                <p style={{fontSize: "1.1rem"}}>
-                                    {this.props.singleCategoryInfo.description}
-                                </p>
-                    
-                            </Grid> 
-                    
-                        </Grid>
-                    </Wrapper>
-
-               
-                <div className="searchBarBackground">
-                <Wrapper style={{paddingTop: "10px"}}> 
-                    <Autocomplete
-                    style={{ maxWidth: "1000px", width:"100%",  }}
-                        freeSolo
-                        id="search-categories"
-                        className="searchInput"
-                        disableClearable
-                        options={this.props.allCategories.map(option => option.name)}
-                        onChange={this.onTagsChange}
-                        renderInput={params => (
-                        <InputOverRideOutline
-                            {...params}
-                            label={<p style={{ margin: 0, marginLeft: "20px"}}>Search By Category...</p>}
-                            fullWidth
-                            InputProps={{ ...params.InputProps, type: 'search' }}
-                        />
-                        )}
-                    />
-                    </Wrapper>
-                    </div>
-                    <Wrapper> 
-                    <Table style={{marginTop: "20px"}}>
-                        <TableHeader/>
-                        <TableBody>
-                        {!this.props.singleCategory ? (<p align="center" >Loading...</p>) : 
-                         this.props.singleCategory.map((app, i) => (
-                            <TableRow key={i} style={{borderBottom: "1px solid #13BAC7"}}>
-                                <Image 
-                                    title={app.name}
-                                    image={app.logoUrl}
-                                />
-                                <AppDetails
-                                    title={app.name}
-                                />
-                                <TableCell>
-                                    <Grid 
-                                        container 
-                                        style={{width: "100%"}}
-                                        direction="row"
-                                        justify="flex-start"
-                                        alignItems="center"
-                                        spacing={2}
-                                    >
-                                        {app.badge1 ? (
-                                            <Grid item xs={2}>
-                                                <Shields 
-                                                    title={app.badge1Name}
-                                                    image={app.badge1LogoUrl}
-                                                />
-                                            </Grid>
-                                    ) : (
-                                        <div style={{display: "none"}}/>
-                                        )
-                                    }
-                                    {app.badge2 ? (
-                                        <Grid item xs={2}>
-                                            <Shields 
-                                                title={app.badge2Name}
-                                                image={app.badge2LogoUrl}
-                                            />
-                                        </Grid>
-                                    ) : (
-                                        <div style={{display: "none"}}/>
-                                        )
-                                    }
-                                    {app.badge3 ? (
-                                        <Grid item xs={2}>
-                                            <Shields 
-                                                title={app.badge3Name}
-                                                image={app.badge3LogoUrl}
-                                            />
-                                        </Grid>
-                                    ) : (
-                                        <div style={{display: "none"}}/>
-                                        )
-                                    }
-                                    {app.badge4 ? (
-                                        <Grid item xs={2}>
-                                            <Shields 
-                                                title={app.badge4Name}
-                                                image={app.badge4LogoUrl}
-                                            />
-                                        </Grid>
-                                    ) : (
-                                        <div style={{display: "none"}}/>
-                                        )
-                                    }
-                                    {app.badge5 ? (
-                                        <Grid item xs={2}>
-                                            <Shields 
-                                                title={app.badge5Name}
-                                                image={app.badge5LogoUrl}
-                                            />
-                                        </Grid>
-                                    ) : (
-                                        <div style={{display: "none"}}/>
-                                        )
-                                    }
-                                    </Grid>
-                                </TableCell>
-                                <TableCell>
-                                    <ViewApp
-                                        viewApp={this.viewApp}
-                                        appId={app.id}
+                <div>
+                    {this.props.loggedIn ? ( 
+                    <>
+                        <Nav/>
+                        <main>
+                            <Wrapper align="center" style={{paddingTop: 40}}> 
+                            
+                                <Grid container 
+                                    spacing={4}
+                                    direction="row"
+                                    justify="center"
+                                    alignItems="center"
+                                    style={{marginBottom: 10}}
+                                >
+                        
+                                    <Grid align="center" item xs={12} sm={3}>
+                                    <img 
+                                        style={{ width: "100%", height: "auto", borderRadius: 16 }}
+                                        className="appIcon"
+                                        src={this.props.singleCategoryInfo.imageUrl}
+                                        alt={this.props.singleCategoryInfo.name}    
                                     />
-                                </TableCell>
-                                
-                            </TableRow>
-                        )
-                        )
-                        }
-                        </TableBody>
-                </Table>
+                                    </Grid> 
+                                    <Grid item xs={12}  sm={9}>
+                                        <h1 style={{ borderBottom: "2px solid #13BAC7", marginRight: "20px", paddingBottom: "20px", fontSize: "2rem"}}>
+                                            {this.props.singleCategoryInfo.name}
+                                        </h1>
+                                        <p style={{fontSize: "1.1rem"}}>
+                                            {this.props.singleCategoryInfo.description}
+                                        </p>
+                            
+                                    </Grid> 
+                            
+                                </Grid>
+                            </Wrapper>
 
-                </Wrapper>
+                    
+                        <div className="searchBarBackground">
+                        <Wrapper style={{paddingTop: "10px"}}> 
+                            <Autocomplete
+                            style={{ maxWidth: "1000px", width:"100%",  }}
+                                freeSolo
+                                id="search-categories"
+                                className="searchInput"
+                                disableClearable
+                                options={this.props.allCategories.map(option => option.name)}
+                                onChange={this.onTagsChange}
+                                renderInput={params => (
+                                <InputOverRideOutline
+                                    {...params}
+                                    label={<p style={{ margin: 0, marginLeft: "20px"}}>Search By Category...</p>}
+                                    fullWidth
+                                    InputProps={{ ...params.InputProps, type: 'search' }}
+                                />
+                                )}
+                            />
+                            </Wrapper>
+                            </div>
+                            <Wrapper> 
+                            <Table style={{marginTop: "20px"}}>
+                                <TableHeader/>
+                                <TableBody>
+                                {!this.props.singleCategory ? (<p align="center" >Loading...</p>) : 
+                                this.props.singleCategory.map((app, i) => (
+                                    <TableRow key={i} style={{borderBottom: "1px solid #13BAC7"}}>
+                                        <Image 
+                                            title={app.name}
+                                            image={app.logoUrl}
+                                        />
+                                        <AppDetails
+                                            title={app.name}
+                                        />
+                                        <TableCell>
+                                            <Grid 
+                                                container 
+                                                style={{width: "100%"}}
+                                                direction="row"
+                                                justify="flex-start"
+                                                alignItems="center"
+                                                spacing={2}
+                                            >
+                                                {app.badge1 ? (
+                                                    <Grid item xs={2}>
+                                                        <Shields 
+                                                            title={app.badge1Name}
+                                                            image={app.badge1LogoUrl}
+                                                        />
+                                                    </Grid>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {app.badge2 ? (
+                                                <Grid item xs={2}>
+                                                    <Shields 
+                                                        title={app.badge2Name}
+                                                        image={app.badge2LogoUrl}
+                                                    />
+                                                </Grid>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {app.badge3 ? (
+                                                <Grid item xs={2}>
+                                                    <Shields 
+                                                        title={app.badge3Name}
+                                                        image={app.badge3LogoUrl}
+                                                    />
+                                                </Grid>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {app.badge4 ? (
+                                                <Grid item xs={2}>
+                                                    <Shields 
+                                                        title={app.badge4Name}
+                                                        image={app.badge4LogoUrl}
+                                                    />
+                                                </Grid>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            {app.badge5 ? (
+                                                <Grid item xs={2}>
+                                                    <Shields 
+                                                        title={app.badge5Name}
+                                                        image={app.badge5LogoUrl}
+                                                    />
+                                                </Grid>
+                                            ) : (
+                                                <div style={{display: "none"}}/>
+                                                )
+                                            }
+                                            </Grid>
+                                        </TableCell>
+                                        <TableCell>
+                                            <ViewApp
+                                                viewApp={this.viewApp}
+                                                appId={app.id}
+                                            />
+                                        </TableCell>
+                                        
+                                    </TableRow>
+                                )
+                                )
+                                }
+                                </TableBody>
+                            </Table>
 
-                </main>
-
-                <Footer/>
-                </>
+                            </Wrapper>
+                        </main>
+                        <Footer/>
+                    </> ) : ( <Redirect to='/' /> )
+                    } 
+                </div>
             )
         }
     }
@@ -248,7 +251,7 @@
         singleCategoryInfo: state.categories.singleCategoryInfo,
         appReviews: state.apps.appReviews,
         userInfo: state.authentication.userInfo,
-        // isloggedIn: state.authentication.isloggedIn
+        loggedIn: state.authentication.loggedIn
     })
    
     const actionCreators = {
