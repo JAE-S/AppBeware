@@ -1,6 +1,6 @@
 import { categoryConstants } from '../_constants/categoryConstants';
 import  categoryService  from '../_services/categoryService';
-// import  history  from '../_helpers/history';
+import  history  from '../_helpers/history';
 
 export const categoryActions = {
     viewAllCategories,
@@ -52,6 +52,7 @@ function viewSingleCategoryInfo (catId) {
         categoryService.viewSingleCategoryInfo(catId)
         .then(
             data => dispatch(success(data)),
+            history.push('/categoryPage'),
             error => dispatch(failure(error.toString()))
         );
     };

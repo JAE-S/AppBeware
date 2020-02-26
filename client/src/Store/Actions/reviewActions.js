@@ -5,7 +5,7 @@ export const reviewActions = {
     addShieldToApp,
     reviewSubmit,
     resetAddedShields,
-    AlertsCall
+    // AlertsCall
 }
 
 
@@ -31,12 +31,12 @@ function resetAddedShields () {
     }
 }
 
-function AlertsCall () {
-    function anon (dispatch) {
-        API.getAlerts()
-        .then(alertCalls => dispatch ({
-        type: ALERT_CALLS,
-            payload: alertCalls
-        }))
-    }
-}
+// function AlertsCall () {
+//     function anon (dispatch) {
+//         API.getAlerts()
+//         .then(alertCalls => dispatch ({
+//         type: ALERT_CALLS,
+//             payload: alertCalls
+//         }))
+//     }
+// }

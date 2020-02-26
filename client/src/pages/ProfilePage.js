@@ -2,6 +2,7 @@
 // =========================================================
     import React, { Component } from "react"; 
     import { connect } from "react-redux"; 
+    import {Redirect} from 'react-router-dom';
 // Import Material Ui Components
 // =========================================================
     import { Grid } from '@material-ui/core';
@@ -70,7 +71,9 @@
         
     render() {
         return (
-            <>
+            <div>
+               {this.props.loggedIn ? ( 
+                <> 
                 <Nav/>
                 <main>
                     <HeaderContainer style={{backgroundColor: "#EAEAEA", borderBottom: "4px solid #F7C533"}}> 
@@ -81,14 +84,16 @@
                                 alignItems="center" 
                             >
                                 <Grid item xs={12}> 
+                             
                                 {!this.props.userInfo ? (<p align="center" >Loading...</p>) : ( <img alt={`${this.props.userInfo.name}'s Profile`} 
                                     src={this.props.userInfo.profilePicture}
                                     style={{ height: 200, width: 200, borderRadius: "50%"}}/> )
                                 }
+                                
                                 </Grid>
                                 
                                 <Grid item xs={12} > 
-                                    {!this.props.userInfo ? (<p align="center" >Loading...</p>) : ( <div align="center" >  <h3>Welcome back {this.props.userInfo.name}</h3></div>) }
+                                    {!this.props.userInfo ? (`Loading...`) : ( <div align="center" >  <h3>Welcome back {this.props.userInfo.name}</h3></div>) }
                                 </Grid>
 
                             </Grid> 
@@ -99,7 +104,7 @@
                         <UserDetailsPanel
                             ariaControls="UserName"
                             title="Username"
-                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.name) }
+                            currentDetails={!this.props.userInfo ? (`Loading...`) : (this.props.userInfo.name) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'name'}
@@ -120,7 +125,7 @@
                         <UserDetailsPanel
                             ariaControls="email"
                             title="Email"
-                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.email) }
+                            currentDetails={!this.props.userInfo ? (`Loading...`) : (this.props.userInfo.email) }
                             edit={" "}
                             inputSubmit = {this.handleFormSubmit}
                             name={'email'}
@@ -130,7 +135,7 @@
                         <UserDetailsPanel
                             ariaControls="phone"
                             title="Phone Number"
-                            currentDetails={!this.props.userInfo ? (<p align="center" >Loading...</p>) : (this.props.userInfo.phoneNumber) }
+                            currentDetails={!this.props.userInfo ? (`Loading...`) : (this.props.userInfo.phoneNumber) }
                             edit={"hi"}
                             inputSubmit = {this.handleFormSubmit}
                             name={'phone'}
@@ -141,14 +146,17 @@
 
                 </main>
                 <Footer/>
-            </>
+                </>
+                ) : ( <Redirect to='/' /> )
+            } 
+            </div>
             )}
     }
 
 const mapStateToProps = (state) => ({
 
-    userInfo: state.authentication.userInfo
-
+    userInfo: state.users.userInfo,
+    loggedIn: state.authentication.loggedIn
 })
 
 const actionCreators = {
