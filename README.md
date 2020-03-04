@@ -18,7 +18,7 @@
 ---
 
 ## Table of Contents
-  * [Problem & Solotuion](#the-problem)
+  * [Problem & Solution](#the-problem)
   * [User Story](#user-story)
   * [Design Process](#design-process)
   * [API'S](#API'S)
