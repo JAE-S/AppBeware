@@ -27,7 +27,7 @@
   * [Brainstorming Document](#brainstorming-document)
   * [Resource Links](#resource-links)
   * [File Architecture](#file-architecture)
-  * [Click here to visit the site!](http://www.appbeware.com)
+  * [Click here to visit the site!](https://appbeware.herokuapp.com/)
 
 ---
 
