@@ -21,10 +21,23 @@ module.exports = {
       }
     },
     production: {
-      'use_env_variable': 'JAWSDB_URL',
+      user: process.env.RDS_USERNAME,
+      password: process.env.RDS_PASSWORD,
+      database: process.env.RDS_DB_NAME,
+      // 'use_env_variable': 'JAWSDB_URL',
       details: {
+        host: process.env.RDS_HOSTNAME,
+        port: process.env.RDS_PORT,
         dialect: 'mysql'
       }
     }
   };
+
+  var connection = mysql.createConnection({
+    // host: process.env.RDS_HOSTNAME,
+    // port: process.env.RDS_PORT,
+    // user: process.env.RDS_USERNAME,
+    // password: process.env.RDS_PASSWORD,
+    // database: process.env.RDS_DB_NAME
+  });
   

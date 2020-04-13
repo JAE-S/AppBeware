@@ -4,15 +4,7 @@ const categoryData = require('./seedData/categoryData');
 const officialCategoryData = require('./seedData/officialCategoryData');
 const appShieldUserData = require('./seedData/appShieldUserData');
 const appReviewsData = require('./seedData/appReviewsData');
-const classData = require('./seedData/classData');
-const studentData = require('./seedData/studentData');
-const classStudentData = require('./seedData/classStudentData');
-const productData = require('./seedData/productData');
-const departmentData = require('./seedData/departmentData');
-const productDepartmentData = require('./seedData/productDepartmentData');
 const userAppNotificationData = require('./seedData/userAppNotificationData');
-
-
 
 module.exports = db => {
     db.User.create({
@@ -139,50 +131,7 @@ module.exports = db => {
     }).then(function() {
       return db.AppReview.bulkCreate(appReviewsData);
     }).then(function() {
-      return db.Student.bulkCreate(studentData);
-    }).then(function() {
-      return db.Class.bulkCreate(classData);
-    }).then(function() {
-      return db.Product.bulkCreate(productData);
-    }).then(function() {
-      return db.Department.bulkCreate(departmentData);
-    }).then(function() {
-      return db.ProductDepartment.bulkCreate(productDepartmentData);
-    }).then(function() {
-      console.log("Inside User App Notification");
-      console.log(userAppNotificationData);
       return db.UserAppNotification.bulkCreate(userAppNotificationData);
-    }).then(function() {
-
-      // This section is just testing to see if the join table is working properly.
-      console.log("Inside Find All");
-      return db.ProductDepartment.findAll({
-        where: {
-          ProductId: "1"
-        },
-        include: [
-          {
-            model: db.Product
-          },
-          {
-            model: db.Department
-          }
-        ]
-      }).then(function(dbProducts) {
-        console.log("------------------------------------");
-        dbProducts.forEach(function(dataValues) {
-          console.log("Join Table ID: " + dataValues.id);
-          console.log("Product ID: " + dataValues.Product.dataValues.id);
-          console.log("Product Name: " + dataValues.Product.dataValues.name);
-          console.log("Department ID: " + dataValues.Department.dataValues.id);
-          console.log("Department Name: " + dataValues.Department.dataValues.name);
-          console.log("------------------------------------");
-
-        })
-        // End test section
-
-
-      });
     })
     })
     })
@@ -198,4 +147,5 @@ module.exports = db => {
     })
     })
 };
+    
 

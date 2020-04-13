@@ -11,7 +11,7 @@ import shieldReducer from "./_appReducers/shieldReducer";
 import authentication  from "./_userReducers/authentication.reducer";
 import user from "./_userReducers/user.reducer"
 import alertReducer from "./_appReducers/alertReducer";
-import reviewReducer from './reviewReducer';
+import reviewReducer from './_appReducers/reviewReducer'; 
 
 // Combine Reducers 
 // =========================================================
