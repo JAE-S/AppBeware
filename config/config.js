@@ -22,7 +22,7 @@ module.exports = {
     // },
 
     development: {
-      user: process.env.RDS_USERNAME,
+      username: process.env.RDS_USERNAME,
       password: process.env.RDS_PASSWORD,
       database: process.env.RDS_DB_NAME,
       // 'use_env_variable': 'JAWSDB_URL',
@@ -34,7 +34,7 @@ module.exports = {
     },
 
     test: {
-      user: process.env.RDS_USERNAME,
+      username: process.env.RDS_USERNAME,
       password: process.env.RDS_PASSWORD,
       database: process.env.RDS_DB_NAME,
       // 'use_env_variable': 'JAWSDB_URL',
@@ -47,7 +47,7 @@ module.exports = {
 
 
     production: {
-      user: process.env.RDS_USERNAME,
+      username: process.env.RDS_USERNAME,
       password: process.env.RDS_PASSWORD,
       database: process.env.RDS_DB_NAME,
       // 'use_env_variable': 'JAWSDB_URL',
