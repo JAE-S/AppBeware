@@ -1,4 +1,4 @@
-import { reviewConstants } from '../_constants/reviewConstants';
+import { reviewConstants } from '../../_constants/reviewConstants';
 
 const initialState = {
     // addedShields: [],
