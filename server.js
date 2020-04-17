@@ -79,7 +79,11 @@ if (app.get('env') !== 'development') {
 }
 
   app.listen(PORT, () => {
-    console.log(`App listening on port: ${PORT}`);
+    console.log(`----------------------------------\n
+    --------App listening on port: ${PORT}\n
+    process.env.NODE_ENV: ${process.env.NODE_ENV}\n
+    NODE_ENV: ${NODE_ENV}\n
+    ----------------------------------\n`);
   });
 });
 
