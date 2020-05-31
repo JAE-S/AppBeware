@@ -7,10 +7,11 @@ const morgan = require('morgan');
 const passport = require('passport');
 const moment = require('moment');
 const helmet = require('helmet');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8081;
 const app = express();
 const db = require('./models');
-const path = require('path')
+const path = require('path');
+const fs = require('fs');
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +22,24 @@ app.set('view engine', 'handlebars');
 if (app.get('env') !== 'test') {
   app.use(morgan('dev')); // Hook up the HTTP logger
 }
+
+//joining path of directory 
+const directoryPath = path.join(__dirname, "Documents");
+//passsing directoryPath and callback function
+fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        console.log ("************************");
+        console.log(file); 
+        console.log ("************************");
+    });
+});
+
 
 app.use(express.static('public'));
 
@@ -34,14 +53,41 @@ app.use(helmet.hsts({
   maxAge: moment.duration(1, 'years').asMilliseconds()
 }));
 
+///////////////////////////////////////////////////
+// TESTING NEW OPTIONS FOR AwS ELASTIC BEANSTALK //
+///////////////////////////////////////////////////
+
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  // app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, 'var/app/current/client/build')));
+
 // Handle React routing, return all requests to React app
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'var/app/current/client/build', 'index.html'));
+
   });
 }
+
+///////////////////////////////////////////
+// ORIGINAL CODE THAT WORKED WITH HEROKU //
+///////////////////////////////////////////
+
+// if (process.env.NODE_ENV === 'production') {
+//   // Serve any static files
+//   // app.use(express.static(path.join(__dirname, 'client/build')));
+//   app.use(express.static(path.join(__dirname, 'build')));
+
+// // Handle React routing, return all requests to React app
+//   app.get('*', function(req, res) {
+//     // res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+//     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+
+//   });
+// }
+
+// GOOGLE SIGN-IN //
 
 // app.get("/google", function(req, res) {
 //     res.sendFile(path.join(__dirname, "./google-test.html"));
