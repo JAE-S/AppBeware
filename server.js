@@ -24,7 +24,8 @@ if (app.get('env') !== 'test') {
 }
 
 //joining path of directory 
-const directoryPath = path.join(__dirname, "Documents");
+const directoryPath = path.join(__dirname);
+// const directoryPath = path.join(__dirname, "Documents");
 //passsing directoryPath and callback function
 fs.readdir(directoryPath, function (err, files) {
     //handling error
