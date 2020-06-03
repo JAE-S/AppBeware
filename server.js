@@ -23,23 +23,70 @@ if (app.get('env') !== 'test') {
   app.use(morgan('dev')); // Hook up the HTTP logger
 }
 
-//joining path of directory 
-const directoryPath = path.join(__dirname, "client/build");
-// const directoryPath = path.join(__dirname, "Documents");
+//-------------------------------------------------
+// Print Working Directory - Root
+//-------------------------------------------------
+
+// Base Directory Path
+const directoryPath = path.join(__dirname);
 //passsing directoryPath and callback function
 fs.readdir(directoryPath, function (err, files) {
     //handling error
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     } 
+    console.log ("** Root Directory **");
     //listing all files using forEach
     files.forEach(function (file) {
         // Do whatever you want to do with the file
-        console.log ("************************");
         console.log(file); 
-        console.log ("************************");
     });
+    console.log ("** END Root Directory **");
 });
+
+//-------------------------------------------------
+// Print Working Directory - /client/
+//-------------------------------------------------
+
+// Base Directory Path
+const directoryPath = path.join(__dirname, "client");
+//passsing directoryPath and callback function
+fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    console.log ("** /client/ Directory **");
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        console.log(file); 
+    });
+    console.log ("** END /client/ Directory **");
+});
+
+//-------------------------------------------------
+// Print Working Directory - /client/build/
+//-------------------------------------------------
+
+// Base Directory Path
+const directoryPath = path.join(__dirname, "client/build");
+//passsing directoryPath and callback function
+fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    console.log ("** /client/build/ Directory **");
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        console.log(file); 
+    });
+    console.log ("** END /client/build/ Directory **");
+});
+
+// End Print Working Directory
 
 
 app.use(express.static('public'));
