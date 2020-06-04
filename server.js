@@ -49,9 +49,9 @@ fs.readdir(directoryPath, function (err, files) {
 //-------------------------------------------------
 
 // Base Directory Path
-const directoryPath = path.join(__dirname, "client");
+const directoryPathClient = path.join(__dirname, "client");
 //passsing directoryPath and callback function
-fs.readdir(directoryPath, function (err, files) {
+fs.readdir(directoryPathClient, function (err, files) {
     //handling error
     if (err) {
         return console.log('Unable to scan directory: ' + err);
@@ -70,9 +70,9 @@ fs.readdir(directoryPath, function (err, files) {
 //-------------------------------------------------
 
 // Base Directory Path
-const directoryPath = path.join(__dirname, "client/build");
+const directoryPathBuild = path.join(__dirname, "client/build");
 //passsing directoryPath and callback function
-fs.readdir(directoryPath, function (err, files) {
+fs.readdir(directoryPathBuild, function (err, files) {
     //handling error
     if (err) {
         return console.log('Unable to scan directory: ' + err);
