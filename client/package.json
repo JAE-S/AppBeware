@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.33",
     "@syncfusion/ej2-react-grids": "^17.3.34",
     "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.19.2",
     "clsx": "^1.0.4",
     "connected-react-router": "^6.6.1",
     "downshift": "^3.4.4",

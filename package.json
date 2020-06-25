@@ -2,7 +2,7 @@
   "name": "AppBeware",
   "version": "1.0.0",
   "engines": {
-    "node": "10.16.3"
+    "node": "12.16.2"
   },
   "description": "AppBeware",
   "main": "server.js",
@@ -11,8 +11,8 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
+    "install:client": "cd client && npm install",
+    "client:build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/JAE-S/appbeware#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "bcrypt": "^3.0.8",
+    "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "connect-session-sequelize": "^6.1.1",
     "connected-react-router": "^6.8.0",
