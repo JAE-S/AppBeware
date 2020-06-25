@@ -11,12 +11,12 @@ phases:
     commands:
       #install dependencies
       - echo Installing dependencies...
-      - npm ci && npm run install:client
+      - npm run install:client
   build:
     commands:
       #build
       - echo Building...
-      - npm run build
+      - npm run client:build
 artifacts:
   files:
     '**/*'
