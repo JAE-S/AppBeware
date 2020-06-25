@@ -21,5 +21,5 @@ artifacts:
   files:
     '**/*'
   discard-paths: no
-  base-directory: client/build
+  # base-directory: client/build
 
