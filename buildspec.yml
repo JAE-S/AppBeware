@@ -11,7 +11,7 @@ phases:
     commands:
       #install dependencies
       - echo Installing dependencies...
-      - npm install
+      - npm install && npm run install:client
   build:
     commands:
       #build
@@ -20,6 +20,6 @@ phases:
 artifacts:
   files:
     '**/*'
-  discard-paths: no
+  # discard-paths: no
   # base-directory: client/build
 
