@@ -14,7 +14,7 @@ const middleware = [thunk];
 // Necessary for hot reloading???
 
 export default function configureStore() {
-  if (window.navigator.userAgent.includes('Chrome')) {
+  if (window.navigator.userAgent.includes('Chrome') && window.__REDUX_DEVTOOLS_EXTENSION__) {
     const store = createStore(
       createRootReducer(history),
       initialState,
