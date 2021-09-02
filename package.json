@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/JAE-S/appbeware#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "connect-session-sequelize": "^6.1.1",
